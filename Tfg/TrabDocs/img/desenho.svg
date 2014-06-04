@@ -110,9 +110,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.80109587"
-     inkscape:cx="461.07466"
-     inkscape:cy="302.76429"
+     inkscape:zoom="0.40054794"
+     inkscape:cx="277.29916"
+     inkscape:cy="96.24497"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -129,7 +129,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -147,7 +147,7 @@
            height="307.4751"
            x="435.58972"
            y="-467.93134" /></flowRegion><flowPara
-         id="flowPara4308"></flowPara></flowRoot>    <g
+         id="flowPara4308" /></flowRoot>    <g
        id="g4518"
        inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/coord.png"
        inkscape:export-xdpi="90"
@@ -1239,5 +1239,601 @@
          d="m 548.80155,554.08632 -27.03509,18.06814 4.14558,5.96064 -10.79698,-1.02405 1.01595,-10.71105 5.63545,5.77446"
          style="fill:#ff0000;stroke:#ff0000;stroke-width:2.09912562;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     </g>
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:11.86184216;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:92.57039158"
+       id="rect4210"
+       width="826.89795"
+       height="803.38409"
+       x="-5.8211126"
+       y="804.86603"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -5.3840071,1715.6508 0,368.5715"
+       id="path2985-2"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -82.526867,2035.6509 605.714277,0"
+       id="path2987"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -5.3840071,1875.6509 74.2857101,0 93.759137,162.3956"
+       id="path2991-2"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 77.473133,2032.7938 95.850707,-166.0184 149.86357,0 100.26809,173.6694"
+       id="path2993"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path2995"
+       d="m 525.43712,1875.6509 -79.26633,0 -100.04537,162.3956"
+       style="fill:none;stroke:#000000;stroke-width:1.03297949px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-size:24.77576828px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="215.4935"
+       y="1849.2051"
+       id="text2997"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2999"
+         x="215.4935"
+         y="1849.2051">Fugir</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text3001"
+       y="1851.4238"
+       x="449.75598"
+       style="font-size:24.07094955px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         y="1851.4238"
+         x="449.75598"
+         id="tspan3003"
+         sodipodi:role="line">Atacar</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22.60894775px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-2.7266915"
+       y="1849.7245"
+       id="text3005"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3007"
+         x="-2.7266915"
+         y="1849.7245">Defender</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:30.56277466px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-39.515511"
+       y="1889.037"
+       id="text3009"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3011"
+         x="-39.515511"
+         y="1889.037">1</tspan></text>
+    <g
+       id="g3885"
+       transform="translate(-145.58452,1071.1664)"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="37.972561"
+         x="446.06259"
+         height="179.61975"
+         width="210.35843"
+         id="rect3013"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.07958317;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:92.57039158" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3785"
+         y="106.98325"
+         x="452.8215"
+         style="font-size:27.82674789px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="106.98325"
+           x="452.8215"
+           id="tspan3787"
+           sodipodi:role="line">Camada</tspan><tspan
+           y="141.76669"
+           x="452.8215"
+           sodipodi:role="line"
+           id="tspan4029">de</tspan><tspan
+           y="176.55013"
+           x="452.8215"
+           sodipodi:role="line"
+           id="tspan4031">Comunicação</tspan></text>
+    </g>
+    <g
+       id="g3890"
+       transform="translate(-147.30449,565.86468)"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.07958317;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:92.57039158"
+         id="rect3793"
+         width="210.35843"
+         height="179.61975"
+         x="447.78256"
+         y="300.40253" />
+      <text
+         xml:space="preserve"
+         style="font-size:34.21448898px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="449.43344"
+         y="405.70627"
+         id="text3789"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3791"
+           x="449.43344"
+           y="405.70627">Fuzzificação</tspan></text>
+    </g>
+    <g
+       id="g3895"
+       transform="translate(135.49182,545.70609)"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="563.55389"
+         x="439.18283"
+         height="179.61975"
+         width="210.35843"
+         id="rect3795"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.07958317;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:92.57039158" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3797"
+         y="664.29749"
+         x="461.47305"
+         style="font-size:34.21448898px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="664.29749"
+           x="461.47305"
+           id="tspan3799"
+           sodipodi:role="line">Inferência</tspan></text>
+    </g>
+    <g
+       id="g3862"
+       transform="translate(-147.30449,556.86238)"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.07958317;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:92.57039158"
+         id="rect3801"
+         width="210.35843"
+         height="179.61975"
+         x="447.78256"
+         y="795.74628" />
+      <text
+         xml:space="preserve"
+         style="font-size:34.21448898px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="552.39221"
+         y="861.49127"
+         id="text3803"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3805"
+           x="552.39221"
+           y="861.49127">Avaliação</tspan><tspan
+           id="tspan3807"
+           sodipodi:role="line"
+           x="552.39221"
+           y="904.2594">da Matriz</tspan><tspan
+           id="tspan3809"
+           sodipodi:role="line"
+           x="552.39221"
+           y="947.02747">De Ações</tspan></text>
+    </g>
+    <g
+       id="g3907"
+       transform="translate(498.39988,319.91272)"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.07958317;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:92.57039158"
+         id="rect3811"
+         width="210.35843"
+         height="179.61975"
+         x="76.27478"
+         y="546.35449" />
+      <text
+         xml:space="preserve"
+         style="font-size:28.4344635px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="179.78401"
+         y="628.0061"
+         id="text3813"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3815"
+           x="184.3102"
+           y="628.0061">Base de </tspan><tspan
+           id="tspan3817"
+           sodipodi:role="line"
+           x="179.78401"
+           y="663.54919">Conhecimento</tspan></text>
+    </g>
+    <g
+       id="g3900"
+       transform="translate(498.39987,532.78315)"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="819.8255"
+         x="76.274788"
+         height="179.61975"
+         width="210.35843"
+         id="rect3819"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.07958317;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:92.57039158" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3821"
+         y="892.87738"
+         x="179.36298"
+         style="font-size:28.4344635px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="892.87738"
+           x="183.88916"
+           id="tspan3823"
+           sodipodi:role="line">Base de </tspan><tspan
+           y="928.42047"
+           x="183.88918"
+           sodipodi:role="line"
+           id="tspan3825">Matrizes de </tspan><tspan
+           id="tspan3827"
+           y="963.96356"
+           x="179.36298"
+           sodipodi:role="line">Ação</tspan></text>
+    </g>
+    <g
+       id="g3854"
+       transform="matrix(0.74083366,0,0,0.83722947,695.55429,554.24163)"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="matrix(1,0,0,0.67499672,0,203.15146)"
+         id="g3856">
+        <path
+           style="fill:#000000;stroke:#000000;stroke-width:0.34374836px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -507.98303,630.00264 73.90605,0 0,0.50134 -36.09249,48.62968 10e-4,5.8e-4 z"
+           id="path3858"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccccc" />
+        <rect
+           style="fill:#000000;fill-opacity:1"
+           id="rect3860-0"
+           width="42.328178"
+           height="64.673309"
+           x="-490.8331"
+           y="570.84412" />
+      </g>
+    </g>
+    <g
+       transform="translate(-124.93386,598.1943)"
+       id="g4021"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="510.94464"
+         x="136.54639"
+         height="179.61975"
+         width="210.35843"
+         id="rect4023"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.07958317;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:92.57039158" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4025"
+         y="592.24835"
+         x="148.19727"
+         style="font-size:34.21448898px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="592.24835"
+           x="148.19727"
+           id="tspan4027"
+           sodipodi:role="line">Módulo de</tspan><tspan
+           y="635.01648"
+           x="148.19727"
+           sodipodi:role="line"
+           id="tspan4033">Controle</tspan></text>
+    </g>
+    <g
+       transform="matrix(0,-1,1,0,-364.33738,679.8825)"
+       id="g4035"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4037"
+         transform="matrix(1,0,0,0.67499672,0,203.15146)">
+        <path
+           sodipodi:nodetypes="cccccc"
+           inkscape:connector-curvature="0"
+           id="path4039"
+           d="m -507.98303,630.00264 73.90605,0 0,0.50134 -36.09249,48.62968 10e-4,5.8e-4 z"
+           style="fill:#000000;stroke:#000000;stroke-width:0.34374836px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <rect
+           y="570.84412"
+           x="-490.8331"
+           height="64.673309"
+           width="42.328178"
+           id="rect4041"
+           style="fill:#000000;fill-opacity:1" />
+      </g>
+    </g>
+    <g
+       id="g4043"
+       transform="matrix(0,1,-1,0,887.83797,1707.9425)"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="matrix(1,0,0,0.67499672,0,203.15146)"
+         id="g4045">
+        <path
+           style="fill:#000000;stroke:#000000;stroke-width:0.34374836px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -507.98303,630.00264 73.90605,0 0,0.50134 -36.09249,48.62968 10e-4,5.8e-4 z"
+           id="path4047"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccccc" />
+        <rect
+           style="fill:#000000;fill-opacity:1"
+           id="rect4049"
+           width="42.328178"
+           height="64.673309"
+           x="-490.8331"
+           y="570.84412" />
+      </g>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="309.87991"
+       y="849.26062"
+       id="text4206"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan4208"
+         x="309.87991"
+         y="849.26062">Módulo de Inteligência</tspan></text>
+    <g
+       transform="matrix(-0.74083366,0,0,-0.83722947,119.64452,1600.9183)"
+       id="g4358"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4360"
+         transform="matrix(1,0,0,0.67499672,0,203.15146)">
+        <path
+           sodipodi:nodetypes="cccccc"
+           inkscape:connector-curvature="0"
+           id="path4362"
+           d="m -507.98303,630.00264 73.90605,0 0,0.50134 -36.09249,48.62968 10e-4,5.8e-4 z"
+           style="fill:#000000;stroke:#000000;stroke-width:0.34374836px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <rect
+           y="570.84412"
+           x="-490.8331"
+           height="64.673309"
+           width="42.328178"
+           id="rect4364"
+           style="fill:#000000;fill-opacity:1" />
+      </g>
+    </g>
+    <g
+       transform="matrix(0.74083366,0,0,0.83722947,963.19813,554.24163)"
+       id="g4366"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4368"
+         transform="matrix(1,0,0,0.67499672,0,203.15146)">
+        <path
+           sodipodi:nodetypes="cccccc"
+           inkscape:connector-curvature="0"
+           id="path4370"
+           d="m -507.98303,630.00264 73.90605,0 0,0.50134 -36.09249,48.62968 10e-4,5.8e-4 z"
+           style="fill:#000000;stroke:#000000;stroke-width:0.34374836px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <rect
+           y="570.84412"
+           x="-490.8331"
+           height="64.673309"
+           width="42.328178"
+           id="rect4372"
+           style="fill:#000000;fill-opacity:1" />
+      </g>
+    </g>
+    <g
+       id="g4374"
+       transform="matrix(-0.74083366,0,0,-0.83722947,387.28837,1600.9183)"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="matrix(1,0,0,0.67499672,0,203.15146)"
+         id="g4376">
+        <path
+           style="fill:#000000;stroke:#000000;stroke-width:0.34374836px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -507.98303,630.00264 73.90605,0 0,0.50134 -36.09249,48.62968 10e-4,5.8e-4 z"
+           id="path4378"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccccc" />
+        <rect
+           style="fill:#000000;fill-opacity:1"
+           id="rect4380"
+           width="42.328178"
+           height="64.673309"
+           x="-490.8331"
+           y="570.84412" />
+      </g>
+    </g>
+    <g
+       id="g4414"
+       transform="matrix(0,0.74083366,-0.83722947,0,1065.5277,1487.0505)"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="matrix(1,0,0,0.67499672,0,203.15146)"
+         id="g4416">
+        <path
+           style="fill:#000000;stroke:#000000;stroke-width:0.34374836px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -507.98303,630.00264 73.90605,0 0,0.50134 -36.09249,48.62968 10e-4,5.8e-4 z"
+           id="path4418"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccccc" />
+        <rect
+           style="fill:#000000;fill-opacity:1"
+           id="rect4420"
+           width="42.328178"
+           height="64.673309"
+           x="-490.8331"
+           y="570.84412" />
+      </g>
+    </g>
+    <g
+       transform="matrix(0,-0.74083366,0.83722947,0,18.851163,911.14068)"
+       id="g4422"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4424"
+         transform="matrix(1,0,0,0.67499672,0,203.15146)">
+        <path
+           sodipodi:nodetypes="cccccc"
+           inkscape:connector-curvature="0"
+           id="path4426"
+           d="m -507.98303,630.00264 73.90605,0 0,0.50134 -36.09249,48.62968 10e-4,5.8e-4 z"
+           style="fill:#000000;stroke:#000000;stroke-width:0.34374836px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <rect
+           y="570.84412"
+           x="-490.8331"
+           height="64.673309"
+           width="42.328178"
+           id="rect4428"
+           style="fill:#000000;fill-opacity:1" />
+      </g>
+    </g>
+    <g
+       transform="matrix(0.74083366,0,0,0.83722947,695.55429,794.19651)"
+       id="g4430"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4432"
+         transform="matrix(1,0,0,0.67499672,0,203.15146)">
+        <path
+           sodipodi:nodetypes="cccccc"
+           inkscape:connector-curvature="0"
+           id="path4434"
+           d="m -507.98303,630.00264 73.90605,0 0,0.50134 -36.09249,48.62968 10e-4,5.8e-4 z"
+           style="fill:#000000;stroke:#000000;stroke-width:0.34374836px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <rect
+           y="570.84412"
+           x="-490.8331"
+           height="64.673309"
+           width="42.328178"
+           id="rect4436"
+           style="fill:#000000;fill-opacity:1" />
+      </g>
+    </g>
+    <g
+       id="g4438"
+       transform="matrix(-0.74083366,0,0,-0.83722947,119.64452,1840.8733)"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="matrix(1,0,0,0.67499672,0,203.15146)"
+         id="g4440">
+        <path
+           style="fill:#000000;stroke:#000000;stroke-width:0.34374836px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -507.98303,630.00264 73.90605,0 0,0.50134 -36.09249,48.62968 10e-4,5.8e-4 z"
+           id="path4442"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccccc" />
+        <rect
+           style="fill:#000000;fill-opacity:1"
+           id="rect4444"
+           width="42.328178"
+           height="64.673309"
+           x="-490.8331"
+           y="570.84412" />
+      </g>
+    </g>
+    <g
+       transform="matrix(0,0.74083366,-0.83722947,0,1064.4514,1733.158)"
+       id="g4446"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4448"
+         transform="matrix(1,0,0,0.67499672,0,203.15146)">
+        <path
+           sodipodi:nodetypes="cccccc"
+           inkscape:connector-curvature="0"
+           id="path4450"
+           d="m -507.98303,630.00264 73.90605,0 0,0.50134 -36.09249,48.62968 10e-4,5.8e-4 z"
+           style="fill:#000000;stroke:#000000;stroke-width:0.34374836px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <rect
+           y="570.84412"
+           x="-490.8331"
+           height="64.673309"
+           width="42.328178"
+           id="rect4452"
+           style="fill:#000000;fill-opacity:1" />
+      </g>
+    </g>
+    <g
+       id="g4454"
+       transform="matrix(0,-0.74083366,0.83722947,0,17.774823,1157.2482)"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="matrix(1,0,0,0.67499672,0,203.15146)"
+         id="g4456">
+        <path
+           style="fill:#000000;stroke:#000000;stroke-width:0.34374836px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -507.98303,630.00264 73.90605,0 0,0.50134 -36.09249,48.62968 10e-4,5.8e-4 z"
+           id="path4458"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccccc" />
+        <rect
+           style="fill:#000000;fill-opacity:1"
+           id="rect4460"
+           width="42.328178"
+           height="64.673309"
+           x="-490.8331"
+           y="570.84412" />
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:4.69999981;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18.79999924, 4.69999981;stroke-dashoffset:0"
+       d="m 239.63407,806.42062 0,804.74758"
+       id="path4462"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/joao-matiuzzi/git/tfg/Tfg/TrabDocs/img/modintelig.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
 </svg>
