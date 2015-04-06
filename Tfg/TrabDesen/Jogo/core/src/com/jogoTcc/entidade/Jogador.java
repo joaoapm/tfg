@@ -1,4 +1,4 @@
-package com.jogoTcc.desktop;
+package com.jogoTcc.entidade;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;

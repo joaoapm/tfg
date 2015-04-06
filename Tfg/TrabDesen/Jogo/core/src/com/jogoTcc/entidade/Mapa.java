@@ -1,4 +1,4 @@
-package com.jogoTcc.desktop;
+package com.jogoTcc.entidade;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -23,12 +23,12 @@ public class Mapa implements Screen {
 	@Override
 	public void show() {
 		TmxMapLoader loader = new TmxMapLoader();
-		map = loader.load("maps/mapa2.tmx");
+		map = loader.load("mapa/mapa.tmx");
 		 
 		renderer = new  IsometricTiledMapRenderer(map);
 		camera = new OrthographicCamera();
 		
-		jogador = new Jogador(new Sprite(new Texture("char.png")));
+		jogador = new Jogador(new Sprite(new Texture("personagens/char.png")));
 		Gdx.input.setInputProcessor(jogador);
 
 	}
