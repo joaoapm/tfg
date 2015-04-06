@@ -35,7 +35,6 @@ public class Mapa implements Screen {
 
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
 		Gdx.gl30.glClearColor(0, 0, 0, 1);
 		Gdx.gl30.glClear(GL30.GL_COLOR_BUFFER_BIT);
 		renderer.setView(camera);
@@ -49,7 +48,6 @@ public class Mapa implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
 		camera.viewportHeight = height;
 		camera.viewportWidth = width;
 		
@@ -60,26 +58,18 @@ public class Mapa implements Screen {
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-
 	}
 
 }
