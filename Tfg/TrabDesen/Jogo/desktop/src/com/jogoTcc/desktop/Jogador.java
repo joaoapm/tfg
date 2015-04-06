@@ -28,8 +28,8 @@ public class Jogador extends Sprite implements InputProcessor{
 		else if (velocity.y < speed)
 			velocity.y = -speed;
 
-		//setY(getY() + velocity.y * delta);
-		//setX(getX() + velocity.x * delta);
+		setY(getY() + velocity.y * delta);
+		setX(getX() + velocity.x * delta);
 
 	}
 

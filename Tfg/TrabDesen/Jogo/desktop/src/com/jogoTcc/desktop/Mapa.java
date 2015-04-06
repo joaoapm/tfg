@@ -8,12 +8,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
+import com.badlogic.gdx.math.Vector3;
 
 public class Mapa implements Screen {
 	private TiledMap map;
 
-	private OrthogonalTiledMapRenderer renderer;
+	private IsometricTiledMapRenderer renderer;
 
 	private OrthographicCamera camera;
 
@@ -23,10 +24,10 @@ public class Mapa implements Screen {
 	public void show() {
 		TmxMapLoader loader = new TmxMapLoader();
 		map = loader.load("maps/mapa2.tmx");
-
-		renderer = new OrthogonalTiledMapRenderer(map);
+		 
+		renderer = new  IsometricTiledMapRenderer(map);
 		camera = new OrthographicCamera();
-
+		
 		jogador = new Jogador(new Sprite(new Texture("char.png")));
 		Gdx.input.setInputProcessor(jogador);
 
@@ -42,6 +43,7 @@ public class Mapa implements Screen {
 
 		renderer.getBatch().begin();
 		jogador.draw(renderer.getBatch());
+		
 		renderer.getBatch().end();
 	}
 
@@ -50,6 +52,9 @@ public class Mapa implements Screen {
 		// TODO Auto-generated method stub
 		camera.viewportHeight = height;
 		camera.viewportWidth = width;
+		
+		camera.translate(((new Vector3(200,0,0))));
+		
 		camera.update();
 	}
 
