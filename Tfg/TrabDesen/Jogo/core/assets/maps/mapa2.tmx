@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="ftgp" tilewidth="32" tileheight="32">
+  <image source="ftgp.png" width="1440" height="864"/>
+ </tileset>
+ <layer name="Camada de Tiles 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztwwEJAAAMBKGr+v1LLMdAwVVTVVVVVVVVVVXV5w8Sd7Ny
+  </data>
+ </layer>
+</map>
