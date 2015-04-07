@@ -1,5 +1,6 @@
 package com.jogoTcc.entidade;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -9,6 +10,7 @@ public class Jogador extends Sprite implements InputProcessor {
 
 	public Jogador(String nomeTextura) {
 		super(new Sprite(new Texture(nomeTextura)));
+		Gdx.input.setInputProcessor(this);
 	}
 
 	public void draw(Batch spriteBatch) {
