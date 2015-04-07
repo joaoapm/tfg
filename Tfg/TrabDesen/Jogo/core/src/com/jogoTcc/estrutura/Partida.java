@@ -1,54 +1,54 @@
 package com.jogoTcc.estrutura;
 
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL30;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
 import com.badlogic.gdx.math.Vector3;
+import com.jogoTcc.entidade.Jogador;
+import com.jogoTcc.entidade.Mapa;
 
 public class Partida implements Screen {
-	private TiledMap map;
 
-	private IsometricTiledMapRenderer renderer;
-
-	private OrthographicCamera camera;
-
+	private Mapa mapa;
+	private Jogador jogador;
 
 	@Override
 	public void show() {
-		TmxMapLoader loader = new TmxMapLoader();
-		map = loader.load("mapa/mapa.tmx");
-		 
-		renderer = new  IsometricTiledMapRenderer(map);
-		camera = new OrthographicCamera();
-		
+
+		// inicializa mapa
+		mapa = new Mapa("mapa/mapa.tmx");
+
+		// inicializa jogador
+		jogador = new Jogador("personagens/char.png");
 
 	}
 
 	@Override
 	public void render(float delta) {
+
+		// limpa cena
 		Gdx.gl30.glClearColor(0, 0, 0, 1);
 		Gdx.gl30.glClear(GL30.GL_COLOR_BUFFER_BIT);
-		renderer.setView(camera);
-		renderer.render();
-
-		renderer.getBatch().begin();
 		
-		renderer.getBatch().end();
+		// desenha mapa
+		this.mapa.renderizarMapa();
+
+		
+		// inclui jogador
+		this.mapa.getRenderizador().getBatch().begin();
+		jogador.draw(this.mapa.getRenderizador().getBatch());
+		this.mapa.getRenderizador().getBatch().end();
+
 	}
 
 	@Override
 	public void resize(int width, int height) {
-		camera.viewportHeight = height;
-		camera.viewportWidth = width;
-		
-		camera.translate(((new Vector3(200,0,0))));
-		
-		camera.update();
+		mapa.getCamera().viewportHeight = height;
+		mapa.getCamera().viewportWidth = width;
+
+		mapa.getCamera().translate(((new Vector3(200, 0, 0))));
+
+		mapa.getCamera().update();
 	}
 
 	@Override

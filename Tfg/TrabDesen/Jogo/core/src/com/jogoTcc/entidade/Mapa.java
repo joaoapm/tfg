@@ -1,75 +1,50 @@
 package com.jogoTcc.entidade;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
-import com.badlogic.gdx.math.Vector3;
 
-public class Mapa implements Screen {
-	private TiledMap map;
+public class Mapa {
 
-	private IsometricTiledMapRenderer renderer;
+	private TiledMap mapa;
+
+	private IsometricTiledMapRenderer renderizador;
 
 	private OrthographicCamera camera;
 
-	private Jogador jogador;
-
-	@Override
-	public void show() {
+	public Mapa(String nomeMapa) {
 		TmxMapLoader loader = new TmxMapLoader();
-		map = loader.load("mapa/mapa.tmx");
-		 
-		renderer = new  IsometricTiledMapRenderer(map);
-		camera = new OrthographicCamera();
-		
-		jogador = new Jogador(new Sprite(new Texture("personagens/char.png")));
-		Gdx.input.setInputProcessor(jogador);
+		this.mapa = loader.load(nomeMapa);
+
+		this.renderizador = new IsometricTiledMapRenderer(mapa);
+		this.camera = new OrthographicCamera();
 
 	}
 
-	@Override
-	public void render(float delta) {
+	public void renderizarMapa() {
 		Gdx.gl30.glClearColor(0, 0, 0, 1);
 		Gdx.gl30.glClear(GL30.GL_COLOR_BUFFER_BIT);
-		renderer.setView(camera);
-		renderer.render();
-
-		renderer.getBatch().begin();
-		jogador.draw(renderer.getBatch());
-		
-		renderer.getBatch().end();
+		this.renderizador.setView(camera);
+		this.renderizador.render();
 	}
 
-	@Override
-	public void resize(int width, int height) {
-		camera.viewportHeight = height;
-		camera.viewportWidth = width;
-		
-		camera.translate(((new Vector3(200,0,0))));
-		
-		camera.update();
+	public IsometricTiledMapRenderer getRenderizador() {
+		return renderizador;
 	}
 
-	@Override
-	public void pause() {
+	public void setRenderizador(IsometricTiledMapRenderer renderizador) {
+		this.renderizador = renderizador;
 	}
 
-	@Override
-	public void resume() {
+	public OrthographicCamera getCamera() {
+		return camera;
 	}
 
-	@Override
-	public void hide() {
-	}
-
-	@Override
-	public void dispose() {
+	public void setCamera(OrthographicCamera camera) {
+		this.camera = camera;
 	}
 
 }
