@@ -52,8 +52,8 @@ public class Entidade extends Sprite implements InputProcessor {
 		Gdx.input.setInputProcessor(this);
 
 		// seta arquivo atlas contendo as imagens a serem carregadas
-		texturaAtlas = new TextureAtlas(
-				Gdx.files.internal("personagens/humano/humano.atlas"));
+		texturaAtlas = new TextureAtlas(Gdx.files.internal("personagens/"
+				+ tipoJogador.getArquivoAtlas()));
 
 		// popula as listas com os frames de cada animacao
 		inicializaAnimacoes();
