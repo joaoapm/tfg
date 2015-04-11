@@ -5,1176 +5,1232 @@ repeat: none
 andandoD1 0001
   rotate: false
   xy: 2, 2
-  size: 46, 81
-  orig: 46, 81
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD1 0002
   rotate: false
-  xy: 50, 2
-  size: 50, 82
-  orig: 50, 82
+  xy: 2, 132
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD1 0003
   rotate: false
-  xy: 102, 2
-  size: 46, 81
-  orig: 46, 81
+  xy: 2, 262
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD1 0004
   rotate: false
-  xy: 150, 2
-  size: 51, 83
-  orig: 51, 83
+  xy: 2, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD1 0005
   rotate: false
-  xy: 203, 2
-  size: 51, 84
-  orig: 51, 84
+  xy: 2, 522
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD1 0006
   rotate: false
-  xy: 256, 2
-  size: 51, 82
-  orig: 51, 82
+  xy: 2, 652
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD1 0007
   rotate: false
-  xy: 309, 2
-  size: 51, 84
-  orig: 51, 84
+  xy: 2, 782
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD1 0008
   rotate: false
-  xy: 362, 2
-  size: 51, 82
-  orig: 51, 82
+  xy: 2, 912
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD2 0001
   rotate: false
-  xy: 2, 88
-  size: 65, 59
-  orig: 65, 59
+  xy: 2, 1042
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD2 0002
   rotate: false
-  xy: 69, 88
-  size: 64, 63
-  orig: 64, 63
+  xy: 2, 1172
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD2 0003
   rotate: false
-  xy: 135, 88
-  size: 65, 56
-  orig: 65, 56
+  xy: 2, 1302
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD2 0004
   rotate: false
-  xy: 202, 88
-  size: 63, 54
-  orig: 63, 54
+  xy: 2, 1432
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD2 0005
   rotate: false
-  xy: 267, 88
-  size: 60, 56
-  orig: 60, 56
+  xy: 132, 2
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD2 0006
   rotate: false
-  xy: 329, 88
-  size: 57, 60
-  orig: 57, 60
+  xy: 132, 132
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD2 0007
   rotate: false
-  xy: 388, 88
-  size: 59, 53
-  orig: 59, 53
+  xy: 132, 262
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD2 0008
   rotate: false
-  xy: 2, 153
-  size: 63, 54
-  orig: 63, 54
+  xy: 132, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD3 0001
   rotate: false
-  xy: 67, 153
-  size: 61, 80
-  orig: 61, 80
+  xy: 132, 522
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD3 0002
   rotate: false
-  xy: 130, 153
-  size: 61, 78
-  orig: 61, 78
+  xy: 132, 652
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD3 0003
   rotate: false
-  xy: 193, 153
-  size: 61, 80
-  orig: 61, 80
+  xy: 132, 782
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD3 0004
   rotate: false
-  xy: 256, 153
-  size: 61, 80
-  orig: 61, 80
+  xy: 132, 912
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD3 0005
   rotate: false
-  xy: 319, 153
-  size: 64, 79
-  orig: 64, 79
+  xy: 132, 1042
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD3 0006
   rotate: false
-  xy: 385, 153
-  size: 64, 80
-  orig: 64, 80
+  xy: 132, 1172
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD3 0007
   rotate: false
-  xy: 2, 235
-  size: 64, 79
-  orig: 64, 79
+  xy: 132, 1302
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD3 0008
   rotate: false
-  xy: 68, 235
-  size: 61, 80
-  orig: 61, 80
+  xy: 132, 1432
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD4 0001
   rotate: false
-  xy: 131, 235
-  size: 56, 84
-  orig: 56, 84
+  xy: 262, 2
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD4 0002
   rotate: false
-  xy: 189, 235
-  size: 53, 82
-  orig: 53, 82
+  xy: 262, 132
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD4 0003
   rotate: false
-  xy: 244, 235
-  size: 56, 84
-  orig: 56, 84
+  xy: 262, 262
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD4 0004
   rotate: false
-  xy: 302, 235
-  size: 59, 83
-  orig: 59, 83
+  xy: 262, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD4 0005
   rotate: false
-  xy: 363, 235
-  size: 59, 80
-  orig: 59, 80
+  xy: 262, 522
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD4 0006
   rotate: false
-  xy: 2, 321
-  size: 57, 77
-  orig: 57, 77
+  xy: 262, 652
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD4 0007
   rotate: false
-  xy: 61, 321
-  size: 59, 80
-  orig: 59, 80
+  xy: 262, 782
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoD4 0008
   rotate: false
-  xy: 122, 321
-  size: 60, 84
-  orig: 60, 84
+  xy: 262, 912
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoFR 0001
   rotate: false
-  xy: 184, 321
-  size: 63, 91
-  orig: 63, 91
+  xy: 262, 1042
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoFR 0002
   rotate: false
-  xy: 249, 321
-  size: 66, 90
-  orig: 66, 90
+  xy: 262, 1172
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoFR 0003
   rotate: false
-  xy: 317, 321
-  size: 61, 92
-  orig: 61, 92
+  xy: 262, 1302
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoFR 0004
   rotate: false
-  xy: 380, 321
-  size: 57, 90
-  orig: 57, 90
+  xy: 262, 1432
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoFR 0005
   rotate: false
-  xy: 2, 415
-  size: 49, 87
-  orig: 49, 87
+  xy: 392, 2
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoFR 0006
   rotate: false
-  xy: 53, 415
-  size: 49, 90
-  orig: 49, 90
+  xy: 522, 2
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoFR 0007
   rotate: false
-  xy: 104, 415
-  size: 49, 87
-  orig: 49, 87
+  xy: 652, 2
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoFR 0008
   rotate: false
-  xy: 155, 415
-  size: 57, 90
-  orig: 57, 90
+  xy: 782, 2
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLD 0001
   rotate: false
-  xy: 214, 415
-  size: 72, 88
-  orig: 72, 88
+  xy: 912, 2
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLD 0002
   rotate: false
-  xy: 288, 415
-  size: 68, 90
-  orig: 68, 90
+  xy: 1042, 2
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLD 0003
   rotate: false
-  xy: 358, 415
-  size: 72, 88
-  orig: 72, 88
+  xy: 1172, 2
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLD 0004
   rotate: false
-  xy: 2, 507
-  size: 72, 87
-  orig: 72, 87
+  xy: 1302, 2
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLD 0005
   rotate: false
-  xy: 76, 507
-  size: 71, 83
-  orig: 71, 83
+  xy: 1432, 2
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLD 0006
   rotate: false
-  xy: 149, 507
-  size: 73, 84
-  orig: 73, 84
+  xy: 1562, 2
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLD 0007
   rotate: false
-  xy: 224, 507
-  size: 71, 83
-  orig: 71, 83
+  xy: 1692, 2
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLD 0008
   rotate: false
-  xy: 297, 507
-  size: 72, 87
-  orig: 72, 87
+  xy: 392, 132
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLE 0001
   rotate: false
-  xy: 371, 507
-  size: 61, 65
-  orig: 61, 65
+  xy: 522, 132
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLE 0002
   rotate: false
-  xy: 2, 596
-  size: 57, 66
-  orig: 57, 66
+  xy: 652, 132
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLE 0003
   rotate: false
-  xy: 61, 596
-  size: 61, 66
-  orig: 61, 66
+  xy: 782, 132
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLE 0004
   rotate: false
-  xy: 124, 596
-  size: 63, 64
-  orig: 63, 64
+  xy: 912, 132
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLE 0005
   rotate: false
-  xy: 189, 596
-  size: 62, 63
-  orig: 62, 63
+  xy: 1042, 132
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLE 0006
   rotate: false
-  xy: 253, 596
-  size: 65, 65
-  orig: 65, 65
+  xy: 1172, 132
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLE 0007
   rotate: false
-  xy: 320, 596
-  size: 62, 61
-  orig: 62, 61
+  xy: 1302, 132
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoLE 0008
   rotate: false
-  xy: 384, 596
-  size: 62, 64
-  orig: 62, 64
+  xy: 1432, 132
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoTR 0001
   rotate: false
-  xy: 2, 664
-  size: 71, 65
-  orig: 71, 65
+  xy: 1562, 132
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoTR 0002
   rotate: false
-  xy: 75, 664
-  size: 74, 68
-  orig: 74, 68
+  xy: 1692, 132
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoTR 0003
   rotate: false
-  xy: 151, 664
-  size: 71, 62
-  orig: 71, 62
+  xy: 392, 262
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoTR 0004
   rotate: false
-  xy: 224, 664
-  size: 66, 62
-  orig: 66, 62
+  xy: 522, 262
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoTR 0005
   rotate: false
-  xy: 292, 664
-  size: 61, 63
-  orig: 61, 63
+  xy: 652, 262
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoTR 0006
   rotate: false
-  xy: 355, 664
-  size: 60, 64
-  orig: 60, 64
+  xy: 782, 262
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoTR 0007
   rotate: false
-  xy: 417, 664
-  size: 61, 63
-  orig: 61, 63
+  xy: 912, 262
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 andandoTR 0008
   rotate: false
-  xy: 2, 734
-  size: 66, 62
-  orig: 66, 62
+  xy: 1042, 262
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD1 0001
   rotate: false
-  xy: 70, 734
-  size: 46, 79
-  orig: 46, 79
+  xy: 1172, 262
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD1 0002
   rotate: false
-  xy: 118, 734
-  size: 59, 76
-  orig: 59, 76
+  xy: 1302, 262
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD1 0003
   rotate: false
-  xy: 179, 734
-  size: 63, 76
-  orig: 63, 76
+  xy: 1432, 262
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD1 0004
   rotate: false
-  xy: 244, 734
-  size: 59, 76
-  orig: 59, 76
+  xy: 1562, 262
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD1 0005
   rotate: false
-  xy: 305, 734
-  size: 56, 76
-  orig: 56, 76
+  xy: 1692, 262
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD1 0006
   rotate: false
-  xy: 363, 734
-  size: 56, 75
-  orig: 56, 75
+  xy: 392, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD1 0007
   rotate: false
-  xy: 421, 734
-  size: 46, 77
-  orig: 46, 77
+  xy: 522, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD1 0008
   rotate: false
-  xy: 2, 815
-  size: 57, 79
-  orig: 57, 79
+  xy: 652, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD1 0009
   rotate: false
-  xy: 61, 815
-  size: 83, 80
-  orig: 83, 80
+  xy: 782, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD1 0010
   rotate: false
-  xy: 146, 815
-  size: 74, 86
-  orig: 74, 86
+  xy: 912, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD1 0011
   rotate: false
-  xy: 222, 815
-  size: 59, 88
-  orig: 59, 88
+  xy: 1042, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD1 0012
   rotate: false
-  xy: 283, 815
-  size: 50, 85
-  orig: 50, 85
+  xy: 1172, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD1 0013
   rotate: false
-  xy: 335, 815
-  size: 46, 79
-  orig: 46, 79
+  xy: 1302, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD2 0001
   rotate: false
-  xy: 383, 815
-  size: 55, 54
-  orig: 55, 54
+  xy: 1432, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD2 0002
   rotate: false
-  xy: 2, 905
-  size: 53, 53
-  orig: 53, 53
+  xy: 1562, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD2 0003
   rotate: false
-  xy: 57, 905
-  size: 55, 63
-  orig: 55, 63
+  xy: 1692, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD2 0004
   rotate: false
-  xy: 114, 905
-  size: 61, 67
-  orig: 61, 67
+  xy: 392, 590
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD2 0005
   rotate: false
-  xy: 177, 905
-  size: 66, 65
-  orig: 66, 65
+  xy: 392, 720
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD2 0006
   rotate: false
-  xy: 245, 905
-  size: 65, 62
-  orig: 65, 62
+  xy: 392, 850
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD2 0007
   rotate: false
-  xy: 312, 905
-  size: 65, 59
-  orig: 65, 59
+  xy: 392, 980
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD2 0008
   rotate: false
-  xy: 379, 905
-  size: 66, 75
-  orig: 66, 75
+  xy: 392, 1110
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD2 0009
   rotate: false
-  xy: 2, 982
-  size: 63, 86
-  orig: 63, 86
+  xy: 392, 1240
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD2 0010
   rotate: false
-  xy: 67, 982
-  size: 70, 73
-  orig: 70, 73
+  xy: 392, 1370
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD2 0011
   rotate: false
-  xy: 139, 982
-  size: 69, 59
-  orig: 69, 59
+  xy: 522, 522
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD2 0012
   rotate: false
-  xy: 210, 982
-  size: 61, 57
-  orig: 61, 57
+  xy: 652, 522
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD2 0013
   rotate: false
-  xy: 383, 815
-  size: 55, 54
-  orig: 55, 54
+  xy: 1432, 392
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD3 0001
   rotate: false
-  xy: 273, 982
-  size: 56, 79
-  orig: 56, 79
+  xy: 782, 522
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD3 0002
   rotate: false
-  xy: 331, 982
-  size: 57, 84
-  orig: 57, 84
+  xy: 912, 522
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD3 0003
   rotate: false
-  xy: 390, 982
-  size: 58, 82
-  orig: 58, 82
+  xy: 1042, 522
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD3 0004
   rotate: false
-  xy: 2, 1070
-  size: 63, 80
-  orig: 63, 80
+  xy: 1172, 522
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD3 0005
   rotate: false
-  xy: 67, 1070
-  size: 64, 83
-  orig: 64, 83
+  xy: 1302, 522
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD3 0006
   rotate: false
-  xy: 133, 1070
-  size: 63, 85
-  orig: 63, 85
+  xy: 1432, 522
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD3 0007
   rotate: false
-  xy: 198, 1070
-  size: 61, 80
-  orig: 61, 80
+  xy: 1562, 522
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD3 0008
   rotate: false
-  xy: 261, 1070
-  size: 63, 76
-  orig: 63, 76
+  xy: 1692, 522
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD3 0009
   rotate: false
-  xy: 326, 1070
-  size: 64, 82
-  orig: 64, 82
+  xy: 522, 652
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD3 0010
   rotate: false
-  xy: 392, 1070
-  size: 69, 85
-  orig: 69, 85
+  xy: 652, 652
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD3 0011
   rotate: false
-  xy: 2, 1157
-  size: 70, 84
-  orig: 70, 84
+  xy: 782, 652
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD3 0012
   rotate: false
-  xy: 74, 1157
-  size: 65, 81
-  orig: 65, 81
+  xy: 912, 652
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD3 0013
   rotate: false
-  xy: 273, 982
-  size: 56, 79
-  orig: 56, 79
+  xy: 782, 522
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD4 0001
   rotate: false
-  xy: 141, 1157
-  size: 57, 77
-  orig: 57, 77
+  xy: 1042, 652
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD4 0002
   rotate: false
-  xy: 200, 1157
-  size: 66, 76
-  orig: 66, 76
+  xy: 1172, 652
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD4 0003
   rotate: false
-  xy: 268, 1157
-  size: 67, 76
-  orig: 67, 76
+  xy: 1302, 652
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD4 0004
   rotate: false
-  xy: 337, 1157
-  size: 63, 78
-  orig: 63, 78
+  xy: 1432, 652
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD4 0005
   rotate: false
-  xy: 402, 1157
-  size: 62, 86
-  orig: 62, 86
+  xy: 1562, 652
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD4 0006
   rotate: false
-  xy: 2, 1245
-  size: 67, 87
-  orig: 67, 87
+  xy: 1692, 652
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD4 0007
   rotate: false
-  xy: 71, 1245
-  size: 56, 87
-  orig: 56, 87
+  xy: 522, 782
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD4 0008
   rotate: false
-  xy: 129, 1245
-  size: 58, 83
-  orig: 58, 83
+  xy: 522, 912
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD4 0009
   rotate: false
-  xy: 189, 1245
-  size: 78, 83
-  orig: 78, 83
+  xy: 522, 1042
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD4 0010
   rotate: false
-  xy: 269, 1245
-  size: 70, 84
-  orig: 70, 84
+  xy: 522, 1172
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD4 0011
   rotate: false
-  xy: 341, 1245
-  size: 64, 83
-  orig: 64, 83
+  xy: 522, 1302
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD4 0012
   rotate: false
-  xy: 407, 1245
-  size: 60, 82
-  orig: 60, 82
+  xy: 522, 1432
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueD4 0013
   rotate: false
-  xy: 2, 1334
-  size: 57, 77
-  orig: 57, 77
+  xy: 652, 782
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueFR 0001
   rotate: false
-  xy: 61, 1334
-  size: 45, 86
-  orig: 45, 86
+  xy: 782, 782
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueFR 0002
   rotate: false
-  xy: 108, 1334
-  size: 48, 89
-  orig: 48, 89
+  xy: 912, 782
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueFR 0003
   rotate: false
-  xy: 158, 1334
-  size: 50, 90
-  orig: 50, 90
+  xy: 1042, 782
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueFR 0004
   rotate: false
-  xy: 210, 1334
-  size: 54, 88
-  orig: 54, 88
+  xy: 1172, 782
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueFR 0005
   rotate: false
-  xy: 266, 1334
-  size: 56, 88
-  orig: 56, 88
+  xy: 1302, 782
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueFR 0006
   rotate: false
-  xy: 324, 1334
-  size: 59, 90
-  orig: 59, 90
+  xy: 1432, 782
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueFR 0007
   rotate: false
-  xy: 385, 1334
-  size: 57, 87
-  orig: 57, 87
+  xy: 1562, 782
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueFR 0008
   rotate: false
-  xy: 2, 1426
-  size: 46, 84
-  orig: 46, 84
+  xy: 1692, 782
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueFR 0009
   rotate: false
-  xy: 50, 1426
-  size: 56, 89
-  orig: 56, 89
+  xy: 652, 912
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueFR 0010
   rotate: false
-  xy: 108, 1426
-  size: 47, 93
-  orig: 47, 93
+  xy: 652, 1042
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueFR 0011
   rotate: false
-  xy: 157, 1426
-  size: 43, 94
-  orig: 43, 94
+  xy: 652, 1172
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueFR 0012
   rotate: false
-  xy: 202, 1426
-  size: 44, 90
-  orig: 44, 90
+  xy: 652, 1302
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueFR 0013
   rotate: false
-  xy: 248, 1426
-  size: 45, 86
-  orig: 45, 86
+  xy: 652, 1432
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLD 0001
   rotate: false
-  xy: 295, 1426
-  size: 66, 80
-  orig: 66, 80
+  xy: 782, 912
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLD 0002
   rotate: false
-  xy: 363, 1426
-  size: 75, 81
-  orig: 75, 81
+  xy: 782, 1042
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLD 0003
   rotate: false
-  xy: 2, 1522
-  size: 80, 83
-  orig: 80, 83
+  xy: 782, 1172
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLD 0004
   rotate: false
-  xy: 84, 1522
-  size: 80, 85
-  orig: 80, 85
+  xy: 782, 1302
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLD 0005
   rotate: false
-  xy: 166, 1522
-  size: 76, 86
-  orig: 76, 86
+  xy: 782, 1432
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLD 0006
   rotate: false
-  xy: 244, 1522
-  size: 78, 90
-  orig: 78, 90
+  xy: 912, 912
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLD 0007
   rotate: false
-  xy: 324, 1522
-  size: 71, 90
-  orig: 71, 90
+  xy: 912, 1042
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLD 0008
   rotate: false
-  xy: 397, 1522
-  size: 73, 79
-  orig: 73, 79
+  xy: 912, 1172
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLD 0009
   rotate: false
-  xy: 2, 1614
-  size: 82, 76
-  orig: 82, 76
+  xy: 912, 1302
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLD 0010
   rotate: false
-  xy: 86, 1614
-  size: 81, 74
-  orig: 81, 74
+  xy: 912, 1432
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLD 0011
   rotate: false
-  xy: 169, 1614
-  size: 79, 78
-  orig: 79, 78
+  xy: 1042, 912
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLD 0012
   rotate: false
-  xy: 250, 1614
-  size: 73, 79
-  orig: 73, 79
+  xy: 1042, 1042
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLD 0013
   rotate: false
-  xy: 325, 1614
-  size: 66, 80
-  orig: 66, 80
+  xy: 1042, 1172
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLE 0001
   rotate: false
-  xy: 393, 1614
-  size: 54, 63
-  orig: 54, 63
+  xy: 1042, 1302
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLE 0002
   rotate: false
-  xy: 2, 1696
-  size: 67, 57
-  orig: 67, 57
+  xy: 1042, 1432
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLE 0003
   rotate: false
-  xy: 71, 1696
-  size: 76, 56
-  orig: 76, 56
+  xy: 1172, 912
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLE 0004
   rotate: false
-  xy: 149, 1696
-  size: 77, 56
-  orig: 77, 56
+  xy: 1172, 1042
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLE 0005
   rotate: false
-  xy: 228, 1696
-  size: 74, 56
-  orig: 74, 56
+  xy: 1172, 1172
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLE 0006
   rotate: false
-  xy: 304, 1696
-  size: 71, 57
-  orig: 71, 57
+  xy: 1172, 1302
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLE 0007
   rotate: false
-  xy: 377, 1696
-  size: 63, 59
-  orig: 63, 59
+  xy: 1172, 1432
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLE 0008
   rotate: false
-  xy: 2, 1757
-  size: 75, 62
-  orig: 75, 62
+  xy: 1302, 912
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLE 0009
   rotate: false
-  xy: 79, 1757
-  size: 86, 69
-  orig: 86, 69
+  xy: 1432, 912
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLE 0010
   rotate: false
-  xy: 167, 1757
-  size: 85, 67
-  orig: 85, 67
+  xy: 1562, 912
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLE 0011
   rotate: false
-  xy: 254, 1757
-  size: 76, 65
-  orig: 76, 65
+  xy: 1692, 912
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLE 0012
   rotate: false
-  xy: 332, 1757
-  size: 63, 67
-  orig: 63, 67
+  xy: 1302, 1042
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueLE 0013
   rotate: false
-  xy: 397, 1757
-  size: 54, 63
-  orig: 54, 63
+  xy: 1302, 1172
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueTR 0001
   rotate: false
-  xy: 2, 1828
-  size: 57, 60
-  orig: 57, 60
+  xy: 1302, 1302
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueTR 0002
   rotate: false
-  xy: 61, 1828
-  size: 59, 58
-  orig: 59, 58
+  xy: 1302, 1432
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueTR 0003
   rotate: false
-  xy: 122, 1828
-  size: 62, 72
-  orig: 62, 72
+  xy: 1432, 1042
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueTR 0004
   rotate: false
-  xy: 186, 1828
-  size: 64, 81
-  orig: 64, 81
+  xy: 1562, 1042
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueTR 0005
   rotate: false
-  xy: 252, 1828
-  size: 66, 83
-  orig: 66, 83
+  xy: 1692, 1042
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueTR 0006
   rotate: false
-  xy: 320, 1828
-  size: 69, 78
-  orig: 69, 78
+  xy: 1432, 1172
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueTR 0007
   rotate: false
-  xy: 391, 1828
-  size: 70, 71
-  orig: 70, 71
+  xy: 1432, 1302
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueTR 0008
   rotate: false
-  xy: 2, 1913
-  size: 53, 88
-  orig: 53, 88
+  xy: 1432, 1432
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueTR 0009
   rotate: false
-  xy: 57, 1913
-  size: 56, 86
-  orig: 56, 86
+  xy: 1562, 1172
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueTR 0010
   rotate: false
-  xy: 115, 1913
-  size: 53, 81
-  orig: 53, 81
+  xy: 1692, 1172
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueTR 0011
   rotate: false
-  xy: 170, 1913
-  size: 53, 74
-  orig: 53, 74
+  xy: 1562, 1302
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueTR 0012
   rotate: false
-  xy: 225, 1913
-  size: 56, 68
-  orig: 56, 68
+  xy: 1562, 1432
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 ataqueTR 0013
   rotate: false
-  xy: 283, 1913
-  size: 57, 60
-  orig: 57, 60
+  xy: 1692, 1302
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+paradoD1
+  rotate: false
+  xy: 1822, 2
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+paradoD2
+  rotate: false
+  xy: 1822, 100
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+paradoD3
+  rotate: false
+  xy: 1822, 198
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+paradoD4
+  rotate: false
+  xy: 1822, 296
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+paradoFR
+  rotate: false
+  xy: 1822, 394
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+paradoLD
+  rotate: false
+  xy: 1822, 492
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+paradoLE
+  rotate: false
+  xy: 1822, 590
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+paradoTR
+  rotate: false
+  xy: 1822, 688
+  size: 96, 96
+  orig: 96, 96
   offset: 0, 0
   index: -1
