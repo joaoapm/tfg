@@ -45,7 +45,7 @@ public class Partida implements Screen {
 	public void resize(int width, int height) {
 		mapa.getCamera().viewportHeight = height;
 		mapa.getCamera().viewportWidth = width;
-
+		//mapa.getCamera().zoom = 0.750f;
 		mapa.getCamera().translate(((new Vector3(200, 0, 0))));
 
 		mapa.getCamera().update();

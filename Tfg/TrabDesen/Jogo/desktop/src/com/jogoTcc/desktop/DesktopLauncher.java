@@ -10,5 +10,7 @@ public class DesktopLauncher {
 		new LwjglApplication(new Princinpal(), config);
 		
 		config.title = "Jogo TCC Unisinos";
+		config.height = 450;
+		config.width = 850;
 	}
 }
