@@ -59,7 +59,7 @@ public class Entidade extends Sprite implements InputProcessor {
 	private boolean isAnimacao = true;
 
 	// define estado inicial da entidade
-	private TextureRegion[] animacaoAtual = framesMorrendoTR;
+	private TextureRegion[] animacaoAtual = framesAtaqueFR;
 	private TextureRegion spriteAtual = null;
 
 	public Entidade(TipoJogador tipoJogador) {
