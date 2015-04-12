@@ -59,7 +59,7 @@ public class Entidade extends Sprite implements InputProcessor {
 	private boolean isAnimacao = true;
 
 	// define estado inicial da entidade
-	private TextureRegion[] animacaoAtual = framesAtaqueFR;
+	private TextureRegion[] animacaoAtual = framesParadoFR;
 	private TextureRegion spriteAtual = null;
 
 	public Entidade(TipoJogador tipoJogador) {
@@ -179,11 +179,8 @@ public class Entidade extends Sprite implements InputProcessor {
 	private void buscaFrames(int qntFrames, TextureRegion[] lista, String nomeFrame) {
 		String colocaZero = "";
 		for (int i = 0; i < qntFrames; i++) {
-			if ((i + 1) < 10)
-				colocaZero = "0";
-			else
-				colocaZero = "";
-			lista[i] = (texturaAtlas.findRegion(nomeFrame + " 00" + colocaZero + (i + 1)));
+			colocaZero = (i + 1) < 10 ? "0" : "";
+			lista[i] = (texturaAtlas.findRegion(nomeFrame + " 00" + colocaZero	+ (i + 1)));
 		}
 	}
 }
