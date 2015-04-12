@@ -17,9 +17,6 @@ public class Entidade extends Sprite implements InputProcessor {
 	// estrutura de controle da animacao
 	private Animation animacao;
 	private float tempoPercorrido = 0;
-	
-	// define se o estado atual da entidade eh uma animao ou estatico
-	private boolean isAnimacao = false;
 
 	// lista contendo os frames de cada animacao
 	private TextureRegion[] framesMovimentoD1 = new TextureRegion[8];
@@ -48,10 +45,12 @@ public class Entidade extends Sprite implements InputProcessor {
 	private TextureRegion frameParadoLE = new TextureRegion();
 	private TextureRegion frameParadoLD = new TextureRegion();
 	private TextureRegion frameParadoTR = new TextureRegion();
-
+	
+	// define se o estado atual da entidade eh uma animao ou estatico
+	private boolean isAnimacao = true;
 	
 	//define estado inicial da entidade
-	private TextureRegion[] animacaoAtual = null;
+	private TextureRegion[] animacaoAtual = framesMovimentoFR;
 	private TextureRegion spriteAtual = null;
 	
 	public Entidade(TipoJogador tipoJogador) {
@@ -315,15 +314,6 @@ public class Entidade extends Sprite implements InputProcessor {
 		framesAtaqueTR[10] = (texturaAtlas.findRegion("ataqueTR 0011"));
 		framesAtaqueTR[11] = (texturaAtlas.findRegion("ataqueTR 0012"));
 		framesAtaqueTR[12] = (texturaAtlas.findRegion("ataqueTR 0013"));
-
-		frameParadoD1 = (texturaAtlas.findRegion("paradoD1"));
-		frameParadoD2 = (texturaAtlas.findRegion("paradoD2"));
-		frameParadoD3 = (texturaAtlas.findRegion("paradoD3"));
-		frameParadoD4 = (texturaAtlas.findRegion("paradoD4"));
-		frameParadoFR = (texturaAtlas.findRegion("paradoFR"));
-		frameParadoLE = (texturaAtlas.findRegion("paradoLE"));
-		frameParadoLD = (texturaAtlas.findRegion("paradoLD"));
-		frameParadoTR = (texturaAtlas.findRegion("paradoTR"));
 
 	}
 }
