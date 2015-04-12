@@ -55,12 +55,8 @@ public class Entidade extends Sprite implements InputProcessor {
 	private TextureRegion[] framesMorrendoLD = new TextureRegion[11];
 	private TextureRegion[] framesMorrendoTR = new TextureRegion[11];
 
-	// define se o estado atual da entidade eh uma animao ou estatico
-	private boolean isAnimacao = true;
-
 	// define estado inicial da entidade
 	private TextureRegion[] animacaoAtual = framesParadoFR;
-	private TextureRegion spriteAtual = null;
 
 	public Entidade(TipoJogador tipoJogador) {
 
@@ -68,16 +64,13 @@ public class Entidade extends Sprite implements InputProcessor {
 		Gdx.input.setInputProcessor(this);
 
 		// seta arquivo atlas contendo as imagens a serem carregadas
-		texturaAtlas = new TextureAtlas(Gdx.files.internal("personagens/"+ tipoJogador.getArquivoAtlas()));
+		texturaAtlas = new TextureAtlas(Gdx.files.internal("personagens/" + tipoJogador.getArquivoAtlas()));
 
 		// popula as listas com os frames de cada animacao
 		inicializaAnimacoes();
 
 		// instancia a animacao com o tipo de frame desejado
-		if (isAnimacao)
-			animacao = new Animation(0.09f, animacaoAtual);
-		else
-			spriteAtual = null;
+		animacao = new Animation(0.09f, animacaoAtual);
 
 	}
 
