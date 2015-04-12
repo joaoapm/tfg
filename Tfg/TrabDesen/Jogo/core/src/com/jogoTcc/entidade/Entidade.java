@@ -17,6 +17,9 @@ public class Entidade extends Sprite implements InputProcessor {
 	// estrutura de controle da animacao
 	private Animation animacao;
 	private float tempoPercorrido = 0;
+	
+	// define se o estado atual da entidade eh uma animao ou estatico
+	private boolean isAnimacao = false;
 
 	// lista contendo os frames de cada animacao
 	private TextureRegion[] framesMovimentoD1 = new TextureRegion[8];
@@ -46,6 +49,11 @@ public class Entidade extends Sprite implements InputProcessor {
 	private TextureRegion frameParadoLD = new TextureRegion();
 	private TextureRegion frameParadoTR = new TextureRegion();
 
+	
+	//define estado inicial da entidade
+	private TextureRegion[] animacaoAtual = null;
+	private TextureRegion spriteAtual = null;
+	
 	public Entidade(TipoJogador tipoJogador) {
 
 		// seta gerenciador de eventos
@@ -59,7 +67,11 @@ public class Entidade extends Sprite implements InputProcessor {
 		inicializaAnimacoes();
 
 		// instancia a animacao com o tipo de frame desejado
-		animacao = new Animation(0.09f, framesMovimentoFR);
+		if (isAnimacao)
+			animacao = new Animation(0.09f, animacaoAtual);
+		else 
+			spriteAtual = frameParadoFR;
+			
 	}
 
 	public void draw() {
@@ -68,7 +80,12 @@ public class Entidade extends Sprite implements InputProcessor {
 		SpriteBatch batch = new SpriteBatch();
 		tempoPercorrido += Gdx.graphics.getDeltaTime();
 		batch.begin();
-		batch.draw(animacao.getKeyFrame(tempoPercorrido, true), 310, 220);
+		
+		if (isAnimacao)
+			batch.draw(animacao.getKeyFrame(tempoPercorrido, true), 310, 220);
+		else 
+			batch.draw(spriteAtual, 310, 220);
+		
 		batch.end();
 
 	}
