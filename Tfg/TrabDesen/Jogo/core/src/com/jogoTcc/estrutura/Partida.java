@@ -49,7 +49,7 @@ public class Partida implements Screen {
 		mapa.getCamera().viewportHeight = height;
 		mapa.getCamera().viewportWidth = width;
 		// mapa.getCamera().zoom = 0.750f;
-		mapa.getCamera().translate(((new Vector3(200, 0, 0))));
+		mapa.getCamera().translate(((new Vector3(200, 20, 0))));
 
 		mapa.getCamera().update();
 	}

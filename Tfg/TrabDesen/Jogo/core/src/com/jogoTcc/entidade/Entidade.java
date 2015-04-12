@@ -68,7 +68,7 @@ public class Entidade extends Sprite implements InputProcessor {
 		SpriteBatch batch = new SpriteBatch();
 		tempoPercorrido += Gdx.graphics.getDeltaTime();
 		batch.begin();
-		batch.draw(animacao.getKeyFrame(tempoPercorrido, true), 110, 0);
+		batch.draw(animacao.getKeyFrame(tempoPercorrido, true), 310, 220);
 		batch.end();
 
 	}
