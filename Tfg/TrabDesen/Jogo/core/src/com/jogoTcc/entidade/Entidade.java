@@ -37,30 +37,38 @@ public class Entidade extends Sprite implements InputProcessor {
 	private TextureRegion[] framesAtaqueLD = new TextureRegion[13];
 	private TextureRegion[] framesAtaqueTR = new TextureRegion[13];
 
-	private TextureRegion frameParadoD1 = new TextureRegion();
-	private TextureRegion frameParadoD2 = new TextureRegion();
-	private TextureRegion frameParadoD3 = new TextureRegion();
-	private TextureRegion frameParadoD4 = new TextureRegion();
-	private TextureRegion frameParadoFR = new TextureRegion();
-	private TextureRegion frameParadoLE = new TextureRegion();
-	private TextureRegion frameParadoLD = new TextureRegion();
-	private TextureRegion frameParadoTR = new TextureRegion();
-	
+	private TextureRegion[] framesParadoD1 = new TextureRegion[13];
+	private TextureRegion[] framesParadoD2 = new TextureRegion[13];
+	private TextureRegion[] framesParadoD3 = new TextureRegion[13];
+	private TextureRegion[] framesParadoD4 = new TextureRegion[13];
+	private TextureRegion[] framesParadoFR = new TextureRegion[13];
+	private TextureRegion[] framesParadoLE = new TextureRegion[13];
+	private TextureRegion[] framesParadoLD = new TextureRegion[13];
+	private TextureRegion[] framesParadoTR = new TextureRegion[13];
+
+	private TextureRegion[] framesMorrendoD1 = new TextureRegion[11];
+	private TextureRegion[] framesMorrendoD2 = new TextureRegion[11];
+	private TextureRegion[] framesMorrendoD3 = new TextureRegion[11];
+	private TextureRegion[] framesMorrendoD4 = new TextureRegion[11];
+	private TextureRegion[] framesMorrendoFR = new TextureRegion[11];
+	private TextureRegion[] framesMorrendoLE = new TextureRegion[11];
+	private TextureRegion[] framesMorrendoLD = new TextureRegion[11];
+	private TextureRegion[] framesMorrendoTR = new TextureRegion[11];
+
 	// define se o estado atual da entidade eh uma animao ou estatico
 	private boolean isAnimacao = true;
-	
-	//define estado inicial da entidade
-	private TextureRegion[] animacaoAtual = framesMovimentoFR;
+
+	// define estado inicial da entidade
+	private TextureRegion[] animacaoAtual = framesMorrendoTR;
 	private TextureRegion spriteAtual = null;
-	
+
 	public Entidade(TipoJogador tipoJogador) {
 
 		// seta gerenciador de eventos
 		Gdx.input.setInputProcessor(this);
 
 		// seta arquivo atlas contendo as imagens a serem carregadas
-		texturaAtlas = new TextureAtlas(Gdx.files.internal("personagens/"
-				+ tipoJogador.getArquivoAtlas()));
+		texturaAtlas = new TextureAtlas(Gdx.files.internal("personagens/" + tipoJogador.getArquivoAtlas()));
 
 		// popula as listas com os frames de cada animacao
 		inicializaAnimacoes();
@@ -68,9 +76,9 @@ public class Entidade extends Sprite implements InputProcessor {
 		// instancia a animacao com o tipo de frame desejado
 		if (isAnimacao)
 			animacao = new Animation(0.09f, animacaoAtual);
-		else 
-			spriteAtual = frameParadoFR;
-			
+		else
+			spriteAtual = null;
+
 	}
 
 	public void draw() {
@@ -79,12 +87,12 @@ public class Entidade extends Sprite implements InputProcessor {
 		SpriteBatch batch = new SpriteBatch();
 		tempoPercorrido += Gdx.graphics.getDeltaTime();
 		batch.begin();
-		
+
 		if (isAnimacao)
 			batch.draw(animacao.getKeyFrame(tempoPercorrido, true), 310, 220);
-		else 
+		else
 			batch.draw(spriteAtual, 310, 220);
-		
+
 		batch.end();
 
 	}
@@ -130,190 +138,52 @@ public class Entidade extends Sprite implements InputProcessor {
 	}
 
 	private void inicializaAnimacoes() {
+		buscaFrames(8, framesMovimentoD1, "andandoD1");
+		buscaFrames(8, framesMovimentoD2, "andandoD2");
+		buscaFrames(8, framesMovimentoD3, "andandoD3");
+		buscaFrames(8, framesMovimentoD4, "andandoD4");
+		buscaFrames(8, framesMovimentoFR, "andandoFR");
+		buscaFrames(8, framesMovimentoLE, "andandoLE");
+		buscaFrames(8, framesMovimentoLD, "andandoLD");
+		buscaFrames(8, framesMovimentoTR, "andandoTR");
 
-		framesMovimentoD1[0] = (texturaAtlas.findRegion("andandoD1 0001"));
-		framesMovimentoD1[1] = (texturaAtlas.findRegion("andandoD1 0002"));
-		framesMovimentoD1[2] = (texturaAtlas.findRegion("andandoD1 0003"));
-		framesMovimentoD1[3] = (texturaAtlas.findRegion("andandoD1 0004"));
-		framesMovimentoD1[4] = (texturaAtlas.findRegion("andandoD1 0005"));
-		framesMovimentoD1[5] = (texturaAtlas.findRegion("andandoD1 0006"));
-		framesMovimentoD1[6] = (texturaAtlas.findRegion("andandoD1 0007"));
-		framesMovimentoD1[7] = (texturaAtlas.findRegion("andandoD1 0008"));
+		buscaFrames(13, framesAtaqueD1, "ataqueD1");
+		buscaFrames(13, framesAtaqueD2, "ataqueD2");
+		buscaFrames(13, framesAtaqueD3, "ataqueD3");
+		buscaFrames(13, framesAtaqueD4, "ataqueD4");
+		buscaFrames(13, framesAtaqueFR, "ataqueFR");
+		buscaFrames(13, framesAtaqueLE, "ataqueLE");
+		buscaFrames(13, framesAtaqueLD, "ataqueLD");
+		buscaFrames(13, framesAtaqueTR, "ataqueTR");
 
-		framesMovimentoD2[0] = (texturaAtlas.findRegion("andandoD2 0001"));
-		framesMovimentoD2[1] = (texturaAtlas.findRegion("andandoD2 0002"));
-		framesMovimentoD2[2] = (texturaAtlas.findRegion("andandoD2 0003"));
-		framesMovimentoD2[3] = (texturaAtlas.findRegion("andandoD2 0004"));
-		framesMovimentoD2[4] = (texturaAtlas.findRegion("andandoD2 0005"));
-		framesMovimentoD2[5] = (texturaAtlas.findRegion("andandoD2 0006"));
-		framesMovimentoD2[6] = (texturaAtlas.findRegion("andandoD2 0007"));
-		framesMovimentoD2[7] = (texturaAtlas.findRegion("andandoD2 0008"));
+		buscaFrames(13, framesParadoD1, "paradoD1");
+		buscaFrames(13, framesParadoD2, "paradoD2");
+		buscaFrames(13, framesParadoD3, "paradoD3");
+		buscaFrames(13, framesParadoD4, "paradoD4");
+		buscaFrames(13, framesParadoFR, "paradoFR");
+		buscaFrames(13, framesParadoLE, "paradoLE");
+		buscaFrames(13, framesParadoLD, "paradoLD");
+		buscaFrames(13, framesParadoTR, "paradoTR");
 
-		framesMovimentoD3[0] = (texturaAtlas.findRegion("andandoD3 0001"));
-		framesMovimentoD3[1] = (texturaAtlas.findRegion("andandoD3 0002"));
-		framesMovimentoD3[2] = (texturaAtlas.findRegion("andandoD3 0003"));
-		framesMovimentoD3[3] = (texturaAtlas.findRegion("andandoD3 0004"));
-		framesMovimentoD3[4] = (texturaAtlas.findRegion("andandoD3 0005"));
-		framesMovimentoD3[5] = (texturaAtlas.findRegion("andandoD3 0006"));
-		framesMovimentoD3[6] = (texturaAtlas.findRegion("andandoD3 0007"));
-		framesMovimentoD3[7] = (texturaAtlas.findRegion("andandoD3 0008"));
+		buscaFrames(11, framesMorrendoD1, "morrendoD1");
+		buscaFrames(11, framesMorrendoD2, "morrendoD2");
+		buscaFrames(11, framesMorrendoD3, "morrendoD3");
+		buscaFrames(11, framesMorrendoD4, "morrendoD4");
+		buscaFrames(11, framesMorrendoFR, "morrendoFR");
+		buscaFrames(11, framesMorrendoLE, "morrendoLE");
+		buscaFrames(11, framesMorrendoLD, "morrendoLD");
+		buscaFrames(11, framesMorrendoTR, "morrendoTR");
 
-		framesMovimentoD4[0] = (texturaAtlas.findRegion("andandoD4 0001"));
-		framesMovimentoD4[1] = (texturaAtlas.findRegion("andandoD4 0002"));
-		framesMovimentoD4[2] = (texturaAtlas.findRegion("andandoD4 0003"));
-		framesMovimentoD4[3] = (texturaAtlas.findRegion("andandoD4 0004"));
-		framesMovimentoD4[4] = (texturaAtlas.findRegion("andandoD4 0005"));
-		framesMovimentoD4[5] = (texturaAtlas.findRegion("andandoD4 0006"));
-		framesMovimentoD4[6] = (texturaAtlas.findRegion("andandoD4 0007"));
-		framesMovimentoD4[7] = (texturaAtlas.findRegion("andandoD4 0008"));
+	}
 
-		framesMovimentoFR[0] = (texturaAtlas.findRegion("andandoFR 0001"));
-		framesMovimentoFR[1] = (texturaAtlas.findRegion("andandoFR 0002"));
-		framesMovimentoFR[2] = (texturaAtlas.findRegion("andandoFR 0003"));
-		framesMovimentoFR[3] = (texturaAtlas.findRegion("andandoFR 0004"));
-		framesMovimentoFR[4] = (texturaAtlas.findRegion("andandoFR 0005"));
-		framesMovimentoFR[5] = (texturaAtlas.findRegion("andandoFR 0006"));
-		framesMovimentoFR[6] = (texturaAtlas.findRegion("andandoFR 0007"));
-		framesMovimentoFR[7] = (texturaAtlas.findRegion("andandoFR 0008"));
-
-		framesMovimentoLE[0] = (texturaAtlas.findRegion("andandoLE 0001"));
-		framesMovimentoLE[1] = (texturaAtlas.findRegion("andandoLE 0002"));
-		framesMovimentoLE[2] = (texturaAtlas.findRegion("andandoLE 0003"));
-		framesMovimentoLE[3] = (texturaAtlas.findRegion("andandoLE 0004"));
-		framesMovimentoLE[4] = (texturaAtlas.findRegion("andandoLE 0005"));
-		framesMovimentoLE[5] = (texturaAtlas.findRegion("andandoLE 0006"));
-		framesMovimentoLE[6] = (texturaAtlas.findRegion("andandoLE 0007"));
-		framesMovimentoLE[7] = (texturaAtlas.findRegion("andandoLE 0008"));
-
-		framesMovimentoLD[0] = (texturaAtlas.findRegion("andandoLD 0001"));
-		framesMovimentoLD[1] = (texturaAtlas.findRegion("andandoLD 0002"));
-		framesMovimentoLD[2] = (texturaAtlas.findRegion("andandoLD 0003"));
-		framesMovimentoLD[3] = (texturaAtlas.findRegion("andandoLD 0004"));
-		framesMovimentoLD[4] = (texturaAtlas.findRegion("andandoLD 0005"));
-		framesMovimentoLD[5] = (texturaAtlas.findRegion("andandoLD 0006"));
-		framesMovimentoLD[6] = (texturaAtlas.findRegion("andandoLD 0007"));
-		framesMovimentoLD[7] = (texturaAtlas.findRegion("andandoLD 0008"));
-
-		framesMovimentoTR[0] = (texturaAtlas.findRegion("andandoTR 0001"));
-		framesMovimentoTR[1] = (texturaAtlas.findRegion("andandoTR 0002"));
-		framesMovimentoTR[2] = (texturaAtlas.findRegion("andandoTR 0003"));
-		framesMovimentoTR[3] = (texturaAtlas.findRegion("andandoTR 0004"));
-		framesMovimentoTR[4] = (texturaAtlas.findRegion("andandoTR 0005"));
-		framesMovimentoTR[5] = (texturaAtlas.findRegion("andandoTR 0006"));
-		framesMovimentoTR[6] = (texturaAtlas.findRegion("andandoTR 0007"));
-		framesMovimentoTR[7] = (texturaAtlas.findRegion("andandoTR 0008"));
-
-		framesAtaqueD1[0] = (texturaAtlas.findRegion("ataqueD1 0001"));
-		framesAtaqueD1[1] = (texturaAtlas.findRegion("ataqueD1 0002"));
-		framesAtaqueD1[2] = (texturaAtlas.findRegion("ataqueD1 0003"));
-		framesAtaqueD1[3] = (texturaAtlas.findRegion("ataqueD1 0004"));
-		framesAtaqueD1[4] = (texturaAtlas.findRegion("ataqueD1 0005"));
-		framesAtaqueD1[5] = (texturaAtlas.findRegion("ataqueD1 0006"));
-		framesAtaqueD1[6] = (texturaAtlas.findRegion("ataqueD1 0007"));
-		framesAtaqueD1[7] = (texturaAtlas.findRegion("ataqueD1 0008"));
-		framesAtaqueD1[8] = (texturaAtlas.findRegion("ataqueD1 0009"));
-		framesAtaqueD1[9] = (texturaAtlas.findRegion("ataqueD1 0010"));
-		framesAtaqueD1[10] = (texturaAtlas.findRegion("ataqueD1 0011"));
-		framesAtaqueD1[11] = (texturaAtlas.findRegion("ataqueD1 0012"));
-		framesAtaqueD1[12] = (texturaAtlas.findRegion("ataqueD1 0013"));
-
-		framesAtaqueD2[0] = (texturaAtlas.findRegion("ataqueD2 0001"));
-		framesAtaqueD2[1] = (texturaAtlas.findRegion("ataqueD2 0002"));
-		framesAtaqueD2[2] = (texturaAtlas.findRegion("ataqueD2 0003"));
-		framesAtaqueD2[3] = (texturaAtlas.findRegion("ataqueD2 0004"));
-		framesAtaqueD2[4] = (texturaAtlas.findRegion("ataqueD2 0005"));
-		framesAtaqueD2[5] = (texturaAtlas.findRegion("ataqueD2 0006"));
-		framesAtaqueD2[6] = (texturaAtlas.findRegion("ataqueD2 0007"));
-		framesAtaqueD2[7] = (texturaAtlas.findRegion("ataqueD2 0008"));
-		framesAtaqueD2[8] = (texturaAtlas.findRegion("ataqueD2 0009"));
-		framesAtaqueD2[9] = (texturaAtlas.findRegion("ataqueD2 0010"));
-		framesAtaqueD2[10] = (texturaAtlas.findRegion("ataqueD2 0011"));
-		framesAtaqueD2[11] = (texturaAtlas.findRegion("ataqueD2 0012"));
-		framesAtaqueD2[12] = (texturaAtlas.findRegion("ataqueD2 0013"));
-
-		framesAtaqueD3[0] = (texturaAtlas.findRegion("ataqueD3 0001"));
-		framesAtaqueD3[1] = (texturaAtlas.findRegion("ataqueD3 0002"));
-		framesAtaqueD3[2] = (texturaAtlas.findRegion("ataqueD3 0003"));
-		framesAtaqueD3[3] = (texturaAtlas.findRegion("ataqueD3 0004"));
-		framesAtaqueD3[4] = (texturaAtlas.findRegion("ataqueD3 0005"));
-		framesAtaqueD3[5] = (texturaAtlas.findRegion("ataqueD3 0006"));
-		framesAtaqueD3[6] = (texturaAtlas.findRegion("ataqueD3 0007"));
-		framesAtaqueD3[7] = (texturaAtlas.findRegion("ataqueD3 0008"));
-		framesAtaqueD3[8] = (texturaAtlas.findRegion("ataqueD3 0009"));
-		framesAtaqueD3[9] = (texturaAtlas.findRegion("ataqueD3 0010"));
-		framesAtaqueD3[10] = (texturaAtlas.findRegion("ataqueD3 0011"));
-		framesAtaqueD3[11] = (texturaAtlas.findRegion("ataqueD3 0012"));
-		framesAtaqueD3[12] = (texturaAtlas.findRegion("ataqueD3 0013"));
-
-		framesAtaqueD4[0] = (texturaAtlas.findRegion("ataqueD4 0001"));
-		framesAtaqueD4[1] = (texturaAtlas.findRegion("ataqueD4 0002"));
-		framesAtaqueD4[2] = (texturaAtlas.findRegion("ataqueD4 0003"));
-		framesAtaqueD4[3] = (texturaAtlas.findRegion("ataqueD4 0004"));
-		framesAtaqueD4[4] = (texturaAtlas.findRegion("ataqueD4 0005"));
-		framesAtaqueD4[5] = (texturaAtlas.findRegion("ataqueD4 0006"));
-		framesAtaqueD4[6] = (texturaAtlas.findRegion("ataqueD4 0007"));
-		framesAtaqueD4[7] = (texturaAtlas.findRegion("ataqueD4 0008"));
-		framesAtaqueD4[8] = (texturaAtlas.findRegion("ataqueD4 0009"));
-		framesAtaqueD4[9] = (texturaAtlas.findRegion("ataqueD4 0010"));
-		framesAtaqueD4[10] = (texturaAtlas.findRegion("ataqueD4 0011"));
-		framesAtaqueD4[11] = (texturaAtlas.findRegion("ataqueD4 0012"));
-		framesAtaqueD4[12] = (texturaAtlas.findRegion("ataqueD4 0013"));
-
-		framesAtaqueFR[0] = (texturaAtlas.findRegion("ataqueFR 0001"));
-		framesAtaqueFR[1] = (texturaAtlas.findRegion("ataqueFR 0002"));
-		framesAtaqueFR[2] = (texturaAtlas.findRegion("ataqueFR 0003"));
-		framesAtaqueFR[3] = (texturaAtlas.findRegion("ataqueFR 0004"));
-		framesAtaqueFR[4] = (texturaAtlas.findRegion("ataqueFR 0005"));
-		framesAtaqueFR[5] = (texturaAtlas.findRegion("ataqueFR 0006"));
-		framesAtaqueFR[6] = (texturaAtlas.findRegion("ataqueFR 0007"));
-		framesAtaqueFR[7] = (texturaAtlas.findRegion("ataqueFR 0008"));
-		framesAtaqueFR[8] = (texturaAtlas.findRegion("ataqueFR 0009"));
-		framesAtaqueFR[9] = (texturaAtlas.findRegion("ataqueFR 0010"));
-		framesAtaqueFR[10] = (texturaAtlas.findRegion("ataqueFR 0011"));
-		framesAtaqueFR[11] = (texturaAtlas.findRegion("ataqueFR 0012"));
-		framesAtaqueFR[12] = (texturaAtlas.findRegion("ataqueFR 0013"));
-
-		framesAtaqueLE[0] = (texturaAtlas.findRegion("ataqueLE 0001"));
-		framesAtaqueLE[1] = (texturaAtlas.findRegion("ataqueLE 0002"));
-		framesAtaqueLE[2] = (texturaAtlas.findRegion("ataqueLE 0003"));
-		framesAtaqueLE[3] = (texturaAtlas.findRegion("ataqueLE 0004"));
-		framesAtaqueLE[4] = (texturaAtlas.findRegion("ataqueLE 0005"));
-		framesAtaqueLE[5] = (texturaAtlas.findRegion("ataqueLE 0006"));
-		framesAtaqueLE[6] = (texturaAtlas.findRegion("ataqueLE 0007"));
-		framesAtaqueLE[7] = (texturaAtlas.findRegion("ataqueLE 0008"));
-		framesAtaqueLE[8] = (texturaAtlas.findRegion("ataqueLE 0009"));
-		framesAtaqueLE[9] = (texturaAtlas.findRegion("ataqueLE 0010"));
-		framesAtaqueLE[10] = (texturaAtlas.findRegion("ataqueLE 0011"));
-		framesAtaqueLE[11] = (texturaAtlas.findRegion("ataqueLE 0012"));
-		framesAtaqueLE[12] = (texturaAtlas.findRegion("ataqueLE 0013"));
-
-		framesAtaqueLD[0] = (texturaAtlas.findRegion("ataqueLD 0001"));
-		framesAtaqueLD[1] = (texturaAtlas.findRegion("ataqueLD 0002"));
-		framesAtaqueLD[2] = (texturaAtlas.findRegion("ataqueLD 0003"));
-		framesAtaqueLD[3] = (texturaAtlas.findRegion("ataqueLD 0004"));
-		framesAtaqueLD[4] = (texturaAtlas.findRegion("ataqueLD 0005"));
-		framesAtaqueLD[5] = (texturaAtlas.findRegion("ataqueLD 0006"));
-		framesAtaqueLD[6] = (texturaAtlas.findRegion("ataqueLD 0007"));
-		framesAtaqueLD[7] = (texturaAtlas.findRegion("ataqueLD 0008"));
-		framesAtaqueLD[8] = (texturaAtlas.findRegion("ataqueLD 0009"));
-		framesAtaqueLD[9] = (texturaAtlas.findRegion("ataqueLD 0010"));
-		framesAtaqueLD[10] = (texturaAtlas.findRegion("ataqueLD 0011"));
-		framesAtaqueLD[11] = (texturaAtlas.findRegion("ataqueLD 0012"));
-		framesAtaqueLD[12] = (texturaAtlas.findRegion("ataqueLD 0013"));
-
-		framesAtaqueTR[0] = (texturaAtlas.findRegion("ataqueTR 0001"));
-		framesAtaqueTR[1] = (texturaAtlas.findRegion("ataqueTR 0002"));
-		framesAtaqueTR[2] = (texturaAtlas.findRegion("ataqueTR 0003"));
-		framesAtaqueTR[3] = (texturaAtlas.findRegion("ataqueTR 0004"));
-		framesAtaqueTR[4] = (texturaAtlas.findRegion("ataqueTR 0005"));
-		framesAtaqueTR[5] = (texturaAtlas.findRegion("ataqueTR 0006"));
-		framesAtaqueTR[6] = (texturaAtlas.findRegion("ataqueTR 0007"));
-		framesAtaqueTR[7] = (texturaAtlas.findRegion("ataqueTR 0008"));
-		framesAtaqueTR[8] = (texturaAtlas.findRegion("ataqueTR 0009"));
-		framesAtaqueTR[9] = (texturaAtlas.findRegion("ataqueTR 0010"));
-		framesAtaqueTR[10] = (texturaAtlas.findRegion("ataqueTR 0011"));
-		framesAtaqueTR[11] = (texturaAtlas.findRegion("ataqueTR 0012"));
-		framesAtaqueTR[12] = (texturaAtlas.findRegion("ataqueTR 0013"));
-
+	private void buscaFrames(int qntFrames, TextureRegion[] lista, String nomeFrame) {
+		String colocaZero = "";
+		for (int i = 0; i < qntFrames; i++) {
+			if ((i + 1) < 10)
+				colocaZero = "0";
+			else
+				colocaZero = "";
+			lista[i] = (texturaAtlas.findRegion(nomeFrame + " 00" + colocaZero + (i + 1)));
+		}
 	}
 }
