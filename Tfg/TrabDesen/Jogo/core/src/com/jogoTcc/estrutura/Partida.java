@@ -4,7 +4,10 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector3;
 import com.jogoTcc.entidade.Entidade;
 import com.jogoTcc.entidade.Jogador;
@@ -41,7 +44,6 @@ public class Partida implements Screen {
 		for (Entidade entidadeRenderiza : this.entidades) {
 			entidadeRenderiza.draw();
 		}
-
 	}
 
 	@Override
@@ -50,7 +52,6 @@ public class Partida implements Screen {
 		mapa.getCamera().viewportWidth = width;
 		// mapa.getCamera().zoom = 0.750f;
 		mapa.getCamera().translate(((new Vector3(200, 20, 0))));
-
 		mapa.getCamera().update();
 	}
 

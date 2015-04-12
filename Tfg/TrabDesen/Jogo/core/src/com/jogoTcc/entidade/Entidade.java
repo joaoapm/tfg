@@ -2,11 +2,14 @@ package com.jogoTcc.entidade;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.jogoTcc.estrutura.TipoJogador;
 
 public class Entidade extends Sprite implements InputProcessor {
@@ -70,14 +73,14 @@ public class Entidade extends Sprite implements InputProcessor {
 		inicializaAnimacoes();
 
 		// instancia a animacao com o tipo de frame desejado
-		animacao = new Animation(0.09f, animacaoAtual);
+		animacao = new Animation(0.095f, animacaoAtual);
 
 	}
 
 	public void draw() {
-
 		// renderiza animacao
 		tempoPercorrido += Gdx.graphics.getDeltaTime();
+		
 		Mapa.renderizador.getBatch().begin();
 
 		atualizaSprite();
@@ -85,13 +88,28 @@ public class Entidade extends Sprite implements InputProcessor {
 		Mapa.renderizador.getBatch().draw(this, getX(), getY());
 
 		Mapa.renderizador.getBatch().end();
-
+		
+		
+		ShapeRenderer shapeRenderer = new ShapeRenderer();
+		shapeRenderer.setColor(Color.BLUE);
+		shapeRenderer.begin(ShapeType.Line);
+		shapeRenderer.rect(getX(), getY(), 50, 60);
+		shapeRenderer.end();
+		
 	}
 
 	private void atualizaSprite() {
+		
+		if(getX() == 0)
+			setX(0);
+		
+		if(getY() == 0)
+			setY(-0);
+
 		setTexture(animacao.getKeyFrame(tempoPercorrido, true).getTexture());
 		super.setRegion(animacao.getKeyFrame(tempoPercorrido, true));
 		super.setSize(super.getRegionHeight(), super.getRegionWidth());
+		super.setBounds(getX(), getY(), getRegionWidth(), getRegionHeight());
 	}
 
 	@Override
@@ -111,9 +129,18 @@ public class Entidade extends Sprite implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		
+		
+		int x = screenX;
+		int y = screenY;
+		
+		System.out.println(x +  "|||" + ( y) );
+		if (x > getBoundingRectangle().x && x < getBoundingRectangle().x + 50) {
+		if (y > getBoundingRectangle().y && y < getBoundingRectangle().y + 60) {
+				//setY(getY()-20);
+				 
 
-		setX(getX() + 20);
-		System.out.println(getWidth());
+		} }
 		return false;
 	}
 
