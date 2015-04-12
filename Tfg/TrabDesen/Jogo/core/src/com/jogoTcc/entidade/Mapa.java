@@ -11,7 +11,7 @@ public class Mapa {
 
 	private TiledMap mapa;
 
-	private IsometricTiledMapRenderer renderizador;
+	public static IsometricTiledMapRenderer renderizador;
 
 	private OrthographicCamera camera;
 

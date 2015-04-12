@@ -23,7 +23,7 @@ public class Partida implements Screen {
 		mapa = new Mapa("mapa/mapa.tmx");
 
 		// inicializa jogador humano com 5 bonecos
-		jogador = new Jogador(TipoJogador.HUMANO, 5);
+		jogador = new Jogador(TipoJogador.HUMANO, 1);
 
 	}
 

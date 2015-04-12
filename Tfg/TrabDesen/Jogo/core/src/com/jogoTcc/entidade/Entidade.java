@@ -68,7 +68,7 @@ public class Entidade extends Sprite implements InputProcessor {
 		Gdx.input.setInputProcessor(this);
 
 		// seta arquivo atlas contendo as imagens a serem carregadas
-		texturaAtlas = new TextureAtlas(Gdx.files.internal("personagens/" + tipoJogador.getArquivoAtlas()));
+		texturaAtlas = new TextureAtlas(Gdx.files.internal("personagens/"+ tipoJogador.getArquivoAtlas()));
 
 		// popula as listas com os frames de cada animacao
 		inicializaAnimacoes();
@@ -84,17 +84,21 @@ public class Entidade extends Sprite implements InputProcessor {
 	public void draw() {
 
 		// renderiza animacao
-		SpriteBatch batch = new SpriteBatch();
 		tempoPercorrido += Gdx.graphics.getDeltaTime();
-		batch.begin();
+		Mapa.renderizador.getBatch().begin();
 
-		if (isAnimacao)
-			batch.draw(animacao.getKeyFrame(tempoPercorrido, true), 310, 220);
-		else
-			batch.draw(spriteAtual, 310, 220);
+		atualizaSprite();
 
-		batch.end();
+		Mapa.renderizador.getBatch().draw(this, getX(), getY());
 
+		Mapa.renderizador.getBatch().end();
+
+	}
+
+	private void atualizaSprite() {
+		setTexture(animacao.getKeyFrame(tempoPercorrido, true).getTexture());
+		super.setRegion(animacao.getKeyFrame(tempoPercorrido, true));
+		super.setSize(super.getRegionHeight(), super.getRegionWidth());
 	}
 
 	@Override
@@ -114,6 +118,9 @@ public class Entidade extends Sprite implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+
+		setX(getX() + 20);
+		System.out.println(getWidth());
 		return false;
 	}
 
@@ -176,11 +183,13 @@ public class Entidade extends Sprite implements InputProcessor {
 
 	}
 
-	private void buscaFrames(int qntFrames, TextureRegion[] lista, String nomeFrame) {
+	private void buscaFrames(int qntFrames, TextureRegion[] lista,
+			String nomeFrame) {
 		String colocaZero = "";
 		for (int i = 0; i < qntFrames; i++) {
 			colocaZero = (i + 1) < 10 ? "0" : "";
-			lista[i] = (texturaAtlas.findRegion(nomeFrame + " 00" + colocaZero	+ (i + 1)));
+			lista[i] = (texturaAtlas.findRegion(nomeFrame + " 00" + colocaZero
+					+ (i + 1)));
 		}
 	}
 }
