@@ -6,7 +6,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.jogoTcc.entidade.Entidade;
 import com.jogoTcc.entidade.Jogador;
 import com.jogoTcc.entidade.Mapa;
@@ -16,20 +15,16 @@ public class Partida implements Screen {
 	private Mapa mapa;
 	private Jogador jogador;
 	public static ArrayList<Entidade> entidades = new ArrayList<Entidade>();
-	private Stage palco;
 
 	@Override
 	public void show() {
 		
-		// inicaliza stage
-		palco = new Stage();
-		Gdx.input.setInputProcessor(palco);
-
 		// inicializa mapa
 		mapa = new Mapa("mapa/mapa.tmx");
-
+		Gdx.input.setInputProcessor(mapa);
+		
 		// inicializa jogador humano com 5 bonecos
-		jogador = new Jogador(TipoJogador.COMPUTADOR, 1, palco);
+		jogador = new Jogador(TipoJogador.COMPUTADOR, 1, mapa);
 
 	}
 
@@ -39,11 +34,14 @@ public class Partida implements Screen {
 		// limpa cena
 		Gdx.gl30.glClearColor(0, 0, 0, 1);
 		Gdx.gl30.glClear(GL30.GL_COLOR_BUFFER_BIT);
-
+		//mapa.renderizarMapa();
+		
+		Mapa.renderizador.setView(mapa.getCamera());
+		Mapa.renderizador.render();
 		// atualiza palco
-		palco.act(Gdx.graphics.getDeltaTime());
-		palco.draw();
-
+		mapa.act(Gdx.graphics.getDeltaTime());
+		mapa.draw();
+	 
 		// desenha mapa
 		// this.mapa.renderizarMapa();
 
@@ -51,11 +49,14 @@ public class Partida implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		mapa.getCamera().viewportHeight = height;
-		mapa.getCamera().viewportWidth = width;
+		
+		
+		
+		 mapa.getCamera().viewportHeight = height;
+		 mapa.getCamera().viewportWidth = width;
 		// mapa.getCamera().zoom = 0.750f;
-		mapa.getCamera().translate(((new Vector3(200, 20, 0))));
-		mapa.getCamera().update();
+		//mapa.getCamera().translate(((new Vector3(200, 20, 0))));
+	mapa.getCamera().update();
 	}
 
 	@Override
