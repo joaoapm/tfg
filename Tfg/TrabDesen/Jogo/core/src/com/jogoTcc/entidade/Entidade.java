@@ -1,18 +1,17 @@
 package com.jogoTcc.entidade;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.jogoTcc.estrutura.TipoJogador;
 
-public class Entidade extends Sprite implements InputProcessor {
+public class Entidade extends Actor {
 
 	// estrutura para acesso das texturas das animacoes a serem carregadas
 	private TextureAtlas texturaAtlas;
@@ -58,110 +57,51 @@ public class Entidade extends Sprite implements InputProcessor {
 	private TextureRegion[] framesMorrendoLD = new TextureRegion[11];
 	private TextureRegion[] framesMorrendoTR = new TextureRegion[11];
 
-	// define estado inicial da entidade
-	private TextureRegion[] animacaoAtual = framesParadoFR;
+	// estrutura da animacao
+	private TextureRegion[] animacaoAtual;
+	private TextureRegion frameAtual = new TextureRegion();
+
+	// dados da entidade
+	float actorX = 0;
+	float actorY = 0;
 
 	public Entidade(TipoJogador tipoJogador) {
 
-		// seta gerenciador de eventos
-		Gdx.input.setInputProcessor(this);
-
 		// seta arquivo atlas contendo as imagens a serem carregadas
-		texturaAtlas = new TextureAtlas(Gdx.files.internal("personagens/" + tipoJogador.getArquivoAtlas()));
+		texturaAtlas = new TextureAtlas(Gdx.files.internal("personagens/"+ tipoJogador.getArquivoAtlas()));
 
 		// popula as listas com os frames de cada animacao
 		inicializaAnimacoes();
 
-		// instancia a animacao com o tipo de frame desejado
+		// estado incial da entidade
+		animacaoAtual = framesParadoFR;
 		animacao = new Animation(0.095f, animacaoAtual);
+		atualizaSprite();
+		setBounds(actorX, actorY, frameAtual.getRegionWidth(),frameAtual.getRegionHeight());
+		this.setTouchable(Touchable.enabled);
+
+		addListener(new InputListener() {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				// ((Entidade) event.getTarget()).started = true;
+				System.out.println("A");
+				return true;
+			}
+		});
 
 	}
 
-	public void draw() {
-		// renderiza animacao
+	@Override
+	public void draw(Batch batch, float alpha) {
 		tempoPercorrido += Gdx.graphics.getDeltaTime();
-		
-		Mapa.renderizador.getBatch().begin();
-
 		atualizaSprite();
-
-		Mapa.renderizador.getBatch().draw(this, getX(), getY());
-
-		Mapa.renderizador.getBatch().end();
-		
-		
-		ShapeRenderer shapeRenderer = new ShapeRenderer();
-		shapeRenderer.setColor(Color.BLUE);
-		shapeRenderer.begin(ShapeType.Line);
-		shapeRenderer.rect(getX(), getY(), 50, 60);
-		shapeRenderer.end();
-		
+		batch.draw(frameAtual, actorX, actorY);
 	}
 
 	private void atualizaSprite() {
-		
-		if(getX() == 0)
-			setX(0);
-		
-		if(getY() == 0)
-			setY(-0);
-
-		setTexture(animacao.getKeyFrame(tempoPercorrido, true).getTexture());
-		super.setRegion(animacao.getKeyFrame(tempoPercorrido, true));
-		super.setSize(super.getRegionHeight(), super.getRegionWidth());
-		super.setBounds(getX(), getY(), getRegionWidth(), getRegionHeight());
-	}
-
-	@Override
-	public boolean keyDown(int keycode) {
-		return false;
-	}
-
-	@Override
-	public boolean keyUp(int keycode) {
-		return false;
-	}
-
-	@Override
-	public boolean keyTyped(char character) {
-		return false;
-	}
-
-	@Override
-	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		
-		
-		int x = screenX;
-		int y = screenY;
-		
-		System.out.println(x +  "|||" + ( y) );
-		if (x > getBoundingRectangle().x && x < getBoundingRectangle().x + 50) {
-		if (y > getBoundingRectangle().y && y < getBoundingRectangle().y + 60) {
-				//setY(getY()-20);
-				 
-
-		} }
-		return false;
-	}
-
-	@Override
-	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		return false;
-	}
-
-	@Override
-	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		return false;
-	}
-
-	@Override
-	public boolean mouseMoved(int screenX, int screenY) {
-		return false;
-	}
-
-	@Override
-	public boolean scrolled(int amount) {
-		return false;
+		frameAtual.setTexture(animacao.getKeyFrame(tempoPercorrido, true)
+				.getTexture());
+		frameAtual.setRegion(animacao.getKeyFrame(tempoPercorrido, true));
 	}
 
 	private void inicializaAnimacoes() {
@@ -203,8 +143,7 @@ public class Entidade extends Sprite implements InputProcessor {
 
 	}
 
-	private void buscaFrames(int qntFrames, TextureRegion[] lista,
-			String nomeFrame) {
+	private void buscaFrames(int qntFrames, TextureRegion[] lista,	String nomeFrame) {
 		String colocaZero = "";
 		for (int i = 0; i < qntFrames; i++) {
 			colocaZero = (i + 1) < 10 ? "0" : "";

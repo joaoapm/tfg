@@ -28,7 +28,8 @@ public class Mapa {
 		Gdx.gl30.glClearColor(0, 0, 0, 1);
 		Gdx.gl30.glClear(GL30.GL_COLOR_BUFFER_BIT);
 		this.renderizador.setView(camera);
-		this.renderizador.render();
+		this.renderizador.render(); 
+		
 	}
 
 	public IsometricTiledMapRenderer getRenderizador() {
