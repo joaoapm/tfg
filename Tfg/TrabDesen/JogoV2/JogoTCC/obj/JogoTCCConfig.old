@@ -35,6 +35,7 @@
     </source-path>
     <library-path append="true">
       <path-element>D:\Faculdade\tfg\Tfg\TrabDesen\JogoV2\JogoTCC\lib\starling.swc</path-element>
+      <path-element>D:\Faculdade\tfg\Tfg\TrabDesen\JogoV2\JogoTCC\lib\Starling-Extension-Graphics.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>

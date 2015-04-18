@@ -10,6 +10,8 @@ package jogoTCC
 		public function Main()
 		{
 		 _starling = new Starling(Mapa, stage);
+		 _starling.antiAliasing = 100;
+		 
         _starling.start();
 		}
 	
