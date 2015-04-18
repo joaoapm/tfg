@@ -12,6 +12,7 @@
     <movie minorVersion="0" />
     <movie platform="AIR" />
     <movie background="#FFFFFF" />
+    <movie preferredSDK="AIR 17.0.0;17.0.0;" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
@@ -52,7 +53,7 @@
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
-    <!-- example: <element path="..." /> -->
+    <element path="lib\starling.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>
