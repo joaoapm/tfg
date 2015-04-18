@@ -8,9 +8,9 @@ package jogoTCC
 	{
 		   private var _starling:Starling
 		public function Main()
-		{
+		{ stage.quality = "HIGH";
 		 _starling = new Starling(Mapa, stage);
-		 _starling.antiAliasing = 100;
+		 _starling.antiAliasing = 40;
 		 
         _starling.start();
 		}
