@@ -18,7 +18,7 @@ package jogoTCC.entidades
 		private var MAPA:Class;
 		
 		public function Mapa()
-		{
+		{  
 			iniciaImagemMapa();
 			iniciaCasas();
 		}

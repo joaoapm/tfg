@@ -5,6 +5,7 @@ package jogoTCC.estrutura
 	import starling.core.Starling;
 	
 	[SWF(width="800",height="600",frameRate="60",backgroundColor="#ffffff")]
+	
 	public class Principal extends Sprite
 	{
 		private var _starling:Starling
