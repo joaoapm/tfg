@@ -22,7 +22,7 @@ package jogoTCC.entidades
 			 iniciaImagemMapa();
 			 iniciaCasas();
 					
-			var p1:Personagem = new Personagem();
+			var p1:Personagem = new Personagem("monstro");
 			this.addChild(p1);
 		}
 		
