@@ -28,9 +28,9 @@ package jogoTCC.entidades
 			var assets:CarregaAssets = new CarregaAssets();
 			var listaFrames:Vector.<Texture> = new Vector.<Texture>();
 			
-			var texture:Texture = Texture.fromEmbeddedAsset(assets.buscaAssetImagem(""));
+			var texture:Texture = Texture.fromEmbeddedAsset(assets.buscaAssetImagem("monstro_andando"));
 			
-			var objXml:Class = assets.buscaAssetDescr("");
+			var objXml:Class = assets.buscaAssetDescr("monstro_andando");
 			var xml:XML = XML(new objXml());
 			
 			var atlas:TextureAtlas = new TextureAtlas(texture, xml);
