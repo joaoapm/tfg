@@ -99,9 +99,9 @@ package jogoTCC.entidades
 			mvParadoLE = carregaAnimacao(mvParadoLE, 13, "paradoLE", "parado", tipoJogador);
 			mvParadoLD = carregaAnimacao(mvParadoLD, 13, "paradoLD", "parado", tipoJogador);
 			
-			addChild(mvParadoD3);
-			mvParadoD3.play();
-			Starling.juggler.add(mvParadoD3);
+			addChild(mvAndandoFR);
+			mvAndandoFR.play();
+			Starling.juggler.add(mvAndandoFR);
 		
 		}
 		

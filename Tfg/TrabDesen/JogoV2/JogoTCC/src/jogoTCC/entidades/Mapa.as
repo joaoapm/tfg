@@ -23,6 +23,9 @@ package jogoTCC.entidades
 			 iniciaCasas();
 					
 			var p1:Personagem = new Personagem("monstro");
+			
+			p1.x += 240;
+			p1.y += 260;
 			this.addChild(p1);
 		}
 		
