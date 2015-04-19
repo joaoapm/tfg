@@ -10,7 +10,7 @@ package jogoTCC.entidades
 		
 		private var graficoCasa:Shape = new Shape();
 		private var matrizTransformacao:Matrix = new Matrix();
-		private var TAMANHO_CASA:Number = 38;
+		private var TAMANHO_CASA:Number = 32;
 		
 		public function Casa(posX:Number, posY:Number, inicioX:Number, inicioY:Number, alpha:Number)
 		{

@@ -1,6 +1,13 @@
 package jogoTCC.entidades
 {
 	
+	import starling.events.TouchPhase;
+	import flash.geom.Point;
+	import starling.events.Touch;
+	import starling.events.TouchEvent;
+	import starling.events.Event;
+	import starling.display.Quad;
+	
 	import jogoTCC.entidades.Casa;
 	import starling.display.Sprite;
 	import flash.display.Bitmap;
@@ -10,22 +17,23 @@ package jogoTCC.entidades
 	public class Mapa extends Sprite
 	{
 		
-		private var INICIO_X:Number = 300;
-		private var INICIO_Y:Number = -610;
+		private var INICIO_X:Number = 0;
+		private var INICIO_Y:Number = -310;
 		private var ALPHA:Number = .01;
 		
 		[Embed(source="../../../assets/mapa/mapa.png")]
 		private var MAPA:Class;
 		
 		public function Mapa()
-		{  
-			 iniciaImagemMapa();
-			 iniciaCasas();
-					
+		{
+			
+			iniciaImagemMapa();
+			iniciaCasas();
+			
 			var p1:Personagem = new Personagem("monstro");
 			
-			p1.x += 240;
-			p1.y += 260;
+			p1.x += 0;
+			p1.y += 0;
 			this.addChild(p1);
 		}
 		
@@ -35,9 +43,11 @@ package jogoTCC.entidades
 			var textura:Texture = Texture.fromBitmap(new MAPA());
 			var imagem:Image = new Image(textura);
 			
-			imagem.x = -10;
-			imagem.y = 50;
+			imagem.x -= 750;
+			imagem.y -= 200;
 			
+			imagem.scaleX = 1.5;
+			imagem.scaleY = 1.5;
 			addChild(imagem);
 		}
 		
