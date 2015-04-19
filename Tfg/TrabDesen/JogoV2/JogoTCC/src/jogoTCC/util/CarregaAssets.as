@@ -65,7 +65,8 @@ package jogoTCC.util
 			var assetDescrMonstroAndando:Asset = new Asset("monstro_andando", atlasDescrMonstroAndando);
 			var assetDescrMonstroAtacando:Asset = new Asset("monstro_atacando", atlasDescrMonstroAtacando);
 			var assetDescrMonstroMorrendo:Asset = new Asset("monstro_morrendo", atlasDescrMonstroMorrendo);
-			var assetDescrMonstroParado:Asset = new Asset("monstro_parado", atlasDescrGuerreiroParado);
+			var assetDescrMonstroParado:Asset = new Asset("monstro_parado", atlasDescrMonstroParado);
+			
 			var assetDescrGuerreiroAndando:Asset = new Asset("guerreiro_andando", atlasDescrGuerreiroAndando);
 			var assetDescrGuerreiroAtacando:Asset = new Asset("guerreiro_atacando", atlasDescrGuerreiroAtacando);
 			var assetDescrGuerreiroMorrendo:Asset = new Asset("guerreiro_morrendo", atlasDescrGuerreiroMorrendo);
@@ -75,6 +76,7 @@ package jogoTCC.util
 			var assetImagemMonstroAtacando:Asset = new Asset("monstro_atacando", atlasImagemMonstroAtacando);
 			var assetImagemMonstroMorrendo:Asset = new Asset("monstro_morrendo", atlasImagemMonstroMorrendo);
 			var assetImagemMonstroParado:Asset = new Asset("monstro_parado", atlasImagemMonstroParado);
+			
 			var assetImagemGuerreiroAndando:Asset = new Asset("guerreiro_andando", atlasImagemGuerreiroAndando);
 			var assetImagemGuerreiroAtacando:Asset = new Asset("guerreiro_atacando", atlasImagemGuerreiroAtacando);
 			var assetImagemGuerreiroMorrendo:Asset = new Asset("guerreiro_morrendo", atlasImagemGuerreiroMorrendo);
