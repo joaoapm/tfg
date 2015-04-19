@@ -14,13 +14,16 @@ package jogoTCC.entidades
 		private var INICIO_Y:Number = -610;
 		private var ALPHA:Number = .01;
 		
-		[Embed(source="../../../assets/mapa.png")]
+		[Embed(source="../../../assets/mapa/mapa.png")]
 		private var MAPA:Class;
 		
 		public function Mapa()
 		{  
-			iniciaImagemMapa();
-			iniciaCasas();
+			 iniciaImagemMapa();
+			 iniciaCasas();
+					
+			var p1:Personagem = new Personagem();
+			this.addChild(p1);
 		}
 		
 		private function iniciaImagemMapa():void
