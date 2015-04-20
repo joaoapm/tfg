@@ -13,6 +13,7 @@ package jogoTCC.entidades
 		private var INICIO_X:Number = 0;
 		private var INICIO_Y:Number = -310;
 		private var ALPHA:Number = .01;
+		public var personagemMarcado:Object;
 		
 		[Embed(source="../../../assets/mapa/mapa.png")]
 		private var MAPA:Class;
@@ -20,8 +21,8 @@ package jogoTCC.entidades
 		public function Mapa()
 		{
 			
-			//iniciaImagemMapa();
-			//iniciaCasas();
+			iniciaImagemMapa();
+			iniciaCasas();
 			
 			var p1:Personagem = new Personagem("monstro");
 			addChild(p1);
