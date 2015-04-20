@@ -6,6 +6,10 @@ package jogoTCC.entidades
 	import starling.display.Sprite;
 	import starling.display.MovieClip;
 	import starling.core.Starling;
+	import starling.events.TouchPhase;
+	import starling.events.Touch;
+	import starling.events.TouchEvent;
+	import starling.events.Event;
 	
 	public class Personagem extends Sprite
 	{
@@ -63,8 +67,27 @@ package jogoTCC.entidades
 		// animacao atual
 		private var mvAtual:MovieClip;
 		
+		private function touchHandler(e:TouchEvent):void
+		{
+			
+			var touch:Touch = e.getTouch(stage);
+			
+			if (touch != null)
+			{
+				var clicked:Personagem = e.currentTarget as Personagem;
+				trace(clicked);
+				
+				if (touch.phase == TouchPhase.MOVED)
+				{
+				//	target.x = position.x - target.width / 2;
+					//target.y = position.y - target.height / 2;
+				}
+			}
+		}
+		
 		public function Personagem(tipoJogador:String)
 		{
+			addEventListener(TouchEvent.TOUCH, touchHandler);
 			// inicializa animacoes
 			this.tipoJogador = tipoJogador;
 			

@@ -1,13 +1,6 @@
 package jogoTCC.entidades
 {
 	
-	import starling.events.TouchPhase;
-	import flash.geom.Point;
-	import starling.events.Touch;
-	import starling.events.TouchEvent;
-	import starling.events.Event;
-	import starling.display.Quad;
-	
 	import jogoTCC.entidades.Casa;
 	import starling.display.Sprite;
 	import flash.display.Bitmap;
@@ -27,14 +20,12 @@ package jogoTCC.entidades
 		public function Mapa()
 		{
 			
-			iniciaImagemMapa();
-			iniciaCasas();
+			//iniciaImagemMapa();
+			//iniciaCasas();
 			
 			var p1:Personagem = new Personagem("monstro");
-			
-			p1.x += 0;
-			p1.y += 0;
-			this.addChild(p1);
+			addChild(p1);
+		
 		}
 		
 		private function iniciaImagemMapa():void

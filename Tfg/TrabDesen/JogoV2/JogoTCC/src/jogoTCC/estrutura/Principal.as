@@ -4,6 +4,7 @@ package jogoTCC.estrutura
 	import jogoTCC.entidades.Mapa;
 	import starling.core.Starling;
 	
+	import starling.display.Quad;
 	[SWF(width="800",height="600",frameRate="60",backgroundColor="#ffffff")]
 	
 	public class Principal extends Sprite
@@ -17,6 +18,7 @@ package jogoTCC.estrutura
 			_starling.antiAliasing = 40;
 			
 			_starling.start();
+		
 		}
 	
 	}
