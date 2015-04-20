@@ -10,7 +10,6 @@ package jogoTCC.entidades
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.Event;
-	import flash.geom.Point;
 	
 	public class Personagem extends Sprite
 	{
@@ -81,7 +80,6 @@ package jogoTCC.entidades
 				if (touch.phase == TouchPhase.ENDED)
 				{
 					mapa.personagemMarcado = clicked;
-					clicked.x += 10;
 				}
 			}
 		}
