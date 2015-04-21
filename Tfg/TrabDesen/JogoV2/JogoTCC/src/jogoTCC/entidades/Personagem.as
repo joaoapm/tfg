@@ -1,10 +1,11 @@
 package jogoTCC.entidades
 {
+	import jogoTCC.estrutura.Partida;
 	import jogoTCC.modelo.TipoJogador;
 	import jogoTCC.util.CarregaAnimacao;
 	import jogoTCC.util.CarregaAssets;
 	import starling.display.Sprite;
-	import starling.display.MovieClip; 
+	import starling.display.MovieClip;
 	import starling.core.Starling;
 	import starling.events.TouchPhase;
 	import starling.events.Touch;
@@ -67,23 +68,6 @@ package jogoTCC.entidades
 		// animacao atual
 		private var mvAtual:MovieClip;
 		
-		private function touchHandler(e:TouchEvent):void
-		{
-			
-			var touch:Touch = e.getTouch(stage);
-			
-			if (touch != null)
-			{
-				var clicked:Personagem = e.currentTarget as Personagem;
-				var mapa:Mapa = parent as Mapa;
-				
-				if (touch.phase == TouchPhase.ENDED)
-				{
-					mapa.personagemMarcado = clicked;
-				}
-			}
-		}
-		
 		public function Personagem(tipoJogador:String)
 		{
 			addEventListener(TouchEvent.TOUCH, touchHandler);
@@ -136,6 +120,23 @@ package jogoTCC.entidades
 			mvAtual.play();
 			Starling.juggler.add(mvAtual);
 		
+		}
+		
+		private function touchHandler(e:TouchEvent):void
+		{
+			
+			var touch:Touch = e.getTouch(stage);
+			
+			if (touch != null)
+			{
+				var clicked:Personagem = e.currentTarget as Personagem;
+				var partida:Partida = parent as Partida;
+				
+				if (touch.phase == TouchPhase.ENDED)
+				{
+					partida.personagemMarcado = clicked;
+				}
+			}
 		}
 	
 	}

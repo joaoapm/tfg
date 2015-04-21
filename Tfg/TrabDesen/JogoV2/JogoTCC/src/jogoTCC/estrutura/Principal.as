@@ -1,7 +1,7 @@
 package jogoTCC.estrutura
 {
 	import flash.display.Sprite;
-	import jogoTCC.entidades.Mapa;
+	import jogoTCC.estrutura.Partida;
 	import starling.core.Starling;
 	
 	import starling.display.Quad;
@@ -14,7 +14,7 @@ package jogoTCC.estrutura
 		public function Principal()
 		{
 			stage.quality = "HIGH";
-			_starling = new Starling(Mapa, stage);
+			_starling = new Starling(Partida, stage);
 			_starling.antiAliasing = 40;
 			
 			_starling.start();

@@ -1,6 +1,7 @@
 package jogoTCC.entidades
 {
 	
+	import jogoTCC.estrutura.Partida;
 	import starling.display.Quad;
 	import flash.geom.Matrix;
 	import starling.display.DisplayObject;
@@ -29,6 +30,7 @@ package jogoTCC.entidades
 			super.transformationMatrix = matrizTransformacao;
 			
 			super.color = 0xFFFF0F;
+			
 			super.x = inicioX + (posX * 45) + (45 * posY);
 			super.y = inicioY - (posX * 22) + (22 * posY);
 			super.alpha = alpha;
@@ -49,12 +51,14 @@ package jogoTCC.entidades
 					if (target as Casa)
 					{
 						var c:Casa = target as Casa;
-						var mapa:Mapa = c.parent as Mapa;
-						var perso:Personagem = mapa.personagemMarcado as Personagem;
-						perso.x = c.x -47;
+						
+						var partida:Partida = c.parent.parent as Partida;
+						var perso:Personagem = partida.personagemMarcado as Personagem;
+						perso.x = c.x - 47;
 						perso.y = c.y - 47;
 						
 						c.alpha = 1;
+						
 					}
 				}
 			}
