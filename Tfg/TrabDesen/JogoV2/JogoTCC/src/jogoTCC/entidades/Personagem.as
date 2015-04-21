@@ -4,7 +4,7 @@ package jogoTCC.entidades
 	import jogoTCC.util.CarregaAnimacao;
 	import jogoTCC.util.CarregaAssets;
 	import starling.display.Sprite;
-	import starling.display.MovieClip;
+	import starling.display.MovieClip; 
 	import starling.core.Starling;
 	import starling.events.TouchPhase;
 	import starling.events.Touch;
