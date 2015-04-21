@@ -2,23 +2,17 @@ package jogoTCC.entidades
 {
 	
 	import jogoTCC.entidades.Casa;
-	import starling.display.DisplayObject;
 	import starling.display.Sprite;
 	import flash.display.Bitmap;
 	import starling.textures.Texture;
 	import starling.display.Image;
-	import starling.events.Touch;
-	import starling.events.TouchEvent;
-	import starling.events.TouchPhase;
-	import starling.events.Event;
-	import flash.geom.Point;
 	
 	public class Mapa extends Sprite
 	{
 		
-		private var INICIO_X:Number = 250;
-		private var INICIO_Y:Number = 150;
-		private var ALPHA:Number = 1;
+		private var INICIO_X:Number = -620;
+		private var INICIO_Y:Number = 250;
+		private var ALPHA:Number = 0.3;
 		public var personagemMarcado:Object;
 		
 		[Embed(source="../../../assets/mapa/mapa.png")]
@@ -49,24 +43,6 @@ package jogoTCC.entidades
 			addChild(imagem);
 		}
 		
-		private function touchHandler(e:TouchEvent):void
-		{
-			var touch:Touch = e.getTouch(stage);
-			if (touch != null)
-			{
-				var position:Point = touch.getLocation(stage);
-				var target:DisplayObject = e.target as DisplayObject;
-				
-				if (touch.phase == TouchPhase.ENDED)
-				{
-					if (target as Casa)
-					{
-						var c:Casa = target as Casa;
-					}
-				}
-			}
-		}
-		
 		private function iniciaCasas():void
 		{
 			
@@ -76,7 +52,6 @@ package jogoTCC.entidades
 				for (var j:Number = 0; j < 24; j++)
 				{
 					casa = new Casa(i, j, INICIO_X, INICIO_Y, ALPHA);
-					casa.addEventListener(TouchEvent.TOUCH, touchHandler);
 					addChild(casa);
 				}
 			}

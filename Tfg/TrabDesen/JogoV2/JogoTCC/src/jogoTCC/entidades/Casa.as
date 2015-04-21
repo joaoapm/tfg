@@ -3,6 +3,12 @@ package jogoTCC.entidades
 	
 	import starling.display.Quad;
 	import flash.geom.Matrix;
+	import starling.display.DisplayObject;
+	import starling.events.Touch;
+	import starling.events.TouchEvent;
+	import starling.events.TouchPhase;
+	import starling.events.Event;
+	import flash.geom.Point;
 	
 	public class Casa extends Quad
 	{
@@ -22,10 +28,32 @@ package jogoTCC.entidades
 			
 			super.transformationMatrix = matrizTransformacao;
 			
-			super.color = Math.random() * 0xFFFFFF;
-			super.x = (inicioX + (posX * TAMANHO_CASA));
-			super.y = (inicioY + (posY * TAMANHO_CASA));
+			super.color = 0xF30F0F;
+			super.x = inicioX + (posX * 45) + (45 * posY);
+			super.y = inicioY - (posX * 22) + (22 * posY);
+			super.alpha = alpha;
+			addEventListener(TouchEvent.TOUCH, touchHandler);
 		
+		}
+		
+		private function touchHandler(e:TouchEvent):void
+		{
+			var touch:Touch = e.getTouch(stage);
+			if (touch != null)
+			{
+				var position:Point = touch.getLocation(stage);
+				var target:DisplayObject = e.target as DisplayObject;
+				
+				if (touch.phase == TouchPhase.ENDED)
+				{
+					if (target as Casa)
+					{
+						var c:Casa = target as Casa;
+						trace(c.x);
+						c.x += 1;
+					}
+				}
+			}
 		}
 	
 	}
