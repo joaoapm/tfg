@@ -10,8 +10,8 @@ package jogoTCC.entidades
 	public class Mapa extends Sprite
 	{
 		
-		private var INICIO_X:Number = -620;
-		private var INICIO_Y:Number = 250;
+		private var INICIO_X:Number = -820;
+		private var INICIO_Y:Number = 350;
 		private var ALPHA:Number = 0.1;
 		
 		[Embed(source="../../../assets/mapa/mapa.png")]
