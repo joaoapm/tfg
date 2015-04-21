@@ -70,7 +70,9 @@ package jogoTCC.entidades
 		
 		public function Personagem(tipoJogador:String)
 		{
-			addEventListener(TouchEvent.TOUCH, touchHandler);
+			// controle de eventos
+			addEventListener(TouchEvent.TOUCH, controlaEventos);
+			
 			// inicializa animacoes
 			this.tipoJogador = tipoJogador;
 			
@@ -122,7 +124,7 @@ package jogoTCC.entidades
 		
 		}
 		
-		private function touchHandler(e:TouchEvent):void
+		private function controlaEventos(e:TouchEvent):void
 		{
 			
 			var touch:Touch = e.getTouch(stage);
