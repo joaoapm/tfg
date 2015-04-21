@@ -13,6 +13,7 @@ package jogoTCC.entidades
 		private var INICIO_X:Number = -620;
 		private var INICIO_Y:Number = 250;
 		private var ALPHA:Number = 0.1;
+		
 		public var personagemMarcado:Object;
 		
 		[Embed(source="../../../assets/mapa/mapa.png")]
@@ -56,7 +57,6 @@ package jogoTCC.entidades
 				}
 			}
 		}
-		
 	
 	}
 
