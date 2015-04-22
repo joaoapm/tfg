@@ -10,29 +10,30 @@ package jogoTCC.entidades
 	public class Mapa extends Sprite
 	{
 		
+		// variaveis de controle da criacao das casas
 		private var INICIO_X:Number = 45
 		private var INICIO_Y:Number = 500;
-		private var ALPHA:Number = 0.1;
+		private var ALPHA:Number = 0.05;
 		
+		// instancia variavel com imagem do mapa
 		[Embed(source="../../../assets/mapa/mapa.png")]
 		private var MAPA:Class;
 		
 		public function Mapa()
 		{
-			
 			iniciaImagemMapa();
 			iniciaCasas();
-		
 		}
 		
 		private function iniciaImagemMapa():void
 		{
+			// adiciona imagem do mapa
 			var bitmap:Bitmap = new MAPA();
 			var textura:Texture = Texture.fromBitmap(new MAPA());
 			var imagem:Image = new Image(textura);
 			
 			imagem.x = 0;
-			imagem.y = 100;
+			imagem.y = -65;
 			
 			imagem.scaleX = 1.5;
 			imagem.scaleY = 1.5;
@@ -41,7 +42,7 @@ package jogoTCC.entidades
 		
 		private function iniciaCasas():void
 		{
-			
+			// cria casas
 			var casa:Casa;
 			for (var i:Number = 0; i < 19; i++)
 			{

@@ -8,16 +8,16 @@ package jogoTCC.entidades
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
-	import starling.events.Event;
+	
 	import flash.geom.Point;
 	
 	public class Casa extends Quad
 	{
-		
+		// matriz de transforcao que aplica  perspectiva isometrica
 		private var matrizTransformacao:Matrix = new Matrix();
 		
+		// caracteristicas e atributos da casa
 		private var TAMANHO_CASA:Number = 32;
-		
 		public var nomeC:String = "casinha";
 		
 		public function Casa(posX:Number, posY:Number, inicioX:Number, inicioY:Number, alpha:Number)
@@ -34,11 +34,11 @@ package jogoTCC.entidades
 			super.x = inicioX + (posX * 45) + (45 * posY);
 			super.y = inicioY - (posX * 22) + (22 * posY);
 			super.alpha = alpha;
-			addEventListener(TouchEvent.TOUCH, touchHandler);
+			addEventListener(TouchEvent.TOUCH, controlaEventos);
 		
 		}
 		
-		private function touchHandler(e:TouchEvent):void
+		private function controlaEventos(e:TouchEvent):void
 		{
 			var touch:Touch = e.getTouch(stage);
 			if (touch != null)

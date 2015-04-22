@@ -1,26 +1,30 @@
 package jogoTCC.estrutura
 {
-	import flash.display.DisplayObject;
+	
 	import starling.display.Sprite;
 	import jogoTCC.entidades.Mapa;
 	import jogoTCC.entidades.Personagem;
 	import starling.events.Touch;
 	import flash.geom.Point;
-	import starling.events.TouchPhase;
 	import starling.events.TouchEvent;
 	import starling.events.Event;
 	
 	public class Partida extends Sprite
 	{
 		
+		// variaveis para controle do jogo
 		public var personagemMarcado:Object;
 		public var mapa:Mapa;
+		
+		// variaveis para controle do scroll da tela
 		public var moveMapaD:Boolean = false;
 		public var moveMapaE:Boolean = false;
 		public var moveMapaC:Boolean = false;
 		public var moveMapaB:Boolean = false;
-		public var VEL_SCROLLX:Number = 14;
-		public var VEL_SCROLLY:Number = 7;
+		
+		// velocidade de scroll
+		public var VEL_SCROLLX:Number = 12;
+		public var VEL_SCROLLY:Number = 6;
 		
 		public var posicaoMapa:Point = new Point();
 		
