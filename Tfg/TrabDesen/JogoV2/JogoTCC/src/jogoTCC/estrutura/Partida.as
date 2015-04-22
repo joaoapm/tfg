@@ -19,7 +19,8 @@ package jogoTCC.estrutura
 		public var moveMapaE:Boolean = false;
 		public var moveMapaC:Boolean = false;
 		public var moveMapaB:Boolean = false;
-		public var VEL_SCROLL:Number = 7;
+		public var VEL_SCROLLX:Number = 14;
+		public var VEL_SCROLLY:Number = 7;
 		
 		public var posicaoMapa:Point = new Point();
 		
@@ -48,20 +49,20 @@ package jogoTCC.estrutura
 		{
 			if (moveMapaD)
 			{
-				if (this.x < 161 && this.y < 161)
+				if (this.x < 0 && this.y < 0)
 				{
-					this.x += VEL_SCROLL;
-					this.y += VEL_SCROLL;
+					this.x += VEL_SCROLLX;
+					this.y += VEL_SCROLLY;
 				}
 			}
 			else if (moveMapaE)
 			{
 				if (mapa.x > -800)
 				{
-					if (this.x > -300 && this.y > -300)
+					if (this.x > -1100 && this.y > -1100)
 					{
-						this.x -= VEL_SCROLL;
-						this.y -= VEL_SCROLL;
+						this.x -= VEL_SCROLLX;
+						this.y -= VEL_SCROLLY;
 					}
 				}
 			}

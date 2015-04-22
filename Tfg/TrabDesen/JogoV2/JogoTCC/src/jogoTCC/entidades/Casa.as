@@ -29,7 +29,7 @@ package jogoTCC.entidades
 			
 			super.transformationMatrix = matrizTransformacao;
 			
-			super.color = 0xFFFF0F;
+			super.color = 0xFF444F;
 			
 			super.x = inicioX + (posX * 45) + (45 * posY);
 			super.y = inicioY - (posX * 22) + (22 * posY);

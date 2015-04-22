@@ -10,8 +10,8 @@ package jogoTCC.entidades
 	public class Mapa extends Sprite
 	{
 		
-		private var INICIO_X:Number = -800;
-		private var INICIO_Y:Number =270;
+		private var INICIO_X:Number = 45
+		private var INICIO_Y:Number = 500;
 		private var ALPHA:Number = 0.1;
 		
 		[Embed(source="../../../assets/mapa/mapa.png")]
@@ -31,8 +31,8 @@ package jogoTCC.entidades
 			var textura:Texture = Texture.fromBitmap(new MAPA());
 			var imagem:Image = new Image(textura);
 			
-			imagem.x = -1100;
-			imagem.y = -400;
+			imagem.x = 0;
+			imagem.y = 100;
 			
 			imagem.scaleX = 1.5;
 			imagem.scaleY = 1.5;
@@ -43,9 +43,9 @@ package jogoTCC.entidades
 		{
 			
 			var casa:Casa;
-			for (var i:Number = 0; i < 28; i++)
+			for (var i:Number = 0; i < 19; i++)
 			{
-				for (var j:Number = 0; j < 36; j++)
+				for (var j:Number = 0; j < 24; j++)
 				{
 					casa = new Casa(i, j, INICIO_X, INICIO_Y, ALPHA);
 					addChild(casa);
