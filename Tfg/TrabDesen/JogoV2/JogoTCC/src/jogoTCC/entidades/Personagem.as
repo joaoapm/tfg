@@ -75,7 +75,7 @@ package jogoTCC.entidades
 			
 			// inicializa animacoes
 			this.tipoJogador = tipoJogador;
-			
+			/*
 			mvAndandoD1 = carregaAnimacao.carregaAnimacao(mvAndandoD1, 8, "andandoD1", "andando", tipoJogador);
 			mvAndandoD2 = carregaAnimacao.carregaAnimacao(mvAndandoD1, 8, "andandoD2", "andando", tipoJogador);
 			mvAndandoD3 = carregaAnimacao.carregaAnimacao(mvAndandoD1, 8, "andandoD3", "andando", tipoJogador);
@@ -111,16 +111,25 @@ package jogoTCC.entidades
 			mvMorrendoLE = carregaAnimacao.carregaAnimacao(mvMorrendoLE, 11, "morrendoLE", "morrendo", tipoJogador);
 			mvMorrendoLD = carregaAnimacao.carregaAnimacao(mvMorrendoLD, 11, "morrendoLD", "morrendo", tipoJogador);
 			
-			mvParadoFR = carregaAnimacao.carregaAnimacao(mvParadoFR, 13, "paradoFR", "parado", tipoJogador);
+
 			mvParadoTR = carregaAnimacao.carregaAnimacao(mvParadoTR, 13, "paradoTR", "parado", tipoJogador);
 			mvParadoLE = carregaAnimacao.carregaAnimacao(mvParadoLE, 13, "paradoLE", "parado", tipoJogador);
 			mvParadoLD = carregaAnimacao.carregaAnimacao(mvParadoLD, 13, "paradoLD", "parado", tipoJogador);
+			*/
 			
+			mvParadoFR = carregaAnimacao.carregaAnimacao(mvParadoFR, 13, "paradoFR", "parado", tipoJogador);
 			mvAtual = mvParadoFR;
 			
 			addChild(mvAtual);
 			mvAtual.play();
 			Starling.juggler.add(mvAtual);
+		
+		}
+		
+		public function setLocalPersonagem(casa:Casa):void
+		{
+			super.x = casa.x - 47;
+			super.y = casa.y - 47;
 		
 		}
 		

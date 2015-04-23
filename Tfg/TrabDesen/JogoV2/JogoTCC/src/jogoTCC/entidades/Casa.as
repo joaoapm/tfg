@@ -51,14 +51,11 @@ package jogoTCC.entidades
 					if (target as Casa)
 					{
 						var c:Casa = target as Casa;
-						
 						var partida:Partida = c.parent.parent as Partida;
 						var perso:Personagem = partida.personagemMarcado as Personagem;
-						perso.x = c.x - 47;
-						perso.y = c.y - 47;
 						
-						c.alpha = 1;
-						
+						if (perso != null)
+							perso.setLocalPersonagem(c);
 					}
 				}
 				

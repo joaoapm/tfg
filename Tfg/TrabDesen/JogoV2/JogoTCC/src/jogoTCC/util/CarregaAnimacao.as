@@ -41,7 +41,7 @@ package jogoTCC.util
 			
 			movieClip = new MovieClip(listaFrames);
 			movieClip.loop = true;
-			
+		 
 			return movieClip;
 		
 		}

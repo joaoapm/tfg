@@ -1,6 +1,7 @@
 package jogoTCC.estrutura
 {
 	
+	import jogoTCC.entidades.Casa;
 	import starling.display.Sprite;
 	import jogoTCC.entidades.Mapa;
 	import jogoTCC.entidades.Personagem;
@@ -44,9 +45,27 @@ package jogoTCC.estrutura
 			mapa = new Mapa();
 			addChild(mapa);
 			
-			// adiciona jogadores
+			adicionaJogadores();
+		
+		}
+		
+		private function adicionaJogadores():void
+		{
 			var p1:Personagem = new Personagem("monstro");
 			addChild(p1);
+			p1.setLocalPersonagem(mapa.casas[5][3] as Casa);
+			
+			var p2:Personagem = new Personagem("monstro");
+			addChild(p2);
+			p2.setLocalPersonagem(mapa.casas[8][3] as Casa);
+			
+			var p3:Personagem = new Personagem("monstro");
+			addChild(p3);
+			p3.setLocalPersonagem(mapa.casas[11][3] as Casa);
+			
+			var p4:Personagem = new Personagem("monstro");
+			addChild(p4);
+			p4.setLocalPersonagem(mapa.casas[14][3] as Casa);
 		}
 		
 		private function scrollMapa(e:Event):void

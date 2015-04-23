@@ -19,6 +19,9 @@ package jogoTCC.entidades
 		[Embed(source="../../../assets/mapa/mapa.png")]
 		private var MAPA:Class;
 		
+		// estrutura contendo referencia a todas as casas do mapa  
+		public var casas:Array = [];
+		
 		public function Mapa()
 		{
 			iniciaImagemMapa();
@@ -46,9 +49,13 @@ package jogoTCC.entidades
 			var casa:Casa;
 			for (var i:Number = 0; i < 19; i++)
 			{
+				if (casas[i] == undefined)
+					casas[i] = [];
+				
 				for (var j:Number = 0; j < 24; j++)
 				{
 					casa = new Casa(i, j, INICIO_X, INICIO_Y, ALPHA);
+					casas[i][j] = casa;
 					addChild(casa);
 				}
 			}
