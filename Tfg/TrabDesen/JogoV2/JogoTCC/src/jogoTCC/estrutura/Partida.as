@@ -24,8 +24,10 @@ package jogoTCC.estrutura
 		public var moveMapaB:Boolean = false;
 		
 		// velocidade de scroll
-		public var VEL_SCROLLX:Number = 12;
-		public var VEL_SCROLLY:Number = 6;
+		public var VEL_SCROLLX:Number = 10;
+		public var VEL_SCROLLY:Number = 5;
+		private static var POS_PARTIDAX:Number = -320;
+		private static var POS_PARTIDAY:Number = -160;
 		
 		public var posicaoMapa:Point = new Point();
 		
@@ -41,6 +43,11 @@ package jogoTCC.estrutura
 		
 		public function iniciaPartida():void
 		{
+			
+			// posiciona partida
+			this.x = POS_PARTIDAX;
+			this.y = -160;			
+			
 			// adiciona mapa ao jogo
 			mapa = new Mapa();
 			addChild(mapa);
@@ -53,19 +60,20 @@ package jogoTCC.estrutura
 		{
 			var p1:Personagem = new Personagem("monstro");
 			addChild(p1);
-			p1.setLocalPersonagem(mapa.casas[5][3] as Casa);
+			p1.setLocalInicialPersonagem(mapa.casas[5][3] as Casa);
 			
 			var p2:Personagem = new Personagem("monstro");
 			addChild(p2);
-			p2.setLocalPersonagem(mapa.casas[8][3] as Casa);
+			p2.setLocalInicialPersonagem(mapa.casas[8][3] as Casa);
 			
 			var p3:Personagem = new Personagem("monstro");
 			addChild(p3);
-			p3.setLocalPersonagem(mapa.casas[11][3] as Casa);
+			p3.setLocalInicialPersonagem(mapa.casas[11][3] as Casa);
 			
 			var p4:Personagem = new Personagem("monstro");
 			addChild(p4);
-			p4.setLocalPersonagem(mapa.casas[14][3] as Casa);
+			p4.setLocalInicialPersonagem(mapa.casas[14][3] as Casa);
+			
 		}
 		
 		private function scrollMapa(e:Event):void
@@ -85,7 +93,7 @@ package jogoTCC.estrutura
 					if (this.x > -1100 && this.y > -1100)
 					{
 						this.x -= VEL_SCROLLX;
-						this.y -= VEL_SCROLLY;
+						this.y -= VEL_SCROLLY; 
 					}
 				}
 			}
