@@ -102,33 +102,7 @@ package jogoTCC.entidades
 					
 				}
 			}
-			
-			var casaTeste:Casa = casas[0][23] as Casa;
-			casaTeste.alpha = 1;
-			
-			if (casaTeste.casaC != null)
-				casaTeste.casaC.alpha = 0.6;
-			
-			if (casaTeste.casaB != null)
-				casaTeste.casaB.alpha = 0.6;
-			
-			if (casaTeste.casaLE != null)
-				casaTeste.casaLE.alpha = 0.6;
-			
-			if (casaTeste.casaLD != null)
-				casaTeste.casaLD.alpha = 0.6;
-			
-			if (casaTeste.casaD1 != null)
-				casaTeste.casaD1.alpha = 0.6;
-			
-			if (casaTeste.casaD2 != null)
-				casaTeste.casaD2.alpha = 0.6;
-			
-			if (casaTeste.casaD3 != null)
-				casaTeste.casaD3.alpha = 0.6;
-			
-			if (casaTeste.casaD4 != null)
-				casaTeste.casaD4.alpha = 0.6;
+		
 		}
 	
 	}

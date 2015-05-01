@@ -141,27 +141,45 @@ package jogoTCC.entidades
 		
 		public function setLocalPersonagem(casa:Casa):void
 		{
-			/*
-			   var posX:Number = casa.x - 47;
-			   var posY:Number = casa.y - 47;
-			
-			   var tween:Tween = new Tween(this, 0.5);
-			   tween.animate("x", posX);
-			   tween.animate("y", posY);
-			
-			   tween.onComplete = function():void
-			   {
-			   //tween finalizado
-			   };
-			
-			 Starling.juggler.add(tween);*/
 			
 			var pt:Pathfinder = new Pathfinder();
 			var caminho:Array = pt.pesquisaCaminho(casaAtual, casa);
+			
 			for (var i:Number = 0; i < caminho.length; i++)
 			{
 				var c:Casa = caminho[i] as Casa;
+				//	trace(c.g + " " + c.h);
 				c.alpha = 1;
+			}
+			
+			movePersonagem(caminho, 1);
+		
+		}
+		
+		private function movePersonagem(caminho:Array, indice:Number):void
+		{
+			if (indice < caminho.length)
+			{
+				var casa:Casa = caminho[indice] as Casa;
+				
+				var posX:Number = casa.x - 47;
+				var posY:Number = casa.y - 47;
+				
+				var tween:Tween = new Tween(this, 0.5);
+				tween.animate("x", posX);
+				tween.animate("y", posY);
+				
+				tween.onComplete = function():void
+				{
+					indice += 1;
+					movePersonagem(caminho, indice);
+				};
+				
+				Starling.juggler.add(tween);
+			}
+			else
+			{
+				this.casaAtual = caminho[indice - 1];
 			}
 		}
 		

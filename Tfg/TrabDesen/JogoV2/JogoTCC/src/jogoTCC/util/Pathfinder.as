@@ -11,6 +11,7 @@ package jogoTCC.util
 		private var casasAbertas:Vector.<Casa>;
 		private var casasFechadas:Vector.<Casa>;
 		public var caminho:Array;
+		public var caminhoInv:Array;
 		
 		public function pesquisaCaminho(casaIni:Casa, casaFim:Casa):Array
 		{
@@ -24,6 +25,7 @@ package jogoTCC.util
 			
 			// caminho encontrado 
 			caminho = new Array();
+			caminhoInv  = new Array();
 			
 			// adiciona primeira casa do caminho(casa inicial)
 			casaIni.f = 0;
@@ -89,6 +91,7 @@ package jogoTCC.util
 			else
 			{
 				montaCaminho(casaFim);
+				inverteCaminho();
 			}
 		}
 		
@@ -123,6 +126,16 @@ package jogoTCC.util
 			{
 				this.montaCaminho(casa.casaPai);
 			}
+		}
+		
+		private function inverteCaminho():void
+		{
+			for (var i:Number = caminho.length-1; i >= 0; i--)
+			{
+				caminhoInv.push(caminho[i]);
+			}
+			
+			caminho = caminhoInv;
 		}
 	}
 }

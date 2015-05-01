@@ -62,7 +62,7 @@ package jogoTCC.estrutura
 			addChild(p1);
 			p1.setLocalInicialPersonagem(mapa.casas[5][3] as Casa);
 			
-			var p2:Personagem = new Personagem("monstro");
+			/*var p2:Personagem = new Personagem("monstro");
 			addChild(p2);
 			p2.setLocalInicialPersonagem(mapa.casas[8][3] as Casa);
 			
@@ -72,7 +72,7 @@ package jogoTCC.estrutura
 			
 			var p4:Personagem = new Personagem("monstro");
 			addChild(p4);
-			p4.setLocalInicialPersonagem(mapa.casas[14][3] as Casa);
+			p4.setLocalInicialPersonagem(mapa.casas[14][3] as Casa);*/
 			
 		}
 		
