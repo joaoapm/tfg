@@ -46,7 +46,7 @@ package jogoTCC.estrutura
 			
 			// posiciona partida
 			this.x = POS_PARTIDAX;
-			this.y = -160;			
+			this.y = -160;
 			
 			// adiciona mapa ao jogo
 			mapa = new Mapa();
@@ -61,19 +61,19 @@ package jogoTCC.estrutura
 			var p1:Personagem = new Personagem("monstro");
 			addChild(p1);
 			p1.setLocalInicialPersonagem(mapa.casas[5][3] as Casa);
-			
-			/*var p2:Personagem = new Personagem("monstro");
-			addChild(p2);
-			p2.setLocalInicialPersonagem(mapa.casas[8][3] as Casa);
-			
-			var p3:Personagem = new Personagem("monstro");
-			addChild(p3);
-			p3.setLocalInicialPersonagem(mapa.casas[11][3] as Casa);
-			
-			var p4:Personagem = new Personagem("monstro");
-			addChild(p4);
-			p4.setLocalInicialPersonagem(mapa.casas[14][3] as Casa);*/
-			
+		
+		/*var p2:Personagem = new Personagem("monstro");
+		   addChild(p2);
+		   p2.setLocalInicialPersonagem(mapa.casas[8][3] as Casa);
+		
+		   var p3:Personagem = new Personagem("monstro");
+		   addChild(p3);
+		   p3.setLocalInicialPersonagem(mapa.casas[11][3] as Casa);
+		
+		   var p4:Personagem = new Personagem("monstro");
+		   addChild(p4);
+		 p4.setLocalInicialPersonagem(mapa.casas[14][3] as Casa);*/
+		
 		}
 		
 		private function scrollMapa(e:Event):void
@@ -93,7 +93,7 @@ package jogoTCC.estrutura
 					if (this.x > -1100 && this.y > -1100)
 					{
 						this.x -= VEL_SCROLLX;
-						this.y -= VEL_SCROLLY; 
+						this.y -= VEL_SCROLLY;
 					}
 				}
 			}

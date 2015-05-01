@@ -72,6 +72,7 @@ package jogoTCC.entidades
 		
 		// animacao atual
 		private var mvAtual:MovieClip;
+		private var animAtual:String = "";
 		
 		public function Personagem(tipoJogador:String)
 		{
@@ -116,8 +117,36 @@ package jogoTCC.entidades
 			{
 				var casa:Casa = caminho[indice] as Casa;
 				
-				atualizaAnimacao("andandoLE", "andando", 8);
-				animacaoCarregada = true;
+				if (animAtual != casa.direc)
+				{
+					animacaoCarregada = false;
+					
+					if (casa.direc == "LD")
+						atualizaAnimacao("andandoLE", "andando", 8);
+					
+					if (casa.direc == "LE")
+						atualizaAnimacao("andandoLD", "andando", 8);
+					
+					if (casa.direc == "B")
+						atualizaAnimacao("andandoFR", "andando", 8);
+					
+					if (casa.direc == "C")
+						atualizaAnimacao("andandoTR", "andando", 8);
+					
+					if (casa.direc == "D1")
+						atualizaAnimacao("andandoD4", "andando", 8);
+					
+					if (casa.direc == "D2")
+						atualizaAnimacao("andandoD1", "andando", 8);
+					
+					if (casa.direc == "D3")
+						atualizaAnimacao("andandoD2", "andando", 8)
+					
+					if (casa.direc == "D4")
+						atualizaAnimacao("andandoD3", "andando", 8)
+					
+					animAtual = casa.direc;
+				}
 				
 				var posX:Number = casa.x - 47;
 				var posY:Number = casa.y - 47;
@@ -139,6 +168,7 @@ package jogoTCC.entidades
 				this.casaAtual = caminho[indice - 1];
 				animacaoCarregada = false;
 				atualizaAnimacao("paradoFR", "parado", 13);
+				animAtual = null;
 				
 			}
 		}
