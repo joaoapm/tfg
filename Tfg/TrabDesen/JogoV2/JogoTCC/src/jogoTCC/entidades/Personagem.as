@@ -79,48 +79,7 @@ package jogoTCC.entidades
 			
 			// inicializa animacoes
 			this.tipoJogador = tipoJogador;
-			/*
-			   mvAndandoD1 = carregaAnimacao.carregaAnimacao(mvAndandoD1, 8, "andandoD1", "andando", tipoJogador);
-			   mvAndandoD2 = carregaAnimacao.carregaAnimacao(mvAndandoD1, 8, "andandoD2", "andando", tipoJogador);
-			   mvAndandoD3 = carregaAnimacao.carregaAnimacao(mvAndandoD1, 8, "andandoD3", "andando", tipoJogador);
-			   mvAndandoD4 = carregaAnimacao.carregaAnimacao(mvAndandoD1, 8, "andandoD4", "andando", tipoJogador);
-			
-			   mvAtacandoD1 = carregaAnimacao.carregaAnimacao(mvAtacandoD1, 13, "ataqueD1", "atacando", tipoJogador);
-			   mvAtacandoD2 = carregaAnimacao.carregaAnimacao(mvAtacandoD2, 13, "ataqueD2", "atacando", tipoJogador);
-			   mvAtacandoD3 = carregaAnimacao.carregaAnimacao(mvAtacandoD3, 13, "ataqueD3", "atacando", tipoJogador);
-			   mvAtacandoD4 = carregaAnimacao.carregaAnimacao(mvAtacandoD4, 13, "ataqueD4", "atacando", tipoJogador);
-			
-			   mvMorrendoD1 = carregaAnimacao.carregaAnimacao(mvMorrendoD1, 11, "morrendoD1", "morrendo", tipoJogador);
-			   mvMorrendoD2 = carregaAnimacao.carregaAnimacao(mvMorrendoD2, 11, "morrendoD2", "morrendo", tipoJogador);
-			   mvMorrendoD3 = carregaAnimacao.carregaAnimacao(mvMorrendoD3, 11, "morrendoD3", "morrendo", tipoJogador);
-			   mvMorrendoD4 = carregaAnimacao.carregaAnimacao(mvMorrendoD4, 11, "morrendoD4", "morrendo", tipoJogador);
-			
-			   mvParadoD1 = carregaAnimacao.carregaAnimacao(mvParadoD1, 13, "paradoD1", "parado", tipoJogador);
-			   mvParadoD2 = carregaAnimacao.carregaAnimacao(mvParadoD2, 13, "paradoD2", "parado", tipoJogador);
-			   mvParadoD3 = carregaAnimacao.carregaAnimacao(mvParadoD3, 13, "paradoD3", "parado", tipoJogador);
-			   mvParadoD4 = carregaAnimacao.carregaAnimacao(mvParadoD4, 13, "paradoD4", "parado", tipoJogador);
-			
-			   mvAndandoFR = carregaAnimacao.carregaAnimacao(mvAndandoFR, 8, "andandoFR", "andando", tipoJogador);
-			   mvAndandoTR = carregaAnimacao.carregaAnimacao(mvAndandoTR, 8, "andandoTR", "andando", tipoJogador);
-			   mvAndandoLE = carregaAnimacao.carregaAnimacao(mvAndandoLE, 8, "andandoLE", "andando", tipoJogador);
-			   mvAndandoLD = carregaAnimacao.carregaAnimacao(mvAndandoLD, 8, "andandoLD", "andando", tipoJogador);
-			
-			   mvAtacandoFR = carregaAnimacao.carregaAnimacao(mvAtacandoFR, 13, "ataqueFR", "atacando", tipoJogador);
-			   mvAtacandoTR = carregaAnimacao.carregaAnimacao(mvAtacandoTR, 13, "ataqueTR", "atacando", tipoJogador);
-			   mvAtacandoLE = carregaAnimacao.carregaAnimacao(mvAtacandoLE, 13, "ataqueLE", "atacando", tipoJogador);
-			   mvAtacandoLD = carregaAnimacao.carregaAnimacao(mvAtacandoLD, 13, "ataqueLD", "atacando", tipoJogador);
-			
-			   mvMorrendoFR = carregaAnimacao.carregaAnimacao(mvMorrendoFR, 11, "morrendoFR", "morrendo", tipoJogador);
-			   mvMorrendoTR = carregaAnimacao.carregaAnimacao(mvMorrendoTR, 11, "morrendoTR", "morrendo", tipoJogador);
-			   mvMorrendoLE = carregaAnimacao.carregaAnimacao(mvMorrendoLE, 11, "morrendoLE", "morrendo", tipoJogador);
-			   mvMorrendoLD = carregaAnimacao.carregaAnimacao(mvMorrendoLD, 11, "morrendoLD", "morrendo", tipoJogador);
-			
-			
-			   mvParadoTR = carregaAnimacao.carregaAnimacao(mvParadoTR, 13, "paradoTR", "parado", tipoJogador);
-			   mvParadoLE = carregaAnimacao.carregaAnimacao(mvParadoLE, 13, "paradoLE", "parado", tipoJogador);
-			   mvParadoLD = carregaAnimacao.carregaAnimacao(mvParadoLD, 13, "paradoLD", "parado", tipoJogador);
-			 */
-			
+						
 			mvParadoFR = carregaAnimacao.carregaAnimacao(mvParadoFR, 13, "paradoFR", "parado", tipoJogador);
 			mvAtual = mvParadoFR;
 			
@@ -161,7 +120,7 @@ package jogoTCC.entidades
 			if (indice < caminho.length)
 			{
 				var casa:Casa = caminho[indice] as Casa;
-				
+				trace(casa.direc);
 				var posX:Number = casa.x - 47;
 				var posY:Number = casa.y - 47;
 				

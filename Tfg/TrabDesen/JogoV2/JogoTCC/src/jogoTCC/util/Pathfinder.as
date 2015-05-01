@@ -25,7 +25,7 @@ package jogoTCC.util
 			
 			// caminho encontrado 
 			caminho = new Array();
-			caminhoInv  = new Array();
+			caminhoInv = new Array();
 			
 			// adiciona primeira casa do caminho(casa inicial)
 			casaIni.f = 0;
@@ -54,7 +54,29 @@ package jogoTCC.util
 				if (menorValorF > valorFCasaAutal)
 				{
 					menorValorF = valorFCasaAutal;
+					
+					// seta direcao do movimento
+					if (casa.casaPai != null)
+					{
+						if (casa.casaPai.casaLE == casa)
+							casa.direc = "LE";
+						if (casa.casaPai.casaLD == casa)
+							casa.direc = "LD";
+						if (casa.casaPai.casaB == casa)
+							casa.direc = "B";
+						if (casa.casaPai.casaC == casa)
+							casa.direc = "C";
+						if (casa.casaPai.casaD1 == casa)
+							casa.direc = "D1";
+						if (casa.casaPai.casaD2 == casa)
+							casa.direc = "D2";
+						if (casa.casaPai.casaD3 == casa)
+							casa.direc = "D3";
+						if (casa.casaPai.casaD4 == casa)
+							casa.direc = "D4";
+					}
 					casaAtual = casa;
+					
 				}
 			}
 			
@@ -130,7 +152,7 @@ package jogoTCC.util
 		
 		private function inverteCaminho():void
 		{
-			for (var i:Number = caminho.length-1; i >= 0; i--)
+			for (var i:Number = caminho.length - 1; i >= 0; i--)
 			{
 				caminhoInv.push(caminho[i]);
 			}

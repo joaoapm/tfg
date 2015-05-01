@@ -38,6 +38,9 @@ package jogoTCC.entidades
 		public var l:Number;
 		public var c:Number;
 		
+		
+		public var direc:String;
+		
 		public function Casa(posX:Number, posY:Number, inicioX:Number, inicioY:Number, alpha:Number)
 		{
 			matrizTransformacao.rotate(Math.PI / 4);
