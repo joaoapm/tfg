@@ -28,6 +28,7 @@ package jogoTCC.entidades
 		
 		// animacao do personagem
 		private var carregaAnimacao:CarregaAnimacao = new CarregaAnimacao();
+		private var animacaoCarregada:Boolean = false;
 		
 		private var mvAndandoD1:MovieClip;
 		private var mvAndandoD2:MovieClip;
@@ -79,13 +80,7 @@ package jogoTCC.entidades
 			
 			// inicializa animacoes
 			this.tipoJogador = tipoJogador;
-						
-			mvParadoFR = carregaAnimacao.carregaAnimacao(mvParadoFR, 13, "paradoFR", "parado", tipoJogador);
-			mvAtual = mvParadoFR;
-			
-			addChild(mvAtual);
-			mvAtual.play();
-			Starling.juggler.add(mvAtual);
+			atualizaAnimacao("paradoFR", "parado", 13);
 		
 		}
 		
@@ -120,7 +115,10 @@ package jogoTCC.entidades
 			if (indice < caminho.length)
 			{
 				var casa:Casa = caminho[indice] as Casa;
-				trace(casa.direc);
+				
+				atualizaAnimacao("andandoLE", "andando", 8);
+				animacaoCarregada = true;
+				
 				var posX:Number = casa.x - 47;
 				var posY:Number = casa.y - 47;
 				
@@ -139,6 +137,26 @@ package jogoTCC.entidades
 			else
 			{
 				this.casaAtual = caminho[indice - 1];
+				animacaoCarregada = false;
+				atualizaAnimacao("paradoFR", "parado", 13);
+				
+			}
+		}
+		
+		private function atualizaAnimacao(animacao:String, tpAni:String, nrFr:Number):void
+		{
+			if (!animacaoCarregada)
+			{
+				if (mvAtual != null)
+				{
+					mvAtual.dispose();
+					mvAtual.removeFromParent();
+				}
+				mvAtual = carregaAnimacao.carregaAnimacao(mvAtual, nrFr, animacao, tpAni, tipoJogador);
+				
+				addChild(mvAtual);
+				mvAtual.play();
+				Starling.juggler.add(mvAtual);
 			}
 		}
 		
