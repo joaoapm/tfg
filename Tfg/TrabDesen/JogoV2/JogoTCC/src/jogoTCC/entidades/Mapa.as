@@ -55,10 +55,80 @@ package jogoTCC.entidades
 				for (var j:Number = 0; j < 24; j++)
 				{
 					casa = new Casa(i, j, INICIO_X, INICIO_Y, ALPHA);
+					casa.l = i;
+					casa.c = j;
 					casas[i][j] = casa;
 					addChild(casa);
 				}
 			}
+			
+			for (i = 0; i < 19; i++)
+			{
+				for (j = 0; j < 24; j++)
+				{
+					var casaAtual:Casa = casas[i][j] as Casa;
+					
+					// seta casa a cima
+					if ((j - 1) > 0)
+						casaAtual.casaC = casas[i][j - 1];
+					
+					// seta casa a baixo
+					if ((j + 1) <= 24)
+						casaAtual.casaB = casas[i][j + 1];
+					
+					// seta casa a esquerda
+					if ((i - 1) > 0)
+						casaAtual.casaLE = casas[i - 1][j];
+					
+					// seta casa a direita
+					if ((i + 1) < 19)
+						casaAtual.casaLD = casas[i + 1][j];
+					
+					// seta casa a D1
+					if ((i - 1) >= 0 && (j - 1) >= 0)
+						casaAtual.casaD1 = casas[i - 1][j - 1];
+					
+					// seta casa a D2
+					if ((i + 1) < 19 && (j + 1) < 24)
+						casaAtual.casaD2 = casas[i + 1][j + 1];
+					
+					// seta casa a D3
+					if ((i + 1) < 19 && (j - 1) >= 0)
+						casaAtual.casaD3 = casas[i + 1][j - 1];
+					
+					// seta casa a D4
+					if ((i - 1) >= 0 && (j + 1) < 24)
+						casaAtual.casaD4 = casas[i - 1][j + 1];
+					
+				}
+			}
+			
+			var casaTeste:Casa = casas[0][23] as Casa;
+			casaTeste.alpha = 1;
+			
+			if (casaTeste.casaC != null)
+				casaTeste.casaC.alpha = 0.6;
+			
+			if (casaTeste.casaB != null)
+				casaTeste.casaB.alpha = 0.6;
+			
+			if (casaTeste.casaLE != null)
+				casaTeste.casaLE.alpha = 0.6;
+			
+			if (casaTeste.casaLD != null)
+				casaTeste.casaLD.alpha = 0.6;
+			
+			if (casaTeste.casaD1 != null)
+				casaTeste.casaD1.alpha = 0.6;
+			
+			if (casaTeste.casaD2 != null)
+				casaTeste.casaD2.alpha = 0.6;
+			
+			if (casaTeste.casaD3 != null)
+				casaTeste.casaD3.alpha = 0.6;
+			
+			if (casaTeste.casaD4 != null)
+				casaTeste.casaD4.alpha = 0.6;
 		}
 	
 	}

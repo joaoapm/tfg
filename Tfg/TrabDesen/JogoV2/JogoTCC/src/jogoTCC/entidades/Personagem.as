@@ -1,9 +1,11 @@
 package jogoTCC.entidades
 {
+	import flash.media.Camera;
 	import jogoTCC.estrutura.Partida;
 	import jogoTCC.modelo.TipoJogador;
 	import jogoTCC.util.CarregaAnimacao;
 	import jogoTCC.util.CarregaAssets;
+	import jogoTCC.util.Pathfinder;
 	import starling.display.Sprite;
 	import starling.display.MovieClip;
 	import starling.core.Starling;
@@ -22,6 +24,7 @@ package jogoTCC.entidades
 		// atributos do personagem
 		private var vida:Number;
 		private var ataque:Number;
+		private var casaAtual:Casa;
 		
 		// animacao do personagem
 		private var carregaAnimacao:CarregaAnimacao = new CarregaAnimacao();
@@ -131,24 +134,45 @@ package jogoTCC.entidades
 		{
 			super.x = casa.x - 47;
 			super.y = casa.y - 47;
+			
+			casaAtual = casa;
 		
 		}
 		
 		public function setLocalPersonagem(casa:Casa):void
 		{
-			var posX:Number = casa.x - 47;
-			var posY:Number = casa.y - 47;
+			/*
+			   var posX:Number = casa.x - 47;
+			   var posY:Number = casa.y - 47;
 			
-			var tween:Tween = new Tween(this, 0.5);
-			tween.animate("x", posX);
-			tween.animate("y", posY);
+			   var tween:Tween = new Tween(this, 0.5);
+			   tween.animate("x", posX);
+			   tween.animate("y", posY);
 			
-			tween.onComplete = function():void
+			   tween.onComplete = function():void
+			   {
+			   //tween finalizado
+			   };
+			
+			 Starling.juggler.add(tween);*/
+			
+			var pt:Pathfinder = new Pathfinder();
+			var caminho:Array = pt.pesquisaCaminho(casaAtual, casa);
+			for (var i:Number = 0; i < caminho.length; i++)
 			{
-				//tween finalizado
-			};
+				var c:Casa = caminho[i] as Casa;
+				c.alpha = 1;
+			}
+		}
+		
+		private function contemCasa(lista:Vector.<Casa>, casa:Casa):Boolean
+		{
+			const index:Number = lista.indexOf(casa);
 			
-			Starling.juggler.add(tween);
+			if (index == -1)
+				return false;
+			else
+				return true;
 		}
 		
 		private function controlaEventos(e:TouchEvent):void

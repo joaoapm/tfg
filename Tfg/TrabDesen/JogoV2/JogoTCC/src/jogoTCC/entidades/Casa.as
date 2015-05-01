@@ -8,7 +8,6 @@ package jogoTCC.entidades
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
-	
 	import flash.geom.Point;
 	
 	public class Casa extends Quad
@@ -19,6 +18,25 @@ package jogoTCC.entidades
 		// caracteristicas e atributos da casa
 		private var TAMANHO_CASA:Number = 32;
 		public var nomeC:String = "casinha";
+		
+		// variaveis para controle do pathfinder
+		public var ehPassavel:Boolean = true;
+		public var f:Number = 0;
+		public var g:Number = 0;
+		public var h:Number = 0;
+		public var casaPai:Casa;
+		public var casaLE:Casa;
+		public var casaC:Casa;
+		public var casaB:Casa;
+		public var casaLD:Casa;
+		public var casaD1:Casa;
+		public var casaD2:Casa;
+		public var casaD3:Casa;
+		public var casaD4:Casa;
+		
+		
+		public var l:Number;
+		public var c:Number;
 		
 		public function Casa(posX:Number, posY:Number, inicioX:Number, inicioY:Number, alpha:Number)
 		{
