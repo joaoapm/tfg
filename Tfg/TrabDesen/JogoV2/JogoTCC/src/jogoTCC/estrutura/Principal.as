@@ -14,7 +14,7 @@ package jogoTCC.estrutura
 		public function Principal()
 		{
 			stage.quality = "HIGH";
-			_starling = new Starling(Partida, stage);
+			_starling = new Starling(TelaInicial, stage);
 			_starling.antiAliasing = 40;
 			
 			_starling.start();
