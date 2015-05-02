@@ -13,7 +13,7 @@ package jogoTCC.entidades
 		// variaveis de controle da criacao das casas
 		private var INICIO_X:Number = 45
 		private var INICIO_Y:Number = 500;
-		private var ALPHA:Number = 0.5;
+		private var ALPHA:Number = 0;
 		
 		// instancia variavel com imagem do mapa
 		[Embed(source="../../../assets/mapa/mapa.png")]

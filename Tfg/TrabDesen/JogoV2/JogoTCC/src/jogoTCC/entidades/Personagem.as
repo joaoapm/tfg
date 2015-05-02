@@ -1,5 +1,6 @@
 package jogoTCC.entidades
 {
+	import flash.display.CapsStyle;
 	import flash.media.Camera;
 	import jogoTCC.estrutura.Partida;
 	import jogoTCC.modelo.TipoJogador;
@@ -96,19 +97,14 @@ package jogoTCC.entidades
 		
 		public function setLocalPersonagem(casa:Casa):void
 		{
-			
-			var pt:Pathfinder = new Pathfinder();
-			var caminho:Array = pt.pesquisaCaminho(casaAtual, casa);
-			
-			for (var i:Number = 0; i < caminho.length; i++)
+			if (isCasaDestinoValida(casa))
 			{
-				var c:Casa = caminho[i] as Casa;
-				//	trace(c.g + " " + c.h);
-				c.alpha = 1;
+				var pt:Pathfinder = new Pathfinder();
+				var caminho:Array = pt.pesquisaCaminho(casaAtual, casa);
+				
+				mostraRange(false);
+				movePersonagem(caminho, 1);
 			}
-			
-			movePersonagem(caminho, 1);
-		
 		}
 		
 		private function movePersonagem(caminho:Array, indice:Number):void
@@ -169,7 +165,6 @@ package jogoTCC.entidades
 				animacaoCarregada = false;
 				atualizaAnimacao("paradoFR", "parado", 13);
 				animAtual = null;
-				
 			}
 		}
 		
@@ -213,10 +208,85 @@ package jogoTCC.entidades
 				if (touch.phase == TouchPhase.ENDED)
 				{
 					partida.personagemMarcado = clicked;
+					mostraRange(true);
 				}
 			}
 		}
+		
+		private function mostraRange(ligaRange:Boolean):void
+		{
+			alteraAlphaCasas(this.casaAtual, ligaRange);
+			alteraAlphaCasas(this.casaAtual.casaD1, ligaRange);
+			alteraAlphaCasas(this.casaAtual.casaD2, ligaRange);
+			alteraAlphaCasas(this.casaAtual.casaD3, ligaRange);
+			alteraAlphaCasas(this.casaAtual.casaD4, ligaRange);
+			alteraAlphaCasas(this.casaAtual.casaC, ligaRange);
+			alteraAlphaCasas(this.casaAtual.casaB, ligaRange);
+			alteraAlphaCasas(this.casaAtual.casaLD, ligaRange);
+			alteraAlphaCasas(this.casaAtual.casaLE, ligaRange);
+		}
+		
+		private function alteraAlphaCasas(casa:Casa, ligaRange:Boolean):void
+		{
+			
+			if (casa != null)
+			{
+				var alpha:Number = 0.3;
+				
+				if (!ligaRange)
+					alpha = 0;
+				
+				if (casa.casaD1 != null)
+					casa.casaD1.alpha = alpha;
+				
+				if (casa.casaD2 != null)
+					casa.casaD2.alpha = alpha;
+				
+				if (casa.casaD3 != null)
+					casa.casaD3.alpha = alpha;
+				
+				if (casa.casaD4 != null)
+					casa.casaD4.alpha = alpha;
+				
+				if (casa.casaB != null)
+					casa.casaB.alpha = alpha;
+				
+				if (casa.casaC != null)
+					casa.casaC.alpha = alpha;
+				
+				if (casa.casaLD != null)
+					casa.casaLD.alpha = alpha;
+				
+				if (casa.casaLE != null)
+					casa.casaLE.alpha = alpha;
+			}
+		}
+		
+		private function isCasaDestinoValida(casaDest:Casa):Boolean
+		{
+			if (validaCasa(casaDest, this.casaAtual) || validaCasa(casaDest, this.casaAtual.casaD1) || 
+			validaCasa(casaDest, this.casaAtual.casaD2) || validaCasa(casaDest, this.casaAtual.casaD3) || 
+			validaCasa(casaDest, this.casaAtual.casaD4) || validaCasa(casaDest, this.casaAtual.casaB) || 
+			validaCasa(casaDest, this.casaAtual.casaC) || validaCasa(casaDest, this.casaAtual.casaLD) || 
+			validaCasa(casaDest, this.casaAtual.casaLD))
+				return true;
+			
+			return false;
+		}
+		
+		private function validaCasa(casaDest:Casa, casa:Casa):Boolean
+		{
+			
+			if (casaDest == casa.casaD1 || casaDest == casa.casaD2 || casaDest == casa.casaD3 || 
+			casaDest == casa.casaD4 || casaDest == casa.casaB || casaDest == casa.casaC || 
+			casaDest == casa.casaLD || casaDest == casa.casaLE)
+			{
+				return true;
+			}
+			
+			return false;
+		
+		}
 	
 	}
-
 }
