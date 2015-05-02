@@ -61,11 +61,11 @@ package jogoTCC.estrutura
 			var p1:Personagem = new Personagem("monstro");
 			addChild(p1);
 			p1.setLocalInicialPersonagem(mapa.casas[5][3] as Casa);
-		
-		/*var p2:Personagem = new Personagem("monstro");
-		   addChild(p2);
-		   p2.setLocalInicialPersonagem(mapa.casas[8][3] as Casa);
-		
+			
+			var p2:Personagem = new Personagem("monstro");
+			addChild(p2);
+			p2.setLocalInicialPersonagem(mapa.casas[8][3] as Casa);
+		/*
 		   var p3:Personagem = new Personagem("monstro");
 		   addChild(p3);
 		   p3.setLocalInicialPersonagem(mapa.casas[11][3] as Casa);
@@ -134,6 +134,13 @@ package jogoTCC.estrutura
 				}
 			}
 		
+		}
+		
+		public function atualizaPersonagemMarcado(personagem:Personagem):void
+		{
+			if (personagemMarcado != null)
+				personagemMarcado.mostraRange(false);
+			personagemMarcado = personagem;
 		}
 	}
 

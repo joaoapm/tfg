@@ -151,6 +151,8 @@ package jogoTCC.entidades
 				tween.animate("x", posX);
 				tween.animate("y", posY);
 				
+				super.parent.setChildIndex(this, casa.l + casa.c);
+				
 				tween.onComplete = function():void
 				{
 					indice += 1;
@@ -207,13 +209,13 @@ package jogoTCC.entidades
 				
 				if (touch.phase == TouchPhase.ENDED)
 				{
-					partida.personagemMarcado = clicked;
+					partida.atualizaPersonagemMarcado(clicked);
 					mostraRange(true);
 				}
 			}
 		}
 		
-		private function mostraRange(ligaRange:Boolean):void
+		public function mostraRange(ligaRange:Boolean):void
 		{
 			alteraAlphaCasas(this.casaAtual, ligaRange);
 			alteraAlphaCasas(this.casaAtual.casaD1, ligaRange);
