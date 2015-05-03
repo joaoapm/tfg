@@ -195,6 +195,7 @@ package jogoTCC.entidades
 				}
 				mvAtual = carregaAnimacao.carregaAnimacao(mvAtual, nrFr, animacao, tpAni, tipoJogador);
 				
+ 
 				addChild(mvAtual);
 				mvAtual.play();
 				Starling.juggler.add(mvAtual);

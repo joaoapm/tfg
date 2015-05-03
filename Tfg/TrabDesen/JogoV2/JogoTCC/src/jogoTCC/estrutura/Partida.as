@@ -149,8 +149,8 @@ package jogoTCC.estrutura
 		
 		public function gerenciaAtaque(personagem:Personagem):void
 		{
-			if ((personagem != null && personagemMarcado != null) && personagem != personagemMarcado && 
-			personagem.time != personagemMarcado.time)
+			if ((personagem != null && personagemMarcado != null) && 
+			     personagem != personagemMarcado && personagem.time != personagemMarcado.time)
 			{
 				personagem.sofreAtaque();
 				personagemMarcado.ataca();
