@@ -14,7 +14,7 @@ package jogoTCC.estrutura
 	{
 		
 		// variaveis para controle do jogo
-		public var personagemMarcado:Object;
+		public var personagemMarcado:Personagem;
 		public var mapa:Mapa;
 		
 		// variaveis para controle do scroll da tela
@@ -144,7 +144,16 @@ package jogoTCC.estrutura
 		{
 			if (personagemMarcado != null)
 				personagemMarcado.mostraRange(false);
-			personagemMarcado = personagem;
+			
+			if ((personagem != null && personagemMarcado != null) && personagem != personagemMarcado && personagem.time != personagemMarcado.time)
+			{
+				personagem.sofreAtaque();
+				personagemMarcado.ataca();
+			}
+			else
+			{
+				personagemMarcado = personagem;
+			}
 		}
 	}
 

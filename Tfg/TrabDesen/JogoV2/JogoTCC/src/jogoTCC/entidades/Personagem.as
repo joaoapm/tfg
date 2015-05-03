@@ -224,7 +224,9 @@ package jogoTCC.entidades
 				if (touch.phase == TouchPhase.ENDED)
 				{
 					partida.atualizaPersonagemMarcado(clicked);
-					mostraRange(true);
+					
+					if (this.time == 0)
+						mostraRange(true);
 				}
 			}
 		}
@@ -306,11 +308,31 @@ package jogoTCC.entidades
 				atualizaAnimacao("paradoFR", "parado", 13);
 			else
 				atualizaAnimacao("paradoTR", "parado", 13);
-				
+			
 			if (partida != null)
 				partida.atualizaPersonagemMarcado(null);
 			animacaoCarregada = false;
 			animAtual = null;
+		}
+		
+		public function ataca():void
+		{
+			mvAtual.dispose();
+			mvAtual.removeFromParent();
+			
+			mvAtual = carregaAnimacao.carregaAnimacao(mvAtual, 13, "ataqueFR", "atacando", tipoJogador);
+			
+			addChild(mvAtual);
+			mvAtual.play();
+			Starling.juggler.add(mvAtual);
+			
+			mvAtual.addEventListener(Event.COMPLETE, resetaAnimacao);
+		
+		}
+		
+		public function sofreAtaque():void
+		{
+			//atualizaAnimacao("ataqueFR", "atacando", 13);
 		}
 	
 	}
