@@ -97,8 +97,8 @@ package jogoTCC.entidades
 			// inicializa barra de vida
 			vidaAtual = barraVida.imgVida1;
 			addChild(vidaAtual);
-			vidaAtual.y -= 15;
-			vidaAtual.x -= 12;
+			vidaAtual.y -= 5;
+			vidaAtual.x += 10;
 		
 		}
 		
@@ -167,8 +167,9 @@ package jogoTCC.entidades
 				tween.animate("x", posX);
 				tween.animate("y", posY);
 				
-				super.parent.setChildIndex(this, casa.l + casa.c);
-				
+				var la:Number =  100 - ( casa.l +  casa.c);
+				super.parent.setChildIndex(this,la);
+				 
 				tween.onComplete = function():void
 				{
 					indice += 1;
@@ -195,7 +196,6 @@ package jogoTCC.entidades
 				}
 				mvAtual = carregaAnimacao.carregaAnimacao(mvAtual, nrFr, animacao, tpAni, tipoJogador);
 				
- 
 				addChild(mvAtual);
 				mvAtual.play();
 				Starling.juggler.add(mvAtual);
@@ -385,8 +385,8 @@ package jogoTCC.entidades
 			if (vidaAtual != null)
 			{
 				addChild(vidaAtual);
-				vidaAtual.y -= 15;
-				vidaAtual.x -= 12;
+				vidaAtual.y -= 5;
+				vidaAtual.x += 10;
 			}
 		}
 	

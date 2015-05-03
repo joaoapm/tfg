@@ -59,6 +59,8 @@ package jogoTCC.entidades
 			textura = Texture.fromBitmap(new img());
 			
 			var imagem:Image = new Image(textura);
+			imagem.height -= 10;
+			imagem.width -= 40;
 			return imagem;
 		}
 	
