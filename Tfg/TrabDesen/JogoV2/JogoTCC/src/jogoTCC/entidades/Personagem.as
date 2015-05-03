@@ -7,6 +7,7 @@ package jogoTCC.entidades
 	import jogoTCC.util.CarregaAnimacao;
 	import jogoTCC.util.CarregaAssets;
 	import jogoTCC.util.Pathfinder;
+	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.display.MovieClip;
 	import starling.core.Starling;
@@ -15,6 +16,7 @@ package jogoTCC.entidades
 	import starling.events.TouchEvent;
 	import starling.events.Event;
 	import starling.animation.Tween;
+	import jogoTCC.entidades.BarraVida;
 	
 	public class Personagem extends Sprite
 	{
@@ -75,14 +77,26 @@ package jogoTCC.entidades
 		private var mvAtual:MovieClip;
 		private var animAtual:String = "";
 		
+		private var vidaAtual:Image;
+		
 		public function Personagem(tipoJogador:String)
 		{
+			
+			// instancia barras de vida
+			var barraVida:BarraVida = new BarraVida();
+			
 			// controle de eventos
 			addEventListener(TouchEvent.TOUCH, controlaEventos);
 			
 			// inicializa animacoes
 			this.tipoJogador = tipoJogador;
 			atualizaAnimacao("paradoFR", "parado", 13);
+			
+			// inicializa barra de vida
+			vidaAtual = barraVida.imgVida1;
+			addChild(vidaAtual);
+			vidaAtual.y -= 15;
+			vidaAtual.x -= 12;
 		
 		}
 		
@@ -266,11 +280,7 @@ package jogoTCC.entidades
 		
 		private function isCasaDestinoValida(casaDest:Casa):Boolean
 		{
-			if (validaCasa(casaDest, this.casaAtual) || validaCasa(casaDest, this.casaAtual.casaD1) || 
-			validaCasa(casaDest, this.casaAtual.casaD2) || validaCasa(casaDest, this.casaAtual.casaD3) || 
-			validaCasa(casaDest, this.casaAtual.casaD4) || validaCasa(casaDest, this.casaAtual.casaB) || 
-			validaCasa(casaDest, this.casaAtual.casaC) || validaCasa(casaDest, this.casaAtual.casaLD) || 
-			validaCasa(casaDest, this.casaAtual.casaLD))
+			if (validaCasa(casaDest, this.casaAtual) || validaCasa(casaDest, this.casaAtual.casaD1) || validaCasa(casaDest, this.casaAtual.casaD2) || validaCasa(casaDest, this.casaAtual.casaD3) || validaCasa(casaDest, this.casaAtual.casaD4) || validaCasa(casaDest, this.casaAtual.casaB) || validaCasa(casaDest, this.casaAtual.casaC) || validaCasa(casaDest, this.casaAtual.casaLD) || validaCasa(casaDest, this.casaAtual.casaLD))
 				return true;
 			
 			return false;
@@ -279,9 +289,7 @@ package jogoTCC.entidades
 		private function validaCasa(casaDest:Casa, casa:Casa):Boolean
 		{
 			
-			if (casaDest == casa.casaD1 || casaDest == casa.casaD2 || casaDest == casa.casaD3 || 
-			casaDest == casa.casaD4 || casaDest == casa.casaB || casaDest == casa.casaC || 
-			casaDest == casa.casaLD || casaDest == casa.casaLE)
+			if (casaDest == casa.casaD1 || casaDest == casa.casaD2 || casaDest == casa.casaD3 || casaDest == casa.casaD4 || casaDest == casa.casaB || casaDest == casa.casaC || casaDest == casa.casaLD || casaDest == casa.casaLE)
 			{
 				return true;
 			}

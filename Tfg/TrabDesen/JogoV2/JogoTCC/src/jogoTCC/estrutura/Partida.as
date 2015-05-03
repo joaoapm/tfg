@@ -53,7 +53,6 @@ package jogoTCC.estrutura
 			addChild(mapa);
 			
 			adicionaJogadores();
-		
 		}
 		
 		private function adicionaJogadores():void
