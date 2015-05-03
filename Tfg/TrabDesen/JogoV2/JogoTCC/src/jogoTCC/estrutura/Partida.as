@@ -144,15 +144,16 @@ package jogoTCC.estrutura
 		{
 			if (personagemMarcado != null)
 				personagemMarcado.mostraRange(false);
-			
-			if ((personagem != null && personagemMarcado != null) && personagem != personagemMarcado && personagem.time != personagemMarcado.time)
+			personagemMarcado = personagem;
+		}
+		
+		public function gerenciaAtaque(personagem:Personagem):void
+		{
+			if ((personagem != null && personagemMarcado != null) && personagem != personagemMarcado && 
+			personagem.time != personagemMarcado.time)
 			{
 				personagem.sofreAtaque();
 				personagemMarcado.ataca();
-			}
-			else
-			{
-				personagemMarcado = personagem;
 			}
 		}
 	}

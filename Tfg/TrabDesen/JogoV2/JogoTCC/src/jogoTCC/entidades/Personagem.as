@@ -77,14 +77,14 @@ package jogoTCC.entidades
 		// animacao atual
 		private var mvAtual:MovieClip;
 		private var animAtual:String = "";
-		
+		private var barraVida:BarraVida;
 		private var vidaAtual:Image;
 		
 		public function Personagem(tipoJogador:String, nrTime:Number)
 		{
 			
 			// instancia barras de vida
-			var barraVida:BarraVida = new BarraVida();
+			barraVida = new BarraVida();
 			
 			// controle de eventos
 			addEventListener(TouchEvent.TOUCH, controlaEventos);
@@ -223,10 +223,15 @@ package jogoTCC.entidades
 				
 				if (touch.phase == TouchPhase.ENDED)
 				{
-					partida.atualizaPersonagemMarcado(clicked);
-					
 					if (this.time == 0)
+					{
+						partida.atualizaPersonagemMarcado(clicked);
 						mostraRange(true);
+					}
+					else
+					{
+						partida.gerenciaAtaque(clicked);
+					}
 				}
 			}
 		}
@@ -282,7 +287,11 @@ package jogoTCC.entidades
 		
 		private function isCasaDestinoValida(casaDest:Casa):Boolean
 		{
-			if (validaCasa(casaDest, this.casaAtual) || validaCasa(casaDest, this.casaAtual.casaD1) || validaCasa(casaDest, this.casaAtual.casaD2) || validaCasa(casaDest, this.casaAtual.casaD3) || validaCasa(casaDest, this.casaAtual.casaD4) || validaCasa(casaDest, this.casaAtual.casaB) || validaCasa(casaDest, this.casaAtual.casaC) || validaCasa(casaDest, this.casaAtual.casaLD) || validaCasa(casaDest, this.casaAtual.casaLD))
+			if (validaCasa(casaDest, this.casaAtual) || validaCasa(casaDest, this.casaAtual.casaD1) || 
+			validaCasa(casaDest, this.casaAtual.casaD2) || validaCasa(casaDest, this.casaAtual.casaD3) || 
+			validaCasa(casaDest, this.casaAtual.casaD4) || validaCasa(casaDest, this.casaAtual.casaB) || 
+			validaCasa(casaDest, this.casaAtual.casaC) || validaCasa(casaDest, this.casaAtual.casaLD) || 
+			validaCasa(casaDest, this.casaAtual.casaLD))
 				return true;
 			
 			return false;
@@ -291,7 +300,9 @@ package jogoTCC.entidades
 		private function validaCasa(casaDest:Casa, casa:Casa):Boolean
 		{
 			
-			if (casaDest == casa.casaD1 || casaDest == casa.casaD2 || casaDest == casa.casaD3 || casaDest == casa.casaD4 || casaDest == casa.casaB || casaDest == casa.casaC || casaDest == casa.casaLD || casaDest == casa.casaLE)
+			if (casaDest == casa.casaD1 || casaDest == casa.casaD2 || casaDest == casa.casaD3 || 
+			casaDest == casa.casaD4 || casaDest == casa.casaB || casaDest == casa.casaC || 
+			casaDest == casa.casaLD || casaDest == casa.casaLE)
 			{
 				return true;
 			}
@@ -302,17 +313,25 @@ package jogoTCC.entidades
 		
 		private function resetaAnimacao():void
 		{
-			var partida:Partida = parent as Partida;
-			
-			if (time == 0)
-				atualizaAnimacao("paradoFR", "parado", 13);
+			if (this.vida == 1)
+			{
+				this.dispose();
+				this.removeFromParent();
+			}
 			else
-				atualizaAnimacao("paradoTR", "parado", 13);
-			
-			if (partida != null)
-				partida.atualizaPersonagemMarcado(null);
-			animacaoCarregada = false;
-			animAtual = null;
+			{
+				var partida:Partida = parent as Partida;
+				
+				if (time == 0)
+					atualizaAnimacao("paradoFR", "parado", 13);
+				else
+					atualizaAnimacao("paradoTR", "parado", 13);
+				
+				if (partida != null)
+					partida.atualizaPersonagemMarcado(null);
+				animacaoCarregada = false;
+				animAtual = null;
+			}
 		}
 		
 		public function ataca():void
@@ -332,7 +351,42 @@ package jogoTCC.entidades
 		
 		public function sofreAtaque():void
 		{
-			//atualizaAnimacao("ataqueFR", "atacando", 13);
+			this.vida -= 1;
+			
+			if (vidaAtual != null)
+			{
+				vidaAtual.dispose();
+				vidaAtual.removeFromParent();
+			}
+			if (this.vida == 6)
+				vidaAtual = barraVida.imgVida1;
+			if (this.vida == 5)
+				vidaAtual = barraVida.imgVida2;
+			if (this.vida == 4)
+				vidaAtual = barraVida.imgVida3;
+			if (this.vida == 3)
+				vidaAtual = barraVida.imgVida4;
+			if (this.vida == 2)
+				vidaAtual = barraVida.imgVida5;
+			if (this.vida == 1)
+			{
+				mvAtual.dispose();
+				mvAtual.removeFromParent();
+				
+				mvAtual = carregaAnimacao.carregaAnimacao(mvAtual, 8, "morrendoTR", "morrendo", tipoJogador);
+				
+				addChild(mvAtual);
+				mvAtual.play();
+				Starling.juggler.add(mvAtual);
+				
+				mvAtual.addEventListener(Event.COMPLETE, resetaAnimacao);
+			}
+			if (vidaAtual != null)
+			{
+				addChild(vidaAtual);
+				vidaAtual.y -= 15;
+				vidaAtual.x -= 12;
+			}
 		}
 	
 	}
