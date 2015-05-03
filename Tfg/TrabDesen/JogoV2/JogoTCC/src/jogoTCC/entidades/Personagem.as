@@ -25,9 +25,10 @@ package jogoTCC.entidades
 		private var tipoJogador:String;
 		
 		// atributos do personagem
-		private var vida:Number;
-		private var ataque:Number;
-		private var casaAtual:Casa;
+		public var vida:Number = 6;
+		public var ataque:Number;
+		public var casaAtual:Casa;
+		public var time:Number;
 		
 		// animacao do personagem
 		private var carregaAnimacao:CarregaAnimacao = new CarregaAnimacao();
@@ -79,7 +80,7 @@ package jogoTCC.entidades
 		
 		private var vidaAtual:Image;
 		
-		public function Personagem(tipoJogador:String)
+		public function Personagem(tipoJogador:String, nrTime:Number)
 		{
 			
 			// instancia barras de vida
@@ -90,7 +91,8 @@ package jogoTCC.entidades
 			
 			// inicializa animacoes
 			this.tipoJogador = tipoJogador;
-			atualizaAnimacao("paradoFR", "parado", 13);
+			this.time = nrTime;
+			resetaAnimacao();
 			
 			// inicializa barra de vida
 			vidaAtual = barraVida.imgVida1;
@@ -178,9 +180,7 @@ package jogoTCC.entidades
 			else
 			{
 				this.casaAtual = caminho[indice - 1];
-				animacaoCarregada = false;
-				atualizaAnimacao("paradoFR", "parado", 13);
-				animAtual = null;
+				resetaAnimacao();
 			}
 		}
 		
@@ -296,6 +296,21 @@ package jogoTCC.entidades
 			
 			return false;
 		
+		}
+		
+		private function resetaAnimacao():void
+		{
+			var partida:Partida = parent as Partida;
+			
+			if (time == 0)
+				atualizaAnimacao("paradoFR", "parado", 13);
+			else
+				atualizaAnimacao("paradoTR", "parado", 13);
+				
+			if (partida != null)
+				partida.atualizaPersonagemMarcado(null);
+			animacaoCarregada = false;
+			animAtual = null;
 		}
 	
 	}

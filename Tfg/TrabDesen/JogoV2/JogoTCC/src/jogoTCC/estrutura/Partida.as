@@ -57,21 +57,26 @@ package jogoTCC.estrutura
 		
 		private function adicionaJogadores():void
 		{
-			var p1:Personagem = new Personagem("monstro");
+			
+			// personagens do time do jogador
+			var p1:Personagem = new Personagem("guerreiro", 0);
 			addChild(p1);
+			
 			p1.setLocalInicialPersonagem(mapa.casas[5][3] as Casa);
 			
-			var p2:Personagem = new Personagem("monstro");
+			var p2:Personagem = new Personagem("guerreiro", 0);
 			addChild(p2);
 			p2.setLocalInicialPersonagem(mapa.casas[8][3] as Casa);
-		/*
-		   var p3:Personagem = new Personagem("monstro");
-		   addChild(p3);
-		   p3.setLocalInicialPersonagem(mapa.casas[11][3] as Casa);
-		
-		   var p4:Personagem = new Personagem("monstro");
-		   addChild(p4);
-		 p4.setLocalInicialPersonagem(mapa.casas[14][3] as Casa);*/
+			
+			// personagens do time do computador
+			
+			var pc1:Personagem = new Personagem("monstro", 1);
+			addChild(pc1);
+			pc1.setLocalInicialPersonagem(mapa.casas[5][7] as Casa);
+			
+			var pc2:Personagem = new Personagem("monstro", 1);
+			addChild(pc2);
+			pc2.setLocalInicialPersonagem(mapa.casas[8][7] as Casa);
 		
 		}
 		
