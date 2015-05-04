@@ -47,6 +47,8 @@ package jogoTCC.entidades
 		{
 			// cria casas
 			var casa:Casa;
+			var camada:Number = 1;
+			
 			for (var i:Number = 0; i < 19; i++)
 			{
 				if (casas[i] == undefined)
@@ -59,6 +61,8 @@ package jogoTCC.entidades
 					casa.c = j;
 					casas[i][j] = casa;
 					addChild(casa);
+					casa.camada = camada;
+					camada += 1;
 				}
 			}
 			

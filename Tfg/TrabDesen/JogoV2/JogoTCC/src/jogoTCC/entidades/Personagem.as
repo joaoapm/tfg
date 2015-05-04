@@ -176,8 +176,10 @@ package jogoTCC.entidades
 				tween.animate("x", posX);
 				tween.animate("y", posY);
 				
-				var la:Number = 100 - (casa.l + casa.c);
-				super.parent.setChildIndex(this, la);
+				this.casaAtual = casa;
+				
+				var partida:Partida = parent as Partida;
+				partida.organizaLayers();
 				
 				tween.onComplete = function():void
 				{

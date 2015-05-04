@@ -37,7 +37,7 @@ package jogoTCC.entidades
 		
 		public var l:Number;
 		public var c:Number;
-		
+		public var camada:Number;
 		
 		public var direc:String;
 		
