@@ -8,6 +8,7 @@ package jogoTCC.entidades
 	import jogoTCC.util.CarregaAssets;
 	import jogoTCC.util.Pathfinder;
 	import starling.display.Image;
+	import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.display.MovieClip;
 	import starling.core.Starling;
@@ -83,15 +84,23 @@ package jogoTCC.entidades
 		public function Personagem(tipoJogador:String, nrTime:Number)
 		{
 			
+			// colisor
+			var quad:Quad = new Quad(20, 35);
+			quad.y = 40;
+			quad.x = 40;
+			quad.alpha = 0;
+			
 			// instancia barras de vida
 			barraVida = new BarraVida();
 			
 			// controle de eventos
-			addEventListener(TouchEvent.TOUCH, controlaEventos);
+			quad.addEventListener(TouchEvent.TOUCH, controlaEventos);
+			addChild(quad);
 			
 			// inicializa animacoes
 			this.tipoJogador = tipoJogador;
 			this.time = nrTime;
+			
 			resetaAnimacao();
 			
 			// inicializa barra de vida
@@ -167,9 +176,9 @@ package jogoTCC.entidades
 				tween.animate("x", posX);
 				tween.animate("y", posY);
 				
-				var la:Number =  100 - ( casa.l +  casa.c);
-				super.parent.setChildIndex(this,la);
-				 
+				var la:Number = 100 - (casa.l + casa.c);
+				super.parent.setChildIndex(this, la);
+				
 				tween.onComplete = function():void
 				{
 					indice += 1;
@@ -198,6 +207,7 @@ package jogoTCC.entidades
 				
 				addChild(mvAtual);
 				mvAtual.play();
+				mvAtual.touchable = false;
 				Starling.juggler.add(mvAtual);
 			}
 		}
@@ -219,7 +229,9 @@ package jogoTCC.entidades
 			
 			if (touch != null)
 			{
-				var clicked:Personagem = e.currentTarget as Personagem;
+				var colisor:Quad = e.currentTarget as Quad;
+				var clicked:Personagem = colisor.parent as Personagem;
+				
 				var partida:Partida = parent as Partida;
 				
 				if (touch.phase == TouchPhase.ENDED)
@@ -288,10 +300,10 @@ package jogoTCC.entidades
 		
 		private function isCasaDestinoValida(casaDest:Casa):Boolean
 		{
-			if (validaCasa(casaDest, this.casaAtual) || validaCasa(casaDest, this.casaAtual.casaD1) || 
-			validaCasa(casaDest, this.casaAtual.casaD2) || validaCasa(casaDest, this.casaAtual.casaD3) || 
-			validaCasa(casaDest, this.casaAtual.casaD4) || validaCasa(casaDest, this.casaAtual.casaB) || 
-			validaCasa(casaDest, this.casaAtual.casaC) || validaCasa(casaDest, this.casaAtual.casaLD) || 
+			if (validaCasa(casaDest, this.casaAtual) || validaCasa(casaDest, this.casaAtual.casaD1) ||
+			validaCasa(casaDest, this.casaAtual.casaD2) || validaCasa(casaDest, this.casaAtual.casaD3) ||
+			validaCasa(casaDest, this.casaAtual.casaD4) || validaCasa(casaDest, this.casaAtual.casaB) ||
+			validaCasa(casaDest, this.casaAtual.casaC) || validaCasa(casaDest, this.casaAtual.casaLD) ||
 			validaCasa(casaDest, this.casaAtual.casaLD))
 				return true;
 			
@@ -301,8 +313,8 @@ package jogoTCC.entidades
 		private function validaCasa(casaDest:Casa, casa:Casa):Boolean
 		{
 			
-			if (casaDest == casa.casaD1 || casaDest == casa.casaD2 || casaDest == casa.casaD3 || 
-			casaDest == casa.casaD4 || casaDest == casa.casaB || casaDest == casa.casaC || 
+			if (casaDest == casa.casaD1 || casaDest == casa.casaD2 || casaDest == casa.casaD3 ||
+			casaDest == casa.casaD4 || casaDest == casa.casaB || casaDest == casa.casaC ||
 			casaDest == casa.casaLD || casaDest == casa.casaLE)
 			{
 				return true;
@@ -343,6 +355,10 @@ package jogoTCC.entidades
 			mvAtual = carregaAnimacao.carregaAnimacao(mvAtual, 13, "ataqueFR", "atacando", tipoJogador);
 			
 			addChild(mvAtual);
+			
+			mvAtual.x -= 18;
+			mvAtual.y -= 18;
+			
 			mvAtual.play();
 			Starling.juggler.add(mvAtual);
 			
