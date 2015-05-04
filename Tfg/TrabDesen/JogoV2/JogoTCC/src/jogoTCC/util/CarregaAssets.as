@@ -1,6 +1,6 @@
 package jogoTCC.util
 {
-	import jogoTCC.entidades.Asset;
+	import jogoTCC.modelo.Asset;
 	
 	public class CarregaAssets
 	{

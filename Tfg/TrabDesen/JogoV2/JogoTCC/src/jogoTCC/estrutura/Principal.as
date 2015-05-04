@@ -18,7 +18,6 @@ package jogoTCC.estrutura
 			_starling.antiAliasing = 40;
 			
 			_starling.start();
-		
 		}
 	
 	}

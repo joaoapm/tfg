@@ -1,10 +1,6 @@
 package jogoTCC.estrutura
 {
-	/**
-	 * ...
-	 * @author
-	 */
-	
+
 	import flash.display.Bitmap;
 	import starling.display.Sprite;
 	import starling.textures.Texture;

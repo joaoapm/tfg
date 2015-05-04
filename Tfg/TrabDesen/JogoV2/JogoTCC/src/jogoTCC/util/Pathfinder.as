@@ -62,10 +62,10 @@ package jogoTCC.util
 							casa.direc = "LE";
 						if (casa.casaPai.casaLD == casa)
 							casa.direc = "LD";
-						if (casa.casaPai.casaB == casa)
-							casa.direc = "B";
-						if (casa.casaPai.casaC == casa)
-							casa.direc = "C";
+						if (casa.casaPai.casaFR == casa)
+							casa.direc = "FR";
+						if (casa.casaPai.casaTR == casa)
+							casa.direc = "TR";
 						if (casa.casaPai.casaD1 == casa)
 							casa.direc = "D1";
 						if (casa.casaPai.casaD2 == casa)
@@ -100,10 +100,10 @@ package jogoTCC.util
 			processaCasa(casaAtual.casaD3, true, 2, 0, casaAtual);
 			processaCasa(casaAtual.casaD4, true, 2, 2, casaAtual);
 			
-			processaCasa(casaAtual.casaC, false, 0, 1, casaAtual);
+			processaCasa(casaAtual.casaTR, false, 0, 1, casaAtual);
 			processaCasa(casaAtual.casaLD, false, 1, 2, casaAtual);
 			processaCasa(casaAtual.casaLE, false, 1, 0, casaAtual);
-			processaCasa(casaAtual.casaB, false, 2, 1, casaAtual);
+			processaCasa(casaAtual.casaFR, false, 2, 1, casaAtual);
 			
 			// se nao encontrou casa final, continua procura
 			if (encontrouFinal == false)
@@ -121,8 +121,9 @@ package jogoTCC.util
 		{
 			if (casa != null)
 			{
-				var col:Number = casa.l + px;
-				var row:Number = casa.c + py;
+				var col:Number = casa.c + px;
+				var lin:Number = casa.l + py;
+				
 				//casa.isCaminhavel() && 
 				if (casasFechadas.indexOf(casa) == -1 && casasAbertas.indexOf(casa) == -1)
 				{
@@ -132,8 +133,7 @@ package jogoTCC.util
 					else
 						casa.g = 10;
 					
-					//casa.h += (Math.abs(col - casaFim.x)) + (Math.abs(row - casaFim.y)) ;
-					casa.h = (row - casaFim.c) + (col - casa.l);
+					casa.h = (lin - casaFim.l) + (col - casa.c);
 					casa.casaPai = casaAt;
 					
 					casasAbertas.push(casa);
