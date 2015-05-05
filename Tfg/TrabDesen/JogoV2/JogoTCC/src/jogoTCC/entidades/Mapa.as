@@ -6,6 +6,7 @@ package jogoTCC.entidades
 	import flash.display.Bitmap;
 	import starling.textures.Texture;
 	import starling.display.Image;
+	import jogoTCC.entidades.BarraVida;
 	
 	public class Mapa extends Sprite
 	{
@@ -22,10 +23,17 @@ package jogoTCC.entidades
 		// estrutura contendo referencia a todas as casas do mapa  
 		public var casas:Array = [];
 		
+		private var barraVida:BarraVida;
+		private var vidaAtualC0:Image;
+		private var vidaAtualC1:Image;
+		public var vidaC0:Number = 10;
+		public var vidaC1:Number = 10;
+		
 		public function Mapa()
 		{
 			iniciaImagemMapa();
 			iniciaCasas();
+			iniciaCasasTorres();
 		}
 		
 		private function iniciaImagemMapa():void
@@ -149,6 +157,46 @@ package jogoTCC.entidades
 					}
 				}
 			}
+		
+		}
+		
+		private function iniciaCasasTorres():void
+		{
+			atualizaVida(this.vidaAtualC0, vidaC0, 450, 100);
+			atualizaVida(this.vidaAtualC1, vidaC1, 1640, 780);
+		}
+		
+		private function atualizaVida(vida:Image, nrVida:Number, pX:Number, pY:Number):void
+		{
+			barraVida = new BarraVida();
+			
+			if (vida != null)
+			{
+				vida.dispose();
+				vida.removeFromParent();
+			}
+			if (nrVida == 10)
+				vida = barraVida.imgVidac1;
+			if (nrVida == 9)
+				vida = barraVida.imgVidac2;
+			if (nrVida == 8)
+				vida = barraVida.imgVidac3;
+			if (nrVida == 7)
+				vida = barraVida.imgVidac4;
+			if (nrVida == 6)
+				vida = barraVida.imgVidac5;
+			if (nrVida == 5)
+				vida = barraVida.imgVidac6;
+			if (nrVida == 4)
+				vida = barraVida.imgVidac7;
+			if (nrVida == 3)
+				vida = barraVida.imgVidac8;
+			if (nrVida == 2)
+				vida = barraVida.imgVidac9;
+			
+			addChild(vida);
+			vida.y = pY;
+			vida.x = pX;
 		
 		}
 	
