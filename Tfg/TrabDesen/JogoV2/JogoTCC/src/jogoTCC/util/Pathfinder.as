@@ -95,15 +95,15 @@ package jogoTCC.util
 				encontrouFinal = true;
 			
 			// processa dados das casas adjacentes
-			processaCasa(casaAtual.casaD1, true, 0, 0, casaAtual);
-			processaCasa(casaAtual.casaD2, true, 0, 2, casaAtual);
-			processaCasa(casaAtual.casaD3, true, 2, 0, casaAtual);
-			processaCasa(casaAtual.casaD4, true, 2, 2, casaAtual);
+			processaCasa(casaAtual.casaD1, true, casaAtual);
+			processaCasa(casaAtual.casaD2, true, casaAtual);
+			processaCasa(casaAtual.casaD3, true, casaAtual);
+			processaCasa(casaAtual.casaD4, true, casaAtual);
 			
-			processaCasa(casaAtual.casaTR, false, 0, 1, casaAtual);
-			processaCasa(casaAtual.casaLD, false, 1, 2, casaAtual);
-			processaCasa(casaAtual.casaLE, false, 1, 0, casaAtual);
-			processaCasa(casaAtual.casaFR, false, 2, 1, casaAtual);
+			processaCasa(casaAtual.casaTR, false, casaAtual);
+			processaCasa(casaAtual.casaLD, false, casaAtual);
+			processaCasa(casaAtual.casaLE, false, casaAtual);
+			processaCasa(casaAtual.casaFR, false, casaAtual);
 			
 			// se nao encontrou casa final, continua procura
 			if (encontrouFinal == false)
@@ -117,23 +117,22 @@ package jogoTCC.util
 			}
 		}
 		
-		private function processaCasa(casa:Casa, isDiagonal:Boolean, px:Number, py:Number, casaAt:Casa):void
+		private function processaCasa(casa:Casa, isDiagonal:Boolean, casaAt:Casa):void
 		{
 			if (casa != null)
 			{
-				var col:Number = casa.c + px;
-				var lin:Number = casa.l + py;
+				var col:Number = casa.c;
+				var lin:Number = casa.l;
 				
 				//casa.isCaminhavel() && 
 				if (casasFechadas.indexOf(casa) == -1 && casasAbertas.indexOf(casa) == -1)
 				{
-					
 					if (isDiagonal)
 						casa.g = 14;
 					else
 						casa.g = 10;
 					
-					casa.h = (lin - casaFim.l) + (col - casa.c);
+					casa.h = Math.abs(casaFim.l - lin) + Math.abs(casaFim.c - col);
 					casa.casaPai = casaAt;
 					
 					casasAbertas.push(casa);

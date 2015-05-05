@@ -76,12 +76,7 @@ package jogoTCC.entidades
 			{
 				var pt:Pathfinder = new Pathfinder();
 				var caminho:Array = pt.pesquisaCaminho(casaAtual, casa);
-				
-				for each (var c:Casa in caminho)
-				{
-					// c.alpha = 1;	
-				}
-				
+						
 				mostraRange(false);
 				movePersonagem(caminho, 1);
 			}
@@ -104,9 +99,9 @@ package jogoTCC.entidades
 			if (indice < caminho.length)
 			{
 				var casa:Casa = caminho[indice] as Casa;
-				
+				 
 				if (animAtual != casa.direc)
-				{ 
+				{
 					
 					if (casa.direc == "LE")
 						atualizaAnimacao("andandoLE", "andando", 8, null, null, false);
