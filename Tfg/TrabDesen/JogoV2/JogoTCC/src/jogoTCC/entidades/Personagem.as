@@ -244,7 +244,7 @@ package jogoTCC.entidades
 		private function validaCasa(casaDest:Casa, casa:Casa):Boolean
 		{
 			
-			if (casaDest == casa.casaD1 || casaDest == casa.casaD2 || casaDest == casa.casaD3 || casaDest == casa.casaD4 || casaDest == casa.casaFR || casaDest == casa.casaTR || casaDest == casa.casaLD || casaDest == casa.casaLE)
+			if((casa != null) &&  (casaDest == casa.casaD1 || casaDest == casa.casaD2 || casaDest == casa.casaD3 || casaDest == casa.casaD4 || casaDest == casa.casaFR || casaDest == casa.casaTR || casaDest == casa.casaLD || casaDest == casa.casaLE))
 			{
 				return true;
 			}

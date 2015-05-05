@@ -57,48 +57,51 @@ package jogoTCC.util
 		[Embed(source="../../../assets/personagens/guerreiro/guerreiro_parado.png")]
 		public static const atlasImagemGuerreiroParado:Class;
 		
-		public var listaAssestAtlasDescr:Vector.<Asset> = new Vector.<Asset>();
-		public var listaAssestAtlasImagem:Vector.<Asset> = new Vector.<Asset>();
+		public static var listaAssestAtlasDescr:Vector.<Asset> = new Vector.<Asset>();
+		public static var listaAssestAtlasImagem:Vector.<Asset> = new Vector.<Asset>();
 		
 		public function CarregaAssets()
 		{
-			var assetDescrMonstroAndando:Asset = new Asset("monstro_andando", atlasDescrMonstroAndando);
-			var assetDescrMonstroAtacando:Asset = new Asset("monstro_atacando", atlasDescrMonstroAtacando);
-			var assetDescrMonstroMorrendo:Asset = new Asset("monstro_morrendo", atlasDescrMonstroMorrendo);
-			var assetDescrMonstroParado:Asset = new Asset("monstro_parado", atlasDescrMonstroParado);
-			
-			var assetDescrGuerreiroAndando:Asset = new Asset("guerreiro_andando", atlasDescrGuerreiroAndando);
-			var assetDescrGuerreiroAtacando:Asset = new Asset("guerreiro_atacando", atlasDescrGuerreiroAtacando);
-			var assetDescrGuerreiroMorrendo:Asset = new Asset("guerreiro_morrendo", atlasDescrGuerreiroMorrendo);
-			var assetDescrGuerreiroParado:Asset = new Asset("guerreiro_parado", atlasDescrGuerreiroParado);
-			
-			var assetImagemMonstroAndando:Asset = new Asset("monstro_andando", atlasImagemMonstroAndando);
-			var assetImagemMonstroAtacando:Asset = new Asset("monstro_atacando", atlasImagemMonstroAtacando);
-			var assetImagemMonstroMorrendo:Asset = new Asset("monstro_morrendo", atlasImagemMonstroMorrendo);
-			var assetImagemMonstroParado:Asset = new Asset("monstro_parado", atlasImagemMonstroParado);
-			
-			var assetImagemGuerreiroAndando:Asset = new Asset("guerreiro_andando", atlasImagemGuerreiroAndando);
-			var assetImagemGuerreiroAtacando:Asset = new Asset("guerreiro_atacando", atlasImagemGuerreiroAtacando);
-			var assetImagemGuerreiroMorrendo:Asset = new Asset("guerreiro_morrendo", atlasImagemGuerreiroMorrendo);
-			var assetImagemGuerreiroParado:Asset = new Asset("guerreiro_parado", atlasImagemGuerreiroParado);
-			
-			listaAssestAtlasDescr.push(assetDescrMonstroAndando);
-			listaAssestAtlasDescr.push(assetDescrMonstroAtacando);
-			listaAssestAtlasDescr.push(assetDescrMonstroMorrendo);
-			listaAssestAtlasDescr.push(assetDescrMonstroParado);
-			listaAssestAtlasDescr.push(assetDescrGuerreiroAndando);
-			listaAssestAtlasDescr.push(assetDescrGuerreiroAtacando);
-			listaAssestAtlasDescr.push(assetDescrGuerreiroMorrendo);
-			listaAssestAtlasDescr.push(assetDescrGuerreiroParado);
-			
-			listaAssestAtlasImagem.push(assetImagemMonstroAndando);
-			listaAssestAtlasImagem.push(assetImagemMonstroAtacando);
-			listaAssestAtlasImagem.push(assetImagemMonstroParado);
-			listaAssestAtlasImagem.push(assetImagemMonstroMorrendo);
-			listaAssestAtlasImagem.push(assetImagemGuerreiroAndando);
-			listaAssestAtlasImagem.push(assetImagemGuerreiroAtacando);
-			listaAssestAtlasImagem.push(assetImagemGuerreiroMorrendo);
-			listaAssestAtlasImagem.push(assetImagemGuerreiroParado);
+			if (listaAssestAtlasDescr.length == 0 && listaAssestAtlasImagem.length == 0)
+			{
+				var assetDescrMonstroAndando:Asset = new Asset("monstro_andando", atlasDescrMonstroAndando);
+				var assetDescrMonstroAtacando:Asset = new Asset("monstro_atacando", atlasDescrMonstroAtacando);
+				var assetDescrMonstroMorrendo:Asset = new Asset("monstro_morrendo", atlasDescrMonstroMorrendo);
+				var assetDescrMonstroParado:Asset = new Asset("monstro_parado", atlasDescrMonstroParado);
+				
+				var assetDescrGuerreiroAndando:Asset = new Asset("guerreiro_andando", atlasDescrGuerreiroAndando);
+				var assetDescrGuerreiroAtacando:Asset = new Asset("guerreiro_atacando", atlasDescrGuerreiroAtacando);
+				var assetDescrGuerreiroMorrendo:Asset = new Asset("guerreiro_morrendo", atlasDescrGuerreiroMorrendo);
+				var assetDescrGuerreiroParado:Asset = new Asset("guerreiro_parado", atlasDescrGuerreiroParado);
+				
+				var assetImagemMonstroAndando:Asset = new Asset("monstro_andando", atlasImagemMonstroAndando);
+				var assetImagemMonstroAtacando:Asset = new Asset("monstro_atacando", atlasImagemMonstroAtacando);
+				var assetImagemMonstroMorrendo:Asset = new Asset("monstro_morrendo", atlasImagemMonstroMorrendo);
+				var assetImagemMonstroParado:Asset = new Asset("monstro_parado", atlasImagemMonstroParado);
+				
+				var assetImagemGuerreiroAndando:Asset = new Asset("guerreiro_andando", atlasImagemGuerreiroAndando);
+				var assetImagemGuerreiroAtacando:Asset = new Asset("guerreiro_atacando", atlasImagemGuerreiroAtacando);
+				var assetImagemGuerreiroMorrendo:Asset = new Asset("guerreiro_morrendo", atlasImagemGuerreiroMorrendo);
+				var assetImagemGuerreiroParado:Asset = new Asset("guerreiro_parado", atlasImagemGuerreiroParado);
+				
+				listaAssestAtlasDescr.push(assetDescrMonstroAndando);
+				listaAssestAtlasDescr.push(assetDescrMonstroAtacando);
+				listaAssestAtlasDescr.push(assetDescrMonstroMorrendo);
+				listaAssestAtlasDescr.push(assetDescrMonstroParado);
+				listaAssestAtlasDescr.push(assetDescrGuerreiroAndando);
+				listaAssestAtlasDescr.push(assetDescrGuerreiroAtacando);
+				listaAssestAtlasDescr.push(assetDescrGuerreiroMorrendo);
+				listaAssestAtlasDescr.push(assetDescrGuerreiroParado);
+				
+				listaAssestAtlasImagem.push(assetImagemMonstroAndando);
+				listaAssestAtlasImagem.push(assetImagemMonstroAtacando);
+				listaAssestAtlasImagem.push(assetImagemMonstroParado);
+				listaAssestAtlasImagem.push(assetImagemMonstroMorrendo);
+				listaAssestAtlasImagem.push(assetImagemGuerreiroAndando);
+				listaAssestAtlasImagem.push(assetImagemGuerreiroAtacando);
+				listaAssestAtlasImagem.push(assetImagemGuerreiroMorrendo);
+				listaAssestAtlasImagem.push(assetImagemGuerreiroParado);
+			}
 		
 		}
 		

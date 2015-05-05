@@ -1,14 +1,26 @@
 package jogoTCC.util
 {
+	import jogoTCC.modelo.Textura;
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
 	import starling.display.MovieClip;
 	
 	public class CarregaAnimacao
 	{
+		public var assets:CarregaAssets = new CarregaAssets();
+		private static var listaTexturas:Array = new Array();
 		
 		public function CarregaAnimacao()
 		{
+			listaTexturas.push(new Textura(Texture.fromEmbeddedAsset(assets.buscaAssetImagem("monstro_andando")), "monstro_andando"));
+			listaTexturas.push(new Textura(Texture.fromEmbeddedAsset(assets.buscaAssetImagem("monstro_atacando")), "monstro_atacando"));
+			listaTexturas.push(new Textura(Texture.fromEmbeddedAsset(assets.buscaAssetImagem("monstro_morrendo")), "monstro_morrendo"));
+			listaTexturas.push(new Textura(Texture.fromEmbeddedAsset(assets.buscaAssetImagem("monstro_parado")), "monstro_parado"));
+			
+			listaTexturas.push(new Textura(Texture.fromEmbeddedAsset(assets.buscaAssetImagem("guerreiro_andando")), "guerreiro_andando"));
+			listaTexturas.push(new Textura(Texture.fromEmbeddedAsset(assets.buscaAssetImagem("guerreiro_atacando")), "guerreiro_atacando"));
+			listaTexturas.push(new Textura(Texture.fromEmbeddedAsset(assets.buscaAssetImagem("guerreiro_morrendo")), "guerreiro_morrendo"));
+			listaTexturas.push(new Textura(Texture.fromEmbeddedAsset(assets.buscaAssetImagem("guerreiro_parado")), "guerreiro_parado"));
 		
 		}
 		
@@ -17,10 +29,12 @@ package jogoTCC.util
 			
 			nomeAtlas = tpPeson + "_" + nomeAtlas;
 			
-			var assets:CarregaAssets = new CarregaAssets();
 			var listaFrames:Vector.<Texture> = new Vector.<Texture>();
 			
-			var texture:Texture = Texture.fromEmbeddedAsset(assets.buscaAssetImagem(nomeAtlas));
+			if (texture != null)
+				texture.dispose();
+			
+			var texture:Texture = procuraTextura(nomeAtlas).texture;
 			
 			var objXml:Class = assets.buscaAssetDescr(nomeAtlas);
 			var xml:XML = XML(new objXml());
@@ -44,6 +58,16 @@ package jogoTCC.util
 			
 			return movieClip;
 		
+		}
+		
+		private function procuraTextura(nomeAtlas:String):Textura
+		{
+			for each (var tex:Textura in listaTexturas)
+			{
+				if (tex.nomeAtlas == nomeAtlas)
+					return tex;
+			}
+			return null;
 		}
 	
 	}
