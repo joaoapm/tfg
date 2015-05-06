@@ -46,9 +46,6 @@ package jogoTCC.entidades
 			imagem.x = 0;
 			imagem.y = -65;
 			
-			imagem.scaleX = 1.5;
-			imagem.scaleY = 1.5;
-			
 			addChild(imagem);
 		
 		}
@@ -66,7 +63,7 @@ package jogoTCC.entidades
 				
 				for (var j:Number = 0; j < 24; j++)
 				{
-					casa = new Casa(i, j, INICIO_X, INICIO_Y, ALPHA,i,j);
+					casa = new Casa(i, j, INICIO_X, INICIO_Y, ALPHA, i, j);
 					casas[i][j] = casa;
 					addChild(casa);
 					casa.camada = camada;
