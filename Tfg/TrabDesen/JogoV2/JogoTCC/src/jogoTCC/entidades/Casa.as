@@ -17,7 +17,7 @@ package jogoTCC.entidades
 		
 		// caracteristicas e atributos da casa
 		private var TAMANHO_CASA:Number = 32;
- 		
+		
 		// variaveis para controle do pathfinder
 		public var ehPassavel:Boolean = true;
 		public var f:Number = 0;
@@ -39,8 +39,26 @@ package jogoTCC.entidades
 		public var camada:Number;
 		public var direc:String;
 		
-		public function Casa(posX:Number, posY:Number, inicioX:Number, inicioY:Number, alpha:Number)
+		public var ehTime0:Boolean;
+		public var ehTime1:Boolean;
+		
+		public function Casa(posX:Number, posY:Number, inicioX:Number, inicioY:Number, alpha:Number, c:Number, l:Number)
 		{
+			this.l = l;
+			this.c = c;
+			
+			if (c == 10 && l == 0 || c == 11 && l == 0 || c == 12 && l == 0)
+			{
+				ehPassavel = false;
+				ehTime0 = true;
+			}
+			
+			if (c == 10 && l == 23 || c == 11 && l == 23 || c == 12 && l == 23)
+			{
+				ehPassavel = false;
+				ehTime0 = true;
+			}
+			
 			matrizTransformacao.rotate(Math.PI / 4);
 			matrizTransformacao.scale(2.0, 1);
 			
@@ -69,12 +87,15 @@ package jogoTCC.entidades
 				{
 					if (target as Casa)
 					{
-						var c:Casa = target as Casa;
-						var partida:Partida = c.parent.parent as Partida;
-						var perso:Personagem = partida.personagemMarcado as Personagem;
-						
-						if (perso != null)
-							perso.setLocalPersonagem(c);
+						if (this.ehPassavel)
+						{
+							var c:Casa = target as Casa;
+							var partida:Partida = c.parent.parent as Partida;
+							var perso:Personagem = partida.personagemMarcado as Personagem;
+							
+							if (perso != null)
+								perso.setLocalPersonagem(c);
+						}
 					}
 				}
 				

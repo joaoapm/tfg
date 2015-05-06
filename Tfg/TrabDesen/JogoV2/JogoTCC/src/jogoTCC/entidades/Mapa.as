@@ -66,9 +66,7 @@ package jogoTCC.entidades
 				
 				for (var j:Number = 0; j < 24; j++)
 				{
-					casa = new Casa(i, j, INICIO_X, INICIO_Y, ALPHA);
-					casa.c = i;
-					casa.l = j;
+					casa = new Casa(i, j, INICIO_X, INICIO_Y, ALPHA,i,j);
 					casas[i][j] = casa;
 					addChild(casa);
 					casa.camada = camada;

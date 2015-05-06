@@ -76,7 +76,7 @@ package jogoTCC.entidades
 			{
 				var pt:Pathfinder = new Pathfinder();
 				var caminho:Array = pt.pesquisaCaminho(casaAtual, casa);
-						
+				
 				mostraRange(false);
 				movePersonagem(caminho, 1);
 			}
@@ -99,7 +99,7 @@ package jogoTCC.entidades
 			if (indice < caminho.length)
 			{
 				var casa:Casa = caminho[indice] as Casa;
-				 
+				
 				if (animAtual != casa.direc)
 				{
 					
@@ -207,28 +207,28 @@ package jogoTCC.entidades
 				if (!ligaRange)
 					alpha = 0;
 				
-				if (casa.casaD1 != null)
+				if (casa.casaD1 != null && casa.casaD1.ehPassavel)
 					casa.casaD1.alpha = alpha;
 				
-				if (casa.casaD2 != null)
+				if (casa.casaD2 != null && casa.casaD2.ehPassavel)
 					casa.casaD2.alpha = alpha;
 				
-				if (casa.casaD3 != null)
+				if (casa.casaD3 != null && casa.casaD3.ehPassavel)
 					casa.casaD3.alpha = alpha;
 				
-				if (casa.casaD4 != null)
+				if (casa.casaD4 != null && casa.casaD4.ehPassavel)
 					casa.casaD4.alpha = alpha;
 				
-				if (casa.casaFR != null)
+				if (casa.casaFR != null && casa.casaFR.ehPassavel)
 					casa.casaFR.alpha = alpha;
 				
-				if (casa.casaTR != null)
+				if (casa.casaTR != null && casa.casaTR.ehPassavel)
 					casa.casaTR.alpha = alpha;
 				
-				if (casa.casaLD != null)
+				if (casa.casaLD != null && casa.casaLD.ehPassavel)
 					casa.casaLD.alpha = alpha;
 				
-				if (casa.casaLE != null)
+				if (casa.casaLE != null && casa.casaLE.ehPassavel)
 					casa.casaLE.alpha = alpha;
 			}
 		}
@@ -244,7 +244,7 @@ package jogoTCC.entidades
 		private function validaCasa(casaDest:Casa, casa:Casa):Boolean
 		{
 			
-			if((casa != null) &&  (casaDest == casa.casaD1 || casaDest == casa.casaD2 || casaDest == casa.casaD3 || casaDest == casa.casaD4 || casaDest == casa.casaFR || casaDest == casa.casaTR || casaDest == casa.casaLD || casaDest == casa.casaLE))
+			if ((casa != null) && (casaDest == casa.casaD1 || casaDest == casa.casaD2 || casaDest == casa.casaD3 || casaDest == casa.casaD4 || casaDest == casa.casaFR || casaDest == casa.casaTR || casaDest == casa.casaLD || casaDest == casa.casaLE))
 			{
 				return true;
 			}
