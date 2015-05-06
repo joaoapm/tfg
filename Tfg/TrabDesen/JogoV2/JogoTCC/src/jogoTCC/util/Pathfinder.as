@@ -124,8 +124,7 @@ package jogoTCC.util
 				var col:Number = casa.c;
 				var lin:Number = casa.l;
 				
-				//casa.isCaminhavel() && 
-				if ((casa.ehPassavel)&& casasFechadas.indexOf(casa) == -1 && casasAbertas.indexOf(casa) == -1)
+				if ((casa.ehPassavel) && casasFechadas.indexOf(casa) == -1 && casasAbertas.indexOf(casa) == -1)
 				{
 					if (isDiagonal)
 						casa.g = 14;
