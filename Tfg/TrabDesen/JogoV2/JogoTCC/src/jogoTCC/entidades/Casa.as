@@ -39,8 +39,7 @@ package jogoTCC.entidades
 		public var camada:Number;
 		public var direc:String;
 		
-		public var ehTime0:Boolean;
-		public var ehTime1:Boolean;
+		public var nrTime:Number;
 		
 		public function Casa(posX:Number, posY:Number, inicioX:Number, inicioY:Number, alpha:Number, c:Number, l:Number)
 		{
@@ -50,13 +49,13 @@ package jogoTCC.entidades
 			if (c == 10 && l == 0 || c == 11 && l == 0 || c == 12 && l == 0)
 			{
 				ehPassavel = false;
-				ehTime0 = true;
+				nrTime = 0;
 			}
 			
 			if (c == 10 && l == 23 || c == 11 && l == 23 || c == 12 && l == 23)
 			{
 				ehPassavel = false;
-				ehTime0 = true;
+				nrTime = 1;
 			}
 			
 			matrizTransformacao.rotate(Math.PI / 4);
@@ -87,14 +86,19 @@ package jogoTCC.entidades
 				{
 					if (target as Casa)
 					{
+						
+						var c:Casa = target as Casa;
+						var partida:Partida = c.parent.parent as Partida;
+						var perso:Personagem = partida.personagemMarcado as Personagem;
 						if (this.ehPassavel)
 						{
-							var c:Casa = target as Casa;
-							var partida:Partida = c.parent.parent as Partida;
-							var perso:Personagem = partida.personagemMarcado as Personagem;
 							
 							if (perso != null)
 								perso.setLocalPersonagem(c);
+						}
+						else
+						{
+							partida.mapa.atacaTorre(this, perso);
 						}
 					}
 				}

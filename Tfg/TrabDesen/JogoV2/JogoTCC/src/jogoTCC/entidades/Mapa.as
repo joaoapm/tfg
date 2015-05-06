@@ -2,6 +2,7 @@ package jogoTCC.entidades
 {
 	
 	import jogoTCC.entidades.Casa;
+	import jogoTCC.modelo.TipoJogador;
 	import starling.display.Sprite;
 	import flash.display.Bitmap;
 	import starling.textures.Texture;
@@ -155,13 +156,30 @@ package jogoTCC.entidades
 		
 		}
 		
-		private function iniciaCasasTorres():void
+		public function atacaTorre(casa:Casa, perso:Personagem):void
 		{
-			atualizaVida(this.vidaAtualC0, vidaC0, 450, 100);
-			atualizaVida(this.vidaAtualC1, vidaC1, 1640, 780);
+			if (casa.nrTime != perso.time)
+			{
+				if (casa.nrTime == 0)
+				{
+					vidaC0 -= 1;
+					this.vidaAtualC0 = atualizaVida(this.vidaAtualC0, vidaC0, 450, 100);
+				}
+				else if (casa.nrTime == 1)
+				{
+					vidaC1 -= 1;
+					this.vidaAtualC1 = atualizaVida(this.vidaAtualC1, vidaC1, 1640, 780);
+				}
+			}
 		}
 		
-		private function atualizaVida(vida:Image, nrVida:Number, pX:Number, pY:Number):void
+		private function iniciaCasasTorres():void
+		{
+			this.vidaAtualC0 = atualizaVida(this.vidaAtualC0, vidaC0, 450, 100);
+			this.vidaAtualC1 = atualizaVida(this.vidaAtualC1, vidaC1, 1640, 780);
+		}
+		
+		private function atualizaVida(vida:Image, nrVida:Number, pX:Number, pY:Number):Image
 		{
 			barraVida = new BarraVida();
 			
@@ -192,6 +210,8 @@ package jogoTCC.entidades
 			addChild(vida);
 			vida.y = pY;
 			vida.x = pX;
+			
+			return vida;
 		
 		}
 	
