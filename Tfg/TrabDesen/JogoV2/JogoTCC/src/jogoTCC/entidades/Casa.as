@@ -98,7 +98,8 @@ package jogoTCC.entidades
 						}
 						else
 						{
-							partida.mapa.atacaTorre(this, perso);
+							if (perso != null)
+								partida.mapa.atacaTorre(this, perso);
 						}
 					}
 				}

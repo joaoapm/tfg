@@ -163,12 +163,12 @@ package jogoTCC.entidades
 				if (casa.nrTime == 0)
 				{
 					vidaC0 -= 1;
-					this.vidaAtualC0 = atualizaVida(this.vidaAtualC0, vidaC0, 450, 100);
+					this.vidaAtualC0 = atualizaVida(this.vidaAtualC0, vidaC0, 470, 180);
 				}
 				else if (casa.nrTime == 1)
 				{
 					vidaC1 -= 1;
-					this.vidaAtualC1 = atualizaVida(this.vidaAtualC1, vidaC1, 1640, 780);
+					this.vidaAtualC1 = atualizaVida(this.vidaAtualC1, vidaC1, 1495, 830);
 				}
 			}
 		}
