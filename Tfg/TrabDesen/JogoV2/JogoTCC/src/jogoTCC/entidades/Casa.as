@@ -46,13 +46,13 @@ package jogoTCC.entidades
 			this.l = l;
 			this.c = c;
 			
-			if (c == 10 && l == 0 || c == 11 && l == 0 || c == 12 && l == 0)
+			if (c == 10 && l == 0 || c == 11 && l == 0 || c == 10 && l == 1 || c == 11 && l == 1 || c == 12 && l == 0 || c == 12 && l == 1)
 			{
 				ehPassavel = false;
 				nrTime = 0;
 			}
 			
-			if (c == 10 && l == 23 || c == 11 && l == 23 || c == 12 && l == 23)
+			if (c == 10 && l == 21 || c == 11 && l == 21 || c == 12 && l == 21 || c == 10 && l == 23 || c == 11 && l == 23 || c == 12 && l == 23 || c == 10 && l == 22 || c == 11 && l == 22 || c == 12 && l == 22)
 			{
 				ehPassavel = false;
 				nrTime = 1;

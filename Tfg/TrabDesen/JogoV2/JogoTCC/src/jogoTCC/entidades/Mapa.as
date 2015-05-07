@@ -175,8 +175,8 @@ package jogoTCC.entidades
 		
 		private function iniciaCasasTorres():void
 		{
-			this.vidaAtualC0 = atualizaVida(this.vidaAtualC0, vidaC0, 450, 100);
-			this.vidaAtualC1 = atualizaVida(this.vidaAtualC1, vidaC1, 1640, 780);
+			this.vidaAtualC0 = atualizaVida(this.vidaAtualC0, vidaC0, 470, 180);
+			this.vidaAtualC1 = atualizaVida(this.vidaAtualC1, vidaC1, 1495, 830);
 		}
 		
 		private function atualizaVida(vida:Image, nrVida:Number, pX:Number, pY:Number):Image
