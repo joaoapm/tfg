@@ -37,7 +37,7 @@ package jogoTCC.entidades
 		private var animAtual:String = "";
 		private var barraVida:BarraVida;
 		private var vidaAtual:Image;
-		private var animacaoFinalizada:Boolean = true;
+		public var animacaoFinalizada:Boolean = true;
 		
 		public function Personagem(tipoJogador:String, nrTime:Number)
 		{

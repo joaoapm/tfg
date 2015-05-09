@@ -162,18 +162,21 @@ package jogoTCC.entidades
 		
 		public function atacaTorre(casa:Casa, perso:Personagem):void
 		{
-			if (casa.nrTime != perso.time)
+			if (perso.animacaoFinalizada && casa.nrTime != perso.time)
 			{
 				if (casa.nrTime == 0 && isCasaTorreValida(perso, casa, torre0))
 				{
 					vidaC0 -= 1;
 					this.vidaAtualC0 = atualizaVida(this.vidaAtualC0, vidaC0, 470, 180);
+					perso.ataca();
 				}
 				else if (casa.nrTime == 1 && isCasaTorreValida(perso, casa, torre1))
 				{
 					vidaC1 -= 1;
 					this.vidaAtualC1 = atualizaVida(this.vidaAtualC1, vidaC1, 1495, 830);
+					perso.ataca();
 				}
+				
 			}
 		}
 		
