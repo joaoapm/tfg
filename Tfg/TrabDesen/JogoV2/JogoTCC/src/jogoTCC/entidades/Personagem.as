@@ -35,6 +35,7 @@ package jogoTCC.entidades
 		private var animAtual:String = "";
 		private var barraVida:BarraVida;
 		private var vidaAtual:Image;
+		private var animacaoFinalizada:Boolean = true;
 		
 		public function Personagem(tipoJogador:String, nrTime:Number)
 		{
@@ -72,7 +73,7 @@ package jogoTCC.entidades
 		
 		public function setLocalPersonagem(casa:Casa):void
 		{
-			if (isCasaDestinoValida(casa))
+			if (isCasaDestinoValida(casa) && animacaoFinalizada)
 			{
 				var pt:Pathfinder = new Pathfinder();
 				var caminho:Array = pt.pesquisaCaminho(casaAtual, casa);
@@ -84,6 +85,7 @@ package jogoTCC.entidades
 		
 		public function ataca():void
 		{
+			
 			atualizaAnimacao("ataqueFR", "atacando", 13, -18, -18, true);
 		}
 		
@@ -171,6 +173,7 @@ package jogoTCC.entidades
 				
 				if (touch.phase == TouchPhase.ENDED)
 				{
+					
 					if (this.time == 0)
 					{
 						partida.atualizaPersonagemMarcado(clicado);
@@ -178,8 +181,10 @@ package jogoTCC.entidades
 					}
 					else
 					{
-						partida.gerenciaAtaque(clicado);
+						if (partida.personagemMarcado != null && partida.personagemMarcado.animacaoFinalizada)
+							partida.gerenciaAtaque(clicado);
 					}
+					
 				}
 			}
 		}
@@ -271,7 +276,7 @@ package jogoTCC.entidades
 				
 				if (partida != null)
 					partida.atualizaPersonagemMarcado(null);
-				
+				animacaoFinalizada = true;
 				animAtual = null;
 			}
 		}
@@ -296,6 +301,7 @@ package jogoTCC.entidades
 			mvAtual.play();
 			
 			mvAtual.touchable = false;
+			animacaoFinalizada = false;
 			
 			Starling.juggler.add(mvAtual);
 			
