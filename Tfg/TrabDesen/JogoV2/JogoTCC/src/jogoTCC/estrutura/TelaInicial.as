@@ -36,7 +36,7 @@ package jogoTCC.estrutura
 			var bt1:Button = new Button(textureBt1, "");
 			
 			bt1.y = 525;
-			bt1.x = 10;
+			bt1.x = 200;
 			addChild(bt1);
 			
 			// adiciona botao fuzzy
@@ -45,7 +45,7 @@ package jogoTCC.estrutura
 			var bt2:Button = new Button(textureBt2, "");
 			
 			bt2.y = 525;
-			bt2.x = 575;
+			bt2.x = 460;
 			
 			bt2.addEventListener(Event.TRIGGERED, bt1Pressionado);
 			
