@@ -15,6 +15,8 @@ package jogoTCC.entidades
 	import starling.events.Event;
 	import starling.animation.Tween;
 	import jogoTCC.entidades.BarraVida;
+	import flash.geom.Matrix;
+	import flash.geom.Point;
 	
 	public class Personagem extends Sprite
 	{
@@ -41,17 +43,10 @@ package jogoTCC.entidades
 		{
 			
 			// colisor
-			var quad:Quad = new Quad(20, 35);
-			quad.y = 40;
-			quad.x = 40;
-			quad.alpha = 0;
+			criaColisor();
 			
 			// instancia barras de vida
 			barraVida = new BarraVida();
-			
-			// controle de eventos
-			quad.addEventListener(TouchEvent.TOUCH, controlaEventos);
-			addChild(quad);
 			
 			// inicializa animacoes
 			this.tipoJogador = tipoJogador;
@@ -338,6 +333,36 @@ package jogoTCC.entidades
 				vidaAtual.y -= 5;
 				vidaAtual.x += 10;
 			}
+		}
+		
+		private function criaColisor():void
+		{
+			//parte 1
+			var matrizTransformacao:Matrix = new Matrix();
+			matrizTransformacao.rotate(Math.PI / 4);
+			matrizTransformacao.scale(1, 2);
+			var quad:Quad = new Quad(20, 20);
+			quad.transformationMatrix = matrizTransformacao;
+			quad.y = 20;
+			quad.x = 45;
+			quad.alpha = 0;
+			
+			// parte 2
+			var matrizTransformacaop2:Matrix = new Matrix();
+			matrizTransformacaop2.rotate(Math.PI / 4);
+			matrizTransformacaop2.scale(2.0, 1);
+			var quad2:Quad = new Quad(32, 32);
+			quad2.transformationMatrix = matrizTransformacaop2;
+			quad2.y = 50;
+			quad2.x = 50;
+			quad2.alpha = 0;
+			
+			// controle de eventos
+			quad.addEventListener(TouchEvent.TOUCH, controlaEventos);
+			quad2.addEventListener(TouchEvent.TOUCH, controlaEventos);
+			addChild(quad);
+			addChild(quad2);
+		
 		}
 	
 	}
