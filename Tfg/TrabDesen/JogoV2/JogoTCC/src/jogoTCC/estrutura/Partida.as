@@ -78,8 +78,11 @@ package jogoTCC.estrutura
 		{
 			if ((personagem != null && personagemMarcado != null) && personagem != personagemMarcado && personagem.time != personagemMarcado.time)
 			{
-				personagem.sofreAtaque();
-				personagemMarcado.ataca();
+				if (personagem.isCasaDestinoValida(this.personagemMarcado.casaAtual))
+				{
+					personagem.sofreAtaque();
+					personagemMarcado.ataca();
+				}
 			}
 		}
 		

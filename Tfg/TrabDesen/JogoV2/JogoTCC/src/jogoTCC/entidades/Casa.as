@@ -43,6 +43,7 @@ package jogoTCC.entidades
 		
 		public function Casa(posX:Number, posY:Number, inicioX:Number, inicioY:Number, alpha:Number, c:Number, l:Number)
 		{
+
 			this.l = l;
 			this.c = c;
 			
@@ -72,6 +73,20 @@ package jogoTCC.entidades
 			super.alpha = alpha;
 			addEventListener(TouchEvent.TOUCH, controlaEventos);
 		
+		}
+		
+		public function iniciaTorre():void
+		{
+			var mapa:Mapa = parent as Mapa;
+						
+			if (nrTime == 0)
+			{
+				mapa.torre0.push(this);
+			}
+			else if (nrTime == 1)
+			{
+				mapa.torre1.push(this);
+			}
 		}
 		
 		private function controlaEventos(e:TouchEvent):void

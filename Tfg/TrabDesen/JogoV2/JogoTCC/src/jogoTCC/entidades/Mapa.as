@@ -1,6 +1,7 @@
 package jogoTCC.entidades
 {
 	
+	import flash.display.CapsStyle;
 	import jogoTCC.entidades.Casa;
 	import jogoTCC.modelo.TipoJogador;
 	import starling.display.Sprite;
@@ -23,6 +24,8 @@ package jogoTCC.entidades
 		
 		// estrutura contendo referencia a todas as casas do mapa  
 		public var casas:Array = [];
+		public var torre0:Array = new Array();
+		public var torre1:Array = new Array();
 		
 		private var barraVida:BarraVida;
 		private var vidaAtualC0:Image;
@@ -67,6 +70,7 @@ package jogoTCC.entidades
 					casa = new Casa(i, j, INICIO_X, INICIO_Y, ALPHA, i, j);
 					casas[i][j] = casa;
 					addChild(casa);
+					casa.iniciaTorre();
 					casa.camada = camada;
 					camada += 1;
 				}
@@ -160,17 +164,48 @@ package jogoTCC.entidades
 		{
 			if (casa.nrTime != perso.time)
 			{
-				if (casa.nrTime == 0)
+				if (casa.nrTime == 0 && isCasaTorreValida(perso, casa, torre0))
 				{
 					vidaC0 -= 1;
 					this.vidaAtualC0 = atualizaVida(this.vidaAtualC0, vidaC0, 470, 180);
 				}
-				else if (casa.nrTime == 1)
+				else if (casa.nrTime == 1 && isCasaTorreValida(perso, casa, torre1))
 				{
 					vidaC1 -= 1;
 					this.vidaAtualC1 = atualizaVida(this.vidaAtualC1, vidaC1, 1495, 830);
 				}
 			}
+		}
+		
+		public function isCasaTorreValida(perso:Personagem, casa:Casa, torre:Array):Boolean
+		{
+			// verifica se a casa eh de uma torre
+			var isTorreNaRange:Boolean = false;
+			for (var i:Number = 0; i < torre.length; i++)
+			{
+				var casaTorre:Casa = torre[i] as Casa;
+				if (casaTorre == casa)
+				{
+					isTorreNaRange = true;
+				}
+			}
+			
+			// verifica se ha uma casa na range
+			if (isTorreNaRange)
+			{
+				isTorreNaRange = false;
+				{
+					for (i = 0; i < torre.length; i++)
+					{
+						casaTorre = torre[i] as Casa;
+						if (perso.isCasaDestinoValida(casaTorre))
+						{
+							isTorreNaRange = true;
+						}
+					}
+				}
+			}
+			return isTorreNaRange;
 		}
 		
 		private function iniciaCasasTorres():void

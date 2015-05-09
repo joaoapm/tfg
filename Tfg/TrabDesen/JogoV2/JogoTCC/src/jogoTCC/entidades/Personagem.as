@@ -233,7 +233,7 @@ package jogoTCC.entidades
 			}
 		}
 		
-		private function isCasaDestinoValida(casaDest:Casa):Boolean
+		public function isCasaDestinoValida(casaDest:Casa):Boolean
 		{
 			if (validaCasa(casaDest, this.casaAtual) || validaCasa(casaDest, this.casaAtual.casaD1) || validaCasa(casaDest, this.casaAtual.casaD2) || validaCasa(casaDest, this.casaAtual.casaD3) || validaCasa(casaDest, this.casaAtual.casaD4) || validaCasa(casaDest, this.casaAtual.casaFR) || validaCasa(casaDest, this.casaAtual.casaTR) || validaCasa(casaDest, this.casaAtual.casaLD) || validaCasa(casaDest, this.casaAtual.casaLD))
 				return true;
