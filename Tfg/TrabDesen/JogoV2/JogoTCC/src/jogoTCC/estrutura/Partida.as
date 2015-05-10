@@ -44,7 +44,7 @@ package jogoTCC.estrutura
 			// personagens do time do jogador
 			var p1:Personagem = new Personagem("guerreiro", 0);
 			addChild(p1);
-			p1.setLocalInicialPersonagem(mapa.casas[5][3] as Casa);
+			p1.setLocalInicialPersonagem(mapa.casas[5][20] as Casa);
 			
 			var p2:Personagem = new Personagem("guerreiro", 0);
 			addChild(p2);
@@ -89,6 +89,32 @@ package jogoTCC.estrutura
 		public function organizaLayers():void
 		{
 			mapa.organizaLayers(listaPersonagens);
+		}
+		
+		public function verificaEstadoPartida():void
+		{
+			var telaFim:TelaFinal;
+			if (this.mapa != null)
+			{
+				if (this.mapa.vidaC0 == 1)
+				{
+					telaFim = new TelaFinal();
+					telaFim.criaTela("time2");
+					this.parent.addChild(telaFim);
+					this.dispose()
+					parent.removeFromParent(this);
+					
+				}
+				else if (this.mapa.vidaC1 == 1)
+				{
+					telaFim = new TelaFinal();
+					telaFim.criaTela("time1");
+					this.parent.addChild(telaFim);
+			 
+					
+				}
+				
+			}
 		}
 	
 	}

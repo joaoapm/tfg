@@ -273,6 +273,9 @@ package jogoTCC.entidades
 					partida.atualizaPersonagemMarcado(null);
 				animacaoFinalizada = true;
 				animAtual = null;
+				
+				if (partida != null)
+					partida.verificaEstadoPartida();
 			}
 		}
 		

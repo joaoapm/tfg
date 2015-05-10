@@ -244,6 +244,8 @@ package jogoTCC.entidades
 				vida = barraVida.imgVidac8;
 			if (nrVida == 2)
 				vida = barraVida.imgVidac9;
+			if (nrVida == 1)
+				vida = barraVida.imgVidac10;
 			
 			addChild(vida);
 			vida.y = pY;
