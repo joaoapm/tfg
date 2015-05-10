@@ -7,7 +7,7 @@ package jogoTCC.util
 	
 	public class CarregaAnimacao
 	{
-		public var assets:CarregaAssets = new CarregaAssets();
+		public static var assets:CarregaAssets = new CarregaAssets();
 		private static var listaTexturas:Array = new Array();
 		
 		public function CarregaAnimacao()

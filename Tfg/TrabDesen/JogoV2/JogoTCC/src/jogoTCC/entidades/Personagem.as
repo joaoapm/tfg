@@ -30,7 +30,7 @@ package jogoTCC.entidades
 		public var time:Number;
 		
 		// animacao do personagem
-		private var carregaAnimacao:CarregaAnimacao = new CarregaAnimacao();
+		private static var carregaAnimacao:CarregaAnimacao = new CarregaAnimacao();
 		
 		// animacao atual
 		private var mvAtual:MovieClip;
@@ -157,29 +157,31 @@ package jogoTCC.entidades
 		private function controlaEventos(e:TouchEvent):void
 		{
 			
+			var partida:Partida = parent as Partida;
 			var touch:Touch = e.getTouch(stage);
 			
-			if (touch != null)
+			if (partida.turnoAtual == this.time)
 			{
-				var colisor:Quad = e.currentTarget as Quad;
-				var clicado:Personagem = colisor.parent as Personagem;
-				
-				var partida:Partida = parent as Partida;
-				
-				if (touch.phase == TouchPhase.ENDED)
+				if (touch != null)
 				{
+					var colisor:Quad = e.currentTarget as Quad;
+					var clicado:Personagem = colisor.parent as Personagem;
 					
-					if (this.time == 0)
+					if (touch.phase == TouchPhase.ENDED)
 					{
-						partida.atualizaPersonagemMarcado(clicado);
-						mostraRange(true);
+						
+						if (this.time == 0)
+						{
+							partida.atualizaPersonagemMarcado(clicado);
+							mostraRange(true);
+						}
+						else
+						{
+							if (partida.personagemMarcado != null && partida.personagemMarcado.animacaoFinalizada)
+								partida.gerenciaAtaque(clicado);
+						}
+						
 					}
-					else
-					{
-						if (partida.personagemMarcado != null && partida.personagemMarcado.animacaoFinalizada)
-							partida.gerenciaAtaque(clicado);
-					}
-					
 				}
 			}
 		}
@@ -255,15 +257,22 @@ package jogoTCC.entidades
 		
 		private function resetaAnimacao():void
 		{
+			var partida:Partida = parent as Partida;
+			
 			if (this.vida == 1)
 			{
 				this.dispose();
 				this.removeFromParent();
+				
+				if (partida != null)
+				{
+					partida.trocaTurno();
+					partida.verificaEstadoPartida();
+				}
+				
 			}
 			else
 			{
-				var partida:Partida = parent as Partida;
-				
 				if (time == 0)
 					atualizaAnimacao("paradoFR", "parado", 13, null, null, false);
 				else
@@ -275,8 +284,12 @@ package jogoTCC.entidades
 				animAtual = null;
 				
 				if (partida != null)
+				{
 					partida.verificaEstadoPartida();
+					partida.trocaTurno();
+				}
 			}
+		
 		}
 		
 		private function atualizaAnimacao(animacao:String, tpAni:String, nrFr:Number, pX:Number, pY:Number, resetaAoFinal:Boolean):void

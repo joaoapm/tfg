@@ -2,6 +2,7 @@ package jogoTCC.estrutura
 {
 	
 	import jogoTCC.entidades.Casa;
+	import jogoTCC.moduloIA.PrincipalIA;
 	import starling.display.Sprite;
 	import jogoTCC.entidades.Mapa;
 	import jogoTCC.entidades.Personagem;
@@ -15,6 +16,8 @@ package jogoTCC.estrutura
 		private var scroll:Scroll;
 		public var personagemMarcado:Personagem;
 		public var mapa:Mapa;
+		public var turnoAtual:Number = 0;
+		private var moduloIA:PrincipalIA;
 		
 		public function Partida()
 		{
@@ -36,6 +39,9 @@ package jogoTCC.estrutura
 			// inicia jogadores			
 			listaPersonagens = new Array();
 			adicionaJogadores();
+			
+			// inicia modulo IA
+			moduloIA = new PrincipalIA(mapa, listaPersonagens);
 		}
 		
 		private function adicionaJogadores():void
@@ -44,26 +50,56 @@ package jogoTCC.estrutura
 			// personagens do time do jogador
 			var p1:Personagem = new Personagem("guerreiro", 0);
 			addChild(p1);
-			p1.setLocalInicialPersonagem(mapa.casas[5][20] as Casa);
+			p1.setLocalInicialPersonagem(mapa.casas[4][3] as Casa);
 			
 			var p2:Personagem = new Personagem("guerreiro", 0);
 			addChild(p2);
-			p2.setLocalInicialPersonagem(mapa.casas[8][3] as Casa);
+			p2.setLocalInicialPersonagem(mapa.casas[7][3] as Casa);
+			
+			var p3:Personagem = new Personagem("guerreiro", 0);
+			addChild(p3);
+			p3.setLocalInicialPersonagem(mapa.casas[10][3] as Casa);
+			
+			var p4:Personagem = new Personagem("guerreiro", 0);
+			addChild(p4);
+			p4.setLocalInicialPersonagem(mapa.casas[12][3] as Casa);
+			
+			var p5:Personagem = new Personagem("guerreiro", 0);
+			addChild(p5);
+			p5.setLocalInicialPersonagem(mapa.casas[15][3] as Casa);
 			
 			// personagens do time do computador
 			
 			var pc1:Personagem = new Personagem("monstro", 1);
 			addChild(pc1);
-			pc1.setLocalInicialPersonagem(mapa.casas[5][7] as Casa);
+			pc1.setLocalInicialPersonagem(mapa.casas[4][20] as Casa);
 			
 			var pc2:Personagem = new Personagem("monstro", 1);
 			addChild(pc2);
-			pc2.setLocalInicialPersonagem(mapa.casas[8][7] as Casa);
+			pc2.setLocalInicialPersonagem(mapa.casas[7][20] as Casa);
+			
+			var pc3:Personagem = new Personagem("monstro", 1);
+			addChild(pc3);
+			pc3.setLocalInicialPersonagem(mapa.casas[10][20] as Casa);
+			
+			var pc4:Personagem = new Personagem("monstro", 1);
+			addChild(pc4);
+			pc4.setLocalInicialPersonagem(mapa.casas[12][20] as Casa);
+			
+			var pc5:Personagem = new Personagem("monstro", 1);
+			addChild(pc5);
+			pc5.setLocalInicialPersonagem(mapa.casas[15][20] as Casa);
 			
 			listaPersonagens.push(p1);
 			listaPersonagens.push(p2);
+			listaPersonagens.push(p3);
+			listaPersonagens.push(p4);
+			listaPersonagens.push(p5);
 			listaPersonagens.push(pc1);
 			listaPersonagens.push(pc2);
+			listaPersonagens.push(pc3);
+			listaPersonagens.push(pc4);
+			listaPersonagens.push(pc5);
 		
 		}
 		
@@ -110,10 +146,22 @@ package jogoTCC.estrutura
 					telaFim = new TelaFinal();
 					telaFim.criaTela("time1");
 					this.parent.addChild(telaFim);
-			 
 					
 				}
 				
+			}
+		}
+		
+		public function trocaTurno():void
+		{
+			if (this.turnoAtual == 0)
+			{
+				this.turnoAtual = 1;
+				this.moduloIA.processaJogada();
+			}
+			else if (this.turnoAtual == 1)
+			{
+				this.turnoAtual = 0;
 			}
 		}
 	

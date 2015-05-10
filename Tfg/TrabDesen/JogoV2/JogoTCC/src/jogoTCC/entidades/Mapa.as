@@ -122,7 +122,7 @@ package jogoTCC.entidades
 		public function organizaLayers(listaPersonagens:Array):void
 		{
 			ordenaLayers(listaPersonagens);
-			var camada:Number = 2;
+			var camada:Number = 11;
 			
 			for each (var perso:Personagem in listaPersonagens)
 			{
