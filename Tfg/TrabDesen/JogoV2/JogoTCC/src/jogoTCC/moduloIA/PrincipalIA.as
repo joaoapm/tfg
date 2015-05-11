@@ -4,111 +4,101 @@ package jogoTCC.moduloIA
 	import jogoTCC.entidades.Personagem;
 	import jogoTCC.estrutura.AtributoFuzzy;
 	import jogoTCC.estrutura.GrupoFuzzy;
-	
+	import jogoTCC.estrutura.ExpressaoFuzzy;
+		
 	public class PrincipalIA
 	{
-		private var mapa:Mapa;
-		private var listaPersonagens:Array;
-		private var persoTime0:Array = new Array();
-		private var persoTime1:Array = new Array();
 		
-		public function PrincipalIA(mapa:Mapa, listaPerso:Array)
-		{
-			this.mapa = mapa;
-			this.listaPersonagens = listaPerso;
+		private var executaAcao:ExecutaAcaoIA;
+		
+		private var listaGrupos:Array = new Array();
+		private var listaExpressoes:Array = new Array();
 			
-			for each (var p:Personagem in this.listaPersonagens)
+		public function PrincipalIA(mapa:Mapa, listaPerso:Array,vlEntrada:Number)
+		{
+			
+			var grupos:GruposIA = new GruposIA(listaGrupos);
+			var expressoes:ExpressoesIA = new ExpressoesIA(listaExpressoes);
+			
+			// fase de fuzzificacao dos valores de entrada
+			//fuzzificar(QTD_PERSONAGEM_INI, vlEntrada);
+			//fuzzificar(QTD_PERSONAGEM_INI, vlEntrada);
+			//fuzzificar(QTD_PERSONAGEM_INI, vlEntrada);
+			
+			// fase de inferencia das regras
+			realizaInferencia();
+			
+			// fase de defuzzificacao e realizadao da decisao retornada
+			defuzzificar();
+		
+		}
+		
+		private function fuzzificar(gp:GrupoFuzzy, vlEntrada:Number):void
+		{
+			gp.baixo.vlAtual = calculaGrauPertinencia(gp.baixo, vlEntrada);
+			gp.medio.vlAtual = calculaGrauPertinencia(gp.medio, vlEntrada);
+			gp.alto.vlAtual = calculaGrauPertinencia(gp.alto, vlEntrada);
+		}
+		
+		private function calculaGrauPertinencia(atrib:AtributoFuzzy, vlEntrada:Number):Number
+		{
+			var pertN:Number = (vlEntrada * 100) / (atrib.fim - atrib.inicio);
+			return pertN;
+		}
+		
+		private function realizaInferencia():void
+		{
+			for each (var expr:ExpressaoFuzzy in listaExpressoes)
 			{
-				if (p.time == 0)
-					persoTime0.push(p)
-				else
-					persoTime1.push(p)
+				var listaExp:Array = expr.expressao.split(" ");
+ 	
+				expr.grau1 = avaliaExpressao(listaExp[1], listaExp[3]);
+				expr.grau2 = avaliaExpressao(listaExp[5], listaExp[7]);
+				
+				expr.grau = Math.min(expr.grau1, expr.grau2);
+				expr.metodoExecuta = listaExp[9];
+			}
+		
+		}
+		
+		private function avaliaExpressao(n1:String, n2:String):Number
+		{
+			for each (var gp:GrupoFuzzy in listaGrupos)
+			{
+				if (gp.nome == n1)
+				{
+					return calculaGrauExpressao(gp, n2);
+				}
+			}
+			return null;
+		}
+		
+		private function calculaGrauExpressao(gp:GrupoFuzzy, nomeAtrib:String):Number
+		{
+			if (gp.baixo.nomeAtrib == nomeAtrib)
+				return gp.baixo.vlAtual;
+			if (gp.medio.nomeAtrib == nomeAtrib)
+				return gp.medio.vlAtual;
+			if (gp.alto.nomeAtrib == nomeAtrib)
+				return gp.alto.vlAtual;
+			
+			return null;
+		}
+		
+		private function defuzzificar():void
+		{
+			var maiorGrau:ExpressaoFuzzy;
+			for each (var exp:ExpressaoFuzzy in listaExpressoes)
+			{
+				if (exp.grau1 != 0 && exp.grau2 != 0)
+					if (maiorGrau != null && maiorGrau.grau < exp.grau)
+						maiorGrau = exp;
 			}
 			
-			//QTD_PERSONAGEM_INI
-			var QTD_PERSONAGEM_INI:GrupoFuzzy = new GrupoFuzzy();
-			var BAIXO_QTD_PERSONAGEM_INI:AtributoFuzzy = new AtributoFuzzy();
-			BAIXO_QTD_PERSONAGEM_INI.inicio = 0;
-			BAIXO_QTD_PERSONAGEM_INI.fim = 3;
-			var MEDIO_QTD_PERSONAGEM_INI:AtributoFuzzy = new AtributoFuzzy();
-			MEDIO_QTD_PERSONAGEM_INI.inicio = 2;
-			MEDIO_QTD_PERSONAGEM_INI.fim = 4;
-			var ALTO_QTD_PERSONAGEM_INI:AtributoFuzzy = new AtributoFuzzy();
-			ALTO_QTD_PERSONAGEM_INI.inicio = 3;
-			ALTO_QTD_PERSONAGEM_INI.fim = -1;
-			QTD_PERSONAGEM_INI.baixo = BAIXO_QTD_PERSONAGEM_INI;
-			QTD_PERSONAGEM_INI.medio = MEDIO_QTD_PERSONAGEM_INI;
-			QTD_PERSONAGEM_INI.alto = ALTO_QTD_PERSONAGEM_INI;
-			
-			//PERSON_AOREDOR
-			var PERSON_AOREDOR:GrupoFuzzy = new GrupoFuzzy();
-			var BAIXO_PERSON_AOREDOR:AtributoFuzzy = new AtributoFuzzy();
-			BAIXO_PERSON_AOREDOR.inicio = 0;
-			BAIXO_PERSON_AOREDOR.fim = 3;
-			var MEDIO_PERSON_AOREDOR:AtributoFuzzy = new AtributoFuzzy();
-			MEDIO_PERSON_AOREDOR.inicio = 2;
-			MEDIO_PERSON_AOREDOR.fim = 4;
-			var ALTO_PERSON_AOREDOR:AtributoFuzzy = new AtributoFuzzy();
-			ALTO_PERSON_AOREDOR.inicio = 3;
-			ALTO_PERSON_AOREDOR.fim = -1;
-			PERSON_AOREDOR.baixo = BAIXO_PERSON_AOREDOR;
-			PERSON_AOREDOR.medio = MEDIO_PERSON_AOREDOR;
-			PERSON_AOREDOR.alto = ALTO_PERSON_AOREDOR;
-			
-			//DISTANCIA_T1_TORRE1
-			var DISTANCIA_T1_TORRE1:GrupoFuzzy = new GrupoFuzzy();
-			var BAIXO_DISTANCIA_T1_TORRE1:AtributoFuzzy = new AtributoFuzzy();
-			BAIXO_DISTANCIA_T1_TORRE1.inicio = 0;
-			BAIXO_DISTANCIA_T1_TORRE1.fim = 7;
-			var MEDIO_DISTANCIA_T1_TORRE1:AtributoFuzzy = new AtributoFuzzy();
-			MEDIO_DISTANCIA_T1_TORRE1.inicio = 6;
-			MEDIO_DISTANCIA_T1_TORRE1.fim = 12;
-			var ALTO_DISTANCIA_T1_TORRE1:AtributoFuzzy = new AtributoFuzzy();
-			ALTO_DISTANCIA_T1_TORRE1.inicio = 10;
-			ALTO_DISTANCIA_T1_TORRE1.fim = -1;
-			PERSON_AOREDOR.baixo = BAIXO_DISTANCIA_T1_TORRE1;
-			PERSON_AOREDOR.medio = MEDIO_DISTANCIA_T1_TORRE1;
-			PERSON_AOREDOR.alto = ALTO_DISTANCIA_T1_TORRE1;
-		
-		}
-		
-		public function processaJogada():void
-		{
-		
-		}
-		
-		private function fizzificar():void
-		{
-		
+			// executa acao
+			executaAcao[maiorGrau.metodoExecuta]();
 		}
 	
 	}
 
-	/*
-QTD_PERSONAGEM_INI (BAIXO 0-3, MEIO 2-4, ALTO 3-*)
-QTD_PERSONAGEM_ALI  (BAIXO 0-3, MEIO 2-4, ALTO 3-*)
- 
-DISTANCIA_T0_TORRE1 (BAIXO 0-7, MEIO 6-12, ALTO 10-*)
-DISTANCIA_T0_TORRE2  (BAIXO 0-7, MEIO 6-12, ALTO 10-*)
-
-DISTANCIA_T1_TORRE1  (BAIXO 0-7, MEIO 6-12, ALTO 10-*)
-DISTANCIA_T1_TORRE2  (BAIXO 0-7, MEIO 6-12, ALTO 10-*)
-
-PERSON_AOREDOR  (BAIXO 0-3, MEIO 2-4, ALTO 3-*)
-
-
- 
-
-SE (PERSON_AOREDOR = ALTO) E (DISTANCIA_T1_TORRE1 = ALTO) ENTAO ATACA_PERSONAGEM
-SE (PERSON_AOREDOR = MEDIO) E (DISTANCIA_T1_TORRE1 = MEDIO) ENTAO ATACA_PERSONAGEM
-
-SE (PERSON_AOREDOR = BAIXO) E (DISTANCIA_T1_TORRE1 = ALTO) ENTAO MOVE_DIRECAO_TORRE_0
-SE (PERSON_AOREDOR = MEDIO) E (DISTANCIA_T1_TORRE1 = ALTO) ENTAO MOVE_DIRECAO_TORRE_0
-SE (PERSON_AOREDOR = BAIXO) E (DISTANCIA_T1_TORRE1 = MEDIO) ENTAO MOVE_DIRECAO_TORRE_0
-SE (PERSON_AOREDOR = MEDIO) E (DISTANCIA_T1_TORRE1 = MEDIO) ENTAO MOVE_DIRECAO_TORRE_0
-
-SE (QTD_PERSONAGEM_INI = BAIXO) E (DISTANCIA_T1_TORRE1 = MEDIO) MOVE_DIRECAO_TORRE_0
-
-SE (DISTANCIA_T1_TORRE1 = BAIXO)  ENTAO ATACA_TORRE
-*/
 }

@@ -1,0 +1,36 @@
+package jogoTCC.moduloIA
+{
+	import jogoTCC.entidades.Mapa;
+	import jogoTCC.entidades.Personagem;
+	import jogoTCC.estrutura.AtributoFuzzy;
+	import jogoTCC.estrutura.ExpressaoFuzzy;
+	import jogoTCC.estrutura.GrupoFuzzy;
+	
+	public class ExpressoesIA
+	{
+		
+		public function ExpressoesIA(listaExpre:Array)
+		{ 
+			
+			var expressao:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = ALTO E DISTANCIA_T1_TORRE1 = ALTO ENTAO ATACA_PERSONAGEM");
+			listaExpre.push(expressao);
+		}
+	
+	}
+
+/*
+
+
+   SE (PERSON_AOREDOR = ALTO) E (DISTANCIA_T1_TORRE1 = ALTO) ENTAO ATACA_PERSONAGEM
+   SE (PERSON_AOREDOR = MEDIO) E (DISTANCIA_T1_TORRE1 = MEDIO) ENTAO ATACA_PERSONAGEM
+
+   SE (PERSON_AOREDOR = BAIXO) E (DISTANCIA_T1_TORRE1 = ALTO) ENTAO MOVE_DIRECAO_TORRE_0
+   SE (PERSON_AOREDOR = MEDIO) E (DISTANCIA_T1_TORRE1 = ALTO) ENTAO MOVE_DIRECAO_TORRE_0
+   SE (PERSON_AOREDOR = BAIXO) E (DISTANCIA_T1_TORRE1 = MEDIO) ENTAO MOVE_DIRECAO_TORRE_0
+   SE (PERSON_AOREDOR = MEDIO) E (DISTANCIA_T1_TORRE1 = MEDIO) ENTAO MOVE_DIRECAO_TORRE_0
+
+   SE (QTD_PERSONAGEM_INI = BAIXO) E (DISTANCIA_T1_TORRE1 = MEDIO) MOVE_DIRECAO_TORRE_0
+
+   SE (DISTANCIA_T1_TORRE1 = BAIXO)  ENTAO ATACA_TORRE
+ */
+}

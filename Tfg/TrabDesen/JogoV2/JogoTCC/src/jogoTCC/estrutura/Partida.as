@@ -41,7 +41,7 @@ package jogoTCC.estrutura
 			adicionaJogadores();
 			
 			// inicia modulo IA
-			moduloIA = new PrincipalIA(mapa, listaPersonagens);
+			//moduloIA = new PrincipalIA(mapa, listaPersonagens);
 		}
 		
 		private function adicionaJogadores():void
@@ -157,7 +157,7 @@ package jogoTCC.estrutura
 			if (this.turnoAtual == 0)
 			{
 				this.turnoAtual = 1;
-				this.moduloIA.processaJogada();
+				//this.moduloIA.processaJogada();
 			}
 			else if (this.turnoAtual == 1)
 			{
