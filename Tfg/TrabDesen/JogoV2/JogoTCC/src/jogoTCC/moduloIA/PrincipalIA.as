@@ -22,13 +22,16 @@ package jogoTCC.moduloIA
 			var expressoes:ExpressoesIA = new ExpressoesIA(listaExpressoes);
 		}
 		
-		public function processar(vlEntradaQtdPerso:Number, persoAoRedor:Number, distT1Torre1:Number):ExpressaoFuzzy
+		public function processar(persoAoRedor:Number, distT1Torre1:Number, vidaTorre:Number,vidaTorreIni:Number,vidaPerso:Number, iniVida:Number ):ExpressaoFuzzy
 		{
 			
-			// fase de fuzzificacao dos valores de entrada
-			fuzzificar(grupos.QTD_PERSONAGEM_INI, vlEntradaQtdPerso);
+			// fase de fuzzificacao dos valores de entrada			
 			fuzzificar(grupos.PERSON_AOREDOR, persoAoRedor);
 			fuzzificar(grupos.DISTANCIA_T1_TORRE1, distT1Torre1);
+			fuzzificar(grupos.VIDA_TORRE, vidaTorre);
+			fuzzificar(grupos.VIDA_TORRE_INI, vidaTorreIni);
+			fuzzificar(grupos.VIDA_PERSO, vidaPerso);
+			fuzzificar(grupos.INI_ATQ_VIDA, iniVida);			
 			
 			// fase de inferencia das regras
 			realizaInferencia();

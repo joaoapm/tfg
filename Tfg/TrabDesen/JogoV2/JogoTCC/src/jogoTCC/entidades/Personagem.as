@@ -149,7 +149,10 @@ package jogoTCC.entidades
 			}
 			else
 			{
+				this.casaAtual.ehPassavel = true;
 				this.casaAtual = caminho[indice - 1];
+				this.casaAtual.personagemAtual = this;
+				this.casaAtual.ehPassavel = false;
 				resetaAnimacao();
 			}
 		}

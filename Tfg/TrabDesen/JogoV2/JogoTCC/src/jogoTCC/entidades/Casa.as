@@ -41,6 +41,8 @@ package jogoTCC.entidades
 		
 		public var nrTime:Number;
 		
+		public var personagemAtual:Personagem;
+		
 		public function Casa(posX:Number, posY:Number, inicioX:Number, inicioY:Number, alpha:Number, c:Number, l:Number)
 		{
 

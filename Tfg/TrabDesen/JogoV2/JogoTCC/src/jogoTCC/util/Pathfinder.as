@@ -148,7 +148,7 @@ package jogoTCC.util
 			}
 		}
 		
-		private function inverteCaminho():void
+		public function inverteCaminho():void
 		{
 			for (var i:Number = caminho.length - 1; i >= 0; i--)
 			{
