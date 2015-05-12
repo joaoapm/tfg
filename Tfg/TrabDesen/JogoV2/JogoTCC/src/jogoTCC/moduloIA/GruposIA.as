@@ -7,54 +7,68 @@ package jogoTCC.moduloIA
 	
 	public class GruposIA
 	{
+		
 		private var BAIXO:AtributoFuzzy;
 		private var MEDIO:AtributoFuzzy;
 		private var ALTO:AtributoFuzzy;
+		
+		public var QTD_PERSONAGEM_INI:GrupoFuzzy;
+		public var PERSON_AOREDOR:GrupoFuzzy;
+		public var DISTANCIA_T1_TORRE1:GrupoFuzzy;
 		
 		public function GruposIA(listaGrupos:Array)
 		{
 			
 			//QTD_PERSONAGEM_INI
-			var QTD_PERSONAGEM_INI:GrupoFuzzy = new GrupoFuzzy("QTD_PERSONAGEM_INI");
+			QTD_PERSONAGEM_INI = new GrupoFuzzy("QTD_PERSONAGEM_INI");
 			BAIXO = new AtributoFuzzy();
-			BAIXO.inicio = 1;
-			BAIXO.fim = 3;
+			BAIXO.nomeAtrib = "BAIXO";
+			BAIXO.inicio = 0;
+			BAIXO.fim = 4;
 			MEDIO = new AtributoFuzzy();
+			MEDIO.nomeAtrib = "MEDIO";
 			MEDIO.inicio = 2;
-			MEDIO.fim = 4;
+			MEDIO.fim = 5;
 			ALTO = new AtributoFuzzy();
-			ALTO.inicio = 3;
-			ALTO.fim = -1;
+			ALTO.nomeAtrib = "ALTO";
+			ALTO.inicio = 4;
+			ALTO.fim = 8;
 			QTD_PERSONAGEM_INI.baixo = BAIXO;
 			QTD_PERSONAGEM_INI.medio = MEDIO;
 			QTD_PERSONAGEM_INI.alto = ALTO;
 			
 			//PERSON_AOREDOR
-			var PERSON_AOREDOR:GrupoFuzzy = new GrupoFuzzy("PERSON_AOREDOR");
+			PERSON_AOREDOR = new GrupoFuzzy("PERSON_AOREDOR");
 			BAIXO = new AtributoFuzzy();
-			BAIXO.inicio = 1;
-			BAIXO.fim = 3;
+			BAIXO.nomeAtrib = "BAIXO";
+			BAIXO.inicio = 0;
+			BAIXO.fim = 4;
 			MEDIO = new AtributoFuzzy();
+			MEDIO.nomeAtrib = "MEDIO";
 			MEDIO.inicio = 2;
-			MEDIO.fim = 4;
+			MEDIO.fim = 5;
 			ALTO = new AtributoFuzzy();
-			ALTO.inicio = 3;
-			ALTO.fim = -1;
+			ALTO.nomeAtrib = "ALTO";
+			ALTO.inicio = 4;
+			ALTO.fim = 8;
 			PERSON_AOREDOR.baixo = BAIXO;
 			PERSON_AOREDOR.medio = MEDIO;
 			PERSON_AOREDOR.alto = ALTO;
 			
 			//DISTANCIA_T1_TORRE1
-			var DISTANCIA_T1_TORRE1:GrupoFuzzy = new GrupoFuzzy("DISTANCIA_T1_TORRE1");
+			DISTANCIA_T1_TORRE1 = new GrupoFuzzy("DISTANCIA_T1_TORRE1");
 			BAIXO = new AtributoFuzzy();
-			BAIXO.inicio = 1;
-			BAIXO.fim = 7;
+			BAIXO.nomeAtrib = "BAIXO";
+			BAIXO.inicio = 0;
+			BAIXO.fim = 8;
 			MEDIO = new AtributoFuzzy();
+			MEDIO.nomeAtrib = "MEDIO";
 			MEDIO.inicio = 6;
-			MEDIO.fim = 12;
+			MEDIO.fim = 14;
 			ALTO = new AtributoFuzzy();
-			ALTO.inicio = 10;
-			ALTO.fim = -1;
+			ALTO.nomeAtrib = "ALTO";
+			ALTO.inicio = 12;
+			ALTO.fim = 20;
 			DISTANCIA_T1_TORRE1.baixo = BAIXO;
 			DISTANCIA_T1_TORRE1.medio = MEDIO;
 			DISTANCIA_T1_TORRE1.alto = ALTO;

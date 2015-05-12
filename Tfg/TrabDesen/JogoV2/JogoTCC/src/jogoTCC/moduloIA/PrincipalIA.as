@@ -5,7 +5,7 @@ package jogoTCC.moduloIA
 	import jogoTCC.estrutura.AtributoFuzzy;
 	import jogoTCC.estrutura.GrupoFuzzy;
 	import jogoTCC.estrutura.ExpressaoFuzzy;
-		
+	
 	public class PrincipalIA
 	{
 		
@@ -13,23 +13,28 @@ package jogoTCC.moduloIA
 		
 		private var listaGrupos:Array = new Array();
 		private var listaExpressoes:Array = new Array();
-			
-		public function PrincipalIA(mapa:Mapa, listaPerso:Array,vlEntrada:Number)
+		
+		public var grupos:GruposIA;
+		
+		public function PrincipalIA()
+		{
+			grupos = new GruposIA(listaGrupos);
+			var expressoes:ExpressoesIA = new ExpressoesIA(listaExpressoes);
+		}
+		
+		public function processar(vlEntradaQtdPerso:Number, persoAoRedor:Number, distT1Torre1:Number):ExpressaoFuzzy
 		{
 			
-			var grupos:GruposIA = new GruposIA(listaGrupos);
-			var expressoes:ExpressoesIA = new ExpressoesIA(listaExpressoes);
-			
 			// fase de fuzzificacao dos valores de entrada
-			//fuzzificar(QTD_PERSONAGEM_INI, vlEntrada);
-			//fuzzificar(QTD_PERSONAGEM_INI, vlEntrada);
-			//fuzzificar(QTD_PERSONAGEM_INI, vlEntrada);
+			fuzzificar(grupos.QTD_PERSONAGEM_INI, vlEntradaQtdPerso);
+			fuzzificar(grupos.PERSON_AOREDOR, persoAoRedor);
+			fuzzificar(grupos.DISTANCIA_T1_TORRE1, distT1Torre1);
 			
 			// fase de inferencia das regras
 			realizaInferencia();
 			
 			// fase de defuzzificacao e realizadao da decisao retornada
-			defuzzificar();
+			return defuzzificar();
 		
 		}
 		
@@ -42,7 +47,9 @@ package jogoTCC.moduloIA
 		
 		private function calculaGrauPertinencia(atrib:AtributoFuzzy, vlEntrada:Number):Number
 		{
-			var pertN:Number = (vlEntrada * 100) / (atrib.fim - atrib.inicio);
+			var pertN:Number = (vlEntrada * 1) / (atrib.fim);
+			if (pertN > 1)
+				return 1;
 			return pertN;
 		}
 		
@@ -51,7 +58,7 @@ package jogoTCC.moduloIA
 			for each (var expr:ExpressaoFuzzy in listaExpressoes)
 			{
 				var listaExp:Array = expr.expressao.split(" ");
- 	
+				
 				expr.grau1 = avaliaExpressao(listaExp[1], listaExp[3]);
 				expr.grau2 = avaliaExpressao(listaExp[5], listaExp[7]);
 				
@@ -85,18 +92,24 @@ package jogoTCC.moduloIA
 			return null;
 		}
 		
-		private function defuzzificar():void
+		private function defuzzificar():ExpressaoFuzzy
 		{
 			var maiorGrau:ExpressaoFuzzy;
 			for each (var exp:ExpressaoFuzzy in listaExpressoes)
 			{
-				if (exp.grau1 != 0 && exp.grau2 != 0)
-					if (maiorGrau != null && maiorGrau.grau < exp.grau)
-						maiorGrau = exp;
+				if (maiorGrau == null)
+				{
+					maiorGrau = exp;
+				}
+				else
+				{
+					if (exp.grau1 != 0 && exp.grau2 != 0)
+						if (maiorGrau.grau < exp.grau)
+							maiorGrau = exp;
+				}
 			}
 			
-			// executa acao
-			executaAcao[maiorGrau.metodoExecuta]();
+			return maiorGrau;
 		}
 	
 	}

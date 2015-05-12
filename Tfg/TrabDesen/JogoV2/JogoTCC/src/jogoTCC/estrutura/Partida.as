@@ -2,6 +2,7 @@ package jogoTCC.estrutura
 {
 	
 	import jogoTCC.entidades.Casa;
+	import jogoTCC.moduloIA.ExecutaAcaoIA;
 	import jogoTCC.moduloIA.PrincipalIA;
 	import starling.display.Sprite;
 	import jogoTCC.entidades.Mapa;
@@ -17,7 +18,7 @@ package jogoTCC.estrutura
 		public var personagemMarcado:Personagem;
 		public var mapa:Mapa;
 		public var turnoAtual:Number = 0;
-		private var moduloIA:PrincipalIA;
+		private var executaAcaoIA:ExecutaAcaoIA;
 		
 		public function Partida()
 		{
@@ -41,7 +42,7 @@ package jogoTCC.estrutura
 			adicionaJogadores();
 			
 			// inicia modulo IA
-			//moduloIA = new PrincipalIA(mapa, listaPersonagens);
+			executaAcaoIA = new ExecutaAcaoIA(mapa, listaPersonagens);
 		}
 		
 		private function adicionaJogadores():void
@@ -157,7 +158,7 @@ package jogoTCC.estrutura
 			if (this.turnoAtual == 0)
 			{
 				this.turnoAtual = 1;
-				//this.moduloIA.processaJogada();
+				executaAcaoIA.processaJogada();
 			}
 			else if (this.turnoAtual == 1)
 			{
