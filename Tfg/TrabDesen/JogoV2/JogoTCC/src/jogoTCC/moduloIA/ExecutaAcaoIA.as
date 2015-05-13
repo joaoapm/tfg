@@ -45,8 +45,18 @@ package jogoTCC.moduloIA
 			
 			// personagem ao redor
 			listaIniAoRedor = pesqIniAoRedor(perso.casaAtual);
-			var qntAoRedor:Number = listaIniAoRedor.lengh;
+			var qntAoRedor:Number = listaIniAoRedor.length;
+			
 			iniAtacar = listaIniAoRedor[randomRange(0, qntAoRedor)] as Personagem;
+			var nr:Number;
+			if (iniAtacar != null)
+			{
+				nr = iniAtacar.vida;
+			}
+			else
+			{
+				nr = 0;
+			}
 			
 			// distancia torre inimiga
 			pathFind = new Pathfinder();
@@ -55,11 +65,11 @@ package jogoTCC.moduloIA
 			pathFind.inverteCaminho();
 			caminho = pathFind.caminho;
 			
-			var dist:Number = caminho.lenght;
+			var dist:Number = caminho.length;
 			
-			var express:ExpressaoFuzzy = principalIA.processar(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, iniAtacar.vida);
+			var express:ExpressaoFuzzy = principalIA.processar(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
 		
-			//this[express.metodoExecuta]();
+			this[express.metodoExecuta]();
 		}
 		
 		public function MOVE_TORRE_INI():void

@@ -22,24 +22,18 @@ package jogoTCC.moduloIA
 		public function GruposIA(listaGrupos:Array)
 		{
 			
-			iniciaGrupo(PERSON_AOREDOR, "PERSON_AOREDOR", 0, 4, 2, 5, 4, 8);
-			iniciaGrupo(DISTANCIA_T1_TORRE1, "DISTANCIA_T1_TORRE1", 0, 8, 6, 14, 12, 20);
-			iniciaGrupo(VIDA_TORRE, "VIDA_TORRE", 0, 4, 3, 7, 6, 10);
-			iniciaGrupo(VIDA_TORRE_INI, "VIDA_TORRE_INI", 0, 4, 3, 7, 6, 10);
-			iniciaGrupo(VIDA_PERSO, "VIDA_PERSO", 0, 3, 2, 4, 3, 6);
-			iniciaGrupo(INI_ATQ_VIDA, "INI_ATQ_VIDA", 0, 3, 2, 4, 3, 6);
-			
-			listaGrupos.push(PERSON_AOREDOR);
-			listaGrupos.push(DISTANCIA_T1_TORRE1);
-			listaGrupos.push(VIDA_TORRE);
-			listaGrupos.push(VIDA_TORRE_INI);
-			listaGrupos.push(VIDA_PERSO);
-			listaGrupos.push(INI_ATQ_VIDA);
+			PERSON_AOREDOR = iniciaGrupo("PERSON_AOREDOR", 0, 4, 2, 5, 4, 8);
+			DISTANCIA_T1_TORRE1 = iniciaGrupo("DISTANCIA_T1_TORRE1", 0, 8, 6, 14, 12, 20);
+			VIDA_TORRE = iniciaGrupo("VIDA_TORRE", 0, 4, 3, 7, 6, 10);
+			VIDA_TORRE_INI = iniciaGrupo("VIDA_TORRE_INI", 0, 4, 3, 7, 6, 10);
+			VIDA_PERSO = iniciaGrupo("VIDA_PERSO", 0, 3, 2, 4, 3, 6);
+			INI_ATQ_VIDA = iniciaGrupo("INI_ATQ_VIDA", 0, 3, 2, 4, 3, 6);
+		
 		}
 		
-		private function iniciaGrupo(GPFZ:GrupoFuzzy, nomeGr:String, bIni:Number, bFim:Number, mIni:Number, mFim:Number, aIni:Number, aFim:Number):void
+		private function iniciaGrupo(nomeGr:String, bIni:Number, bFim:Number, mIni:Number, mFim:Number, aIni:Number, aFim:Number):GrupoFuzzy
 		{
-			GPFZ = new GrupoFuzzy(nomeGr);
+			var GPFZ:GrupoFuzzy = new GrupoFuzzy(nomeGr);
 			BAIXO = new AtributoFuzzy();
 			BAIXO.nomeAtrib = "BAIXO";
 			BAIXO.inicio = bIni;
@@ -55,6 +49,9 @@ package jogoTCC.moduloIA
 			GPFZ.baixo = BAIXO;
 			GPFZ.medio = MEDIO;
 			GPFZ.alto = ALTO;
+			
+			return GPFZ;
+		
 		}
 	
 	}
