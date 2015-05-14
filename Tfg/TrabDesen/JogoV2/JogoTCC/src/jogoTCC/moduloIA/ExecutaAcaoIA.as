@@ -106,11 +106,11 @@ package jogoTCC.moduloIA
 			
 			if (casaValida != null)
 			{
-				mapa.atacaTorre(casaValida, perso);
+				perso.setLocalPersonagem(casaValida);
 			}
 			else
 			{
-				MOVE_TORRE_INI();
+				
 			}
 		
 		}
