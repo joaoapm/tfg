@@ -60,7 +60,8 @@ package jogoTCC.moduloIA
 			
 			// distancia torre inimiga
 			pathFind = new Pathfinder();
-			caminho = pathFind.pesquisaCaminho(mapa.torre0[0], perso.casaAtual);
+			caminho = pathFind.pesquisaCaminho( perso.casaAtual,mapa.torre0[0]);
+	 			
 			pathFind.caminhoInv = new Array();
 			pathFind.inverteCaminho();
 			caminho = pathFind.caminho;
@@ -68,8 +69,18 @@ package jogoTCC.moduloIA
 			var dist:Number = caminho.length;
 			
 			var express:ExpressaoFuzzy = principalIA.processar(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
+	
+			MOVE_TORRE_INI();	mostracc();
+		}
 		
-			this[express.metodoExecuta]();
+		private function mostracc():void {
+				for (var i:Number = 0; i < this.mapa.casas.length; i ++ ) {
+					for (var j:Number = 0; j < this.mapa.casas[i].length; j ++ ) {
+						var ca:Casa = this.mapa.casas[i][j];
+				if (ca.ehPassavel == true)
+				ca.alpha = 0.7;
+					}
+				}
 		}
 		
 		public function MOVE_TORRE_INI():void

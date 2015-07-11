@@ -64,6 +64,7 @@ package jogoTCC.entidades
 			super.y = casa.y - 47;
 			
 			casaAtual = casa;
+			casaAtual.ehPassavel = false;
 		}
 		
 		public function setLocalPersonagem(casa:Casa):void
@@ -93,6 +94,8 @@ package jogoTCC.entidades
 		
 		private function movePersonagem(caminho:Array, indice:Number):void
 		{
+			this.casaAtual.ehPassavel = true;
+			
 			if (indice < caminho.length)
 			{
 				var casa:Casa = caminho[indice] as Casa;
@@ -149,7 +152,7 @@ package jogoTCC.entidades
 			}
 			else
 			{
-				this.casaAtual.ehPassavel = true;
+				
 				this.casaAtual = caminho[indice - 1];
 				this.casaAtual.personagemAtual = this;
 				this.casaAtual.ehPassavel = false;
@@ -285,7 +288,7 @@ package jogoTCC.entidades
 					partida.atualizaPersonagemMarcado(null);
 				animacaoFinalizada = true;
 				animAtual = null;
-				
+
 				if (partida != null)
 				{
 					partida.verificaEstadoPartida();
