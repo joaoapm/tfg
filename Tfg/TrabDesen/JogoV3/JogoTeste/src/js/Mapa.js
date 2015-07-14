@@ -64,8 +64,8 @@ Mapa.prototype.atualizaMapa = function() {
 
 Mapa.prototype.adicionaTiles = function() {
 	var tile;
-	for (var xx = 0; xx < 256; xx += 38) {
-		for (var yy = 0; yy < 256; yy += 38) {
+	for (var xx = 0; xx < 304; xx += 38) {
+		for (var yy = 0; yy < 304; yy += 38) {
 			// Create a tile using the new game.add.isoSprite factory method at
 			// the specified position.
 			// The last parameter is the group you want to add it to (just like
