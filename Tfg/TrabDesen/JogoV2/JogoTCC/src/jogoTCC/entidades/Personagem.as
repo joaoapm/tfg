@@ -1,5 +1,4 @@
-package jogoTCC.entidades
-{
+package jogoTCC.entidades {
 	import jogoTCC.estrutura.Partida;
 	import jogoTCC.util.CarregaAnimacao;
 	import jogoTCC.util.CarregaAssets;
@@ -18,8 +17,7 @@ package jogoTCC.entidades
 	import flash.geom.Matrix;
 	import flash.geom.Point;
 	
-	public class Personagem extends Sprite
-	{
+	public class Personagem extends Sprite {
 		
 		// tipo do jogador: controlado por computador ou usuario
 		private var tipoJogador:String;
@@ -39,8 +37,7 @@ package jogoTCC.entidades
 		private var vidaAtual:Image;
 		public var animacaoFinalizada:Boolean = true;
 		
-		public function Personagem(tipoJogador:String, nrTime:Number)
-		{
+		public function Personagem(tipoJogador:String, nrTime:Number) {
 			
 			// colisor
 			criaColisor();
@@ -58,8 +55,7 @@ package jogoTCC.entidades
 		
 		}
 		
-		public function setLocalInicialPersonagem(casa:Casa):void
-		{
+		public function setLocalInicialPersonagem(casa:Casa):void {
 			super.x = casa.x - 47;
 			super.y = casa.y - 47;
 			
@@ -67,10 +63,8 @@ package jogoTCC.entidades
 			casaAtual.ehPassavel = false;
 		}
 		
-		public function setLocalPersonagem(casa:Casa):void
-		{
-			if (isCasaDestinoValida(casa) && animacaoFinalizada)
-			{
+		public function setLocalPersonagem(casa:Casa):void {
+			if (isCasaDestinoValida(casa) && animacaoFinalizada) {
 				var pt:Pathfinder = new Pathfinder();
 				var caminho:Array = pt.pesquisaCaminho(casaAtual, casa);
 				
@@ -78,30 +72,25 @@ package jogoTCC.entidades
 				movePersonagem(caminho, 1);
 			}
 		}
-		
-		public function ataca():void
-		{
+
+		public function ataca():void {
 			
 			atualizaAnimacao("ataqueFR", "atacando", 13, -18, -18, true);
 		}
 		
-		public function sofreAtaque():void
-		{
+		public function sofreAtaque():void {
 			this.vida -= 1;
 			
 			atualizaVida();
 		}
 		
-		private function movePersonagem(caminho:Array, indice:Number):void
-		{
+		private function movePersonagem(caminho:Array, indice:Number):void {
 			this.casaAtual.ehPassavel = true;
 			
-			if (indice < caminho.length)
-			{
+			if (indice < caminho.length) {
 				var casa:Casa = caminho[indice] as Casa;
 				
-				if (animAtual != casa.direc)
-				{
+				if (animAtual != casa.direc) {
 					
 					if (casa.direc == "LE")
 						atualizaAnimacao("andandoLE", "andando", 8, null, null, false);
@@ -142,16 +131,13 @@ package jogoTCC.entidades
 				var partida:Partida = parent as Partida;
 				partida.organizaLayers();
 				
-				tween.onComplete = function():void
-				{
+				tween.onComplete = function():void {
 					indice += 1;
 					movePersonagem(caminho, indice);
 				};
 				
 				Starling.juggler.add(tween);
-			}
-			else
-			{
+			} else {
 				
 				this.casaAtual = caminho[indice - 1];
 				this.casaAtual.personagemAtual = this;
@@ -160,29 +146,22 @@ package jogoTCC.entidades
 			}
 		}
 		
-		private function controlaEventos(e:TouchEvent):void
-		{
+		private function controlaEventos(e:TouchEvent):void {
 			
 			var partida:Partida = parent as Partida;
 			var touch:Touch = e.getTouch(stage);
 			
-			if (partida.turnoAtual == this.time)
-			{
-				if (touch != null)
-				{
+			if (partida.turnoAtual == this.time) {
+				if (touch != null) {
 					var colisor:Quad = e.currentTarget as Quad;
 					var clicado:Personagem = colisor.parent as Personagem;
 					
-					if (touch.phase == TouchPhase.ENDED)
-					{
+					if (touch.phase == TouchPhase.ENDED) {
 						
-						if (this.time == 0)
-						{
+						if (this.time == 0) {
 							partida.atualizaPersonagemMarcado(clicado);
 							mostraRange(true);
-						}
-						else
-						{
+						} else {
 							if (partida.personagemMarcado != null && partida.personagemMarcado.animacaoFinalizada)
 								partida.gerenciaAtaque(clicado);
 						}
@@ -192,8 +171,7 @@ package jogoTCC.entidades
 			}
 		}
 		
-		public function mostraRange(ligaRange:Boolean):void
-		{
+		public function mostraRange(ligaRange:Boolean):void {
 			alteraAlphaCasas(this.casaAtual, ligaRange);
 			alteraAlphaCasas(this.casaAtual.casaD1, ligaRange);
 			alteraAlphaCasas(this.casaAtual.casaD2, ligaRange);
@@ -205,11 +183,9 @@ package jogoTCC.entidades
 			alteraAlphaCasas(this.casaAtual.casaLE, ligaRange);
 		}
 		
-		private function alteraAlphaCasas(casa:Casa, ligaRange:Boolean):void
-		{
+		private function alteraAlphaCasas(casa:Casa, ligaRange:Boolean):void {
 			
-			if (casa != null)
-			{
+			if (casa != null) {
 				var alpha:Number = 0.3;
 				
 				if (!ligaRange)
@@ -241,19 +217,16 @@ package jogoTCC.entidades
 			}
 		}
 		
-		public function isCasaDestinoValida(casaDest:Casa):Boolean
-		{
+		public function isCasaDestinoValida(casaDest:Casa):Boolean {
 			if (validaCasa(casaDest, this.casaAtual) || validaCasa(casaDest, this.casaAtual.casaD1) || validaCasa(casaDest, this.casaAtual.casaD2) || validaCasa(casaDest, this.casaAtual.casaD3) || validaCasa(casaDest, this.casaAtual.casaD4) || validaCasa(casaDest, this.casaAtual.casaFR) || validaCasa(casaDest, this.casaAtual.casaTR) || validaCasa(casaDest, this.casaAtual.casaLD) || validaCasa(casaDest, this.casaAtual.casaLD))
 				return true;
 			
 			return false;
 		}
 		
-		private function validaCasa(casaDest:Casa, casa:Casa):Boolean
-		{
+		private function validaCasa(casaDest:Casa, casa:Casa):Boolean {
 			
-			if ((casa != null) && (casaDest == casa.casaD1 || casaDest == casa.casaD2 || casaDest == casa.casaD3 || casaDest == casa.casaD4 || casaDest == casa.casaFR || casaDest == casa.casaTR || casaDest == casa.casaLD || casaDest == casa.casaLE))
-			{
+			if ((casa != null) && (casaDest == casa.casaD1 || casaDest == casa.casaD2 || casaDest == casa.casaD3 || casaDest == casa.casaD4 || casaDest == casa.casaFR || casaDest == casa.casaTR || casaDest == casa.casaLD || casaDest == casa.casaLE)) {
 				return true;
 			}
 			
@@ -261,24 +234,19 @@ package jogoTCC.entidades
 		
 		}
 		
-		private function resetaAnimacao():void
-		{
+		private function resetaAnimacao():void {
 			var partida:Partida = parent as Partida;
 			
-			if (this.vida == 1)
-			{
+			if (this.vida == 1) {
 				this.dispose();
 				this.removeFromParent();
 				
-				if (partida != null)
-				{
+				if (partida != null) {
 					partida.trocaTurno();
 					partida.verificaEstadoPartida();
 				}
 				
-			}
-			else
-			{
+			} else {
 				if (time == 0)
 					atualizaAnimacao("paradoFR", "parado", 13, null, null, false);
 				else
@@ -288,9 +256,8 @@ package jogoTCC.entidades
 					partida.atualizaPersonagemMarcado(null);
 				animacaoFinalizada = true;
 				animAtual = null;
-
-				if (partida != null)
-				{
+				
+				if (partida != null) {
 					partida.verificaEstadoPartida();
 					partida.trocaTurno();
 				}
@@ -298,10 +265,8 @@ package jogoTCC.entidades
 		
 		}
 		
-		private function atualizaAnimacao(animacao:String, tpAni:String, nrFr:Number, pX:Number, pY:Number, resetaAoFinal:Boolean):void
-		{
-			if (mvAtual != null)
-			{
+		private function atualizaAnimacao(animacao:String, tpAni:String, nrFr:Number, pX:Number, pY:Number, resetaAoFinal:Boolean):void {
+			if (mvAtual != null) {
 				mvAtual.dispose();
 				mvAtual.removeFromParent();
 			}
@@ -327,10 +292,8 @@ package jogoTCC.entidades
 		
 		}
 		
-		private function atualizaVida():void
-		{
-			if (vidaAtual != null)
-			{
+		private function atualizaVida():void {
+			if (vidaAtual != null) {
 				vidaAtual.dispose();
 				vidaAtual.removeFromParent();
 			}
@@ -345,20 +308,16 @@ package jogoTCC.entidades
 			if (this.vida == 2)
 				vidaAtual = barraVida.imgVida5;
 			
-			if (this.vida == 1)
-			{
+			if (this.vida == 1) {
 				atualizaAnimacao("morrendoTR", "morrendo", 8, null, null, true);
-			}
-			else
-			{
+			} else {
 				addChild(vidaAtual);
 				vidaAtual.y -= 5;
 				vidaAtual.x += 10;
 			}
 		}
 		
-		private function criaColisor():void
-		{
+		private function criaColisor():void {
 			//parte 1
 			var matrizTransformacao:Matrix = new Matrix();
 			matrizTransformacao.rotate(Math.PI / 4);

@@ -20,6 +20,7 @@ package jogoTCC.entidades
 		
 		// variaveis para controle do pathfinder
 		public var ehPassavel:Boolean = true;
+		public var ehTorre:Boolean = false;
 		public var f:Number = 0;
 		public var g:Number = 0;
 		public var h:Number = 0;
@@ -53,12 +54,14 @@ package jogoTCC.entidades
 			{
 				ehPassavel = false;
 				nrTime = 0;
+				ehTorre = true;
 			}
 			
 			if (c == 10 && l == 21 || c == 11 && l == 21 || c == 12 && l == 21 || c == 10 && l == 23 || c == 11 && l == 23 || c == 12 && l == 23 || c == 10 && l == 22 || c == 11 && l == 22 || c == 12 && l == 22)
 			{
 				ehPassavel = false;
 				nrTime = 1;
+				ehTorre = true;
 			}
 			
 			matrizTransformacao.rotate(Math.PI / 4);

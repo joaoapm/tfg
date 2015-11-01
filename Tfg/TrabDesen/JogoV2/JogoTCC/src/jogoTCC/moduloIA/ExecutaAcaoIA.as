@@ -1,5 +1,4 @@
-package jogoTCC.moduloIA
-{
+package jogoTCC.moduloIA {
 	import jogoTCC.entidades.Casa;
 	import jogoTCC.entidades.Mapa;
 	import jogoTCC.entidades.Personagem;
@@ -8,8 +7,7 @@ package jogoTCC.moduloIA
 	import jogoTCC.estrutura.GrupoFuzzy;
 	import jogoTCC.util.Pathfinder;
 	
-	public class ExecutaAcaoIA
-	{
+	public class ExecutaAcaoIA {
 		
 		private var mapa:Mapa;
 		private var listaPersonagens:Array;
@@ -22,13 +20,11 @@ package jogoTCC.moduloIA
 		private var listaIniAoRedor:Array;
 		private var caminho:Array;
 		
-		public function ExecutaAcaoIA(mapa:Mapa, listaPerso:Array):void
-		{
+		public function ExecutaAcaoIA(mapa:Mapa, listaPerso:Array):void {
 			this.mapa = mapa;
 			this.listaPersonagens = listaPerso;
 			
-			for each (var p:Personagem in this.listaPersonagens)
-			{
+			for each (var p:Personagem in this.listaPersonagens) {
 				if (p.time == 0)
 					persoTime0.push(p)
 				else
@@ -37,8 +33,7 @@ package jogoTCC.moduloIA
 		
 		}
 		
-		public function processaJogada():void
-		{
+		public function processaJogada():void {
 			
 			// personagem a ser processado
 			perso = persoTime1[randomRange(0, 4)];
@@ -49,104 +44,75 @@ package jogoTCC.moduloIA
 			
 			iniAtacar = listaIniAoRedor[randomRange(0, qntAoRedor)] as Personagem;
 			var nr:Number;
-			if (iniAtacar != null)
-			{
+			if (iniAtacar != null) {
 				nr = iniAtacar.vida;
-			}
-			else
-			{
+			} else {
 				nr = 0;
 			}
 			
 			// distancia torre inimiga
 			pathFind = new Pathfinder();
-			caminho = pathFind.pesquisaCaminho( perso.casaAtual,mapa.torre0[0]);
-	 			
+			caminho = pathFind.pesquisaCaminho(perso.casaAtual, mapa.torre0[2]);
+			
 			pathFind.caminhoInv = new Array();
-			pathFind.inverteCaminho();
 			caminho = pathFind.caminho;
 			
 			var dist:Number = caminho.length;
 			
 			var express:ExpressaoFuzzy = principalIA.processar(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
-	
-			MOVE_TORRE_INI();	mostracc();
-		}
-		
-		private function mostracc():void {
-				for (var i:Number = 0; i < this.mapa.casas.length; i ++ ) {
-					for (var j:Number = 0; j < this.mapa.casas[i].length; j ++ ) {
-						var ca:Casa = this.mapa.casas[i][j];
-				if (ca.ehPassavel == true)
-				ca.alpha = 0.7;
-					}
-				}
-		}
-		
-		public function MOVE_TORRE_INI():void
-		{
 			
-			var casaValida:Casa;
-			var casa:Casa;
-			
-			for (var i:Number = 0; i < caminho.length; i++)
-			{
-				casa = caminho[i] as Casa;
-				if (perso.isCasaDestinoValida(casa))
-				{
-					casaValida = casa;
-				}
-			}
-			perso.setLocalPersonagem(casaValida);
+			MOVE_TORRE_INI();
 		}
 		
-		public function MOVE_ATACA_TORRE_INI():void
-		{
+		public function MOVE_TORRE_INI():void {
+			perso.setLocalPersonagem(caminho[1]);
+		}
+		
+		public function MOVE_ATACA_TORRE_INI():void {
 			var torre0:Array = mapa.torre0;
 			var casa:Casa;
 			var casaValida:Casa;
 			
-			for (var i:Number = 0; i < torre0.length; i++)
-			{
+			for (var i:Number = 0; i < torre0.length; i++) {
 				casa = caminho[i] as Casa;
-				if (perso.isCasaDestinoValida(casa))
-				{
+				if (perso.isCasaDestinoValida(casa)) {
 					casaValida = casa;
 				}
 			}
 			
-			if (casaValida != null)
-			{
+			if (casaValida != null) {
 				perso.setLocalPersonagem(casaValida);
-			}
-			else
-			{
+			} else {
 				
 			}
 		
 		}
 		
-		public function MOVE_ATACA_INI():void
-		{
-			if (listaIniAoRedor.lengh > 0)
-			{
+		public function MOVE_ATACA_INI():void {
+			if (listaIniAoRedor.lengh > 0) {
 				var persoAtk:Personagem = listaIniAoRedor[0];
 				persoAtk.sofreAtaque();
 				perso.ataca();
-			}
-			else
-			{
+			} else {
 				MOVE_ATACA_TORRE_INI();
 			}
 		}
 		
-		public function MOVE_DEFESA():void
-		{
+		public function MOVE_DEFESA():void {
 		
 		}
 		
-		public function pesqIniAoRedor(casa:Casa):Array
-		{
+		private function mostracc():void {
+			for (var i:Number = 0; i < this.mapa.casas.length; i++) {
+				for (var j:Number = 0; j < this.mapa.casas[i].length; j++) {
+					var ca:Casa = this.mapa.casas[i][j];
+					if (ca.ehPassavel == true)
+						ca.alpha = 0.7;
+				}
+			}
+		}
+		
+		public function pesqIniAoRedor(casa:Casa):Array {
 			var listaIni:Array = new Array();
 			
 			if (casa.casaD1 != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == 0)
@@ -176,8 +142,7 @@ package jogoTCC.moduloIA
 			return listaIni;
 		}
 		
-		private function randomRange(minNum:Number, maxNum:Number):Number
-		{
+		private function randomRange(minNum:Number, maxNum:Number):Number {
 			return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
 		}
 	
