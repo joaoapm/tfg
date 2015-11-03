@@ -1,20 +1,17 @@
-package jogoTCC.util
-{
+package jogoTCC.util {
 	
 	import flash.utils.Dictionary;
 	import flash.geom.Point;
 	import jogoTCC.entidades.Casa;
 	
-	public class Pathfinder
-	{
+	public class Pathfinder {
 		private var casaFim:Casa;
 		private var casasAbertas:Vector.<Casa>;
 		private var casasFechadas:Vector.<Casa>;
 		public var caminho:Array;
 		public var caminhoInv:Array;
 		
-		public function pesquisaCaminho(casaIni:Casa, casaFim:Casa):Array
-		{
+		public function pesquisaCaminho(casaIni:Casa, casaFim:Casa):Array {
 			
 			// casa de destino
 			this.casaFim = casaFim;
@@ -40,24 +37,20 @@ package jogoTCC.util
 			return this.caminho;
 		}
 		
-		private function iniciaPesquisaCaminho():void
-		{
+		private function iniciaPesquisaCaminho():void {
 			var casaAtual:Casa;
 			var menorValorF:Number = 100000;
 			var encontrouFinal:Boolean = false;
 			
 			//determina a casa com menor valor F
-			for each (var casa:Casa in casasAbertas)
-			{
+			for each (var casa:Casa in casasAbertas) {
 				var valorFCasaAutal:Number;
 				valorFCasaAutal = casa.g + casa.h
-				if (menorValorF > valorFCasaAutal)
-				{
+				if (menorValorF > valorFCasaAutal) {
 					menorValorF = valorFCasaAutal;
 					
 					// seta direcao do movimento
-					if (casa.casaPai != null)
-					{
+					if (casa.casaPai != null) {
 						if (casa.casaPai.casaLE == casa)
 							casa.direc = "LE";
 						if (casa.casaPai.casaLD == casa)
@@ -81,8 +74,7 @@ package jogoTCC.util
 			}
 			
 			// nao encontrou caminho
-			if (casaAtual == null)
-			{
+			if (casaAtual == null) {
 				return;
 			}
 			
@@ -106,26 +98,20 @@ package jogoTCC.util
 			processaCasa(casaAtual.casaFR, false, casaAtual);
 			
 			// se nao encontrou casa final, continua procura
-			if (encontrouFinal == false)
-			{
+			if (encontrouFinal == false) {
 				this.iniciaPesquisaCaminho();
-			}
-			else
-			{
+			} else {
 				montaCaminho(casaFim);
 				inverteCaminho();
 			}
 		}
 		
-		private function processaCasa(casa:Casa, isDiagonal:Boolean, casaAt:Casa):void
-		{
-			if (casa != null)
-			{
+		private function processaCasa(casa:Casa, isDiagonal:Boolean, casaAt:Casa):void {
+			if (casa != null) {
 				var col:Number = casa.c;
 				var lin:Number = casa.l;
 				
-				if ((casa.ehPassavel || casa.ehTorre) && casasFechadas.indexOf(casa) == -1 && casasAbertas.indexOf(casa) == -1)
-				{
+				if ((casa.ehPassavel || casa.ehTorre) && casasFechadas.indexOf(casa) == -1 && casasAbertas.indexOf(casa) == -1) {
 					if (isDiagonal)
 						casa.g = 14;
 					else
@@ -139,19 +125,15 @@ package jogoTCC.util
 			}
 		}
 		
-		private function montaCaminho(casa:Casa):void
-		{
+		private function montaCaminho(casa:Casa):void {
 			caminho.push(casa);
-			if (casa.g > 0)
-			{
+			if (casa.g > 0) {
 				this.montaCaminho(casa.casaPai);
 			}
 		}
 		
-		public function inverteCaminho():void
-		{
-			for (var i:Number = caminho.length - 1; i >= 0; i--)
-			{
+		public function inverteCaminho():void {
+			for (var i:Number = caminho.length - 1; i >= 0; i--) {
 				caminhoInv.push(caminho[i]);
 			}
 			

@@ -72,7 +72,7 @@ package jogoTCC.entidades {
 				movePersonagem(caminho, 1);
 			}
 		}
-
+		
 		public function ataca():void {
 			
 			atualizaAnimacao("ataqueFR", "atacando", 13, -18, -18, true);
@@ -151,7 +151,7 @@ package jogoTCC.entidades {
 			var partida:Partida = parent as Partida;
 			var touch:Touch = e.getTouch(stage);
 			
-			if (partida.turnoAtual == this.time) {
+			if (partida.turnoAtual == this.time || ( partida.personagemMarcado != null)) {
 				if (touch != null) {
 					var colisor:Quad = e.currentTarget as Quad;
 					var clicado:Personagem = colisor.parent as Personagem;
