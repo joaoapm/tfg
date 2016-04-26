@@ -19,6 +19,7 @@ package jogoTCC.moduloIA {
 		private var pathFind:Pathfinder;
 		private var listaIniAoRedor:Array;
 		private var caminho:Array;
+		private var qntAoRedor:Number; 
 		
 		public function ExecutaAcaoIA(mapa:Mapa, listaPerso:Array):void {
 			this.mapa = mapa;
@@ -36,12 +37,13 @@ package jogoTCC.moduloIA {
 		public function processaJogada():void {
 			
 			// personagem a ser processado
-			perso = persoTime1[randomRange(0, 4)];
+			perso = persoTime1[randomRange(0, 0)];
 			
 			// personagem ao redor
 			listaIniAoRedor = pesqIniAoRedor(perso.casaAtual);
-			var qntAoRedor:Number = listaIniAoRedor.length;
+			qntAoRedor = listaIniAoRedor.length;
 			
+			// qntidade de vida de um personagem aleatorio ao redor
 			iniAtacar = listaIniAoRedor[randomRange(0, qntAoRedor)] as Personagem;
 			var nr:Number;
 			if (iniAtacar != null) {
@@ -61,7 +63,7 @@ package jogoTCC.moduloIA {
 			
 			var express:ExpressaoFuzzy = principalIA.processar(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
 			
-			MOVE_TORRE_INI();
+			this[express.metodoExecuta](); 
 		}
 		
 		public function MOVE_TORRE_INI():void {
@@ -89,7 +91,8 @@ package jogoTCC.moduloIA {
 		}
 		
 		public function MOVE_ATACA_INI():void {
-			if (listaIniAoRedor.lengh > 0) {
+			 
+			if (qntAoRedor > 0) {
 				var persoAtk:Personagem = listaIniAoRedor[0];
 				persoAtk.sofreAtaque();
 				perso.ataca();
@@ -118,25 +121,25 @@ package jogoTCC.moduloIA {
 			if (casa.casaD1 != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == 0)
 				listaIni.push(casa.casaD1.personagemAtual);
 			
-			if (casa.casaD2 != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == 0)
+			if (casa.casaD2 != null && casa.casaD2.personagemAtual != null && casa.casaD2.personagemAtual.time == 0)
 				listaIni.push(casa.casaD2.personagemAtual);
 			
-			if (casa.casaD3 != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == 0)
+			if (casa.casaD3 != null && casa.casaD3.personagemAtual != null && casa.casaD3.personagemAtual.time == 0)
 				listaIni.push(casa.casaD3.personagemAtual);
 			
-			if (casa.casaD4 != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == 0)
+			if (casa.casaD4 != null && casa.casaD4.personagemAtual != null && casa.casaD4.personagemAtual.time == 0)
 				listaIni.push(casa.casaD4.personagemAtual);
 			
-			if (casa.casaFR != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == 0)
+			if (casa.casaFR != null && casa.casaFR.personagemAtual != null && casa.casaFR.personagemAtual.time == 0)
 				listaIni.push(casa.casaFR.personagemAtual);
 			
-			if (casa.casaTR != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == 0)
+			if (casa.casaTR != null && casa.casaTR.personagemAtual != null && casa.casaTR.personagemAtual.time == 0)
 				listaIni.push(casa.casaTR.personagemAtual);
 			
-			if (casa.casaLD != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == 0)
+			if (casa.casaLD != null && casa.casaLD.personagemAtual != null && casa.casaLD.personagemAtual.time == 0)
 				listaIni.push(casa.casaLD.personagemAtual);
 			
-			if (casa.casaLE != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == 0)
+			if (casa.casaLE != null && casa.casaLE.personagemAtual != null && casa.casaLE.personagemAtual.time == 0)
 				listaIni.push(casa.casaLE.personagemAtual);
 			
 			return listaIni;

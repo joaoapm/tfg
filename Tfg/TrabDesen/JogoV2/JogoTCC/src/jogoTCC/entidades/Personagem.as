@@ -86,6 +86,7 @@ package jogoTCC.entidades {
 		
 		private function movePersonagem(caminho:Array, indice:Number):void {
 			this.casaAtual.ehPassavel = true;
+			this.casaAtual.personagemAtual = null;
 			
 			if (indice < caminho.length) {
 				var casa:Casa = caminho[indice] as Casa;

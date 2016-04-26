@@ -1,5 +1,4 @@
-package jogoTCC.entidades
-{
+package jogoTCC.entidades {
 	
 	import jogoTCC.estrutura.Partida;
 	import starling.display.Quad;
@@ -10,8 +9,7 @@ package jogoTCC.entidades
 	import starling.events.TouchPhase;
 	import flash.geom.Point;
 	
-	public class Casa extends Quad
-	{
+	public class Casa extends Quad {
 		// matriz de transforcao que aplica  perspectiva isometrica
 		private var matrizTransformacao:Matrix = new Matrix();
 		
@@ -44,21 +42,18 @@ package jogoTCC.entidades
 		
 		public var personagemAtual:Personagem;
 		
-		public function Casa(posX:Number, posY:Number, inicioX:Number, inicioY:Number, alpha:Number, c:Number, l:Number)
-		{
-
+		public function Casa(posX:Number, posY:Number, inicioX:Number, inicioY:Number, alpha:Number, c:Number, l:Number) {
+			
 			this.l = l;
 			this.c = c;
 			
-			if (c == 10 && l == 0 || c == 11 && l == 0 || c == 10 && l == 1 || c == 11 && l == 1 || c == 12 && l == 0 || c == 12 && l == 1)
-			{
+			if (c == 10 && l == 0 || c == 11 && l == 0 || c == 10 && l == 1 || c == 11 && l == 1 || c == 12 && l == 0 || c == 12 && l == 1) {
 				ehPassavel = false;
 				nrTime = 0;
 				ehTorre = true;
 			}
 			
-			if (c == 10 && l == 21 || c == 11 && l == 21 || c == 12 && l == 21 || c == 10 && l == 23 || c == 11 && l == 23 || c == 12 && l == 23 || c == 10 && l == 22 || c == 11 && l == 22 || c == 12 && l == 22)
-			{
+			if (c == 10 && l == 21 || c == 11 && l == 21 || c == 12 && l == 21 || c == 10 && l == 23 || c == 11 && l == 23 || c == 12 && l == 23 || c == 10 && l == 22 || c == 11 && l == 22 || c == 12 && l == 22) {
 				ehPassavel = false;
 				nrTime = 1;
 				ehTorre = true;
@@ -80,44 +75,33 @@ package jogoTCC.entidades
 		
 		}
 		
-		public function iniciaTorre():void
-		{
+		public function iniciaTorre():void {
 			var mapa:Mapa = parent as Mapa;
-						
-			if (nrTime == 0)
-			{
+			
+			if (nrTime == 0) {
 				mapa.torre0.push(this);
-			}
-			else if (nrTime == 1)
-			{
+			} else if (nrTime == 1) {
 				mapa.torre1.push(this);
 			}
 		}
 		
-		private function controlaEventos(e:TouchEvent):void
-		{
+		private function controlaEventos(e:TouchEvent):void {
 			var touch:Touch = e.getTouch(stage);
-			if (touch != null)
-			{
+			if (touch != null) {
 				var position:Point = touch.getLocation(stage);
 				var target:DisplayObject = e.target as DisplayObject;
 				
-				if (touch.phase == TouchPhase.ENDED)
-				{
-					if (target as Casa)
-					{
+				if (touch.phase == TouchPhase.ENDED) {
+					if (target as Casa) {
 						
 						var c:Casa = target as Casa;
 						var partida:Partida = c.parent.parent as Partida;
 						var perso:Personagem = partida.personagemMarcado as Personagem;
-						if (this.ehPassavel)
-						{
+						if (this.ehPassavel) {
 							
 							if (perso != null)
 								perso.setLocalPersonagem(c);
-						}
-						else
-						{
+						} else {
 							if (perso != null)
 								partida.mapa.atacaTorre(this, perso);
 						}
