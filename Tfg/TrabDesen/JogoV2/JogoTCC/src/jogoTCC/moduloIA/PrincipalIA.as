@@ -53,7 +53,7 @@ package jogoTCC.moduloIA {
 				var d1:Number = (Math.abs((vlEntrada - atrib.inicio)) / Math.abs((atrib.meio - atrib.inicio)));
 				var d2:Number = (Math.abs((atrib.fim - vlEntrada)) / Math.abs((atrib.fim - atrib.meio)));
 				
-				var d3:Number = d1 < d2 ? d1 : d2;				
+				var d3:Number = d1 < d2 ? d1 : d2;
 				var d4:Number = d3 > 0 ? d3 : 0;
 				
 				return d4;
@@ -111,9 +111,9 @@ package jogoTCC.moduloIA {
 				if (maiorGrau == null) {
 					maiorGrau = exp;
 				} else {
-					if (exp.grau1 != 0 && exp.grau2 != 0)
-						if (maiorGrau.grau < exp.grau)
-							maiorGrau = exp;
+					if ((exp.grau1 != 0 + exp.grau2 != 0) > (maiorGrau.grau1 != 0 + maiorGrau.grau2 != 0)) {
+						maiorGrau = exp;
+					}
 				}
 			}
 			

@@ -19,7 +19,8 @@ package jogoTCC.moduloIA {
 		private var pathFind:Pathfinder;
 		private var listaIniAoRedor:Array;
 		private var caminho:Array;
-		private var qntAoRedor:Number; 
+		private var qntAoRedor:Number;
+		private var dist:Number;
 		
 		public function ExecutaAcaoIA(mapa:Mapa, listaPerso:Array):void {
 			this.mapa = mapa;
@@ -55,15 +56,13 @@ package jogoTCC.moduloIA {
 			// distancia torre inimiga
 			pathFind = new Pathfinder();
 			caminho = pathFind.pesquisaCaminho(perso.casaAtual, mapa.torre0[2]);
-			
 			pathFind.caminhoInv = new Array();
 			caminho = pathFind.caminho;
-			
-			var dist:Number = caminho.length;
+			dist = caminho.length;
 			
 			var express:ExpressaoFuzzy = principalIA.processar(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
 			
-			this[express.metodoExecuta](); 
+			this[express.metodoExecuta]();
 		}
 		
 		public function MOVE_TORRE_INI():void {
@@ -90,8 +89,14 @@ package jogoTCC.moduloIA {
 		
 		}
 		
+		public function ATACA_TORRE():void {
+			if (dist >= 2) {
+			 mapa.atacaTorre( mapa.torre0[2], perso);
+			}
+		}
+		
 		public function MOVE_ATACA_INI():void {
-			 
+			
 			if (qntAoRedor > 0) {
 				var persoAtk:Personagem = listaIniAoRedor[0];
 				persoAtk.sofreAtaque();

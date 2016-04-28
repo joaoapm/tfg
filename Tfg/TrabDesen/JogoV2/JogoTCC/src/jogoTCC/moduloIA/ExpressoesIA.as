@@ -10,7 +10,7 @@ package jogoTCC.moduloIA {
 		public function ExpressoesIA(listaExpre:Array) {
 			
 			var expressao:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = ALTO E DISTANCIA_T1_TORRE1 = ALTO ENTAO MOVE_ATACA_INI");
-			var expressao2:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = ALTO ENTAO MOVE_TORRE_INI");
+			var expressao2:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = BAIXO ENTAO ATACA_TORRE");
 			var expressao3:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = MEDIO E DISTANCIA_T1_TORRE1 = ALTO ENTAO MOVE_TORRE_INI");
 			
 			var expressao4:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = BAIXO ENTAO MOVE_ATACA_TORRE_INI");
