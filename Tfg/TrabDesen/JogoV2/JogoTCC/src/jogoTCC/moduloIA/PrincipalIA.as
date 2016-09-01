@@ -10,16 +10,21 @@ package jogoTCC.moduloIA {
 		private var executaAcao:ExecutaAcaoIA;
 		
 		private var listaGrupos:Array = new Array();
-		private var listaExpressoes:Array = new Array();
+		private var listaExpressoesJogadores:Array = new Array();
+		private var listaExpressoesTime:Array = new Array();
+		
+		public var exprRetorno:ExpressaoFuzzy;
+		public var exprRetornoTime:ExpressaoFuzzy;
 		
 		public var grupos:GruposIA;
 		
 		public function PrincipalIA() {
 			grupos = new GruposIA(listaGrupos);
-			var expressoes:ExpressoesIA = new ExpressoesIA(listaExpressoes);
+			var expressoes:ExpressoesIA = new ExpressoesIA(listaExpressoesJogadores,0); 
+			var expressoesTime:ExpressoesIA = new ExpressoesIA(listaExpressoesTime,1);
 		}
 		
-		public function processar(persoAoRedor:Number, distT1Torre1:Number, vidaTorre:Number, vidaTorreIni:Number, vidaPerso:Number, iniVida:Number):ExpressaoFuzzy {
+		public function processar(persoAoRedor:Number, distT1Torre1:Number, vidaTorre:Number, vidaTorreIni:Number, vidaPerso:Number, iniVida:Number):void {
 			
 			// fase de fuzzificacao dos valores de entrada			
 			fuzzificar(grupos.PERSON_AOREDOR, persoAoRedor);
@@ -30,12 +35,13 @@ package jogoTCC.moduloIA {
 			fuzzificar(grupos.INI_ATQ_VIDA, iniVida);
 			
 			// fase de inferencia das regras
-			realizaInferencia();
+			realizaInferencia(listaExpressoesJogadores);
+			realizaInferencia(listaExpressoesTime);
 			
 			// fase de defuzzificacao e realizadao da decisao retornada
-			var exprRetorno:ExpressaoFuzzy = defuzzificar();
-			return exprRetorno;
-		
+			exprRetorno = defuzzificar(listaExpressoesJogadores);
+			exprRetornoTime = defuzzificar(listaExpressoesTime);			
+		     var afs:Number = 0;
 		}
 		
 		private function fuzzificar(gp:GrupoFuzzy, vlEntrada:Number):void {
@@ -61,8 +67,8 @@ package jogoTCC.moduloIA {
 		
 		}
 		
-		private function realizaInferencia():void {
-			for each (var expr:ExpressaoFuzzy in listaExpressoes) {
+		private function realizaInferencia(lista:Array):void {
+			for each (var expr:ExpressaoFuzzy in lista) {
 				var listaExp:Array = expr.expressao.split(" ");
 				
 				expr.grau1 = avaliaExpressao(listaExp[1], listaExp[3]);
@@ -105,13 +111,13 @@ package jogoTCC.moduloIA {
 			return null;
 		}
 		
-		private function defuzzificar():ExpressaoFuzzy {
+		private function defuzzificar(lista:Array):ExpressaoFuzzy {
 			var maiorGrau:ExpressaoFuzzy;
-			for each (var exp:ExpressaoFuzzy in listaExpressoes) {
+			for each (var exp:ExpressaoFuzzy in lista) {
 				if (maiorGrau == null) {
 					maiorGrau = exp;
 				} else {
-					if ((exp.grau1 != 0 + exp.grau2 != 0) > (maiorGrau.grau1 != 0 + maiorGrau.grau2 != 0)) {
+					if (exp.grau > maiorGrau.grau) {
 						maiorGrau = exp;
 					}
 				}

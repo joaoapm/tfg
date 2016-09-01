@@ -13,6 +13,10 @@ package jogoTCC.moduloIA {
 		private var listaPersonagens:Array;
 		private var persoTime0:Array = new Array();
 		private var persoTime1:Array = new Array();
+		
+		private var persoTime1Ataque:Array = new Array();
+		private var persoTime1Defesa:Array = new Array();
+		
 		private var principalIA:PrincipalIA = new PrincipalIA();
 		private var iniAtacar:Personagem;
 		private var perso:Personagem;
@@ -32,14 +36,27 @@ package jogoTCC.moduloIA {
 				else
 					persoTime1.push(p)
 			}
+			
+			persoTime1Ataque.push(persoTime1[0]);
+			persoTime1Ataque.push(persoTime1[2]);
+			persoTime1Ataque.push(persoTime1[4]);
+			
+			persoTime1Defesa.push(persoTime1[1]);
+			persoTime1Defesa.push(persoTime1[3]);
+			
 		
 		}
 		
 		public function processaJogada():void {
 			
+						
 			// personagem a ser processado
-			perso = persoTime1[randomRange(0, 0)];
-			
+			principalIA.processar(0, 0, mapa.vidaC1, mapa.vidaC0, 0, 0);
+			if(principalIA.exprRetornoTime.metodoExecuta == "TIME_ATAQUE")
+			 perso = persoTime1Ataque[randomRange(0, 2)];
+			else if (principalIA.exprRetornoTime.metodoExecuta == "TIME_DEFESA")
+			 perso = persoTime1Defesa[randomRange(0, 1)];
+			 
 			// personagem ao redor
 			listaIniAoRedor = pesqIniAoRedor(perso.casaAtual);
 			qntAoRedor = listaIniAoRedor.length;
@@ -60,9 +77,9 @@ package jogoTCC.moduloIA {
 			caminho = pathFind.caminho;
 			dist = caminho.length;
 			
-			var express:ExpressaoFuzzy = principalIA.processar(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
+			principalIA.processar(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
 			
-			this[express.metodoExecuta]();
+			this[principalIA.exprRetorno.metodoExecuta]();
 		}
 		
 		public function MOVE_TORRE_INI():void {
