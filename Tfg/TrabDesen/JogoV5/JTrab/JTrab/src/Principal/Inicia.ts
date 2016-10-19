@@ -1,3 +1,3 @@
 ﻿window.onload = () => {
-    var game = new TelaPrincipal();
+    var jogo = new Jogo();
 };

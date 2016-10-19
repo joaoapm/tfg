@@ -1,4 +1,4 @@
 window.onload = function () {
-    var game = new TelaPrincipal();
+    var jogo = new Jogo();
 };
 //# sourceMappingURL=Inicia.js.map

@@ -34,6 +34,7 @@
     <TypeScriptCompile Include="lib\phaser\phaser.d.ts" />
     <TypeScriptCompile Include="lib\phaser\pixi.d.ts" />
     <TypeScriptCompile Include="src\Entidades\Entidade.ts" />
+    <TypeScriptCompile Include="src\Entidades\Jogo.ts" />
     <TypeScriptCompile Include="src\Principal\Inicia.ts" />
     <TypeScriptCompile Include="src\Telas\TelaPrincipal.ts" />
   </ItemGroup>

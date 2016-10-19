@@ -1,6 +1,12 @@
-var TelaPrincipal = (function () {
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var TelaPrincipal = (function (_super) {
+    __extends(TelaPrincipal, _super);
     function TelaPrincipal() {
-        this.game = new Phaser.Game(800, 600, Phaser.AUTO, 'content', { preload: this.preload, create: this.create });
+        _super.call(this);
     }
     TelaPrincipal.prototype.preload = function () {
         this.game.load.image('logo', 'media/img/phaser2.png');
@@ -13,5 +19,5 @@ var TelaPrincipal = (function () {
         this.game.add.tween(logo.scale).to({ x: 1, y: 1 }, 2000, Phaser.Easing.Bounce.Out, true);
     };
     return TelaPrincipal;
-}());
+}(Phaser.State));
 //# sourceMappingURL=TelaPrincipal.js.map

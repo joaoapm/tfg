@@ -1,12 +1,10 @@
-﻿class TelaPrincipal {
-
+﻿class TelaPrincipal extends Phaser.State {
+ 
     constructor() {
-        this.game = new Phaser.Game(800, 600, Phaser.AUTO, 'content', { preload: this.preload, create: this.create });
+        super();
     }
 
-    game: Phaser.Game;
-
-    preload() {        
+     preload() {        
         this.game.load.image('logo', 'media/img/phaser2.png');
     }
 
