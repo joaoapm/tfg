@@ -1,1 +1,1 @@
-{"version":3,"file":"Inicia.js","sourceRoot":"","sources":["Inicia.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,GAAG;IAGZ,IAAI,QAAQ,GAAG,IAAI,QAAQ,EAAE,CAAC;IAC9B,QAAQ,CAAC,EAAE,GAAG,GAAG,CAAC;IAElB,IAAI,EAAE,GAAG,QAAQ,CAAC,cAAc,CAAC,UAAU,CAAC,CAAC;IAC7C,EAAE,CAAC,SAAS,IAAI,MAAM,CAAC;IACvB,EAAE,CAAC,SAAS,IAAI,QAAQ,CAAC,EAAE,CAAC;AAEhC,CAAC,CAAC"}
+{"version":3,"file":"Inicia.js","sourceRoot":"","sources":["Inicia.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,GAAG;IACZ,IAAI,IAAI,GAAG,IAAI,aAAa,EAAE,CAAC;AACnC,CAAC,CAAC"}

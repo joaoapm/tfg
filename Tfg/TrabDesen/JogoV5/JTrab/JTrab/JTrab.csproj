@@ -24,11 +24,18 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="index.html" />
+    <Content Include="lib\phaser\phaser.js" />
+    <Content Include="lib\phaser\phaser.min.js" />
+    <Content Include="media\img\phaser2.png" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="lib\phaser\p2.d.ts" />
+    <TypeScriptCompile Include="lib\phaser\phaser.d.ts" />
+    <TypeScriptCompile Include="lib\phaser\pixi.d.ts" />
     <TypeScriptCompile Include="src\Entidades\Entidade.ts" />
     <TypeScriptCompile Include="src\Principal\Inicia.ts" />
+    <TypeScriptCompile Include="src\Telas\TelaPrincipal.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.Debug.config">
