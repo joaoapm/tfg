@@ -19,5 +19,5 @@ var TelaPrincipal = (function (_super) {
         this.game.add.tween(logo.scale).to({ x: 1, y: 1 }, 2000, Phaser.Easing.Bounce.Out, true);
     };
     return TelaPrincipal;
-}(Phaser.State));
+}(Tela));
 //# sourceMappingURL=TelaPrincipal.js.map

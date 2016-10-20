@@ -1,10 +1,10 @@
-﻿class Entidade {
+﻿class Tela extends Phaser.State {
 
     private _id: Number;
     private _game: Jtrab.Game;
 
-    constructor(game: Jtrab.Game) {
-        this._game = game;
+    constructor() {
+        super();
     }
 
     get id(): Number {

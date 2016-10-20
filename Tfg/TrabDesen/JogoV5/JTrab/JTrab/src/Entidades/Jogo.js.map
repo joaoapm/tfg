@@ -1,1 +1,1 @@
-{"version":3,"file":"Jogo.js","sourceRoot":"","sources":["Jogo.ts"],"names":[],"mappings":"AAAA;IAII;QAEI,IAAI,CAAC,IAAI,GAAG,IAAI,MAAM,CAAC,IAAI,CAAC,GAAG,EAAE,GAAG,EAAE,MAAM,CAAC,IAAI,EAAE,UAAU,CAAC,CAAC;QAC/D,IAAI,CAAC,IAAI,CAAC,KAAK,CAAC,GAAG,CAAC,eAAe,EAAE,aAAa,EAAE,KAAK,CAAC,CAAC;QAC3D,IAAI,CAAC,IAAI,CAAC,KAAK,CAAC,KAAK,CAAC,eAAe,EAAE,IAAI,EAAE,IAAI,CAAC,CAAC;IAEvD,CAAC;IAEL,WAAC;AAAD,CAAC,AAZD,IAYC"}
+{"version":3,"file":"Jogo.js","sourceRoot":"","sources":["Jogo.ts"],"names":[],"mappings":""}

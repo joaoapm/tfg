@@ -1,5 +1,6 @@
 var Entidade = (function () {
-    function Entidade() {
+    function Entidade(game) {
+        this._game = game;
     }
     Object.defineProperty(Entidade.prototype, "id", {
         get: function () {
@@ -7,6 +8,16 @@ var Entidade = (function () {
         },
         set: function (id) {
             this._id = id;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Entidade.prototype, "game", {
+        get: function () {
+            return this._game;
+        },
+        set: function (game) {
+            this._game = game;
         },
         enumerable: true,
         configurable: true
