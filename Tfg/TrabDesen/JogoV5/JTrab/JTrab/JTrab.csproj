@@ -26,6 +26,8 @@
     <Content Include="index.html" />
     <Content Include="lib\phaser\phaser.js" />
     <Content Include="lib\phaser\phaser.min.js" />
+    <Content Include="lib\phaser_isom\phaser-plugin-isometric.js" />
+    <Content Include="lib\phaser_isom\phaser-plugin-isometric.min.js" />
     <Content Include="media\img\phaser2.png" />
     <Content Include="web.config" />
   </ItemGroup>
@@ -33,6 +35,7 @@
     <TypeScriptCompile Include="lib\phaser\p2.d.ts" />
     <TypeScriptCompile Include="lib\phaser\phaser.d.ts" />
     <TypeScriptCompile Include="lib\phaser\pixi.d.ts" />
+    <TypeScriptCompile Include="lib\phaser_isom\phaser.plugin.isometric.d.ts" />
     <TypeScriptCompile Include="src\Entidades\Entidade.ts" />
     <TypeScriptCompile Include="src\Entidades\Jogo.ts" />
     <TypeScriptCompile Include="src\Principal\Inicia.ts" />
