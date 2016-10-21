@@ -28,6 +28,7 @@
     <Content Include="lib\phaser\phaser.min.js" />
     <Content Include="lib\phaser_isom\phaser-plugin-isometric.js" />
     <Content Include="lib\phaser_isom\phaser-plugin-isometric.min.js" />
+    <Content Include="media\img\iso-64x64-outside.png" />
     <Content Include="media\img\phaser2.png" />
     <Content Include="media\img\tile.png" />
     <Content Include="web.config" />
