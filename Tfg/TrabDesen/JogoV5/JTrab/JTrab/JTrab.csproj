@@ -29,6 +29,7 @@
     <Content Include="lib\phaser_isom\phaser-plugin-isometric.js" />
     <Content Include="lib\phaser_isom\phaser-plugin-isometric.min.js" />
     <Content Include="media\img\iso-64x64-outside.png" />
+    <Content Include="media\img\tile_mapa.png" />
     <Content Include="media\img\phaser2.png" />
     <Content Include="media\img\tile.png" />
     <Content Include="web.config" />
@@ -46,6 +47,7 @@
     <TypeScriptCompile Include="src\Telas\TelaPrincipal.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="media\img\atlas_mapa.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
