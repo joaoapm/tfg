@@ -21,10 +21,10 @@ public class Play implements Screen, InputProcessor {
 		// TODO Auto-generated method stub
 		TmxMapLoader loader = new TmxMapLoader();
 		map = loader.load("mapa.tmx");
-TiledMapTileLayer asd =	(TiledMapTileLayer) map.getLayers().get(0);
-asd.getCell(220, 220);
+		TiledMapTileLayer asd = (TiledMapTileLayer) map.getLayers().get(0);
+		asd.getCell(220, 220);
 		renderer = new IsometricTiledMapRenderer(map);
- 
+
 		camera = new OrthographicCamera();
 		camera.position.set(300, 0, 0);
 
