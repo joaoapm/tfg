@@ -17,7 +17,7 @@ public class Mapa implements InputProcessor {
 
 	public Mapa(OrthographicCamera camera) {
 		TmxMapLoader loader = new TmxMapLoader();
-		map = loader.load("mapa.tmx");
+		map = loader.load("mapa/mapa.tmx");
 		renderer = new IsometricTiledMapRenderer(map);
 		this.camera = camera;
 		Gdx.input.setInputProcessor(this);
@@ -40,8 +40,8 @@ public class Mapa implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		System.out.println("X: " + (int) worldToIso(new Vector3(screenX, screenY, 0), 64, 32).x);
-		System.out.println("Y: " + (int) worldToIso(new Vector3(screenX, screenY, 0), 64, 32).y);
+		//System.out.println("X: " + (int) worldToIso(new Vector3(screenX, screenY, 0), 64, 32).x);
+		//System.out.println("Y: " + (int) worldToIso(new Vector3(screenX, screenY, 0), 64, 32).y);
 
 		return false;
 	}

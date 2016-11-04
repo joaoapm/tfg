@@ -4,19 +4,32 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.j01.entidades.Mapa;
+import com.j01.entidades.Personagem;
+import com.j01.estrutura.TipoPersonagem;
 
 public class TelaJogo implements Screen {
 
 	private OrthographicCamera camera;
-	Mapa mapa;
+	private Mapa mapa;
+
+	private SpriteBatch batch;
+	private float elapsedTime = 0;
+	Personagem perso1;
 
 	@Override
 	public void show() {
+
+		batch = new SpriteBatch();
 		camera = new OrthographicCamera();
 		camera.position.set(300, 0, 0);
 
+		// cria mapa
 		mapa = new Mapa(camera);
+
+		// cria personagem
+		perso1 = new Personagem(TipoPersonagem.MONSTRO, 300, 300);
 
 	}
 
@@ -24,10 +37,16 @@ public class TelaJogo implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
 		mapa.getRenderer().setView(camera);
 
+		// renderiza mapa
 		mapa.getRenderer().render();
+
+		// renderia personganes
+		batch.begin();
+		elapsedTime += Gdx.graphics.getDeltaTime();
+		batch.draw(perso1.getFrame(elapsedTime), perso1.getPosX(), perso1.getPosY());
+		batch.end();
 
 	}
 
