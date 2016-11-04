@@ -1,8 +1,6 @@
 package com.j01.principal;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.j01.telas.TelaJogo;
@@ -13,7 +11,7 @@ public class Principal extends Game {
 
 	@Override
 	public void create() {
-		setScreen(new TelaJogo());
+		 setScreen(new TelaJogo());
 	}
 
 	@Override
