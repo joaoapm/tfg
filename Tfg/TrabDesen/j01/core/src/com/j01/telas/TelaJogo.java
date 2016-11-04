@@ -1,4 +1,4 @@
-package com.j01;
+package com.j01.telas;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
@@ -6,11 +6,11 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
+import com.badlogic.gdx.math.Vector3;
+import com.j01.entidades.Mapa;
 
-public class Play implements Screen, InputProcessor {
+public class TelaJogo implements Screen {
 
 	private TiledMap map;
 	private IsometricTiledMapRenderer renderer;
@@ -18,17 +18,11 @@ public class Play implements Screen, InputProcessor {
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-		TmxMapLoader loader = new TmxMapLoader();
-		map = loader.load("mapa.tmx");
-		TiledMapTileLayer asd = (TiledMapTileLayer) map.getLayers().get(0);
-		asd.getCell(220, 220);
-		renderer = new IsometricTiledMapRenderer(map);
-
 		camera = new OrthographicCamera();
 		camera.position.set(300, 0, 0);
 
-		Gdx.input.setInputProcessor(this);
+		Mapa mapa = new Mapa();
+
 	}
 
 	@Override
@@ -74,56 +68,6 @@ public class Play implements Screen, InputProcessor {
 	public void dispose() {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean keyUp(int keycode) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean keyTyped(char character) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
-		System.out.println("screenX:" + screenX);
-		System.out.println("screeny:" + screenY);
-		return false;
-	}
-
-	@Override
-	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean mouseMoved(int screenX, int screenY) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean scrolled(int amount) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }
