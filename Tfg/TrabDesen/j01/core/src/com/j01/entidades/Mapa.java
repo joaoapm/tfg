@@ -5,6 +5,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
 import com.badlogic.gdx.math.Vector3;
@@ -42,8 +43,7 @@ public class Mapa implements InputProcessor {
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		//System.out.println("X: " + (int) worldToIso(new Vector3(screenX, screenY, 0), 64, 32).x);
 		//System.out.println("Y: " + (int) worldToIso(new Vector3(screenX, screenY, 0), 64, 32).y);
-
-		return false;
+ 		return false;
 	}
 
 	@Override

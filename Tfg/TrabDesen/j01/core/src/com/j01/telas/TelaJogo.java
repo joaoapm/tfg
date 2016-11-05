@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.j01.entidades.Mapa;
 import com.j01.entidades.Personagem;
 import com.j01.estrutura.TipoPersonagem;
+import com.j01.helper.PropriedadeHelper;
 
 public class TelaJogo implements Screen {
 
@@ -22,9 +23,13 @@ public class TelaJogo implements Screen {
 	public void show() {
 
 		batch = new SpriteBatch();
+		
+		// cria camera
 		camera = new OrthographicCamera();
-		camera.position.set(300, 0, 0);
-
+		camera.position.set(PropriedadeHelper.POSICAO_INICIAL_CAM_X, PropriedadeHelper.POSICAO_INICIAL_CAM_Y,
+				PropriedadeHelper.POSICAO_INICIAL_CAM_Z);
+		camera.zoom -= PropriedadeHelper.ZOOM_INCIAL_CAM;
+		
 		// cria mapa
 		mapa = new Mapa(camera);
 

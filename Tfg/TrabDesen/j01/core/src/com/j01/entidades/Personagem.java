@@ -28,7 +28,7 @@ public class Personagem implements InputProcessor {
 		this.posX = posX;
 		this.posY = posY;
 
-		Gdx.input.setInputProcessor(this);
+	//	Gdx.input.setInputProcessor(this);
 
 		animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, personagemHelper.getFramesParadoFR());
 	}
