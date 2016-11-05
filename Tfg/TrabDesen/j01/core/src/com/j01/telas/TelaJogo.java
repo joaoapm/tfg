@@ -1,6 +1,7 @@
 package com.j01.telas;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -23,18 +24,21 @@ public class TelaJogo implements Screen {
 	public void show() {
 
 		batch = new SpriteBatch();
-		
+
 		// cria camera
 		camera = new OrthographicCamera();
 		camera.position.set(PropriedadeHelper.POSICAO_INICIAL_CAM_X, PropriedadeHelper.POSICAO_INICIAL_CAM_Y,
 				PropriedadeHelper.POSICAO_INICIAL_CAM_Z);
 		camera.zoom -= PropriedadeHelper.ZOOM_INCIAL_CAM;
-		
+
+		// processador de eventos
+		Gdx.input.setInputProcessor(new InputMultiplexer());
+
 		// cria mapa
-		mapa = new Mapa(camera);
+		mapa = new Mapa(camera, (InputMultiplexer) Gdx.input.getInputProcessor());
 
 		// cria personagem
-		perso1 = new Personagem(TipoPersonagem.MONSTRO, 300, 300);
+		perso1 = new Personagem(TipoPersonagem.MONSTRO, 300, 300, (InputMultiplexer) Gdx.input.getInputProcessor());
 
 	}
 

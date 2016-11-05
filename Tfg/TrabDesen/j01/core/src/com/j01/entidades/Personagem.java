@@ -1,6 +1,6 @@
 package com.j01.entidades;
 
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -9,32 +9,28 @@ import com.j01.estrutura.TipoPersonagem;
 import com.j01.helper.PersonagemHelper;
 import com.j01.helper.PropriedadeHelper;
 
-public class Personagem implements InputProcessor {
+public class Personagem extends Entidade implements InputProcessor {
 
 	private Animation animation;
 	private TextureAtlas textureAtlas;
 	private TipoPersonagem tipoPersonagem;
 	private PersonagemHelper personagemHelper;
 
-	private float elapsedTime = 0;
-	private int posX;
-	private int posY;
+	public Personagem(TipoPersonagem tipoPersonagem, int posX, int posY, InputMultiplexer inputMultiplexer) {
 
-	public Personagem(TipoPersonagem tipoPersonagem, int posX, int posY) {
+		setPosX(posX);
+		setPosY(posY);
 
 		personagemHelper = new PersonagemHelper(tipoPersonagem);
-
 		this.tipoPersonagem = tipoPersonagem;
-		this.posX = posX;
-		this.posY = posY;
 
-	//	Gdx.input.setInputProcessor(this);
+		inputMultiplexer.addProcessor(this);
 
 		animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, personagemHelper.getFramesParadoFR());
 	}
 
 	public Personagem(TipoPersonagem tipoPersonagem) {
-		this(tipoPersonagem, 0, 0);
+		this(tipoPersonagem, 0, 0, null);
 	}
 
 	public TipoPersonagem getTipoPersonagem() {
@@ -93,9 +89,9 @@ public class Personagem implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int x, int y, int arg2, int arg3) {
-		int altura = getAnimation().getKeyFrame(elapsedTime, true).getRegionHeight();
-		int comprimento = getAnimation().getKeyFrame(elapsedTime, true).getRegionWidth();
-
+		int altura = getAnimation().getKeyFrame(getElapsedTime(), true).getRegionHeight();
+		int comprimento = getAnimation().getKeyFrame(getElapsedTime(), true).getRegionWidth();
+		System.out.println("asdasdasd ");
 		return false;
 	}
 
@@ -107,30 +103,6 @@ public class Personagem implements InputProcessor {
 	@Override
 	public boolean touchUp(int arg0, int arg1, int arg2, int arg3) {
 		return false;
-	}
-
-	public int getPosX() {
-		return posX;
-	}
-
-	public void setPosX(int posX) {
-		this.posX = posX;
-	}
-
-	public int getPosY() {
-		return posY;
-	}
-
-	public void setPosY(int posY) {
-		this.posY = posY;
-	}
-
-	public float getElapsedTime() {
-		return elapsedTime;
-	}
-
-	public void setElapsedTime(float elapsedTime) {
-		this.elapsedTime = elapsedTime;
 	}
 
 }
