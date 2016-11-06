@@ -1,11 +1,12 @@
 package com.j01.entidades;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.j01.estrutura.TipoPersonagem;
 import com.j01.helper.PersonagemHelper;
 import com.j01.helper.PropriedadeHelper;
@@ -86,6 +87,11 @@ public class Personagem extends Entidade implements InputProcessor {
 	public TextureRegion getFrame(float elapsedTime) {
 		setElapsedTime(elapsedTime);
 		return getAnimation().getKeyFrame(elapsedTime, true);
+	}
+	
+	public void render(SpriteBatch spriteBatch) {
+		setElapsedTime(getElapsedTime() + Gdx.graphics.getDeltaTime());
+		spriteBatch.draw(this.getFrame(getElapsedTime()), this.getPosX(), this.getPosY());
 	}
 
 	@Override

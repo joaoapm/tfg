@@ -23,7 +23,7 @@ public class TelaJogo implements Screen {
 
 	private Mapa mapa;
 	private Personagem perso1;
-	
+
 	@Override
 	public void show() {
 
@@ -55,12 +55,11 @@ public class TelaJogo implements Screen {
 		// renderiza mapa
 		mapa.getRenderer().render();
 
-		// renderia personganes  
+		// renderia personganes
 		batch.begin();
-		elapsedTime += Gdx.graphics.getDeltaTime();
-		batch.draw(perso1.getFrame(elapsedTime), perso1.getPosX(), perso1.getPosY());
+		perso1.render(batch);
 		batch.end();
- 
+
 	}
 
 	@Override
