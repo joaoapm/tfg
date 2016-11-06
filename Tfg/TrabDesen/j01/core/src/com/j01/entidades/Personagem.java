@@ -5,6 +5,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.j01.estrutura.TipoPersonagem;
 import com.j01.helper.PersonagemHelper;
 import com.j01.helper.PropriedadeHelper;
@@ -89,9 +90,8 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int x, int y, int arg2, int arg3) {
-		int altura = getAnimation().getKeyFrame(getElapsedTime(), true).getRegionHeight();
-		int comprimento = getAnimation().getKeyFrame(getElapsedTime(), true).getRegionWidth();
-		System.out.println("asdasdasd ");
+		if (PersonagemHelper.tocouPersonagem(this, x, y))
+			animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, personagemHelper.getFramesMovimentoFR());
 		return false;
 	}
 

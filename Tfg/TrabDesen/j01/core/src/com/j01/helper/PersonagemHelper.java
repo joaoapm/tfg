@@ -3,6 +3,7 @@ package com.j01.helper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.j01.entidades.Personagem;
 import com.j01.estrutura.TipoPersonagem;
 
 public class PersonagemHelper {
@@ -223,5 +224,16 @@ public class PersonagemHelper {
 			colocaZero = (i + 1) < 10 ? "0" : "";
 			lista[i] = (textureAtlas.findRegion(nomeFrame + " 00" + colocaZero + (i + 1)));
 		}
+	}
+	
+	public static boolean tocouPersonagem(Personagem personagem, int x, int y) {
+		int altura = personagem.getAnimation().getKeyFrame(personagem.getElapsedTime(), true).getRegionHeight();
+		int comprimento = personagem.getAnimation().getKeyFrame(personagem.getElapsedTime(), true).getRegionWidth();
+		if (y - 25 >= personagem.getPosY() && y - 25 <= personagem.getPosY() + (altura)) {
+			if (x >= personagem.getPosX() && x <= personagem.getPosX() + (comprimento)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

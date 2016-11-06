@@ -41,8 +41,8 @@ public class Mapa extends Entidade implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		System.out.println("X: " + (int) worldToIso(new Vector3(screenX, screenY, 0), 64, 32).x);
-		System.out.println("Y: " + (int) worldToIso(new Vector3(screenX, screenY, 0), 64, 32).y);
+		//System.out.println("X: " + (int) worldToIso(new Vector3(screenX, screenY, 0), 64, 32).x);
+		//System.out.println("Y: " + (int) worldToIso(new Vector3(screenX, screenY, 0), 64, 32).y);
  		return false;
 	}
 
