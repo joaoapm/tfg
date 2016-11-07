@@ -6,15 +6,16 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
-import com.badlogic.gdx.math.Vector3;
+import com.j01.helper.MapaHelper;
 
 public class Mapa extends Entidade implements InputProcessor {
 
 	private TiledMap map;
 	private IsometricTiledMapRenderer renderer;
 	private OrthographicCamera camera;
-	
+
 	public InputMultiplexer processor;
+	public Personagem pp;
 
 	public Mapa(OrthographicCamera camera, InputMultiplexer inputMultiplexer) {
 		TmxMapLoader loader = new TmxMapLoader();
@@ -41,9 +42,8 @@ public class Mapa extends Entidade implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		//System.out.println("X: " + (int) worldToIso(new Vector3(screenX, screenY, 0), 64, 32).x);
-		//System.out.println("Y: " + (int) worldToIso(new Vector3(screenX, screenY, 0), 64, 32).y);
- 		return false;
+		pp.movePersonagem(MapaHelper.getPosicaoCasa(screenX, screenY, camera));
+		return false;
 	}
 
 	@Override
@@ -64,14 +64,6 @@ public class Mapa extends Entidade implements InputProcessor {
 	@Override
 	public boolean scrolled(int amount) {
 		return false;
-	}
-
-	private Vector3 worldToIso(Vector3 point, int tileWidth, int tileHeight) {
-		camera.unproject(point);
-		point.x /= tileWidth;
-		point.y = (point.y - tileHeight / 2) / tileHeight + point.x;
-		point.x -= point.y - point.x;
-		return point;
 	}
 
 	public IsometricTiledMapRenderer getRenderer() {

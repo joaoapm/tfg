@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector3;
 import com.j01.estrutura.TipoPersonagem;
 import com.j01.helper.PersonagemHelper;
 import com.j01.helper.PropriedadeHelper;
@@ -18,10 +19,9 @@ public class Personagem extends Entidade implements InputProcessor {
 	private TipoPersonagem tipoPersonagem;
 	private PersonagemHelper personagemHelper;
 
-	public Personagem(TipoPersonagem tipoPersonagem, int posX, int posY, InputMultiplexer inputMultiplexer) {
+	public Personagem(TipoPersonagem tipoPersonagem, Vector3 posicao, InputMultiplexer inputMultiplexer) {
 
-		setPosX(posX);
-		setPosY(posY);
+		setPosicao(posicao);
 
 		personagemHelper = new PersonagemHelper(tipoPersonagem);
 		this.tipoPersonagem = tipoPersonagem;
@@ -32,7 +32,7 @@ public class Personagem extends Entidade implements InputProcessor {
 	}
 
 	public Personagem(TipoPersonagem tipoPersonagem) {
-		this(tipoPersonagem, 0, 0, null);
+		this(tipoPersonagem, new Vector3(), null);
 	}
 
 	public TipoPersonagem getTipoPersonagem() {
@@ -88,17 +88,23 @@ public class Personagem extends Entidade implements InputProcessor {
 		setElapsedTime(elapsedTime);
 		return getAnimation().getKeyFrame(elapsedTime, true);
 	}
-	
+
 	public void render(SpriteBatch spriteBatch) {
 		setElapsedTime(getElapsedTime() + Gdx.graphics.getDeltaTime());
-		spriteBatch.draw(this.getFrame(getElapsedTime()), this.getPosX(), this.getPosY());
+		spriteBatch.draw(this.getFrame(getElapsedTime()), this.getPosicao().x, this.getPosicao().y);
 	}
 
 	@Override
 	public boolean touchDown(int x, int y, int arg2, int arg3) {
-		if (PersonagemHelper.tocouPersonagem(this, x, y))
-			animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, personagemHelper.getFramesMovimentoFR());
+		// if (PersonagemHelper.tocouPersonagem(this, x, y))
+		// animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO,
+		// personagemHelper.getFramesMovimentoFR());
+
 		return false;
+	}
+
+	public void movePersonagem(Vector3 posicao) {
+		setPosicao(posicao);
 	}
 
 	@Override

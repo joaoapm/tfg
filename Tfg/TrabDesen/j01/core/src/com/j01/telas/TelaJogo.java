@@ -6,7 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector3;
 import com.j01.entidades.Mapa;
 import com.j01.entidades.Personagem;
 import com.j01.estrutura.TipoPersonagem;
@@ -15,11 +15,7 @@ import com.j01.helper.PropriedadeHelper;
 public class TelaJogo implements Screen {
 
 	private OrthographicCamera camera;
-
-	private ShapeRenderer shapeRenderer;
 	private SpriteBatch batch;
-
-	private float elapsedTime = 0;
 
 	private Mapa mapa;
 	private Personagem perso1;
@@ -28,7 +24,7 @@ public class TelaJogo implements Screen {
 	public void show() {
 
 		batch = new SpriteBatch();
-		shapeRenderer = new ShapeRenderer();
+
 		// cria camera
 		camera = new OrthographicCamera();
 		camera.position.set(PropriedadeHelper.POSICAO_INICIAL_CAM_X, PropriedadeHelper.POSICAO_INICIAL_CAM_Y,
@@ -42,8 +38,8 @@ public class TelaJogo implements Screen {
 		mapa = new Mapa(camera, (InputMultiplexer) Gdx.input.getInputProcessor());
 
 		// cria personagem
-		perso1 = new Personagem(TipoPersonagem.MONSTRO, 300, 300, (InputMultiplexer) Gdx.input.getInputProcessor());
-
+		perso1 = new Personagem(TipoPersonagem.MONSTRO, new Vector3(300, 300, 0),(InputMultiplexer) Gdx.input.getInputProcessor());
+		mapa.pp = perso1;
 	}
 
 	@Override

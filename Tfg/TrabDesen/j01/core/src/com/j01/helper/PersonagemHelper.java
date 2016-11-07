@@ -225,12 +225,12 @@ public class PersonagemHelper {
 			lista[i] = (textureAtlas.findRegion(nomeFrame + " 00" + colocaZero + (i + 1)));
 		}
 	}
-	
+
 	public static boolean tocouPersonagem(Personagem personagem, int x, int y) {
 		int altura = personagem.getAnimation().getKeyFrame(personagem.getElapsedTime(), true).getRegionHeight();
 		int comprimento = personagem.getAnimation().getKeyFrame(personagem.getElapsedTime(), true).getRegionWidth();
-		if (y - 25 >= personagem.getPosY() && y - 25 <= personagem.getPosY() + (altura)) {
-			if (x >= personagem.getPosX() && x <= personagem.getPosX() + (comprimento)) {
+		if (y - 25 >= personagem.getPosicao().x && y - 25 <= personagem.getPosicao().y + (altura)) {
+			if (x >= personagem.getPosicao().x && x <= personagem.getPosicao().y + (comprimento)) {
 				return true;
 			}
 		}

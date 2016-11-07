@@ -1,10 +1,11 @@
 package com.j01.entidades;
 
+import com.badlogic.gdx.math.Vector3;
+
 public class Entidade {
 
 	private float elapsedTime = 0;
-	private int posX;
-	private int posY;
+	private Vector3 posicao;
 
 	public float getElapsedTime() {
 		return elapsedTime;
@@ -14,20 +15,12 @@ public class Entidade {
 		this.elapsedTime = elapsedTime;
 	}
 
-	public int getPosX() {
-		return posX;
+	public Vector3 getPosicao() {
+		return posicao;
 	}
 
-	public void setPosX(int posX) {
-		this.posX = posX;
-	}
-
-	public int getPosY() {
-		return posY;
-	}
-
-	public void setPosY(int posY) {
-		this.posY = posY;
+	public void setPosicao(Vector3 posicao) {
+		this.posicao = posicao;
 	}
 
 }
