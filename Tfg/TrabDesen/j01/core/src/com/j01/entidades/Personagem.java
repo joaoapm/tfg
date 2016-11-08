@@ -90,7 +90,7 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int x, int y, int arg2, int arg3) {
-		//foi clicado, verifica entidade, (lista por camada)
+		//foi clicado, verifica se alguma entidade com camada superior ao mapa foi clicada, senao executa mapa
 		if (PersonagemHelper.tocouPersonagem(this, x, y))
 			getPartida().setPersonagemSelecionado(this);
 
