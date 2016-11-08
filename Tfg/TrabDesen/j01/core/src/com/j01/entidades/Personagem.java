@@ -23,11 +23,11 @@ public class Personagem extends Entidade implements InputProcessor {
 	private PersonagemHelper personagemHelper;
 
 	public Personagem(TipoPersonagem tipoPersonagem, Vector3 posicao, InputMultiplexer inputMultiplexer,
-			Partida partida) {
+			Partida partida, boolean debug) {
 
 		setPosicao(posicao);
 		setPartida(partida);
-		setRenderizaShapes(true);
+		setModoDebug(debug);
 
 		personagemHelper = new PersonagemHelper(tipoPersonagem);
 		this.tipoPersonagem = tipoPersonagem;
@@ -38,7 +38,7 @@ public class Personagem extends Entidade implements InputProcessor {
 	}
 
 	public Personagem(TipoPersonagem tipoPersonagem) {
-		this(tipoPersonagem, new Vector3(), null, null);
+		this(tipoPersonagem, new Vector3(), null, null,false);
 	}
 
 	public TipoPersonagem getTipoPersonagem() {
@@ -76,12 +76,11 @@ public class Personagem extends Entidade implements InputProcessor {
 	}
 
 	public void renderShape(ShapeRenderer shapeRenderer) {
-		if (isRenderizaShapes()) {
-			shapeRenderer.set(ShapeType.Filled);
+		if (isModoDebug()) {
+			shapeRenderer.set(ShapeType.Line);
 			shapeRenderer.setColor(Color.RED);
 			shapeRenderer.rect(getPosicao().x, getPosicao().y, 96, 96);
 		}
-
 	}
 
 	public void movePersonagem(Vector3 posicao) {

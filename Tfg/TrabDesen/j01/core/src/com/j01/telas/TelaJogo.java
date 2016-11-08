@@ -49,7 +49,7 @@ public class TelaJogo implements Screen {
 
 		// cria personagem
 		perso1 = new Personagem(TipoPersonagem.MONSTRO, new Vector3(300, 300, 0),
-				(InputMultiplexer) Gdx.input.getInputProcessor(), partida);
+				(InputMultiplexer) Gdx.input.getInputProcessor(), partida,false);
 		mapa.pp = perso1;
 
 	}

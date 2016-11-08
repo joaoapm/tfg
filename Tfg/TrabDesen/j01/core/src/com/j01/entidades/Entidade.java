@@ -8,7 +8,7 @@ public class Entidade {
 	private Vector3 posicao;
 	private Partida partida;
 	private boolean isPosAtualizada;
-	private boolean isRenderizaShapes;
+	private boolean isModoDebug;
 
 	public boolean isPosAtualizada() {
 		return isPosAtualizada;
@@ -42,12 +42,13 @@ public class Entidade {
 		this.posicao = posicao;
 	}
 
-	public boolean isRenderizaShapes() {
-		return isRenderizaShapes;
+	public boolean isModoDebug() {
+		return isModoDebug;
 	}
 
-	public void setRenderizaShapes(boolean isRenderizaShapes) {
-		this.isRenderizaShapes = isRenderizaShapes;
+	public void setModoDebug(boolean isModoDebug) {
+		this.isModoDebug = isModoDebug;
 	}
+
 
 }
