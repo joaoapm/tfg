@@ -9,6 +9,15 @@ public class Entidade {
 	private Partida partida;
 	private boolean isPosAtualizada;
 	private boolean isModoDebug;
+	private int camada;
+	
+	public int getCamada() {
+		return camada;
+	}
+
+	public void setCamada(int camada) {
+		this.camada = camada;
+	}
 
 	public boolean isPosAtualizada() {
 		return isPosAtualizada;

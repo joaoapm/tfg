@@ -23,11 +23,12 @@ public class Personagem extends Entidade implements InputProcessor {
 	private PersonagemHelper personagemHelper;
 
 	public Personagem(TipoPersonagem tipoPersonagem, Vector3 posicao, InputMultiplexer inputMultiplexer,
-			Partida partida, boolean debug) {
+			Partida partida, boolean debug,int camada) {
 
 		setPosicao(posicao);
 		setPartida(partida);
 		setModoDebug(debug);
+		setCamada(camada);
 
 		personagemHelper = new PersonagemHelper(tipoPersonagem);
 		this.tipoPersonagem = tipoPersonagem;
@@ -38,7 +39,7 @@ public class Personagem extends Entidade implements InputProcessor {
 	}
 
 	public Personagem(TipoPersonagem tipoPersonagem) {
-		this(tipoPersonagem, new Vector3(), null, null,false);
+		this(tipoPersonagem, new Vector3(), null, null,false,0);
 	}
 
 	public TipoPersonagem getTipoPersonagem() {

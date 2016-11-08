@@ -17,12 +17,16 @@ public class Mapa extends Entidade implements InputProcessor {
 	public InputMultiplexer processor;
 	public Personagem pp;
 
-	public Mapa(OrthographicCamera camera, InputMultiplexer inputMultiplexer, Partida partida) {
+	public Mapa(OrthographicCamera camera, InputMultiplexer inputMultiplexer, Partida partida,int camada) {
+		
+		this.camera = camera;
+		setPartida(partida);
+		setCamada(1);
+		
 		TmxMapLoader loader = new TmxMapLoader();
 		map = loader.load("mapa/mapa.tmx");
 		renderer = new IsometricTiledMapRenderer(map);
-		this.camera = camera;
-		setPartida(partida);
+		
 		inputMultiplexer.addProcessor(this);
 	}
 
