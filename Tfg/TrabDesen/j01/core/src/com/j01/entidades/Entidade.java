@@ -6,6 +6,15 @@ public class Entidade {
 
 	private float elapsedTime = 0;
 	private Vector3 posicao;
+	private Partida partida;
+
+	public Partida getPartida() {
+		return partida;
+	}
+
+	public void setPartida(Partida partida) {
+		this.partida = partida;
+	}
 
 	public float getElapsedTime() {
 		return elapsedTime;

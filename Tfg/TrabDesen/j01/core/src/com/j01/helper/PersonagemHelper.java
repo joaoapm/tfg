@@ -227,6 +227,9 @@ public class PersonagemHelper {
 	}
 
 	public static boolean tocouPersonagem(Personagem personagem, int x, int y) {
+		System.out.println("Perso: ("+personagem.getPosicao().x+","+personagem.getPosicao().y+")");
+		System.out.println("xy ("+x+","+y+")");
+		
 		int altura = personagem.getAnimation().getKeyFrame(personagem.getElapsedTime(), true).getRegionHeight();
 		int comprimento = personagem.getAnimation().getKeyFrame(personagem.getElapsedTime(), true).getRegionWidth();
 		if (y - 25 >= personagem.getPosicao().x && y - 25 <= personagem.getPosicao().y + (altura)) {

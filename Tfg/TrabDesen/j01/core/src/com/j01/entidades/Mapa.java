@@ -17,11 +17,12 @@ public class Mapa extends Entidade implements InputProcessor {
 	public InputMultiplexer processor;
 	public Personagem pp;
 
-	public Mapa(OrthographicCamera camera, InputMultiplexer inputMultiplexer) {
+	public Mapa(OrthographicCamera camera, InputMultiplexer inputMultiplexer, Partida partida) {
 		TmxMapLoader loader = new TmxMapLoader();
 		map = loader.load("mapa/mapa.tmx");
 		renderer = new IsometricTiledMapRenderer(map);
 		this.camera = camera;
+		setPartida(partida);
 		inputMultiplexer.addProcessor(this);
 	}
 
@@ -42,7 +43,8 @@ public class Mapa extends Entidade implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		pp.movePersonagem(MapaHelper.getPosicaoCasa(screenX, screenY, camera));
+		if(getPartida().getPersonagemSelecionado() != null)
+			pp.movePersonagem(MapaHelper.getPosicaoCasa(screenX, screenY, camera));
 		return false;
 	}
 

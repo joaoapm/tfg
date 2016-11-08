@@ -19,20 +19,22 @@ public class Personagem extends Entidade implements InputProcessor {
 	private TipoPersonagem tipoPersonagem;
 	private PersonagemHelper personagemHelper;
 
-	public Personagem(TipoPersonagem tipoPersonagem, Vector3 posicao, InputMultiplexer inputMultiplexer) {
+	public Personagem(TipoPersonagem tipoPersonagem, Vector3 posicao, InputMultiplexer inputMultiplexer,
+			Partida partida) {
 
 		setPosicao(posicao);
 
 		personagemHelper = new PersonagemHelper(tipoPersonagem);
 		this.tipoPersonagem = tipoPersonagem;
-
+		setPartida(partida);
+		
 		inputMultiplexer.addProcessor(this);
 
 		animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, personagemHelper.getFramesParadoFR());
 	}
 
 	public Personagem(TipoPersonagem tipoPersonagem) {
-		this(tipoPersonagem, new Vector3(), null);
+		this(tipoPersonagem, new Vector3(), null, null);
 	}
 
 	public TipoPersonagem getTipoPersonagem() {
@@ -96,15 +98,15 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int x, int y, int arg2, int arg3) {
-		// if (PersonagemHelper.tocouPersonagem(this, x, y))
-		// animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO,
-		// personagemHelper.getFramesMovimentoFR());
+		 if (PersonagemHelper.tocouPersonagem(this, x, y))
+			 getPartida().setPersonagemSelecionado(this);
 
 		return false;
 	}
 
 	public void movePersonagem(Vector3 posicao) {
 		setPosicao(posicao);
+		getPartida().setPersonagemSelecionado(null);
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.j01.entidades.Mapa;
+import com.j01.entidades.Partida;
 import com.j01.entidades.Personagem;
 import com.j01.estrutura.TipoPersonagem;
 import com.j01.helper.PropriedadeHelper;
@@ -34,12 +35,18 @@ public class TelaJogo implements Screen {
 		// processador de eventos
 		Gdx.input.setInputProcessor(new InputMultiplexer());
 
+		// partida
+		Partida partida = new Partida();
+		partida.setMapa(mapa);
+
 		// cria mapa
-		mapa = new Mapa(camera, (InputMultiplexer) Gdx.input.getInputProcessor());
+		mapa = new Mapa(camera, (InputMultiplexer) Gdx.input.getInputProcessor(), partida);
 
 		// cria personagem
-		perso1 = new Personagem(TipoPersonagem.MONSTRO, new Vector3(300, 300, 0),(InputMultiplexer) Gdx.input.getInputProcessor());
+		perso1 = new Personagem(TipoPersonagem.MONSTRO, new Vector3(300, 300, 0),
+				(InputMultiplexer) Gdx.input.getInputProcessor(), partida);
 		mapa.pp = perso1;
+
 	}
 
 	@Override
