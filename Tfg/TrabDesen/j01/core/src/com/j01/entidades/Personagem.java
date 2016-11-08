@@ -90,6 +90,7 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int x, int y, int arg2, int arg3) {
+		//foi clicado, verifica entidade, (lista por camada)
 		if (PersonagemHelper.tocouPersonagem(this, x, y))
 			getPartida().setPersonagemSelecionado(this);
 
