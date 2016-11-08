@@ -3,9 +3,12 @@ package com.j01.telas;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector3;
 import com.j01.entidades.Mapa;
 import com.j01.entidades.Partida;
@@ -20,11 +23,13 @@ public class TelaJogo implements Screen {
 
 	private Mapa mapa;
 	private Personagem perso1;
+	private ShapeRenderer shapeRenderer;
 
 	@Override
 	public void show() {
 
 		batch = new SpriteBatch();
+		shapeRenderer = new ShapeRenderer();
 
 		// cria camera
 		camera = new OrthographicCamera();
@@ -58,10 +63,17 @@ public class TelaJogo implements Screen {
 		// renderiza mapa
 		mapa.getRenderer().render();
 
-		// renderia personganes
+		// renderiza personganes:
+		// imagens
 		batch.begin();
 		perso1.render(batch);
 		batch.end();
+
+		// shapes
+		shapeRenderer.setAutoShapeType(true);
+		shapeRenderer.begin();
+		perso1.renderShape(shapeRenderer);
+		shapeRenderer.end();
 
 	}
 

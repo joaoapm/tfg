@@ -3,6 +3,7 @@ package com.j01.helper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector3;
 import com.j01.entidades.Personagem;
 import com.j01.estrutura.TipoPersonagem;
 
@@ -227,16 +228,30 @@ public class PersonagemHelper {
 	}
 
 	public static boolean tocouPersonagem(Personagem personagem, int x, int y) {
-		System.out.println("Perso: ("+personagem.getPosicao().x+","+personagem.getPosicao().y+")");
-		System.out.println("xy ("+x+","+y+")");
-		
-		int altura = personagem.getAnimation().getKeyFrame(personagem.getElapsedTime(), true).getRegionHeight();
-		int comprimento = personagem.getAnimation().getKeyFrame(personagem.getElapsedTime(), true).getRegionWidth();
-		if (y - 25 >= personagem.getPosicao().x && y - 25 <= personagem.getPosicao().y + (altura)) {
-			if (x >= personagem.getPosicao().x && x <= personagem.getPosicao().y + (comprimento)) {
-				return true;
+		if (personagem.isPosAtualizada()) {
+			personagem.setPosAtualizada(false);
+		} else {
+
+			float pointerX = x;
+			float pointerY = Gdx.graphics.getHeight() - y;
+
+			int altura = personagem.getAnimation().getKeyFrame(personagem.getElapsedTime(), true).getRegionHeight();
+			int comprimento = personagem.getAnimation().getKeyFrame(personagem.getElapsedTime(), true).getRegionWidth();
+
+			if (pointerY >= personagem.getPosicao().y && pointerY <= personagem.getPosicao().y + (altura)) {
+				if (pointerX >= personagem.getPosicao().x && pointerX <= personagem.getPosicao().x + (comprimento)) {
+					return true;
+				}
 			}
 		}
+
 		return false;
 	}
+
+	public static void movePersonagem(Personagem personagem, Vector3 pos) {
+		personagem.setPosAtualizada(true);
+		personagem.getPartida().setPersonagemSelecionado(null);
+		personagem.setPosicao(pos);
+	}
+
 }

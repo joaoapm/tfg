@@ -7,6 +7,16 @@ public class Entidade {
 	private float elapsedTime = 0;
 	private Vector3 posicao;
 	private Partida partida;
+	private boolean isPosAtualizada;
+	private boolean isRenderizaShapes;
+
+	public boolean isPosAtualizada() {
+		return isPosAtualizada;
+	}
+
+	public void setPosAtualizada(boolean isPosAtualizada) {
+		this.isPosAtualizada = isPosAtualizada;
+	}
 
 	public Partida getPartida() {
 		return partida;
@@ -30,6 +40,14 @@ public class Entidade {
 
 	public void setPosicao(Vector3 posicao) {
 		this.posicao = posicao;
+	}
+
+	public boolean isRenderizaShapes() {
+		return isRenderizaShapes;
+	}
+
+	public void setRenderizaShapes(boolean isRenderizaShapes) {
+		this.isRenderizaShapes = isRenderizaShapes;
 	}
 
 }
