@@ -2,10 +2,13 @@ package com.j01.entidades;
 
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
+import com.badlogic.gdx.math.Matrix4;
 import com.j01.helper.MapaHelper;
 
 public class Mapa extends Entidade implements InputProcessor {
@@ -16,18 +19,26 @@ public class Mapa extends Entidade implements InputProcessor {
 
 	public InputMultiplexer processor;
 	public Personagem pp;
+	private Matrix4 isoTransform;
 
-	public Mapa(OrthographicCamera camera, InputMultiplexer inputMultiplexer, Partida partida,int camada) {
-		
+	public Mapa(OrthographicCamera camera, InputMultiplexer inputMultiplexer, Partida partida, int camada) {
+
 		this.camera = camera;
 		setPartida(partida);
 		setCamada(1);
-		
+
 		TmxMapLoader loader = new TmxMapLoader();
 		map = loader.load("mapa/mapa.tmx");
 		renderer = new IsometricTiledMapRenderer(map);
-		
+
 		inputMultiplexer.addProcessor(this);
+
+		isoTransform = new Matrix4();
+		isoTransform.idt();
+
+		isoTransform.translate(10, 120, 0);
+		isoTransform.scale((float) (Math.sqrt(2.0) / 2.0), (float) (Math.sqrt(2.0) / 4.0), 1.0f);
+		isoTransform.rotate(0.0f, 0.0f, 1.0f, -45);
 	}
 
 	@Override
@@ -47,7 +58,7 @@ public class Mapa extends Entidade implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		if(getPartida().getPersonagemSelecionado() != null)
+		if (getPartida().getPersonagemSelecionado() != null)
 			pp.movePersonagem(MapaHelper.getPosicaoCasa(screenX, screenY, camera));
 		return false;
 	}
@@ -86,6 +97,10 @@ public class Mapa extends Entidade implements InputProcessor {
 
 	public void setCamera(OrthographicCamera camera) {
 		this.camera = camera;
+	}
+
+	@Override
+	public void renderShape(ShapeRenderer shapeRenderer) {
 	}
 
 }

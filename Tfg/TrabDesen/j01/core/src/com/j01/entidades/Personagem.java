@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.j01.estrutura.TipoPersonagem;
 import com.j01.helper.PersonagemHelper;
@@ -23,7 +24,7 @@ public class Personagem extends Entidade implements InputProcessor {
 	private PersonagemHelper personagemHelper;
 
 	public Personagem(TipoPersonagem tipoPersonagem, Vector3 posicao, InputMultiplexer inputMultiplexer,
-			Partida partida, boolean debug,int camada) {
+			Partida partida, boolean debug, int camada) {
 
 		setPosicao(posicao);
 		setPartida(partida);
@@ -36,10 +37,11 @@ public class Personagem extends Entidade implements InputProcessor {
 		inputMultiplexer.addProcessor(this);
 
 		animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, personagemHelper.getFramesParadoFR());
+
 	}
 
 	public Personagem(TipoPersonagem tipoPersonagem) {
-		this(tipoPersonagem, new Vector3(), null, null,false,0);
+		this(tipoPersonagem, new Vector3(), null, null, false, 0);
 	}
 
 	public TipoPersonagem getTipoPersonagem() {
@@ -71,15 +73,18 @@ public class Personagem extends Entidade implements InputProcessor {
 		return getAnimation().getKeyFrame(elapsedTime, true);
 	}
 
+	@Override
 	public void render(SpriteBatch spriteBatch) {
 		setElapsedTime(getElapsedTime() + Gdx.graphics.getDeltaTime());
 		spriteBatch.draw(this.getFrame(getElapsedTime()), this.getPosicao().x, this.getPosicao().y);
 	}
 
+	@Override
 	public void renderShape(ShapeRenderer shapeRenderer) {
 		if (isModoDebug()) {
 			shapeRenderer.set(ShapeType.Line);
 			shapeRenderer.setColor(Color.RED);
+			shapeRenderer.setTransformMatrix(new Matrix4());
 			shapeRenderer.rect(getPosicao().x, getPosicao().y, 96, 96);
 		}
 	}
@@ -90,7 +95,8 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int x, int y, int arg2, int arg3) {
-		//foi clicado, verifica se alguma entidade com camada superior ao mapa foi clicada, senao executa mapa
+		// foi clicado, verifica se alguma entidade com camada superior ao mapa
+		// foi clicada, senao executa mapa
 		if (PersonagemHelper.tocouPersonagem(this, x, y))
 			getPartida().setPersonagemSelecionado(this);
 

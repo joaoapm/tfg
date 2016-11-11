@@ -1,5 +1,7 @@
 package com.j01.entidades;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 
 public class Entidade {
@@ -10,7 +12,7 @@ public class Entidade {
 	private boolean isPosAtualizada;
 	private boolean isModoDebug;
 	private int camada;
-	
+
 	public int getCamada() {
 		return camada;
 	}
@@ -59,5 +61,13 @@ public class Entidade {
 		this.isModoDebug = isModoDebug;
 	}
 
+	public void render(SpriteBatch spriteBatch) {
+	}
+
+	public void renderShape() {
+	}
+
+	public void renderShape(ShapeRenderer shapeRenderer) {
+	}
 
 }

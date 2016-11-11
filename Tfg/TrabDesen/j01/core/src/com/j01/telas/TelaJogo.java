@@ -1,15 +1,17 @@
 package com.j01.telas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector3;
+import com.j01.entidades.Entidade;
 import com.j01.entidades.Mapa;
 import com.j01.entidades.Partida;
 import com.j01.entidades.Personagem;
@@ -20,16 +22,15 @@ public class TelaJogo implements Screen {
 
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-
+	private ShapeRenderer shapeRenderer;
 	private Mapa mapa;
 	private Personagem perso1;
-	private ShapeRenderer shapeRenderer;
+	private List<Entidade> listaEntidades = new ArrayList<Entidade>();
 
 	@Override
 	public void show() {
 
 		batch = new SpriteBatch();
-		shapeRenderer = new ShapeRenderer();
 
 		// cria camera
 		camera = new OrthographicCamera();
@@ -45,12 +46,18 @@ public class TelaJogo implements Screen {
 		partida.setMapa(mapa);
 
 		// cria mapa
-		mapa = new Mapa(camera, (InputMultiplexer) Gdx.input.getInputProcessor(), partida,0);
+		mapa = new Mapa(camera, (InputMultiplexer) Gdx.input.getInputProcessor(), partida, 0);
 
 		// cria personagem
-		perso1 = new Personagem(TipoPersonagem.MONSTRO, new Vector3(300, 300, 0),
-				(InputMultiplexer) Gdx.input.getInputProcessor(), partida,false,1);
+		perso1 = new Personagem(TipoPersonagem.MONSTRO, new Vector3(380, 380, 0),
+				(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1);
+
 		mapa.pp = perso1;
+
+		listaEntidades.add(perso1);
+		listaEntidades.add(mapa);
+
+		this.shapeRenderer = new ShapeRenderer();
 
 	}
 
@@ -63,17 +70,21 @@ public class TelaJogo implements Screen {
 		// renderiza mapa
 		mapa.getRenderer().render();
 
-		// renderiza personganes:
-		// imagens
-		batch.begin();
-		perso1.render(batch);
-		batch.end();
-
+		// renderiza entidades:
 		// shapes
 		shapeRenderer.setAutoShapeType(true);
 		shapeRenderer.begin();
-		perso1.renderShape(shapeRenderer);
+		for (Entidade ent : listaEntidades)
+			ent.renderShape(shapeRenderer);
 		shapeRenderer.end();
+		
+		// imagens
+		batch.begin();
+		for (Entidade ent : listaEntidades)
+			ent.render(batch);
+		batch.end();
+
+
 
 	}
 
