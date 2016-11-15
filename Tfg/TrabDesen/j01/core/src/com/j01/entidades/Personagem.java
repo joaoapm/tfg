@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.j01.estrutura.TipoPersonagem;
+import com.j01.helper.MapaHelper;
 import com.j01.helper.PersonagemHelper;
 import com.j01.helper.PropriedadeHelper;
 
@@ -22,26 +23,25 @@ public class Personagem extends Entidade implements InputProcessor {
 	private TextureAtlas textureAtlas;
 	private TipoPersonagem tipoPersonagem;
 	private PersonagemHelper personagemHelper;
+	private Casa casaAtual;
 
-	public Personagem(TipoPersonagem tipoPersonagem, Vector3 posicao, InputMultiplexer inputMultiplexer,
-			Partida partida, boolean debug, int camada) {
+	public Personagem(TipoPersonagem tipoPersonagem, Casa casaAtual, InputMultiplexer inputMultiplexer, Partida partida,
+			boolean debug, int camada) {
 
-		setPosicao(posicao);
 		setPartida(partida);
 		setModoDebug(debug);
 		setCamada(camada);
+		setPosicao(MapaHelper.getPosicaoTelaCasa(casaAtual.getX(), casaAtual.getY()));
 
 		personagemHelper = new PersonagemHelper(tipoPersonagem);
+
 		this.tipoPersonagem = tipoPersonagem;
+		this.casaAtual = casaAtual;
 
 		inputMultiplexer.addProcessor(this);
 
 		animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, personagemHelper.getFramesParadoFR());
 
-	}
-
-	public Personagem(TipoPersonagem tipoPersonagem) {
-		this(tipoPersonagem, new Vector3(), null, null, false, 0);
 	}
 
 	public TipoPersonagem getTipoPersonagem() {
@@ -89,18 +89,30 @@ public class Personagem extends Entidade implements InputProcessor {
 		}
 	}
 
-	public void movePersonagem(Vector3 posicao) {
-		PersonagemHelper.movePersonagem(this, posicao);
+	public void movePersonagem(Casa casa) {
+		PersonagemHelper.movePersonagem(this, casa);
+		MapaHelper.escondeRange();
+
 	}
 
 	@Override
 	public boolean touchDown(int x, int y, int arg2, int arg3) {
 		// foi clicado, verifica se alguma entidade com camada superior ao mapa
 		// foi clicada, senao executa mapa
-		if (PersonagemHelper.tocouPersonagem(this, x, y))
+		if (PersonagemHelper.tocouPersonagem(this, x, y)) {
 			getPartida().setPersonagemSelecionado(this);
+			MapaHelper.mostraRange(this.casaAtual.getX(), this.casaAtual.getY());
+		}
 
 		return false;
+	}
+
+	public Casa getCasaAtual() {
+		return casaAtual;
+	}
+
+	public void setCasaAtual(Casa casaAtual) {
+		this.casaAtual = casaAtual;
 	}
 
 	@Override

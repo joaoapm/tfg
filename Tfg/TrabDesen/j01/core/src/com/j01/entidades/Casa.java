@@ -13,6 +13,11 @@ public class Casa extends Entidade {
 		this.posicao = posicaoCasa;
 	}
 
+	public Casa(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
 	public int getX() {
 		return x;
 	}

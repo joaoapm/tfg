@@ -10,12 +10,13 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector3;
+import com.j01.entidades.Casa;
 import com.j01.entidades.Entidade;
 import com.j01.entidades.Mapa;
 import com.j01.entidades.Partida;
 import com.j01.entidades.Personagem;
 import com.j01.estrutura.TipoPersonagem;
+import com.j01.helper.MapaHelper;
 import com.j01.helper.PropriedadeHelper;
 
 public class TelaJogo implements Screen {
@@ -47,9 +48,14 @@ public class TelaJogo implements Screen {
 
 		// cria mapa
 		mapa = new Mapa(camera, (InputMultiplexer) Gdx.input.getInputProcessor(), partida, 0);
+		MapaHelper.MAPA = mapa;
+		camera.viewportWidth = PropriedadeHelper.JANELA_WIDTH;
+		camera.viewportHeight = PropriedadeHelper.JANELA_HEIGHT;
+		camera.update();
+		mapa.setCamera(camera);
 
 		// cria personagem
-		perso1 = new Personagem(TipoPersonagem.MONSTRO, new Vector3(380, 380, 0),
+		perso1 = new Personagem(TipoPersonagem.MONSTRO, new Casa(21, 25),
 				(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1);
 
 		mapa.pp = perso1;
@@ -77,14 +83,12 @@ public class TelaJogo implements Screen {
 		for (Entidade ent : listaEntidades)
 			ent.renderShape(shapeRenderer);
 		shapeRenderer.end();
-		
+
 		// imagens
 		batch.begin();
 		for (Entidade ent : listaEntidades)
 			ent.render(batch);
 		batch.end();
-
-
 
 	}
 

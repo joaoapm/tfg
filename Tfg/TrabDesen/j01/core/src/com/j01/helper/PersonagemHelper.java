@@ -3,7 +3,7 @@ package com.j01.helper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Vector3;
+import com.j01.entidades.Casa;
 import com.j01.entidades.Personagem;
 import com.j01.estrutura.TipoPersonagem;
 
@@ -248,10 +248,12 @@ public class PersonagemHelper {
 		return false;
 	}
 
-	public static void movePersonagem(Personagem personagem, Vector3 pos) {
+	public static void movePersonagem(Personagem personagem, Casa casa) {
 		personagem.setPosAtualizada(true);
 		personagem.getPartida().setPersonagemSelecionado(null);
-		personagem.setPosicao(pos);
+		personagem.setPosicao(casa.getPosicao());
+
+		personagem.setCasaAtual(casa);
 	}
 
 }
