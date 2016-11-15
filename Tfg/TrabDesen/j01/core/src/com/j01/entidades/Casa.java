@@ -4,42 +4,35 @@ import com.badlogic.gdx.math.Vector3;
 
 public class Casa extends Entidade {
 
-	private int x, y;
-	private Vector3 posicao;
+	private Vector3 posicaoMapa;
 
-	public Casa(int x, int y, Vector3 posicaoCasa) {
-		this.x = x;
-		this.y = y;
-		this.posicao = posicaoCasa;
+	public Vector3 getPosicaoMapa() {
+		return posicaoMapa;
 	}
 
-	public Casa(int x, int y) {
-		this.x = x;
-		this.y = y;
+	public void setPosicaoMapa(Vector3 posicaoMapa) {
+		this.posicaoMapa = posicaoMapa;
 	}
 
-	public int getX() {
-		return x;
+	private Vector3 posicaoTela;
+
+	public Casa(Vector3 posicaoMaoa, Vector3 posicaoTela) {
+		super();
+		this.posicaoMapa = posicaoMaoa;
+		this.posicaoTela = posicaoTela;
 	}
 
-	public void setX(int x) {
-		this.x = x;
+	public Casa(int cx, int cy) {
+		super();
+		this.posicaoMapa = new Vector3(cx, cy, 0);
 	}
 
-	public int getY() {
-		return y;
+	public Vector3 getPosicaoTela() {
+		return posicaoTela;
 	}
 
-	public void setY(int y) {
-		this.y = y;
-	}
-
-	public Vector3 getPosicao() {
-		return posicao;
-	}
-
-	public void setPosicao(Vector3 posicao) {
-		this.posicao = posicao;
+	public void setPosicaoTela(Vector3 posicaoTela) {
+		this.posicaoTela = posicaoTela;
 	}
 
 }

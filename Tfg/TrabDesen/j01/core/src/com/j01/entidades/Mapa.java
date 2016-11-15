@@ -4,7 +4,6 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -12,6 +11,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
 import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Vector3;
 import com.j01.helper.MapaHelper;
 
 public class Mapa extends Entidade implements InputProcessor {
@@ -79,7 +79,7 @@ public class Mapa extends Entidade implements InputProcessor {
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		if (getPartida().getPersonagemSelecionado() != null)
-			pp.movePersonagem(MapaHelper.getPosicaoCasa(screenX, screenY));
+			pp.movePersonagem(MapaHelper.getPosicaoCasa(new Casa(null, new Vector3(screenX, screenY,0))));
 
 		return false;
 	}

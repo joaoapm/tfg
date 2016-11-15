@@ -238,8 +238,8 @@ public class PersonagemHelper {
 			int altura = personagem.getAnimation().getKeyFrame(personagem.getElapsedTime(), true).getRegionHeight();
 			int comprimento = personagem.getAnimation().getKeyFrame(personagem.getElapsedTime(), true).getRegionWidth();
 
-			if (pointerY >= personagem.getPosicao().y && pointerY <= personagem.getPosicao().y + (altura)) {
-				if (pointerX >= personagem.getPosicao().x && pointerX <= personagem.getPosicao().x + (comprimento)) {
+			if (pointerY >= personagem.getCasaAtual().getPosicaoTela().y && pointerY <= personagem.getCasaAtual().getPosicaoTela().y + (altura)) {
+				if (pointerX >= personagem.getCasaAtual().getPosicaoTela().x && pointerX <= personagem.getCasaAtual().getPosicaoTela().x + (comprimento)) {
 					return true;
 				}
 			}
@@ -251,7 +251,7 @@ public class PersonagemHelper {
 	public static void movePersonagem(Personagem personagem, Casa casa) {
 		personagem.setPosAtualizada(true);
 		personagem.getPartida().setPersonagemSelecionado(null);
-		personagem.setPosicao(casa.getPosicao());
+		personagem.getCasaAtual().setPosicaoTela(casa.getPosicaoTela());
 
 		personagem.setCasaAtual(casa);
 	}

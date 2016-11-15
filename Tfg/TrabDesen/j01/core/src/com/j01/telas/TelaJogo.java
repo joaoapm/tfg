@@ -31,13 +31,17 @@ public class TelaJogo implements Screen {
 	@Override
 	public void show() {
 
-		batch = new SpriteBatch();
+		this.batch = new SpriteBatch();
+		this.shapeRenderer = new ShapeRenderer();
 
 		// cria camera
 		camera = new OrthographicCamera();
 		camera.position.set(PropriedadeHelper.POSICAO_INICIAL_CAM_X, PropriedadeHelper.POSICAO_INICIAL_CAM_Y,
 				PropriedadeHelper.POSICAO_INICIAL_CAM_Z);
 		camera.zoom -= PropriedadeHelper.ZOOM_INCIAL_CAM;
+		camera.viewportWidth = PropriedadeHelper.JANELA_WIDTH;
+		camera.viewportHeight = PropriedadeHelper.JANELA_HEIGHT;
+		camera.update();
 
 		// processador de eventos
 		Gdx.input.setInputProcessor(new InputMultiplexer());
@@ -49,21 +53,15 @@ public class TelaJogo implements Screen {
 		// cria mapa
 		mapa = new Mapa(camera, (InputMultiplexer) Gdx.input.getInputProcessor(), partida, 0);
 		MapaHelper.MAPA = mapa;
-		camera.viewportWidth = PropriedadeHelper.JANELA_WIDTH;
-		camera.viewportHeight = PropriedadeHelper.JANELA_HEIGHT;
-		camera.update();
-		mapa.setCamera(camera);
 
 		// cria personagem
-		perso1 = new Personagem(TipoPersonagem.MONSTRO, new Casa(21, 25),
+		perso1 = new Personagem(TipoPersonagem.MONSTRO, new Casa(26, 24),
 				(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1);
 
 		mapa.pp = perso1;
 
 		listaEntidades.add(perso1);
 		listaEntidades.add(mapa);
-
-		this.shapeRenderer = new ShapeRenderer();
 
 	}
 
