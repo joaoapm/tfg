@@ -41,35 +41,6 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	}
 
-	public TipoPersonagem getTipoPersonagem() {
-		return tipoPersonagem;
-	}
-
-	public void setTipoPersonagem(TipoPersonagem tipoPersonagem) {
-		this.tipoPersonagem = tipoPersonagem;
-	}
-
-	public Animation getAnimation() {
-		return animation;
-	}
-
-	public void setAnimation(Animation animation) {
-		this.animation = animation;
-	}
-
-	public TextureAtlas getTextureAtlas() {
-		return textureAtlas;
-	}
-
-	public void setTextureAtlas(TextureAtlas textureAtlas) {
-		this.textureAtlas = textureAtlas;
-	}
-
-	public TextureRegion getFrame(float elapsedTime) {
-		setElapsedTime(elapsedTime);
-		return getAnimation().getKeyFrame(elapsedTime, true);
-	}
-
 	@Override
 	public void render(SpriteBatch spriteBatch) {
 		setElapsedTime(getElapsedTime() + Gdx.graphics.getDeltaTime());
@@ -77,6 +48,11 @@ public class Personagem extends Entidade implements InputProcessor {
 				this.casaAtual.getPosicaoTela().y);
 	}
 
+	public TextureRegion getFrame(float elapsedTime) {
+		setElapsedTime(elapsedTime);
+		return getAnimation().getKeyFrame(elapsedTime, true);
+	}
+	
 	@Override
 	public void renderShape(ShapeRenderer shapeRenderer) {
 		if (isModoDebug()) {
@@ -146,6 +122,30 @@ public class Personagem extends Entidade implements InputProcessor {
 	@Override
 	public boolean scrolled(int arg0) {
 		return false;
+	}
+
+	public TipoPersonagem getTipoPersonagem() {
+		return tipoPersonagem;
+	}
+
+	public void setTipoPersonagem(TipoPersonagem tipoPersonagem) {
+		this.tipoPersonagem = tipoPersonagem;
+	}
+
+	public Animation getAnimation() {
+		return animation;
+	}
+
+	public void setAnimation(Animation animation) {
+		this.animation = animation;
+	}
+
+	public TextureAtlas getTextureAtlas() {
+		return textureAtlas;
+	}
+
+	public void setTextureAtlas(TextureAtlas textureAtlas) {
+		this.textureAtlas = textureAtlas;
 	}
 
 }

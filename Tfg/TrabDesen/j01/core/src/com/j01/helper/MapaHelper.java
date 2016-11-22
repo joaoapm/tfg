@@ -11,6 +11,7 @@ public class MapaHelper {
 
 	public static Mapa MAPA;
 
+
 	public static Casa getPosicaoCasa(Casa casa) {
 
 		int cx = -1 * (int) telaParaIso(new Vector3(casa.getPosicaoTela().x, casa.getPosicaoTela().y, 0), 64, 32,
@@ -41,9 +42,13 @@ public class MapaHelper {
 
 	public static void mostraRange(Casa casa) {
 		TiledMapTileLayer ll = (TiledMapTileLayer) MAPA.getMap().getLayers().get(3);
-		ll.getCell((int) casa.getPosicaoMapa().x, (int) casa.getPosicaoMapa().y).setTile(MAPA.getTileSel());
-		ll.getCell((int) casa.getPosicaoMapa().x + 1, (int) casa.getPosicaoMapa().y + 1).setTile(MAPA.getTileSel());
 
+		for (int i = 0; i < PropriedadeHelper.MATRIZ_CASA_SEL.length; i++) {
+			if (ll.getCell((int) casa.getPosicaoMapa().x + ((int) PropriedadeHelper.MATRIZ_CASA_SEL[i].x),
+					(int) casa.getPosicaoMapa().y + ((int) PropriedadeHelper.MATRIZ_CASA_SEL[i].y)) != null)
+				ll.getCell((int) casa.getPosicaoMapa().x + ((int) PropriedadeHelper.MATRIZ_CASA_SEL[i].x),
+						(int) casa.getPosicaoMapa().y + ((int) PropriedadeHelper.MATRIZ_CASA_SEL[i].y)).setTile(MAPA.getTileSel());
+		}
 	}
 
 	public static void escondeRange() {
@@ -52,11 +57,25 @@ public class MapaHelper {
 			for (int j = 0; j < 50; j++)
 				if (layer.getCell(i, j) != null) {
 					Cell c = layer.getCell(i, j);
+					if (MAPA.getTileSel() == null)
+						MAPA.setTileSel(c.getTile());
 					c.setTile(null);
 				}
 
 	}
 
+	public static boolean isCasaNaRange(Casa casaAtual, Casa casa) {
+		boolean isNaRange = false;
+		for (int i = 0; i < PropriedadeHelper.MATRIZ_CASA_SEL.length; i++) {
+			if (casa.getPosicaoMapa().x == (casaAtual.getPosicaoMapa().x + (int) PropriedadeHelper.MATRIZ_CASA_SEL[i].x)
+			 && casa.getPosicaoMapa().y == (casaAtual.getPosicaoMapa().y + (int) PropriedadeHelper.MATRIZ_CASA_SEL[i].y) ) {
+				isNaRange = true;
+				break;
+			}
+		}
+		return isNaRange;
+	}
+	
 	private static Vector3 telaParaIso(Vector3 ponto, int tileWidth, int tileHeight, OrthographicCamera camera) {
 		camera.unproject(ponto);
 		ponto.x /= tileWidth;
