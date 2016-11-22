@@ -10,7 +10,9 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Vector3;
 import com.j01.estrutura.TipoPersonagem;
 import com.j01.helper.MapaHelper;
 import com.j01.helper.PersonagemHelper;
@@ -23,6 +25,18 @@ public class Personagem extends Entidade implements InputProcessor {
 	private TipoPersonagem tipoPersonagem;
 	private PersonagemHelper personagemHelper;
 	private Casa casaAtual;
+	private Vector3 ultimaPos;
+	
+	
+	
+	public Vector3 getUltimaPos() {
+		return ultimaPos;
+	}
+
+	public void setUltimaPos(Vector3 ultimaPos) {
+		this.ultimaPos = ultimaPos;
+	}
+	private Interpolation easAlpha  = Interpolation.fade;
 
 	public Personagem(TipoPersonagem tipoPersonagem, Casa casaAtual, InputMultiplexer inputMultiplexer, Partida partida,
 			boolean debug, int camada) {
@@ -32,6 +46,7 @@ public class Personagem extends Entidade implements InputProcessor {
 		setCamada(camada);
 
 		this.casaAtual = MapaHelper.getPosicaoTelaCasa(casaAtual);
+		this.ultimaPos = this.casaAtual.getPosicaoTela();
 		this.tipoPersonagem = tipoPersonagem;
 
 		personagemHelper = new PersonagemHelper(tipoPersonagem);
@@ -40,12 +55,19 @@ public class Personagem extends Entidade implements InputProcessor {
 		animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, personagemHelper.getFramesParadoFR());
 
 	}
-
+	Vector3 position = new Vector3();
 	@Override
 	public void render(SpriteBatch spriteBatch) {
+/*
+		if(ultimaPos.x != this.casaAtual.getPosicaoTela().x &&  ultimaPos.y != this.casaAtual.getPosicaoTela().y){
+		position.x = this.casaAtual.getPosicaoTela().x + (this.casaAtual.getPosicaoTela().x) * .01f;
+		position.y = this.casaAtual.getPosicaoTela().y + (this.casaAtual.getPosicaoTela().y) * .01f;
+		this.casaAtual.setPosicaoTela(position);
+		}*/
+
 		setElapsedTime(getElapsedTime() + Gdx.graphics.getDeltaTime());
-		spriteBatch.draw(this.getFrame(getElapsedTime()), this.casaAtual.getPosicaoTela().x,
-				this.casaAtual.getPosicaoTela().y);
+		spriteBatch.draw(this.getFrame(getElapsedTime()), this.casaAtual.getPosicaoTela().x,this.casaAtual.getPosicaoTela().y);
+
 	}
 
 	public TextureRegion getFrame(float elapsedTime) {
