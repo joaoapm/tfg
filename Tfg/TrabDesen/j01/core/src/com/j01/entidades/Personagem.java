@@ -27,7 +27,7 @@ public class Personagem extends Entidade implements InputProcessor {
 	private TipoPersonagem tipoPersonagem;
 	private Casa casaAtual;
 
-	private float tempoDecorridoAnimacaoMov = 0;
+	private Float tempoDecorridoAnimacaoMov = 0f;
 	private Vector3 posicaoInicial = new Vector3(), posicaoFinal = new Vector3(), posicaoAtual = new Vector3();
 
 	public Personagem(TipoPersonagem tipoPersonagem, Casa casaAtual, InputMultiplexer inputMultiplexer, Partida partida, boolean debug, int camada) {
@@ -157,11 +157,11 @@ public class Personagem extends Entidade implements InputProcessor {
 		this.textureAtlas = textureAtlas;
 	}
 
-	public float getTempoDecorridoAnimacaoMov() {
+	public Float getTempoDecorridoAnimacaoMov() {
 		return tempoDecorridoAnimacaoMov;
 	}
 
-	public void setTempoDecorridoAnimacaoMov(float tempoDecorridoAnimacaoMov) {
+	public void setTempoDecorridoAnimacaoMov(Float tempoDecorridoAnimacaoMov) {
 		this.tempoDecorridoAnimacaoMov = tempoDecorridoAnimacaoMov;
 	}
 
