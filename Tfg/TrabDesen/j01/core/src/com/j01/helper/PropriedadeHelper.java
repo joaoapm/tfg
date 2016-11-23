@@ -18,5 +18,7 @@ public class PropriedadeHelper {
 	public static Vector2 MATRIZ_CASA_SEL[] = { new Vector2(-1, -1), new Vector2(-1, 0), new Vector2(-1, 1),
 			new Vector2(0, -1), new Vector2(0, 0), new Vector2(0, 1), new Vector2(1, -1), new Vector2(1, 0),
 			new Vector2(1, 1) };
+	
+	public static float TEMPO_MOVIMENTO_PERSO = 1.0f;
 
 }

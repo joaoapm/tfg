@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.j01.estrutura.TipoPersonagem;
@@ -20,33 +19,28 @@ import com.j01.helper.PropriedadeHelper;
 
 public class Personagem extends Entidade implements InputProcessor {
 
+	private PersonagemHelper personagemHelper;
+
 	private Animation animation;
 	private TextureAtlas textureAtlas;
+
 	private TipoPersonagem tipoPersonagem;
-	private PersonagemHelper personagemHelper;
 	private Casa casaAtual;
-	private Vector3 ultimaPos;
-	
-	
-	
-	public Vector3 getUltimaPos() {
-		return ultimaPos;
-	}
 
-	public void setUltimaPos(Vector3 ultimaPos) {
-		this.ultimaPos = ultimaPos;
-	}
-	private Interpolation easAlpha  = Interpolation.fade;
+	private float tempoDecorridoAnimacaoMov = 0;
+	private Vector3 posicaoInicial = new Vector3(), posicaoFinal = new Vector3(), posicaoAtual = new Vector3();
 
-	public Personagem(TipoPersonagem tipoPersonagem, Casa casaAtual, InputMultiplexer inputMultiplexer, Partida partida,
-			boolean debug, int camada) {
+	public Personagem(TipoPersonagem tipoPersonagem, Casa casaAtual, InputMultiplexer inputMultiplexer, Partida partida, boolean debug, int camada) {
 
 		setPartida(partida);
 		setModoDebug(debug);
 		setCamada(camada);
 
 		this.casaAtual = MapaHelper.getPosicaoTelaCasa(casaAtual);
-		this.ultimaPos = this.casaAtual.getPosicaoTela();
+		this.posicaoInicial = new Vector3(this.casaAtual.getPosicaoTela());
+		this.posicaoAtual = new Vector3(this.casaAtual.getPosicaoTela());
+		this.posicaoFinal = null;
+		
 		this.tipoPersonagem = tipoPersonagem;
 
 		personagemHelper = new PersonagemHelper(tipoPersonagem);
@@ -55,26 +49,20 @@ public class Personagem extends Entidade implements InputProcessor {
 		animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, personagemHelper.getFramesParadoFR());
 
 	}
-	Vector3 position = new Vector3();
+
 	@Override
 	public void render(SpriteBatch spriteBatch) {
-/*
-		if(ultimaPos.x != this.casaAtual.getPosicaoTela().x &&  ultimaPos.y != this.casaAtual.getPosicaoTela().y){
-		position.x = this.casaAtual.getPosicaoTela().x + (this.casaAtual.getPosicaoTela().x) * .01f;
-		position.y = this.casaAtual.getPosicaoTela().y + (this.casaAtual.getPosicaoTela().y) * .01f;
-		this.casaAtual.setPosicaoTela(position);
-		}*/
-
-		setElapsedTime(getElapsedTime() + Gdx.graphics.getDeltaTime());
-		spriteBatch.draw(this.getFrame(getElapsedTime()), this.casaAtual.getPosicaoTela().x,this.casaAtual.getPosicaoTela().y);
-
+		personagemHelper.movimentaPersonagem(this);
+		
+		setTempoDecorrido(getTempoDecorrido() + Gdx.graphics.getDeltaTime());
+		spriteBatch.draw(this.getFrame(getTempoDecorrido()), this.posicaoAtual.x,	this.posicaoAtual.y);
 	}
 
 	public TextureRegion getFrame(float elapsedTime) {
-		setElapsedTime(elapsedTime);
+		setTempoDecorrido(elapsedTime);
 		return getAnimation().getKeyFrame(elapsedTime, true);
 	}
-	
+
 	@Override
 	public void renderShape(ShapeRenderer shapeRenderer) {
 		if (isModoDebug()) {
@@ -86,9 +74,8 @@ public class Personagem extends Entidade implements InputProcessor {
 	}
 
 	public void movePersonagem(Casa casa) {
-		PersonagemHelper.movePersonagem(this, casa);
+		personagemHelper.movePersonagem(this, casa);
 		MapaHelper.escondeRange();
-
 	}
 
 	@Override
@@ -168,6 +155,38 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	public void setTextureAtlas(TextureAtlas textureAtlas) {
 		this.textureAtlas = textureAtlas;
+	}
+
+	public float getTempoDecorridoAnimacaoMov() {
+		return tempoDecorridoAnimacaoMov;
+	}
+
+	public void setTempoDecorridoAnimacaoMov(float tempoDecorridoAnimacaoMov) {
+		this.tempoDecorridoAnimacaoMov = tempoDecorridoAnimacaoMov;
+	}
+
+	public Vector3 getPosicaoInicial() {
+		return posicaoInicial;
+	}
+
+	public void setPosicaoInicial(Vector3 posicaoInicial) {
+		this.posicaoInicial = posicaoInicial;
+	}
+
+	public Vector3 getPosicaoFinal() {
+		return posicaoFinal;
+	}
+
+	public void setPosicaoFinal(Vector3 posicaoFinal) {
+		this.posicaoFinal = posicaoFinal;
+	}
+
+	public Vector3 getPosicaoAtual() {
+		return posicaoAtual;
+	}
+
+	public void setPosicaoAtual(Vector3 posicaoAtual) {
+		this.posicaoAtual = posicaoAtual;
 	}
 
 }

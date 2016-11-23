@@ -16,7 +16,6 @@ import com.j01.entidades.Mapa;
 import com.j01.entidades.Partida;
 import com.j01.entidades.Personagem;
 import com.j01.estrutura.TipoPersonagem;
-import com.j01.helper.MapaHelper;
 import com.j01.helper.PropriedadeHelper;
 
 public class TelaJogo implements Screen {
@@ -36,8 +35,7 @@ public class TelaJogo implements Screen {
 
 		// cria camera
 		camera = new OrthographicCamera();
-		camera.position.set(PropriedadeHelper.POSICAO_INICIAL_CAM_X, PropriedadeHelper.POSICAO_INICIAL_CAM_Y,
-				PropriedadeHelper.POSICAO_INICIAL_CAM_Z);
+		camera.position.set(PropriedadeHelper.POSICAO_INICIAL_CAM_X, PropriedadeHelper.POSICAO_INICIAL_CAM_Y, PropriedadeHelper.POSICAO_INICIAL_CAM_Z);
 		camera.zoom -= PropriedadeHelper.ZOOM_INCIAL_CAM;
 		camera.viewportWidth = PropriedadeHelper.JANELA_WIDTH;
 		camera.viewportHeight = PropriedadeHelper.JANELA_HEIGHT;
@@ -54,8 +52,7 @@ public class TelaJogo implements Screen {
 		mapa = new Mapa(camera, (InputMultiplexer) Gdx.input.getInputProcessor(), partida, 0);
 
 		// cria personagem
-		perso1 = new Personagem(TipoPersonagem.MONSTRO, new Casa(26, 24),
-				(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1);
+		perso1 = new Personagem(TipoPersonagem.MONSTRO, new Casa(23, 24),(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1);
 
 		listaEntidades.add(perso1);
 		listaEntidades.add(mapa);

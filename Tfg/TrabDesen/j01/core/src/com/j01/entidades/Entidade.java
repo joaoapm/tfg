@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector3;
 
 public class Entidade {
 
-	private float elapsedTime = 0;
+	private float tempoDecorrido = 0;
 	private Partida partida;
 	private boolean isPosAtualizada;
 	private boolean isModoDebug;
@@ -36,12 +36,12 @@ public class Entidade {
 		this.partida = partida;
 	}
 
-	public float getElapsedTime() {
-		return elapsedTime;
+	public float getTempoDecorrido() {
+		return tempoDecorrido;
 	}
 
-	public void setElapsedTime(float elapsedTime) {
-		this.elapsedTime = elapsedTime;
+	public void setTempoDecorrido(float tempoDecorrido) {
+		this.tempoDecorrido = tempoDecorrido;
 	}
 
 	public boolean isModoDebug() {

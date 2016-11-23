@@ -1,8 +1,10 @@
 package com.j01.helper;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Interpolation;
 import com.j01.entidades.Casa;
 import com.j01.entidades.Personagem;
 import com.j01.estrutura.TipoPersonagem;
@@ -235,8 +237,8 @@ public class PersonagemHelper {
 			float pointerX = x;
 			float pointerY = Gdx.graphics.getHeight() - y;
 
-			int altura = personagem.getAnimation().getKeyFrame(personagem.getElapsedTime(), true).getRegionHeight();
-			int comprimento = personagem.getAnimation().getKeyFrame(personagem.getElapsedTime(), true).getRegionWidth();
+			int altura = personagem.getAnimation().getKeyFrame(personagem.getTempoDecorrido(), true).getRegionHeight();
+			int comprimento = personagem.getAnimation().getKeyFrame(personagem.getTempoDecorrido(), true).getRegionWidth();
 
 			if (pointerY >= personagem.getCasaAtual().getPosicaoTela().y && pointerY <= personagem.getCasaAtual().getPosicaoTela().y + (altura)) {
 				if (pointerX >= personagem.getCasaAtual().getPosicaoTela().x && pointerX <= personagem.getCasaAtual().getPosicaoTela().x + (comprimento)) {
@@ -248,12 +250,34 @@ public class PersonagemHelper {
 		return false;
 	}
 
-	public static void movePersonagem(Personagem personagem, Casa casa) {
+	public void movePersonagem(Personagem personagem, Casa casa) {
 		personagem.setPosAtualizada(true);
 		personagem.getPartida().setPersonagemSelecionado(null);
-		personagem.getCasaAtual().setPosicaoTela(casa.getPosicaoTela());
 
 		personagem.setCasaAtual(casa);
+		
+		personagem.setPosicaoFinal(casa.getPosicaoTela());
+		personagem.setTempoDecorridoAnimacaoMov(0);
+		
+		personagem.setAnimation(new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, getFramesMovimentoTR()));
+	}
+	
+	public void movimentaPersonagem(Personagem personagem) {
+		if (personagem.getPosicaoFinal() != null) {
+			personagem.setTempoDecorridoAnimacaoMov(personagem.getTempoDecorridoAnimacaoMov() + Gdx.graphics.getDeltaTime());
+			if (personagem.getTempoDecorridoAnimacaoMov() > PropriedadeHelper.TEMPO_MOVIMENTO_PERSO) {
+				personagem.setTempoDecorridoAnimacaoMov(Float.NaN);
+				personagem.setPosicaoInicial(personagem.getPosicaoFinal());
+				personagem.setPosicaoFinal(null);
+				personagem.setAnimation(new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, this.getFramesParadoFR()));
+			}
+			if (!Float.isNaN(personagem.getTempoDecorridoAnimacaoMov())) {
+				personagem.getPosicaoAtual().set(personagem.getPosicaoFinal());
+				personagem.getPosicaoAtual().sub(personagem.getPosicaoInicial());
+				personagem.getPosicaoAtual().scl(Interpolation.linear.apply(personagem.getTempoDecorridoAnimacaoMov() / PropriedadeHelper.TEMPO_MOVIMENTO_PERSO));
+				personagem.getPosicaoAtual().add(personagem.getPosicaoInicial());
+			}
+		}
 	}
 
 }
