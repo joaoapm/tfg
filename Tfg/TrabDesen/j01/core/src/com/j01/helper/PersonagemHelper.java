@@ -263,12 +263,13 @@ public class PersonagemHelper {
 		personagem.setMovendo(true);
 		personagem.getPartida().setPersonagemSelecionado(null);
 
+		personagem.setAnimation(getAnimacaoMov(personagem,casa));
+		
 		personagem.setCasaAtual(casa);
 		
 		personagem.setPosicaoFinal(casa.getPosicaoTela());
 		personagem.setTempoDecorridoAnimacaoMov(0f);
 		
-		personagem.setAnimation(new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, getFramesMovimentoTR()));
 	}
 	
 	public void movimentaPersonagem(Personagem personagem) {
@@ -293,6 +294,26 @@ public class PersonagemHelper {
 					personagem.getPosicaoAtual().add(-14, -14, 0);
 			}
 		}
+	}
+	
+	private Animation getAnimacaoMov(Personagem personagem, Casa casa) {
+		if (personagem.getCasaAtual().getPosicaoMapa().x < casa.getPosicaoMapa().x	&& personagem.getCasaAtual().getPosicaoMapa().y < casa.getPosicaoMapa().y)
+			return new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, getFramesMovimentoD1());
+		if (personagem.getCasaAtual().getPosicaoMapa().x > casa.getPosicaoMapa().x	&& personagem.getCasaAtual().getPosicaoMapa().y < casa.getPosicaoMapa().y)
+			return new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, getFramesMovimentoD2());
+		if (personagem.getCasaAtual().getPosicaoMapa().x < casa.getPosicaoMapa().x	&& personagem.getCasaAtual().getPosicaoMapa().y  > casa.getPosicaoMapa().y)
+			return new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, getFramesMovimentoD3());
+		if (personagem.getCasaAtual().getPosicaoMapa().x > casa.getPosicaoMapa().x	&& personagem.getCasaAtual().getPosicaoMapa().y > casa.getPosicaoMapa().y)
+			return new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, getFramesMovimentoD4());
+		if (personagem.getCasaAtual().getPosicaoMapa().x == casa.getPosicaoMapa().x	&& personagem.getCasaAtual().getPosicaoMapa().y < casa.getPosicaoMapa().y)
+			return new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, getFramesMovimentoLE());
+		if (personagem.getCasaAtual().getPosicaoMapa().x == casa.getPosicaoMapa().x	&& personagem.getCasaAtual().getPosicaoMapa().y > casa.getPosicaoMapa().y)
+			return new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, getFramesMovimentoLD());
+		if (personagem.getCasaAtual().getPosicaoMapa().y == casa.getPosicaoMapa().y	&& personagem.getCasaAtual().getPosicaoMapa().x > casa.getPosicaoMapa().x)
+			return new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, getFramesMovimentoTR());
+		if (personagem.getCasaAtual().getPosicaoMapa().y == casa.getPosicaoMapa().y	&& personagem.getCasaAtual().getPosicaoMapa().x < casa.getPosicaoMapa().x)
+			return new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, getFramesMovimentoFR());
+		return null;
 	}
 
 }
