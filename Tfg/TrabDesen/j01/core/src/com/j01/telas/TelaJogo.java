@@ -24,7 +24,6 @@ public class TelaJogo implements Screen {
 	private SpriteBatch batch;
 	private ShapeRenderer shapeRenderer;
 	private Mapa mapa;
-	private Personagem perso1;
 	private List<Entidade> listaEntidades = new ArrayList<Entidade>();
 
 	@Override
@@ -50,12 +49,10 @@ public class TelaJogo implements Screen {
 
 		// cria mapa
 		mapa = new Mapa(camera, (InputMultiplexer) Gdx.input.getInputProcessor(), partida, 0);
+		listaEntidades.add(mapa); 
 
 		// cria personagem
-		perso1 = new Personagem(TipoPersonagem.MONSTRO, new Casa(23, 24),(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1);
-
-		listaEntidades.add(perso1);
-		listaEntidades.add(mapa);
+		listaEntidades.add(new Personagem(TipoPersonagem.MONSTRO, new Casa(23, 24),(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1));
 
 	}
 

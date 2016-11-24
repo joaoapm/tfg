@@ -10,7 +10,16 @@ public class Entidade {
 	private Partida partida;
 	private boolean isPosAtualizada;
 	private boolean isModoDebug;
+	private boolean isMovendo;
 	private int camada;
+	
+	public boolean isMovendo() {
+		return isMovendo;
+	}
+
+	public void setMovendo(boolean isMovendo) {
+		this.isMovendo = isMovendo;
+	}
 
 	public int getCamada() {
 		return camada;

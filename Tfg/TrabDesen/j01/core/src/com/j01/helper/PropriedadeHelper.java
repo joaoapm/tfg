@@ -4,8 +4,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class PropriedadeHelper {
 
-	public static int JANELA_WIDTH = 1200;
-	public static int JANELA_HEIGHT = 720;
+	public static int JANELA_WIDTH = 400;
+	public static int JANELA_HEIGHT = 350;
 
 	public static float VELOCIDADE_ANIMACAO = 1 / 10f;
 

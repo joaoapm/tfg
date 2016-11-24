@@ -252,6 +252,7 @@ public class PersonagemHelper {
 
 	public void movePersonagem(Personagem personagem, Casa casa) {
 		personagem.setPosAtualizada(true);
+		personagem.setMovendo(true);
 		personagem.getPartida().setPersonagemSelecionado(null);
 
 		personagem.setCasaAtual(casa);
@@ -266,16 +267,19 @@ public class PersonagemHelper {
 		if (personagem.getPosicaoFinal() != null) {
 			personagem.setTempoDecorridoAnimacaoMov(personagem.getTempoDecorridoAnimacaoMov() + Gdx.graphics.getDeltaTime());
 			if (personagem.getTempoDecorridoAnimacaoMov() > PropriedadeHelper.TEMPO_MOVIMENTO_PERSO) {
-				personagem.setTempoDecorridoAnimacaoMov(null);
-				personagem.setPosicaoInicial(personagem.getPosicaoFinal());
-				personagem.setPosicaoFinal(null);
 				personagem.setAnimation(new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, this.getFramesParadoFR()));
+				personagem.setPosicaoInicial(personagem.getPosicaoFinal());
+				personagem.setTempoDecorridoAnimacaoMov(null);
+				personagem.setPosicaoFinal(null);
+				personagem.setMovendo(false);
+				personagem.getPosicaoAtual().add(14,14,0);
 			}
 			if (personagem.getTempoDecorridoAnimacaoMov() != null) {
 				personagem.getPosicaoAtual().set(personagem.getPosicaoFinal());
 				personagem.getPosicaoAtual().sub(personagem.getPosicaoInicial());
 				personagem.getPosicaoAtual().scl(Interpolation.linear.apply(personagem.getTempoDecorridoAnimacaoMov() / PropriedadeHelper.TEMPO_MOVIMENTO_PERSO));
 				personagem.getPosicaoAtual().add(personagem.getPosicaoInicial());
+				personagem.getPosicaoAtual().add(-14,-14,0);
 			}
 		}
 	}
