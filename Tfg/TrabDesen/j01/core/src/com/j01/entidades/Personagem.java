@@ -73,10 +73,15 @@ public class Personagem extends Entidade implements InputProcessor {
 		}
 	}
 
-	public void movePersonagem(Casa casa) {
-		personagemHelper.movePersonagem(this, casa);
-		MapaHelper.escondeRange();
+	public void realizaAcaoCasa(Casa casa) {
+		if (MapaHelper.isCasaNaRange(this.getCasaAtual(), casa)) {
+			if (casa.getPosicaoMapa().x != this.getCasaAtual().getPosicaoMapa().x || casa.getPosicaoMapa().y != this.getCasaAtual().getPosicaoMapa().y) {
+				personagemHelper.movePersonagem(this, casa);
+				MapaHelper.escondeRange();
+			}
+		}
 	}
+
 
 	@Override
 	public boolean touchDown(int x, int y, int arg2, int arg3) {

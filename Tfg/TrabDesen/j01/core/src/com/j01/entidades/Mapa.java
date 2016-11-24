@@ -41,15 +41,8 @@ public class Mapa extends Entidade implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		Casa casa = MapaHelper.getPosicaoCasa(new Casa(null, new Vector3(screenX, screenY, 0)));
-
-		if (getPartida().getPersonagemSelecionado() != null	&& MapaHelper.isCasaNaRange(getPartida().getPersonagemSelecionado().getCasaAtual(), casa)) {
-			if (casa.getPosicaoMapa().x != getPartida().getPersonagemSelecionado().getCasaAtual().getPosicaoMapa().x
-					|| casa.getPosicaoMapa().y != getPartida().getPersonagemSelecionado().getCasaAtual().getPosicaoMapa().y) {
-				getPartida().getPersonagemSelecionado().movePersonagem(casa);
-			}
-		}
-
+		if (getPartida().getPersonagemSelecionado() != null)
+			getPartida().getPersonagemSelecionado().realizaAcaoCasa(MapaHelper.getPosicaoCasa(new Casa(null, new Vector3(screenX, screenY, 0))));
 		return false;
 	}
 
@@ -67,7 +60,7 @@ public class Mapa extends Entidade implements InputProcessor {
 	public boolean keyTyped(char character) {
 		return false;
 	}
-	
+
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		return false;
