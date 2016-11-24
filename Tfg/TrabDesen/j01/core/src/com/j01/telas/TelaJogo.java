@@ -52,7 +52,12 @@ public class TelaJogo implements Screen {
 		listaEntidades.add(mapa); 
 
 		// cria personagem
-		listaEntidades.add(new Personagem(TipoPersonagem.MONSTRO, new Casa(23, 24),(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1));
+		//time 0 (usuario)
+		listaEntidades.add(new Personagem(TipoPersonagem.HUMANO, new Casa(24, 24),(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1,0));
+		
+		//time 1 (pc)
+		listaEntidades.add(new Personagem(TipoPersonagem.MONSTRO, new Casa(26, 26),(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1,1));
+
 
 	}
 

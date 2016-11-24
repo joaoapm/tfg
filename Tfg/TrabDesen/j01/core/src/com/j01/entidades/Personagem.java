@@ -30,7 +30,9 @@ public class Personagem extends Entidade implements InputProcessor {
 	private Float tempoDecorridoAnimacaoMov = 0f;
 	private Vector3 posicaoInicial = new Vector3(), posicaoFinal = new Vector3(), posicaoAtual = new Vector3();
 
-	public Personagem(TipoPersonagem tipoPersonagem, Casa casaAtual, InputMultiplexer inputMultiplexer, Partida partida, boolean debug, int camada) {
+	private int time;
+	
+	public Personagem(TipoPersonagem tipoPersonagem, Casa casaAtual, InputMultiplexer inputMultiplexer, Partida partida, boolean debug, int camada, int time) {
 
 		setPartida(partida);
 		setModoDebug(debug);
@@ -40,10 +42,11 @@ public class Personagem extends Entidade implements InputProcessor {
 		this.posicaoInicial = new Vector3(this.casaAtual.getPosicaoTela());
 		this.posicaoAtual = new Vector3(this.casaAtual.getPosicaoTela());
 		this.posicaoFinal = null;
+		this.time = time;
 		
 		this.tipoPersonagem = tipoPersonagem;
 
-		personagemHelper = new PersonagemHelper(tipoPersonagem);
+		personagemHelper = new PersonagemHelper(tipoPersonagem,this);
 		inputMultiplexer.addProcessor(this);
 
 		animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, personagemHelper.getFramesParadoFR());
@@ -87,8 +90,9 @@ public class Personagem extends Entidade implements InputProcessor {
 	public boolean touchDown(int x, int y, int arg2, int arg3) {
 		// foi clicado, verifica se alguma entidade com camada superior ao mapa
 		// foi clicada, senao executa mapa
-		if (PersonagemHelper.tocouPersonagem(this, x, y) && !isMovendo()) {
+		if (PersonagemHelper.tocouPersonagem(this, x, y) && !isMovendo() && getPartida().getTimeTurno() == this.getTime()) {
 			getPartida().setPersonagemSelecionado(this);
+			MapaHelper.escondeRange();
 			MapaHelper.mostraRange(this.casaAtual);
 		}
 
@@ -194,4 +198,12 @@ public class Personagem extends Entidade implements InputProcessor {
 		this.posicaoAtual = posicaoAtual;
 	}
 
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+	
 }

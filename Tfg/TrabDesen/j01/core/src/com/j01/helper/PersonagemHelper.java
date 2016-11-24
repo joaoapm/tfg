@@ -12,9 +12,11 @@ import com.j01.estrutura.TipoPersonagem;
 public class PersonagemHelper {
 
 	private TextureAtlas textureAtlas;
+	private Personagem Personagem;
 
-	public PersonagemHelper(TipoPersonagem tipoPersonagem) {
+	public PersonagemHelper(TipoPersonagem tipoPersonagem, Personagem personagem) {
 		textureAtlas = new TextureAtlas(Gdx.files.internal(tipoPersonagem.getArquivoAtlas()));
+		this.Personagem = personagem;
 		inicializaAnimacoes();
 	}
 
@@ -196,19 +198,25 @@ public class PersonagemHelper {
 		buscaFrames(13, framesAtaqueD2, "ataqueD2");
 		buscaFrames(13, framesAtaqueD3, "ataqueD3");
 		buscaFrames(13, framesAtaqueD4, "ataqueD4");
-		buscaFrames(13, framesAtaqueFR, "ataqueFR");
 		buscaFrames(13, framesAtaqueLE, "ataqueLE");
 		buscaFrames(13, framesAtaqueLD, "ataqueLD");
+		buscaFrames(13, framesAtaqueFR, "ataqueFR");
 		buscaFrames(13, framesAtaqueTR, "ataqueTR");
 
 		buscaFrames(13, framesParadoD1, "paradoD1");
 		buscaFrames(13, framesParadoD2, "paradoD2");
 		buscaFrames(13, framesParadoD3, "paradoD3");
 		buscaFrames(13, framesParadoD4, "paradoD4");
-		buscaFrames(13, framesParadoFR, "paradoFR");
 		buscaFrames(13, framesParadoLE, "paradoLE");
 		buscaFrames(13, framesParadoLD, "paradoLD");
-		buscaFrames(13, framesParadoTR, "paradoTR");
+		
+		if (this.Personagem.getTime() == 0) {
+			buscaFrames(13, framesParadoFR, "paradoFR");
+			buscaFrames(13, framesParadoTR, "paradoTR");
+		} else {
+			buscaFrames(13, framesParadoFR, "paradoTR");
+			buscaFrames(13, framesParadoTR, "paradoFR");
+		}
 
 		buscaFrames(11, framesMorrendoD1, "morrendoD1");
 		buscaFrames(11, framesMorrendoD2, "morrendoD2");
@@ -272,14 +280,17 @@ public class PersonagemHelper {
 				personagem.setTempoDecorridoAnimacaoMov(null);
 				personagem.setPosicaoFinal(null);
 				personagem.setMovendo(false);
-				personagem.getPosicaoAtual().add(14,14,0);
+				if (personagem.getTipoPersonagem().equals(TipoPersonagem.MONSTRO))
+					personagem.getPosicaoAtual().add(14, 14, 0);
+				personagem.getPartida().trocaTurno();
 			}
 			if (personagem.getTempoDecorridoAnimacaoMov() != null) {
 				personagem.getPosicaoAtual().set(personagem.getPosicaoFinal());
 				personagem.getPosicaoAtual().sub(personagem.getPosicaoInicial());
 				personagem.getPosicaoAtual().scl(Interpolation.linear.apply(personagem.getTempoDecorridoAnimacaoMov() / PropriedadeHelper.TEMPO_MOVIMENTO_PERSO));
 				personagem.getPosicaoAtual().add(personagem.getPosicaoInicial());
-				personagem.getPosicaoAtual().add(-14,-14,0);
+				if (personagem.getTipoPersonagem().equals(TipoPersonagem.MONSTRO))
+					personagem.getPosicaoAtual().add(-14, -14, 0);
 			}
 		}
 	}
