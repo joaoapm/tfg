@@ -5,6 +5,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -68,12 +69,16 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	@Override
 	public void renderShape(ShapeRenderer shapeRenderer) {
-		if (isModoDebug()) {
+//		if (isModoDebug()) {
 			shapeRenderer.set(ShapeType.Line);
 			shapeRenderer.setColor(Color.RED);
 			shapeRenderer.setTransformMatrix(new Matrix4());
-			shapeRenderer.rect(casaAtual.getPosicaoTela().x, casaAtual.getPosicaoTela().y, 96, 96);
-		}
+			
+			Vector3 pontoClick = new Vector3(casaAtual.getPosicaoTela().x,casaAtual.getPosicaoTela().y,0);
+			pontoClick = MapaHelper.MAPA.getCamera().project(pontoClick);
+			
+			shapeRenderer.rect(pontoClick.x, pontoClick.y, 96, 96);
+		//}
 	}
 
 	public void realizaAcaoCasa(Casa casa) {
@@ -204,6 +209,18 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	public void setTime(int time) {
 		this.time = time;
+	}
+
+	public void render(Batch batch) {
+		
+		//setTempoDecorrido(getTempoDecorrido() + Gdx.graphics.getDeltaTime());
+		//batch.draw(this.getFrame(getTempoDecorrido()), 1500,	0);
+		
+		personagemHelper.movimentaPersonagem(this);
+		
+		setTempoDecorrido(getTempoDecorrido() + Gdx.graphics.getDeltaTime());
+		batch.draw(this.getFrame(getTempoDecorrido()), this.posicaoAtual.x,	this.posicaoAtual.y);
+		
 	}
 	
 }

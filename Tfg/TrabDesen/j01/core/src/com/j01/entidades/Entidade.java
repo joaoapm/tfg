@@ -1,5 +1,6 @@
 package com.j01.entidades;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
@@ -69,5 +70,7 @@ public class Entidade {
 
 	public void renderShape(ShapeRenderer shapeRenderer) {
 	}
-
+	public void render(Batch batch) {
+		
+	}
 }

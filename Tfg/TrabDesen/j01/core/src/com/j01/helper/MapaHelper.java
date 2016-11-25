@@ -21,8 +21,9 @@ public class MapaHelper {
 
 		int xx = (cy - cx) * 64 / 2;
 		int yy = (cy + cx) * 32 / 2;
-
-		Vector3 pontoCasa = MAPA.getCamera().project(new Vector3(xx, yy, 0));
+System.out.println(xx + "/"+yy);
+		//Vector3 pontoCasa = MAPA.getCamera().project(new Vector3(xx, yy, 0));
+		Vector3 pontoCasa = new Vector3(xx, yy, 0);
 
 		return new Casa(new Vector3(-1 * cx, cy, 0), new Vector3(pontoCasa.x, pontoCasa.y, 0));
 
@@ -33,7 +34,8 @@ public class MapaHelper {
 		int xx = (int) (casa.getPosicaoMapa().y - casa.getPosicaoMapa().x) * 64 / 2;
 		int yy = (int) (casa.getPosicaoMapa().y + casa.getPosicaoMapa().x) * 32 / 2;
 
-		Vector3 pontoCasa = MAPA.getCamera().project(new Vector3(xx, yy, 0));
+		//Vector3 pontoCasa = MAPA.getCamera().project(new Vector3(xx, yy, 0));
+		Vector3 pontoCasa = new Vector3(xx, yy, 0);
 
 		return new Casa(new Vector3(-1 * casa.getPosicaoMapa().x, casa.getPosicaoMapa().y, 0),
 				new Vector3(pontoCasa.x, pontoCasa.y, 0));
@@ -81,6 +83,7 @@ public class MapaHelper {
 		ponto.x /= tileWidth;
 		ponto.y = (ponto.y - tileHeight / 2) / tileHeight + ponto.x;
 		ponto.x -= ponto.y - ponto.x;
+		System.out.println(ponto + "/"+ponto);
 		return ponto;
 	}
 

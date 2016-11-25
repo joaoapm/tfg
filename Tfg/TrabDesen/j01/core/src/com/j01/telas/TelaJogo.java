@@ -49,26 +49,26 @@ public class TelaJogo implements Screen {
 
 		// cria mapa
 		mapa = new Mapa(camera, (InputMultiplexer) Gdx.input.getInputProcessor(), partida, 0);
-		listaEntidades.add(mapa); 
+	//	listaEntidades.add(mapa); 
 
 		// cria personagem
 		//time 0 (usuario)
-		listaEntidades.add(new Personagem(TipoPersonagem.HUMANO, new Casa(24, 24),(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1,0));
+		listaEntidades.add(new Personagem(TipoPersonagem.HUMANO, new Casa(24, 24),(InputMultiplexer) Gdx.input.getInputProcessor(), partida, !false, 1,0));
 		
 		//time 1 (pc)
-		listaEntidades.add(new Personagem(TipoPersonagem.MONSTRO, new Casa(26, 26),(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1,1));
+		//listaEntidades.add(new Personagem(TipoPersonagem.MONSTRO, new Casa(26, 26),(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1,1));
 
-
+mapa.listaentidades = listaEntidades;
 	}
 
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		mapa.getRenderer().setView(camera);
+		mapa.getRend().setView(camera);
 
 		// renderiza mapa
-		mapa.getRenderer().render();
+		mapa.renderiza();
 
 		// renderiza entidades:
 		// shapes
@@ -79,10 +79,10 @@ public class TelaJogo implements Screen {
 		shapeRenderer.end();
 
 		// imagens
-		batch.begin();
+		/*batch.begin();
 		for (Entidade ent : listaEntidades)
 			ent.render(batch);
-		batch.end();
+		batch.end();*/
 
 	}
 

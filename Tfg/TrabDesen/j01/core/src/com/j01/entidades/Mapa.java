@@ -1,5 +1,7 @@
 package com.j01.entidades;
 
+import java.util.List;
+
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -16,6 +18,16 @@ public class Mapa extends Entidade implements InputProcessor {
 	private TiledMap map;
 	private IsometricTiledMapRenderer renderer;
 	private OrthographicCamera camera;
+	private OrthogonalTiledMapRendererWithSprites rend;
+public List<Entidade> listaentidades;
+
+	public OrthogonalTiledMapRendererWithSprites getRend() {
+		return rend;
+	}
+
+	public void setRend(OrthogonalTiledMapRendererWithSprites rend) {
+		this.rend = rend;
+	}
 
 	public InputMultiplexer processor;
 
@@ -31,10 +43,11 @@ public class Mapa extends Entidade implements InputProcessor {
 		// carrega mapa
 		TmxMapLoader loader = new TmxMapLoader();
 		map = loader.load("mapa/mapa.tmx");
-		renderer = new IsometricTiledMapRenderer(map);
-
+		//renderer = new IsometricTiledMapRenderer(map);
+		rend = new OrthogonalTiledMapRendererWithSprites(map);
+		
 		MapaHelper.escondeRange();
-
+//
 		inputMultiplexer.addProcessor(this);
 
 	}
@@ -43,6 +56,7 @@ public class Mapa extends Entidade implements InputProcessor {
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		if (getPartida().getPersonagemSelecionado() != null)
 			getPartida().getPersonagemSelecionado().realizaAcaoCasa(MapaHelper.getPosicaoCasa(new Casa(null, new Vector3(screenX, screenY, 0))));
+//		MapaHelper.mostraRange(MapaHelper.getPosicaoCasa(new Casa(null, new Vector3(screenX, screenY, 0))));
 		return false;
 	}
 
@@ -115,6 +129,12 @@ public class Mapa extends Entidade implements InputProcessor {
 
 	public void setTileSel(TiledMapTile tileSel) {
 		this.tileSel = tileSel;
+	}
+
+	public void renderiza() {
+		rend.sprites = listaentidades;
+		getRend().render();
+		
 	}
 
 }

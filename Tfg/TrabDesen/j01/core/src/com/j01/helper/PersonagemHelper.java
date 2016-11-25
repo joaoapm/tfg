@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.math.Vector3;
 import com.j01.entidades.Casa;
 import com.j01.entidades.Personagem;
 import com.j01.estrutura.TipoPersonagem;
@@ -242,14 +243,17 @@ public class PersonagemHelper {
 			personagem.setPosAtualizada(false);
 		} else {
 
+			Vector3 pontoClick = new Vector3(x,Gdx.graphics.getHeight() - y,0);
+			pontoClick = MapaHelper.MAPA.getCamera().unproject(pontoClick);
+			
 			float pointerX = x;
 			float pointerY = Gdx.graphics.getHeight() - y;
 
 			int altura = personagem.getAnimation().getKeyFrame(personagem.getTempoDecorrido(), true).getRegionHeight();
 			int comprimento = personagem.getAnimation().getKeyFrame(personagem.getTempoDecorrido(), true).getRegionWidth();
 
-			if (pointerY >= personagem.getCasaAtual().getPosicaoTela().y && pointerY <= personagem.getCasaAtual().getPosicaoTela().y + (altura)) {
-				if (pointerX >= personagem.getCasaAtual().getPosicaoTela().x && pointerX <= personagem.getCasaAtual().getPosicaoTela().x + (comprimento)) {
+			if (pontoClick.y >= personagem.getCasaAtual().getPosicaoTela().y && pontoClick.y <= personagem.getCasaAtual().getPosicaoTela().y + (altura)) {
+				if (pontoClick.x >= personagem.getCasaAtual().getPosicaoTela().x && pontoClick.x <= personagem.getCasaAtual().getPosicaoTela().x + (comprimento)) {
 					return true;
 				}
 			}
