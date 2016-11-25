@@ -1,7 +1,7 @@
 package com.j01.telas;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
@@ -24,7 +24,7 @@ public class TelaJogo implements Screen {
 	private SpriteBatch batch;
 	private ShapeRenderer shapeRenderer;
 	private Mapa mapa;
-	private List<Entidade> listaEntidades = new ArrayList<Entidade>();
+	private ArrayList<Entidade> listaEntidades = new ArrayList<Entidade>();
 
 	@Override
 	public void show() {
@@ -49,15 +49,14 @@ public class TelaJogo implements Screen {
 
 		// cria mapa
 		mapa = new Mapa(camera, (InputMultiplexer) Gdx.input.getInputProcessor(), partida, 0);
-		listaEntidades.add(mapa); 
+		listaEntidades.add(mapa);
 
 		// cria personagem
-		//time 0 (usuario)
-		listaEntidades.add(new Personagem(TipoPersonagem.HUMANO, new Casa(24, 24),(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1,0));
-		
-		//time 1 (pc)
-		listaEntidades.add(new Personagem(TipoPersonagem.MONSTRO, new Casa(26, 26),(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1,1));
+		// time 0 (usuario)
+		listaEntidades.add(new Personagem(TipoPersonagem.HUMANO, new Casa(24, 24),(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1, 0));
 
+		// time 1 (pc)
+		listaEntidades.add(new Personagem(TipoPersonagem.MONSTRO, new Casa(26, 26),(InputMultiplexer) Gdx.input.getInputProcessor(), partida, false, 1, 1));
 
 	}
 
@@ -80,6 +79,7 @@ public class TelaJogo implements Screen {
 
 		// imagens
 		batch.begin();
+		Collections.sort(listaEntidades);
 		for (Entidade ent : listaEntidades)
 			ent.render(batch);
 		batch.end();

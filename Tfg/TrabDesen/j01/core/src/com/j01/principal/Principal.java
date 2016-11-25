@@ -1,13 +1,9 @@
 package com.j01.principal;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.j01.telas.TelaJogo;
 
 public class Principal extends Game {
-	SpriteBatch batch;
-	Texture img;
 
 	@Override
 	public void create() {

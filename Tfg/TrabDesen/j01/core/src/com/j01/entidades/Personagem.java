@@ -25,11 +25,8 @@ public class Personagem extends Entidade implements InputProcessor {
 	private TextureAtlas textureAtlas;
 
 	private TipoPersonagem tipoPersonagem;
-	private Casa casaAtual;
 
 	private Float tempoDecorridoAnimacaoMov = 0f;
-	private Vector3 posicaoInicial = new Vector3(), posicaoFinal = new Vector3(), posicaoAtual = new Vector3();
-
 	private int time;
 	
 	public Personagem(TipoPersonagem tipoPersonagem, Casa casaAtual, InputMultiplexer inputMultiplexer, Partida partida, boolean debug, int camada, int time) {
@@ -38,10 +35,10 @@ public class Personagem extends Entidade implements InputProcessor {
 		setModoDebug(debug);
 		setCamada(camada);
 
-		this.casaAtual = MapaHelper.getPosicaoTelaCasa(casaAtual);
-		this.posicaoInicial = new Vector3(this.casaAtual.getPosicaoTela());
-		this.posicaoAtual = new Vector3(this.casaAtual.getPosicaoTela());
-		this.posicaoFinal = null;
+		setCasaAtual(MapaHelper.getPosicaoTelaCasa(casaAtual));
+		setPosicaoInicial(new Vector3(getCasaAtual().getPosicaoTela()));
+		setPosicaoAtual(new Vector3(getCasaAtual().getPosicaoTela()));
+		setPosicaoFinal(null);
 		this.time = time;
 		
 		this.tipoPersonagem = tipoPersonagem;
@@ -58,7 +55,7 @@ public class Personagem extends Entidade implements InputProcessor {
 		personagemHelper.movimentaPersonagem(this);
 		
 		setTempoDecorrido(getTempoDecorrido() + Gdx.graphics.getDeltaTime());
-		spriteBatch.draw(this.getFrame(getTempoDecorrido()), this.posicaoAtual.x,	this.posicaoAtual.y);
+		spriteBatch.draw(this.getFrame(getTempoDecorrido()), this.getPosicaoAtual().x,	this.getPosicaoAtual().y);
 	}
 
 	public TextureRegion getFrame(float elapsedTime) {
@@ -72,7 +69,7 @@ public class Personagem extends Entidade implements InputProcessor {
 			shapeRenderer.set(ShapeType.Line);
 			shapeRenderer.setColor(Color.RED);
 			shapeRenderer.setTransformMatrix(new Matrix4());
-			shapeRenderer.rect(casaAtual.getPosicaoTela().x, casaAtual.getPosicaoTela().y, 96, 96);
+			shapeRenderer.rect(getCasaAtual().getPosicaoTela().x, getCasaAtual().getPosicaoTela().y, 96, 96);
 		}
 	}
 
@@ -93,18 +90,10 @@ public class Personagem extends Entidade implements InputProcessor {
 		if (PersonagemHelper.tocouPersonagem(this, x, y) && !isMovendo() && getPartida().getTimeTurno() == this.getTime()) {
 			getPartida().setPersonagemSelecionado(this);
 			MapaHelper.escondeRange();
-			MapaHelper.mostraRange(this.casaAtual);
+			MapaHelper.mostraRange(getCasaAtual());
 		}
 
 		return false;
-	}
-
-	public Casa getCasaAtual() {
-		return casaAtual;
-	}
-
-	public void setCasaAtual(Casa casaAtual) {
-		this.casaAtual = casaAtual;
 	}
 
 	@Override
@@ -172,30 +161,6 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	public void setTempoDecorridoAnimacaoMov(Float tempoDecorridoAnimacaoMov) {
 		this.tempoDecorridoAnimacaoMov = tempoDecorridoAnimacaoMov;
-	}
-
-	public Vector3 getPosicaoInicial() {
-		return posicaoInicial;
-	}
-
-	public void setPosicaoInicial(Vector3 posicaoInicial) {
-		this.posicaoInicial = posicaoInicial;
-	}
-
-	public Vector3 getPosicaoFinal() {
-		return posicaoFinal;
-	}
-
-	public void setPosicaoFinal(Vector3 posicaoFinal) {
-		this.posicaoFinal = posicaoFinal;
-	}
-
-	public Vector3 getPosicaoAtual() {
-		return posicaoAtual;
-	}
-
-	public void setPosicaoAtual(Vector3 posicaoAtual) {
-		this.posicaoAtual = posicaoAtual;
 	}
 
 	public int getTime() {
