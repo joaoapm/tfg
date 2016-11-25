@@ -48,7 +48,7 @@ public class TelaJogo implements Screen {
 		partida.setMapa(mapa);
 
 		// cria mapa
-		mapa = new Mapa(camera, (InputMultiplexer) Gdx.input.getInputProcessor(), partida, 0);
+		mapa = new Mapa(camera, (InputMultiplexer) Gdx.input.getInputProcessor(), partida, 0,listaEntidades);
 		listaEntidades.add(mapa);
 
 		// cria personagem

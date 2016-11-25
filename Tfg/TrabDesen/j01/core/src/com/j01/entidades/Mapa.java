@@ -1,5 +1,7 @@
 package com.j01.entidades;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -9,6 +11,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
 import com.badlogic.gdx.math.Vector3;
+import com.j01.estrutura.TipoAcao;
 import com.j01.helper.MapaHelper;
 
 public class Mapa extends Entidade implements InputProcessor {
@@ -20,12 +23,15 @@ public class Mapa extends Entidade implements InputProcessor {
 	public InputMultiplexer processor;
 
 	private TiledMapTile tileSel = null;
+	
+	private ArrayList<Entidade> entidades;
 
-	public Mapa(OrthographicCamera camera, InputMultiplexer inputMultiplexer, Partida partida, int camada) {
+	public Mapa(OrthographicCamera camera, InputMultiplexer inputMultiplexer, Partida partida, int camada, ArrayList<Entidade> entidades) {
 
 		this.camera = camera;
 		MapaHelper.MAPA = this;
 		setPartida(partida);
+		setEntidades(entidades);
 		setCamada(1);
 
 		// carrega mapa
@@ -41,8 +47,11 @@ public class Mapa extends Entidade implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		if (getPartida().getPersonagemSelecionado() != null)
-			getPartida().getPersonagemSelecionado().realizaAcaoCasa(MapaHelper.getPosicaoCasa(new Casa(null, new Vector3(screenX, screenY, 0))));
+		TipoAcao acaoCasa = MapaHelper.getAcaoCasa(MapaHelper.getPosicaoCasa(new Casa(null, new Vector3(screenX, screenY, 0))),getPartida().getPersonagemSelecionado());
+		
+		if (getPartida().getPersonagemSelecionado() != null && acaoCasa != null)
+			getPartida().getPersonagemSelecionado().realizaAcaoCasa(acaoCasa,MapaHelper.getPosicaoCasa(new Casa(null, new Vector3(screenX, screenY, 0))));
+		
 		return false;
 	}
 
@@ -115,6 +124,14 @@ public class Mapa extends Entidade implements InputProcessor {
 
 	public void setTileSel(TiledMapTile tileSel) {
 		this.tileSel = tileSel;
+	}
+
+	public ArrayList<Entidade> getEntidades() {
+		return entidades;
+	}
+
+	public void setEntidades(ArrayList<Entidade> entidades) {
+		this.entidades = entidades;
 	}
 
 }

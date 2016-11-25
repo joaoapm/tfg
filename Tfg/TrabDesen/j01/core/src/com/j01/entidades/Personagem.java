@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
+import com.j01.estrutura.TipoAcao;
 import com.j01.estrutura.TipoPersonagem;
 import com.j01.helper.MapaHelper;
 import com.j01.helper.PersonagemHelper;
@@ -28,6 +29,8 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	private Float tempoDecorridoAnimacaoMov = 0f;
 	private int time;
+	
+	private int vida = 3;
 	
 	public Personagem(TipoPersonagem tipoPersonagem, Casa casaAtual, InputMultiplexer inputMultiplexer, Partida partida, boolean debug, int camada, int time) {
 
@@ -73,13 +76,24 @@ public class Personagem extends Entidade implements InputProcessor {
 		}
 	}
 
-	public void realizaAcaoCasa(Casa casa) {
+	public void realizaAcaoCasa(TipoAcao acaoCasa, Casa casa) {
+		if(acaoCasa.equals(TipoAcao.MOVIMENTO))
+			movimenta(casa);
+		else if(acaoCasa.equals(TipoAcao.ATAQUE))
+			ataca(casa);
+	}
+	
+	public void movimenta(Casa casa) {
 		if (MapaHelper.isCasaNaRange(this.getCasaAtual(), casa)) {
 			if (casa.getPosicaoMapa().x != this.getCasaAtual().getPosicaoMapa().x || casa.getPosicaoMapa().y != this.getCasaAtual().getPosicaoMapa().y) {
 				personagemHelper.movePersonagem(this, casa);
 				MapaHelper.escondeRange();
 			}
 		}
+	}
+	
+	public void ataca(Casa casa) {
+		this.vida -= 1;
 	}
 
 
@@ -170,5 +184,15 @@ public class Personagem extends Entidade implements InputProcessor {
 	public void setTime(int time) {
 		this.time = time;
 	}
+
+	public int getVida() {
+		return vida;
+	}
+
+	public void setVida(int vida) {
+		this.vida = vida;
+	}
+	
+	
 	
 }

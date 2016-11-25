@@ -5,7 +5,10 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector3;
 import com.j01.entidades.Casa;
+import com.j01.entidades.Entidade;
 import com.j01.entidades.Mapa;
+import com.j01.entidades.Personagem;
+import com.j01.estrutura.TipoAcao;
 
 public class MapaHelper {
 
@@ -82,6 +85,27 @@ public class MapaHelper {
 		ponto.y = (ponto.y - tileHeight / 2) / tileHeight + ponto.x;
 		ponto.x -= ponto.y - ponto.x;
 		return ponto;
+	}
+
+	public static TipoAcao getAcaoCasa(Casa posicaoCasa, Personagem perso) {
+		if(perso == null)
+			return null;
+		
+		for (Entidade ent : MAPA.getEntidades()) {
+			if (ent.getCasaAtual() != null && (ent.getCasaAtual().getPosicaoMapa().x == posicaoCasa.getPosicaoMapa().x
+					&& ent.getCasaAtual().getPosicaoMapa().y == posicaoCasa.getPosicaoMapa().y)) {
+
+				if (ent instanceof Personagem) {
+					Personagem personagem = (Personagem) ent;
+					if ((personagem.getTime() != perso.getTime()))
+						return TipoAcao.ATAQUE;
+					else
+						return null;
+				}
+
+			}
+		}
+		return TipoAcao.MOVIMENTO;
 	}
 
 }
