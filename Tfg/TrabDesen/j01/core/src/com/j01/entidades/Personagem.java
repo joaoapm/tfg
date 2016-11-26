@@ -1,6 +1,5 @@
 package com.j01.entidades;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
@@ -50,19 +49,15 @@ public class Personagem extends Entidade implements InputProcessor {
 		inputMultiplexer.addProcessor(this);
 
 		animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, personagemHelper.getFramesParadoFR());
-
 	}
 
 	@Override
 	public void render(SpriteBatch spriteBatch) {
-		personagemHelper.movimentaPersonagem(this);
+		personagemHelper.renderizaAnimacaoPersonagem(this,spriteBatch);
 		
-		setTempoDecorrido(getTempoDecorrido() + Gdx.graphics.getDeltaTime());
-		spriteBatch.draw(this.getFrame(getTempoDecorrido()), this.getPosicaoAtual().x,	this.getPosicaoAtual().y);
 	}
 
 	public TextureRegion getFrame(float elapsedTime) {
-		setTempoDecorrido(elapsedTime);
 		return getAnimation().getKeyFrame(elapsedTime, true);
 	}
 
@@ -93,20 +88,18 @@ public class Personagem extends Entidade implements InputProcessor {
 	}
 	
 	public void ataca(Casa casa) {
-		this.vida -= 1;
+		personagemHelper.atacaPersonagem(this);
+		MapaHelper.escondeRange();
 	}
 
 
 	@Override
 	public boolean touchDown(int x, int y, int arg2, int arg3) {
-		// foi clicado, verifica se alguma entidade com camada superior ao mapa
-		// foi clicada, senao executa mapa
-		if (PersonagemHelper.tocouPersonagem(this, x, y) && !isMovendo() && getPartida().getTimeTurno() == this.getTime()) {
+		if (PersonagemHelper.tocouPersonagem(this, x, y) && !isMovendo() && !isAtacando() && getPartida().getTimeTurno() == this.getTime()) {
 			getPartida().setPersonagemSelecionado(this);
 			MapaHelper.escondeRange();
 			MapaHelper.mostraRange(getCasaAtual());
 		}
-
 		return false;
 	}
 
@@ -192,7 +185,5 @@ public class Personagem extends Entidade implements InputProcessor {
 	public void setVida(int vida) {
 		this.vida = vida;
 	}
-	
-	
 	
 }

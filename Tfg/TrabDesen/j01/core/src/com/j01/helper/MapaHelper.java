@@ -88,19 +88,21 @@ public class MapaHelper {
 	}
 
 	public static TipoAcao getAcaoCasa(Casa posicaoCasa, Personagem perso) {
-		if(perso == null)
+		if (perso == null)
 			return null;
-		
+
 		for (Entidade ent : MAPA.getEntidades()) {
 			if (ent.getCasaAtual() != null && (ent.getCasaAtual().getPosicaoMapa().x == posicaoCasa.getPosicaoMapa().x
 					&& ent.getCasaAtual().getPosicaoMapa().y == posicaoCasa.getPosicaoMapa().y)) {
 
 				if (ent instanceof Personagem) {
 					Personagem personagem = (Personagem) ent;
-					if ((personagem.getTime() != perso.getTime()))
+					if ((personagem.getTime() != perso.getTime())) {
+						MAPA.getPartida().setPersonagemAtaque(personagem);
 						return TipoAcao.ATAQUE;
-					else
+					} else {
 						return null;
+					}
 				}
 
 			}

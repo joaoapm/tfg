@@ -7,6 +7,7 @@ public class Partida {
 	private TipoPersonagem personagemTurno;
 	private Mapa mapa;
 	private Personagem personagemSelecionado;
+	private Personagem personagemAtaque;
 	private int timeTurno = 0;
 
 	public TipoPersonagem getPersonagemTurno() {
@@ -47,5 +48,15 @@ public class Partida {
 		else
 			timeTurno = 0;
 	}
+
+	public Personagem getPersonagemAtaque() {
+		return personagemAtaque;
+	}
+
+	public void setPersonagemAtaque(Personagem personagemAtaque) {
+		this.personagemAtaque = personagemAtaque;
+	}
+	
+	
 
 }

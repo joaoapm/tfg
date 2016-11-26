@@ -11,10 +11,20 @@ public class Entidade implements Comparable<Entidade> {
 	private boolean isPosAtualizada;
 	private boolean isModoDebug;
 	private boolean isMovendo;
+	private boolean isAtacando;
+	private boolean isMorrendo;
 	private int camada;
 	private Casa casaAtual;
-
 	private Vector3 posicaoInicial = new Vector3(), posicaoFinal = new Vector3(), posicaoAtual = new Vector3();
+
+	public boolean isAtacando() {
+		return isAtacando;
+	}
+
+	public void setAtacando(boolean isAtacando) {
+		this.isAtacando = isAtacando;
+	}
+
 
 	public Vector3 getPosicaoInicial() {
 		return posicaoInicial;
@@ -86,6 +96,14 @@ public class Entidade implements Comparable<Entidade> {
 
 	public void setTempoDecorrido(float tempoDecorrido) {
 		this.tempoDecorrido = tempoDecorrido;
+	}
+
+	public boolean isMorrendo() {
+		return isMorrendo;
+	}
+
+	public void setMorrendo(boolean isMorrendo) {
+		this.isMorrendo = isMorrendo;
 	}
 
 	public boolean isModoDebug() {

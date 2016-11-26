@@ -2,6 +2,7 @@ package com.j01.helper;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
@@ -200,8 +201,13 @@ public class PersonagemHelper {
 		buscaFrames(13, framesAtaqueD4, "ataqueD4");
 		buscaFrames(13, framesAtaqueLE, "ataqueLE");
 		buscaFrames(13, framesAtaqueLD, "ataqueLD");
-		buscaFrames(13, framesAtaqueFR, "ataqueFR");
-		buscaFrames(13, framesAtaqueTR, "ataqueTR");
+		if (this.Personagem.getTime() == 0) {
+			buscaFrames(13, framesAtaqueFR, "ataqueFR");
+			buscaFrames(13, framesAtaqueTR, "ataqueTR");
+		} else {
+			buscaFrames(13, framesAtaqueFR, "ataqueTR");
+			buscaFrames(13, framesAtaqueTR, "ataqueFR");
+		}
 
 		buscaFrames(13, framesParadoD1, "paradoD1");
 		buscaFrames(13, framesParadoD2, "paradoD2");
@@ -209,7 +215,6 @@ public class PersonagemHelper {
 		buscaFrames(13, framesParadoD4, "paradoD4");
 		buscaFrames(13, framesParadoLE, "paradoLE");
 		buscaFrames(13, framesParadoLD, "paradoLD");
-		
 		if (this.Personagem.getTime() == 0) {
 			buscaFrames(13, framesParadoFR, "paradoFR");
 			buscaFrames(13, framesParadoTR, "paradoTR");
@@ -222,10 +227,16 @@ public class PersonagemHelper {
 		buscaFrames(11, framesMorrendoD2, "morrendoD2");
 		buscaFrames(11, framesMorrendoD3, "morrendoD3");
 		buscaFrames(11, framesMorrendoD4, "morrendoD4");
-		buscaFrames(11, framesMorrendoFR, "morrendoFR");
 		buscaFrames(11, framesMorrendoLE, "morrendoLE");
 		buscaFrames(11, framesMorrendoLD, "morrendoLD");
-		buscaFrames(11, framesMorrendoTR, "morrendoTR");
+		if (this.Personagem.getTime() == 0) {
+			buscaFrames(11, framesMorrendoFR, "morrendoFR");
+			buscaFrames(11, framesMorrendoTR, "morrendoTR");
+		} else {
+			buscaFrames(11, framesMorrendoFR, "morrendoTR");
+			buscaFrames(11, framesMorrendoTR, "morrendoFR");
+		}
+
 
 	}
 
@@ -272,7 +283,19 @@ public class PersonagemHelper {
 		
 	}
 	
-	public void movimentaPersonagem(Personagem personagem) {
+	public void atacaPersonagem(Personagem personagem) {
+		personagem.getPartida().getPersonagemAtaque().setVida(personagem.getPartida().getPersonagemAtaque().getVida() - 1);
+		personagem.setAtacando(true);
+		personagem.setTempoDecorridoAnimacaoMov(0f);
+		
+		if(personagem.getPartida().getPersonagemAtaque().getVida() == 0){
+			personagem.getPartida().getPersonagemAtaque().setMorrendo(true);
+			personagem.getPartida().getPersonagemAtaque().setTempoDecorridoAnimacaoMov(0f);
+		}
+		
+	}
+	
+	public void renderizaAnimacaoPersonagem(Personagem personagem,SpriteBatch spriteBatch) {
 		if (personagem.getPosicaoFinal() != null) {
 			personagem.setTempoDecorridoAnimacaoMov(personagem.getTempoDecorridoAnimacaoMov() + Gdx.graphics.getDeltaTime());
 			if (personagem.getTempoDecorridoAnimacaoMov() > PropriedadeHelper.TEMPO_MOVIMENTO_PERSO) {
@@ -293,7 +316,42 @@ public class PersonagemHelper {
 				if (personagem.getTipoPersonagem().equals(TipoPersonagem.MONSTRO))
 					personagem.getPosicaoAtual().add(-14, -14, 0);
 			}
+		} else if (personagem.isAtacando()){
+			personagem.setTempoDecorridoAnimacaoMov(personagem.getTempoDecorridoAnimacaoMov() + Gdx.graphics.getDeltaTime());
+			if (personagem.getTempoDecorridoAnimacaoMov() > PropriedadeHelper.TEMPO_MOVIMENTO_PERSO) {
+				personagem.setAnimation(new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, this.getFramesParadoFR()));
+				personagem.setTempoDecorridoAnimacaoMov(null);
+				personagem.setAtacando(false);
+				personagem.getPartida().trocaTurno();
+				personagem.getPosicaoAtual().add(14, 14, 0);
+			
+			} else if (personagem.getTempoDecorridoAnimacaoMov() != null) {
+				if (personagem.getAnimation().isAnimationFinished(personagem.getTempoDecorrido())) {
+					personagem.setTempoDecorrido(0);
+					personagem.setAnimation(new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, this.getFramesAtaqueFR()));
+					personagem.getPosicaoAtual().add(-14, -14, 0);
+				}
+			}
+		} else if (personagem.isMorrendo()){
+			personagem.setTempoDecorridoAnimacaoMov(personagem.getTempoDecorridoAnimacaoMov() + Gdx.graphics.getDeltaTime());
+			if (personagem.getTempoDecorridoAnimacaoMov() > PropriedadeHelper.TEMPO_MOVIMENTO_PERSO) {
+				personagem.setAnimation(new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, this.getFramesParadoFR()));
+				personagem.setTempoDecorridoAnimacaoMov(null);
+				personagem.setAtacando(false);
+				personagem.getPartida().trocaTurno();
+				personagem.getPosicaoAtual().add(14, 14, 0);
+				MapaHelper.MAPA.getEntidades().remove(personagem.getPartida().getPersonagemAtaque());
+			
+			} else if (personagem.getTempoDecorridoAnimacaoMov() != null) {
+				if (personagem.getAnimation().isAnimationFinished(personagem.getTempoDecorrido())) {
+					personagem.setTempoDecorrido(0);
+					personagem.setAnimation(new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, this.getFramesMorrendoFR()));
+					personagem.getPosicaoAtual().add(-14, -14, 0);
+				}
+			}
 		}
+		personagem.setTempoDecorrido(personagem.getTempoDecorrido() +  Gdx.graphics.getDeltaTime());
+		spriteBatch.draw(personagem.getFrame(personagem.getTempoDecorrido()), personagem.getPosicaoAtual().x,	personagem.getPosicaoAtual().y);
 	}
 	
 	private Animation getAnimacaoMov(Personagem personagem, Casa casa) {
