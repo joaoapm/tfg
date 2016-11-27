@@ -13,6 +13,8 @@ public class Entidade implements Comparable<Entidade> {
 	private boolean isMovendo;
 	private boolean isAtacando;
 	private boolean isMorrendo;
+	private boolean isRemovido;
+	
 	private int camada;
 	private Casa casaAtual;
 	private Vector3 posicaoInicial = new Vector3(), posicaoFinal = new Vector3(), posicaoAtual = new Vector3();
@@ -121,6 +123,14 @@ public class Entidade implements Comparable<Entidade> {
 	}
 
 	public void renderShape(ShapeRenderer shapeRenderer) {
+	}
+
+	public boolean isRemovido() {
+		return isRemovido;
+	}
+
+	public void setRemovido(boolean isRemovido) {
+		this.isRemovido = isRemovido;
 	}
 
 	@Override

@@ -53,8 +53,10 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	@Override
 	public void render(SpriteBatch spriteBatch) {
+		if(!isRemovido()){
 		personagemHelper.renderizaAnimacaoPersonagem(this,spriteBatch);
 		personagemHelper.renderizaBarraVida(this,spriteBatch);
+		}
 		
 	}
 
@@ -187,9 +189,4 @@ public class Personagem extends Entidade implements InputProcessor {
 		this.vida = vida;
 	}
 
-	public void atualizaTurno() {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

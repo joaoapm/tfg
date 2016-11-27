@@ -306,7 +306,7 @@ public class PersonagemHelper {
 		
 	}
 	
-	public void renderizaAnimacaoPersonagem(Personagem personagem,SpriteBatch spriteBatch) {
+	public void renderizaAnimacaoPersonagem(Personagem personagem, SpriteBatch spriteBatch) {
 		if (personagem.getPosicaoFinal() != null) {
 			personagem.setTempoDecorridoAnimacaoMov(personagem.getTempoDecorridoAnimacaoMov() + Gdx.graphics.getDeltaTime());
 			if (personagem.getTempoDecorridoAnimacaoMov() > PropriedadeHelper.TEMPO_MOVIMENTO_PERSO) {
@@ -327,15 +327,16 @@ public class PersonagemHelper {
 				if (personagem.getTipoPersonagem().equals(TipoPersonagem.MONSTRO))
 					personagem.getPosicaoAtual().add(-14, -14, 0);
 			}
-		} else if (personagem.isAtacando()){
-			personagem.setTempoDecorridoAnimacaoMov(personagem.getTempoDecorridoAnimacaoMov() + Gdx.graphics.getDeltaTime());
+		} else if (personagem.isAtacando()) {
+			personagem.setTempoDecorridoAnimacaoMov(
+					personagem.getTempoDecorridoAnimacaoMov() + Gdx.graphics.getDeltaTime());
 			if (personagem.getTempoDecorridoAnimacaoMov() > PropriedadeHelper.TEMPO_MOVIMENTO_PERSO) {
 				personagem.setAnimation(new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, this.getFramesParadoFR()));
 				personagem.setTempoDecorridoAnimacaoMov(null);
 				personagem.setAtacando(false);
 				personagem.getPartida().trocaTurno();
 				personagem.getPosicaoAtual().add(14, 14, 0);
-			
+
 			} else if (personagem.getTempoDecorridoAnimacaoMov() != null) {
 				if (personagem.getAnimation().isAnimationFinished(personagem.getTempoDecorrido())) {
 					personagem.setTempoDecorrido(0);
@@ -343,16 +344,12 @@ public class PersonagemHelper {
 					personagem.getPosicaoAtual().add(-14, -14, 0);
 				}
 			}
-		} else if (personagem.isMorrendo()){
+		} else if (personagem.isMorrendo()) {
 			personagem.setTempoDecorridoAnimacaoMov(personagem.getTempoDecorridoAnimacaoMov() + Gdx.graphics.getDeltaTime());
 			if (personagem.getTempoDecorridoAnimacaoMov() > PropriedadeHelper.TEMPO_MOVIMENTO_PERSO) {
-				personagem.setAnimation(new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, this.getFramesParadoFR()));
 				personagem.setTempoDecorridoAnimacaoMov(null);
-				personagem.setAtacando(false);
-				personagem.getPartida().trocaTurno();
-				personagem.getPosicaoAtual().add(14, 14, 0);
-				MapaHelper.MAPA.getEntidades().remove(personagem.getPartida().getPersonagemAtaque());
-			
+				personagem.setMorrendo(false);
+				personagem.getPartida().atualizaPartida();
 			} else if (personagem.getTempoDecorridoAnimacaoMov() != null) {
 				if (personagem.getAnimation().isAnimationFinished(personagem.getTempoDecorrido())) {
 					personagem.setTempoDecorrido(0);
@@ -361,12 +358,15 @@ public class PersonagemHelper {
 				}
 			}
 		}
-		personagem.setTempoDecorrido(personagem.getTempoDecorrido() +  Gdx.graphics.getDeltaTime());
-		spriteBatch.draw(personagem.getFrame(personagem.getTempoDecorrido()), personagem.getPosicaoAtual().x,	personagem.getPosicaoAtual().y);
+		personagem.setTempoDecorrido(personagem.getTempoDecorrido() + Gdx.graphics.getDeltaTime());
+		spriteBatch.draw(personagem.getFrame(personagem.getTempoDecorrido()), personagem.getPosicaoAtual().x,personagem.getPosicaoAtual().y);
 	}
 	
 	public void renderizaBarraVida(Personagem personagem, SpriteBatch spriteBatch) {
-		spriteBatch.draw(barraVida[personagem.getVida()],	personagem.getPosicaoAtual().x-5,	personagem.getPosicaoAtual().y+80);
+		int vlrDesl = 0;
+		if ((personagem.getTipoPersonagem().equals(TipoPersonagem.MONSTRO) && personagem.getPosicaoFinal() != null) || personagem.isAtacando())
+			vlrDesl = 14;
+		spriteBatch.draw(barraVida[personagem.getVida()], personagem.getPosicaoAtual().x - 5 + vlrDesl,personagem.getPosicaoAtual().y + 80 + vlrDesl);
 	}
 	
 	private Animation getAnimacaoMov(Personagem personagem, Casa casa) {
