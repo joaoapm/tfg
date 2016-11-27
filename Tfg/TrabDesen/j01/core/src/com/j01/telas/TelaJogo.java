@@ -83,6 +83,11 @@ public class TelaJogo implements Screen {
 		for (Entidade ent : listaEntidades)
 			ent.render(batch);
 		batch.end();
+		
+		// remove objetos
+		for (Entidade ent : listaEntidades)
+			if (ent.isRemovido())
+				listaEntidades.remove(ent);
 
 	}
 
@@ -91,7 +96,6 @@ public class TelaJogo implements Screen {
 		camera.viewportWidth = width;
 		camera.viewportHeight = height;
 		camera.update();
-
 	}
 
 	@Override

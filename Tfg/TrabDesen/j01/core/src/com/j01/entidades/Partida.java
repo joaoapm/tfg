@@ -1,7 +1,6 @@
 package com.j01.entidades;
 
 import com.j01.estrutura.TipoPersonagem;
-import com.j01.helper.MapaHelper;
 
 public class Partida {
 
@@ -60,11 +59,6 @@ public class Partida {
 
 	public void ataquePersonagem() {
 		getPersonagemAtaque().setVida(getPersonagemAtaque().getVida() - 1);
-	}
-
-	public void atualizaPartida() {
-		if(personagemAtaque != null && personagemAtaque.getVida() == 0)
-			personagemAtaque.setRemovido(true);
 	}
 
 }

@@ -28,10 +28,11 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	private Float tempoDecorridoAnimacaoMov = 0f;
 	private int time;
-	
+
 	private int vida = 3;
-	
-	public Personagem(TipoPersonagem tipoPersonagem, Casa casaAtual, InputMultiplexer inputMultiplexer, Partida partida, boolean debug, int camada, int time) {
+
+	public Personagem(TipoPersonagem tipoPersonagem, Casa casaAtual, InputMultiplexer inputMultiplexer, Partida partida,
+			boolean debug, int camada, int time) {
 
 		setPartida(partida);
 		setModoDebug(debug);
@@ -41,11 +42,13 @@ public class Personagem extends Entidade implements InputProcessor {
 		setPosicaoInicial(new Vector3(getCasaAtual().getPosicaoTela()));
 		setPosicaoAtual(new Vector3(getCasaAtual().getPosicaoTela()));
 		setPosicaoFinal(null);
+		setInputMultiplexer(inputMultiplexer);
+
 		this.time = time;
-		
+
 		this.tipoPersonagem = tipoPersonagem;
 
-		personagemHelper = new PersonagemHelper(tipoPersonagem,this);
+		personagemHelper = new PersonagemHelper(tipoPersonagem, this);
 		inputMultiplexer.addProcessor(this);
 
 		animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, personagemHelper.getFramesParadoFR());
@@ -53,11 +56,8 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	@Override
 	public void render(SpriteBatch spriteBatch) {
-		if(!isRemovido()){
-		personagemHelper.renderizaAnimacaoPersonagem(this,spriteBatch);
-		personagemHelper.renderizaBarraVida(this,spriteBatch);
-		}
-		
+			personagemHelper.renderizaAnimacaoPersonagem(this, spriteBatch);
+			personagemHelper.renderizaBarraVida(this, spriteBatch);
 	}
 
 	public TextureRegion getFrame(float elapsedTime) {
@@ -75,12 +75,12 @@ public class Personagem extends Entidade implements InputProcessor {
 	}
 
 	public void realizaAcaoCasa(TipoAcao acaoCasa, Casa casa) {
-		if(acaoCasa.equals(TipoAcao.MOVIMENTO))
+		if (acaoCasa.equals(TipoAcao.MOVIMENTO))
 			movimenta(casa);
-		else if(acaoCasa.equals(TipoAcao.ATAQUE))
+		else if (acaoCasa.equals(TipoAcao.ATAQUE))
 			ataca(casa);
 	}
-	
+
 	public void movimenta(Casa casa) {
 		if (MapaHelper.isCasaNaRange(this.getCasaAtual(), casa)) {
 			if (casa.getPosicaoMapa().x != this.getCasaAtual().getPosicaoMapa().x || casa.getPosicaoMapa().y != this.getCasaAtual().getPosicaoMapa().y) {
@@ -89,12 +89,11 @@ public class Personagem extends Entidade implements InputProcessor {
 			}
 		}
 	}
-	
+
 	public void ataca(Casa casa) {
 		personagemHelper.atacaPersonagem(this);
 		MapaHelper.escondeRange();
 	}
-
 
 	@Override
 	public boolean touchDown(int x, int y, int arg2, int arg3) {
@@ -189,4 +188,8 @@ public class Personagem extends Entidade implements InputProcessor {
 		this.vida = vida;
 	}
 
+	public void remove() {
+		getInputMultiplexer().removeProcessor(this);
+		setRemovido(true);
+	}
 }

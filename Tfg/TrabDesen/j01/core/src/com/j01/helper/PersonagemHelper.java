@@ -328,8 +328,7 @@ public class PersonagemHelper {
 					personagem.getPosicaoAtual().add(-14, -14, 0);
 			}
 		} else if (personagem.isAtacando()) {
-			personagem.setTempoDecorridoAnimacaoMov(
-					personagem.getTempoDecorridoAnimacaoMov() + Gdx.graphics.getDeltaTime());
+			personagem.setTempoDecorridoAnimacaoMov(personagem.getTempoDecorridoAnimacaoMov() + Gdx.graphics.getDeltaTime());
 			if (personagem.getTempoDecorridoAnimacaoMov() > PropriedadeHelper.TEMPO_MOVIMENTO_PERSO) {
 				personagem.setAnimation(new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, this.getFramesParadoFR()));
 				personagem.setTempoDecorridoAnimacaoMov(null);
@@ -349,7 +348,7 @@ public class PersonagemHelper {
 			if (personagem.getTempoDecorridoAnimacaoMov() > PropriedadeHelper.TEMPO_MOVIMENTO_PERSO) {
 				personagem.setTempoDecorridoAnimacaoMov(null);
 				personagem.setMorrendo(false);
-				personagem.getPartida().atualizaPartida();
+				personagem.remove();
 			} else if (personagem.getTempoDecorridoAnimacaoMov() != null) {
 				if (personagem.getAnimation().isAnimationFinished(personagem.getTempoDecorrido())) {
 					personagem.setTempoDecorrido(0);

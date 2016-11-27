@@ -1,5 +1,6 @@
 package com.j01.entidades;
 
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
@@ -14,10 +15,19 @@ public class Entidade implements Comparable<Entidade> {
 	private boolean isAtacando;
 	private boolean isMorrendo;
 	private boolean isRemovido;
-	
+
 	private int camada;
 	private Casa casaAtual;
 	private Vector3 posicaoInicial = new Vector3(), posicaoFinal = new Vector3(), posicaoAtual = new Vector3();
+	private InputMultiplexer inputMultiplexer;
+
+	public InputMultiplexer getInputMultiplexer() {
+		return inputMultiplexer;
+	}
+
+	public void setInputMultiplexer(InputMultiplexer inputMultiplexer) {
+		this.inputMultiplexer = inputMultiplexer;
+	}
 
 	public boolean isAtacando() {
 		return isAtacando;
@@ -26,7 +36,6 @@ public class Entidade implements Comparable<Entidade> {
 	public void setAtacando(boolean isAtacando) {
 		this.isAtacando = isAtacando;
 	}
-
 
 	public Vector3 getPosicaoInicial() {
 		return posicaoInicial;
