@@ -1,6 +1,9 @@
 package com.j01.helper;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector3;
@@ -13,7 +16,7 @@ import com.j01.estrutura.TipoAcao;
 public class MapaHelper {
 
 	public static Mapa MAPA;
-
+	private static Texture[] barraVidaBase = new Texture[6];
 
 	public static Casa getPosicaoCasa(Casa casa) {
 
@@ -108,6 +111,21 @@ public class MapaHelper {
 			}
 		}
 		return TipoAcao.MOVIMENTO;
+	}
+
+	public static void iniciaBases() {
+		barraVidaBase[5] = new Texture(Gdx.files.internal("barraVida/c1.png"));
+		barraVidaBase[4] = new Texture(Gdx.files.internal("barraVida/c3.png"));
+		barraVidaBase[3] = new Texture(Gdx.files.internal("barraVida/c5.png"));
+		barraVidaBase[2] = new Texture(Gdx.files.internal("barraVida/c4.png"));
+		barraVidaBase[1] = new Texture(Gdx.files.internal("barraVida/c8.png"));
+		barraVidaBase[0] = new Texture(Gdx.files.internal("barraVida/c10.png"));
+	}
+
+	public static void renderizaBarraVidaBase(Mapa mapa2, SpriteBatch spriteBatch) {
+		spriteBatch.draw(barraVidaBase[5],	160,	680);
+		spriteBatch.draw(barraVidaBase[2],	985,	70);
+		
 	}
 
 }

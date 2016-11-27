@@ -41,7 +41,7 @@ public class Partida {
 	public void setTimeTurno(int timeTurno) {
 		this.timeTurno = timeTurno;
 	}
-	
+
 	public void trocaTurno() {
 		if (timeTurno == 0)
 			timeTurno = 1;
@@ -56,7 +56,9 @@ public class Partida {
 	public void setPersonagemAtaque(Personagem personagemAtaque) {
 		this.personagemAtaque = personagemAtaque;
 	}
-	
-	
+
+	public void ataquePersonagem() {
+		getPersonagemAtaque().setVida(getPersonagemAtaque().getVida() - 1);
+	}
 
 }

@@ -1,6 +1,7 @@
 package com.j01.helper;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -19,6 +20,7 @@ public class PersonagemHelper {
 		textureAtlas = new TextureAtlas(Gdx.files.internal(tipoPersonagem.getArquivoAtlas()));
 		this.Personagem = personagem;
 		inicializaAnimacoes();
+		inicializaBarraVida();
 	}
 
 	private TextureRegion[] framesMovimentoD1 = new TextureRegion[8];
@@ -56,6 +58,8 @@ public class PersonagemHelper {
 	private TextureRegion[] framesMorrendoLE = new TextureRegion[11];
 	private TextureRegion[] framesMorrendoLD = new TextureRegion[11];
 	private TextureRegion[] framesMorrendoTR = new TextureRegion[11];
+	
+	private Texture[] barraVida = new Texture[4];
 
 	public TextureRegion[] getFramesMovimentoD1() {
 		return framesMovimentoD1;
@@ -185,7 +189,7 @@ public class PersonagemHelper {
 		return framesMorrendoTR;
 	}
 
-	private void inicializaAnimacoes() {
+	private void inicializaAnimacoes() { 
 		buscaFrames(8, framesMovimentoD1, "andandoD1");
 		buscaFrames(8, framesMovimentoD2, "andandoD2");
 		buscaFrames(8, framesMovimentoD3, "andandoD3");
@@ -239,6 +243,13 @@ public class PersonagemHelper {
 
 
 	}
+	
+	private void inicializaBarraVida() { 
+		barraVida[3] = new Texture(Gdx.files.internal("barraVida/p1.png"));
+		barraVida[2] = new Texture(Gdx.files.internal("barraVida/p3.png"));
+		barraVida[1] = new Texture(Gdx.files.internal("barraVida/p5.png"));
+		barraVida[0] = new Texture(Gdx.files.internal("barraVida/p6.png"));
+	}
 
 	private void buscaFrames(int qntFrames, TextureRegion[] lista, String nomeFrame) {
 		String colocaZero = "";
@@ -284,7 +295,7 @@ public class PersonagemHelper {
 	}
 	
 	public void atacaPersonagem(Personagem personagem) {
-		personagem.getPartida().getPersonagemAtaque().setVida(personagem.getPartida().getPersonagemAtaque().getVida() - 1);
+		personagem.getPartida().ataquePersonagem();
 		personagem.setAtacando(true);
 		personagem.setTempoDecorridoAnimacaoMov(0f);
 		
@@ -352,6 +363,10 @@ public class PersonagemHelper {
 		}
 		personagem.setTempoDecorrido(personagem.getTempoDecorrido() +  Gdx.graphics.getDeltaTime());
 		spriteBatch.draw(personagem.getFrame(personagem.getTempoDecorrido()), personagem.getPosicaoAtual().x,	personagem.getPosicaoAtual().y);
+	}
+	
+	public void renderizaBarraVida(Personagem personagem, SpriteBatch spriteBatch) {
+		spriteBatch.draw(barraVida[personagem.getVida()],	personagem.getPosicaoAtual().x-5,	personagem.getPosicaoAtual().y+80);
 	}
 	
 	private Animation getAnimacaoMov(Personagem personagem, Casa casa) {

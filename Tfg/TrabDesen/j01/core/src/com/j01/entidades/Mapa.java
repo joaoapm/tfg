@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
@@ -40,6 +41,7 @@ public class Mapa extends Entidade implements InputProcessor {
 		renderer = new IsometricTiledMapRenderer(map);
 
 		MapaHelper.escondeRange();
+		MapaHelper.iniciaBases();
 
 		inputMultiplexer.addProcessor(this);
 
@@ -136,4 +138,9 @@ public class Mapa extends Entidade implements InputProcessor {
 		this.entidades = entidades;
 	}
 
+	
+	@Override
+	public void render(SpriteBatch spriteBatch) {
+		MapaHelper.renderizaBarraVidaBase(this,spriteBatch);
+	}
 }
