@@ -3,32 +3,26 @@ package com.j01.entidades;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
+import com.j01.estrutura.Animacao;
 import com.j01.estrutura.TipoAcao;
+import com.j01.estrutura.TipoAnimacao;
 import com.j01.estrutura.TipoPersonagem;
 import com.j01.helper.MapaHelper;
 import com.j01.helper.PersonagemHelper;
-import com.j01.helper.PropriedadeHelper;
 
 public class Personagem extends Entidade implements InputProcessor {
 
 	private PersonagemHelper personagemHelper;
 
-	private Animation animation;
-	private TextureAtlas textureAtlas;
-
 	private TipoPersonagem tipoPersonagem;
+	private Animacao animacao;
 
-	private Float tempoDecorridoAnimacaoMov = 0f;
 	private int time;
-
 	private int vida = 3;
 
 	public Personagem(TipoPersonagem tipoPersonagem, Casa casaAtual, InputMultiplexer inputMultiplexer, Partida partida,
@@ -37,7 +31,6 @@ public class Personagem extends Entidade implements InputProcessor {
 		setPartida(partida);
 		setModoDebug(debug);
 		setCamada(camada);
-
 		setCasaAtual(MapaHelper.getPosicaoTelaCasa(casaAtual));
 		setPosicaoInicial(new Vector3(getCasaAtual().getPosicaoTela()));
 		setPosicaoAtual(new Vector3(getCasaAtual().getPosicaoTela()));
@@ -45,23 +38,19 @@ public class Personagem extends Entidade implements InputProcessor {
 		setInputMultiplexer(inputMultiplexer);
 
 		this.time = time;
-
 		this.tipoPersonagem = tipoPersonagem;
-
-		personagemHelper = new PersonagemHelper(tipoPersonagem, this);
+		this.personagemHelper = new PersonagemHelper(tipoPersonagem, this);
+		this.animacao = new Animacao(this, TipoAnimacao.PARADOFR);
+		this.animacao.iniciaAnimacao();
+		
 		inputMultiplexer.addProcessor(this);
 
-		animation = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, personagemHelper.getFramesParadoFR());
 	}
 
 	@Override
 	public void render(SpriteBatch spriteBatch) {
-			personagemHelper.renderizaAnimacaoPersonagem(this, spriteBatch);
-			personagemHelper.renderizaBarraVida(this, spriteBatch);
-	}
-
-	public TextureRegion getFrame(float elapsedTime) {
-		return getAnimation().getKeyFrame(elapsedTime, true);
+		personagemHelper.renderizaAnimacaoPersonagem(this, spriteBatch);
+		personagemHelper.renderizaBarraVida(this, spriteBatch);
 	}
 
 	@Override
@@ -97,7 +86,7 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int x, int y, int arg2, int arg3) {
-		if (PersonagemHelper.tocouPersonagem(this, x, y) && !isMovendo() && !isAtacando() && getPartida().getTimeTurno() == this.getTime()) {
+		if (PersonagemHelper.tocouPersonagem(this, x, y) && !isAtacando() && !getAnimacao().isMovendo()	&& getPartida().getTimeTurno() == this.getTime()) {
 			getPartida().setPersonagemSelecionado(this);
 			MapaHelper.escondeRange();
 			MapaHelper.mostraRange(getCasaAtual());
@@ -148,30 +137,6 @@ public class Personagem extends Entidade implements InputProcessor {
 		this.tipoPersonagem = tipoPersonagem;
 	}
 
-	public Animation getAnimation() {
-		return animation;
-	}
-
-	public void setAnimation(Animation animation) {
-		this.animation = animation;
-	}
-
-	public TextureAtlas getTextureAtlas() {
-		return textureAtlas;
-	}
-
-	public void setTextureAtlas(TextureAtlas textureAtlas) {
-		this.textureAtlas = textureAtlas;
-	}
-
-	public Float getTempoDecorridoAnimacaoMov() {
-		return tempoDecorridoAnimacaoMov;
-	}
-
-	public void setTempoDecorridoAnimacaoMov(Float tempoDecorridoAnimacaoMov) {
-		this.tempoDecorridoAnimacaoMov = tempoDecorridoAnimacaoMov;
-	}
-
 	public int getTime() {
 		return time;
 	}
@@ -186,6 +151,14 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	public void setVida(int vida) {
 		this.vida = vida;
+	}
+
+	public Animacao getAnimacao() {
+		return animacao;
+	}
+
+	public void setAnimacao(Animacao animacao) {
+		this.animacao = animacao;
 	}
 
 	public void remove() {

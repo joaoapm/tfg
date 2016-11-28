@@ -1,0 +1,60 @@
+package com.j01.estrutura;
+
+public enum TipoAnimacao {
+
+	MOVIMENTOD1("MOVIMENTOD1"),
+	MOVIMENTOD2("MOVIMENTOD2"),
+	MOVIMENTOD3("MOVIMENTOD3"),
+	MOVIMENTOD4("MOVIMENTOD4"),
+	MOVIMENTOFR("MOVIMENTOFR"),
+	MOVIMENTOLE("MOVIMENTOLE"),
+	MOVIMENTOLD("MOVIMENTOLD"),
+	MOVIMENTOTR("MOVIMENTOTR"),
+	
+	ATAQUED1("ATAQUED1"),
+	ATAQUED2("ATAQUED2"),
+	ATAQUED3("ATAQUED3"),
+	ATAQUED4("ATAQUED4"),
+	ATAQUEFR("ATAQUEFR"),
+	ATAQUELE("ATAQUELE"),
+	ATAQUELD("ATAQUELD"),
+	ATAQUETR("ATAQUETR"),
+	
+	PARADOD1("PARADOD1"),
+	PARADOD2("PARADOD2"),
+	PARADOD3("PARADOD3"),
+	PARADOD4("PARADOD4"),
+	PARADOFR("PARADOFR"),
+	PARADOLE("PARADOLE"),
+	PARADOLD("PARADOLD"),
+	PARADOTR("PARADOTR"),
+	
+	MORRENDOD1("MORRENDOD1"),
+	MORRENDOD2("MORRENDOD2"),
+	MORRENDOD3("MORRENDOD3"),
+	MORRENDOD4("MORRENDOD4"),
+	MORRENDOFR("MORRENDOFR"),
+	MORRENDOLE("MORRENDOLE"),
+	MORRENDOLD("MORRENDOLD"),
+	MORRENDOTR("MORRENDOTR");
+ 
+	private final String rotulo;
+
+	TipoAnimacao(String rotulo) {
+		this.rotulo = rotulo;
+	}
+
+	public String getRotulo() {
+		return rotulo;
+	}
+
+	public static TipoAnimacao getEnum(String valor) {
+		for (TipoAnimacao item : TipoAnimacao.values()) {
+			if (item.rotulo == valor) {
+				return item;
+			}
+		}
+
+		return null;
+	}
+}

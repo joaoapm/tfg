@@ -33,6 +33,12 @@ public class MapaHelper {
 		return new Casa(new Vector3(-1 * cx, cy, 0), new Vector3(pontoCasa.x, pontoCasa.y, 0));
 
 	}
+	
+	public static Casa getPosicaoCasa(Vector3 ponto) {
+		Casa casa = new Casa();
+		casa.setPosicaoTela(ponto);
+		return getPosicaoCasa(casa);
+	}
 
 	public static Casa getPosicaoTelaCasa(Casa casa) {
 		casa.getPosicaoMapa().x *= -1;

@@ -5,16 +5,10 @@ import com.badlogic.gdx.math.Vector3;
 public class Casa extends Entidade {
 
 	private Vector3 posicaoMapa;
-
-	public Vector3 getPosicaoMapa() {
-		return posicaoMapa;
-	}
-
-	public void setPosicaoMapa(Vector3 posicaoMapa) {
-		this.posicaoMapa = posicaoMapa;
-	}
-
 	private Vector3 posicaoTela;
+
+	public Casa() {
+	}
 
 	public Casa(Vector3 posicaoMaoa, Vector3 posicaoTela) {
 		super();
@@ -33,6 +27,14 @@ public class Casa extends Entidade {
 
 	public void setPosicaoTela(Vector3 posicaoTela) {
 		this.posicaoTela = posicaoTela;
+	}
+
+	public Vector3 getPosicaoMapa() {
+		return posicaoMapa;
+	}
+
+	public void setPosicaoMapa(Vector3 posicaoMapa) {
+		this.posicaoMapa = posicaoMapa;
 	}
 
 }

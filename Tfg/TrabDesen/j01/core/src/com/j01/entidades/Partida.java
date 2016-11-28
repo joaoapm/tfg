@@ -43,6 +43,7 @@ public class Partida {
 	}
 
 	public void trocaTurno() {
+		setPersonagemSelecionado(null);
 		if (timeTurno == 0)
 			timeTurno = 1;
 		else

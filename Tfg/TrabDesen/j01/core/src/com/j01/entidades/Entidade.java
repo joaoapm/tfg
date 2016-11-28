@@ -11,16 +11,23 @@ public class Entidade implements Comparable<Entidade> {
 	private Partida partida;
 	private boolean isPosAtualizada;
 	private boolean isModoDebug;
-	private boolean isMovendo;
 	private boolean isAtacando;
 	private boolean isMorrendo;
 	private boolean isRemovido;
-
+	private Float tempoDecorridoAnimacaoMov = 0f;
 	private int camada;
 	private Casa casaAtual;
 	private Vector3 posicaoInicial = new Vector3(), posicaoFinal = new Vector3(), posicaoAtual = new Vector3();
 	private InputMultiplexer inputMultiplexer;
 
+	
+	public Float getTempoDecorridoAnimacaoMov() {
+		return tempoDecorridoAnimacaoMov;
+	}
+
+	public void setTempoDecorridoAnimacaoMov(Float tempoDecorridoAnimacaoMov) {
+		this.tempoDecorridoAnimacaoMov = tempoDecorridoAnimacaoMov;
+	}
 	public InputMultiplexer getInputMultiplexer() {
 		return inputMultiplexer;
 	}
@@ -69,13 +76,6 @@ public class Entidade implements Comparable<Entidade> {
 		this.casaAtual = casaAtual;
 	}
 
-	public boolean isMovendo() {
-		return isMovendo;
-	}
-
-	public void setMovendo(boolean isMovendo) {
-		this.isMovendo = isMovendo;
-	}
 
 	public int getCamada() {
 		return camada;
