@@ -1,5 +1,6 @@
 package com.j01.entidades;
 
+import com.j01.estrutura.TipoAnimacao;
 import com.j01.estrutura.TipoPersonagem;
 
 public class Partida {
@@ -44,6 +45,7 @@ public class Partida {
 
 	public void trocaTurno() {
 		setPersonagemSelecionado(null);
+		setPersonagemAtaque(null);
 		if (timeTurno == 0)
 			timeTurno = 1;
 		else
@@ -60,6 +62,8 @@ public class Partida {
 
 	public void ataquePersonagem() {
 		getPersonagemAtaque().setVida(getPersonagemAtaque().getVida() - 1);
+		if (getPersonagemAtaque().getVida() == 0)
+			getPersonagemAtaque().getAnimacao().setTipoAnimacao(TipoAnimacao.MORRENDOFR);
 	}
 
 }

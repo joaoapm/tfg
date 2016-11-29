@@ -18,33 +18,10 @@ public class Animacao {
 	private Animation animacao;
 	private Map<TipoAnimacao, TextureRegion[]> tipoAnimacoes = new HashMap<TipoAnimacao, TextureRegion[]>();
 	private Texture[] barraVida = new Texture[4];
+	private TipoAnimacao tipoAnimacaoAtual;
 	private TipoAnimacao tipoAnimacao;
-
-	public Animacao(Personagem personagem, TipoAnimacao tipoAnimacao) {
-		
-		this.textureAtlas = new TextureAtlas(Gdx.files.internal(personagem.getTipoPersonagem().getArquivoAtlas()));
-		this.personagem = personagem;
-		this.tipoAnimacao = tipoAnimacao;
-		personagem.setTempoDecorridoAnimacaoMov(0f);
-		
-		inicializaTipoAnimacoes();
-		inicializaBarraVida();
-		inicializaAnimacoes();
-	}
-
-	public void iniciaAnimacao(){
-		animacao = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, tipoAnimacoes.get(tipoAnimacao));
-	}
 	
-	public TextureRegion getFrameAnimacao(float tempo) {
-		if(animacao == null)
-			return null;
-		return animacao.getKeyFrame(tempo, true);
-	}
-
-	public Texture getBarraVida(int qtdVida) {
-		return barraVida[qtdVida];
-	}
+	private int  nroExecucoes = 0;
 
 	private TextureRegion[] framesMovimentoD1 = new TextureRegion[8];
 	private TextureRegion[] framesMovimentoD2 = new TextureRegion[8];
@@ -190,6 +167,41 @@ public class Animacao {
 			lista[i] = (textureAtlas.findRegion(nomeFrame + " 00" + colocaZero + (i + 1)));
 		}
 	}
+	
+	public Animacao(Personagem personagem, TipoAnimacao tipoAnimacao) {
+		
+		this.textureAtlas = new TextureAtlas(Gdx.files.internal(personagem.getTipoPersonagem().getArquivoAtlas()));
+		this.personagem = personagem;
+		this.tipoAnimacao = tipoAnimacao;
+		personagem.setTempoDecorridoAnimacaoMov(0f);
+		
+		inicializaTipoAnimacoes();
+		inicializaBarraVida();
+		inicializaAnimacoes();
+		
+	}
+	
+	public TextureRegion getFrameAnimacao(float tempo) {
+		if (tipoAnimacaoAtual == null) {
+			animacao = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, tipoAnimacoes.get(tipoAnimacao));
+			tipoAnimacaoAtual = tipoAnimacao;
+			nroExecucoes = 0;
+		} else if (tipoAnimacao != tipoAnimacaoAtual &&  personagem.getAnimacao().getAnimacao().isAnimationFinished(personagem.getTempoDecorrido())) {
+			personagem.setTempoDecorrido(0);
+			animacao = new Animation(PropriedadeHelper.VELOCIDADE_ANIMACAO, tipoAnimacoes.get(tipoAnimacao));
+			tipoAnimacaoAtual = tipoAnimacao;
+			nroExecucoes = 0;
+		}
+		
+		if (tipoAnimacaoAtual == tipoAnimacao && animacao.getKeyFrame(tempo, true).toString().contains(String.valueOf(animacao.getKeyFrames().length)))
+			nroExecucoes += 1;
+		
+		return animacao.getKeyFrame(tempo, true);
+	}
+
+	public Texture getBarraVida(int qtdVida) {
+		return barraVida[qtdVida];
+	}
 
 	public TipoAnimacao getTipoAnimacao() {
 		return tipoAnimacao;
@@ -200,7 +212,11 @@ public class Animacao {
 	}
 
 	public boolean isMovendo() {
-		if(tipoAnimacao.equals(TipoAnimacao.MOVIMENTOFR))
+		if (tipoAnimacao == null || tipoAnimacao.equals(TipoAnimacao.MOVIMENTOFR)
+				|| tipoAnimacao.equals(TipoAnimacao.MOVIMENTOTR) || tipoAnimacao.equals(TipoAnimacao.MOVIMENTOD1)
+				|| tipoAnimacao.equals(TipoAnimacao.MOVIMENTOD2) || tipoAnimacao.equals(TipoAnimacao.MOVIMENTOD3)
+				|| tipoAnimacao.equals(TipoAnimacao.MOVIMENTOD4) || tipoAnimacao.equals(TipoAnimacao.MOVIMENTOLD)
+				|| tipoAnimacao.equals(TipoAnimacao.MOVIMENTOLE))
 			return true;
 		return false;
 	}
@@ -211,6 +227,14 @@ public class Animacao {
 
 	public void setAnimacao(Animation animacao) {
 		this.animacao = animacao;
+	}
+
+	public int getNroExecucoes() {
+		return nroExecucoes;
+	}
+
+	public void setNroExecucoes(int nroExecucoes) {
+		this.nroExecucoes = nroExecucoes;
 	}
 	
 }

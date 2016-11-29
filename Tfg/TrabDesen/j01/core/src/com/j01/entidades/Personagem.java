@@ -41,7 +41,6 @@ public class Personagem extends Entidade implements InputProcessor {
 		this.tipoPersonagem = tipoPersonagem;
 		this.personagemHelper = new PersonagemHelper(tipoPersonagem, this);
 		this.animacao = new Animacao(this, TipoAnimacao.PARADOFR);
-		this.animacao.iniciaAnimacao();
 		
 		inputMultiplexer.addProcessor(this);
 
@@ -49,8 +48,8 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	@Override
 	public void render(SpriteBatch spriteBatch) {
-		personagemHelper.renderizaAnimacaoPersonagem(this, spriteBatch);
-		personagemHelper.renderizaBarraVida(this, spriteBatch);
+			personagemHelper.renderizaAnimacaoPersonagem(this, spriteBatch);
+			personagemHelper.renderizaBarraVida(this, spriteBatch);
 	}
 
 	@Override
@@ -86,7 +85,7 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int x, int y, int arg2, int arg3) {
-		if (PersonagemHelper.tocouPersonagem(this, x, y) && !isAtacando() && !getAnimacao().isMovendo()	&& getPartida().getTimeTurno() == this.getTime()) {
+		if (PersonagemHelper.tocouPersonagem(this, x, y) && !getAnimacao().isMovendo()	&& getPartida().getTimeTurno() == this.getTime()) {
 			getPartida().setPersonagemSelecionado(this);
 			MapaHelper.escondeRange();
 			MapaHelper.mostraRange(getCasaAtual());

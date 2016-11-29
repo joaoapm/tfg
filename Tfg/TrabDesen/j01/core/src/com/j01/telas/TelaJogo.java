@@ -81,14 +81,11 @@ public class TelaJogo implements Screen {
 		batch.begin();
 		Collections.sort(listaEntidades);
 		for (Entidade ent : listaEntidades)
-			ent.render(batch);
+			if (!ent.isRemovido())
+				ent.render(batch);
 		batch.end();
 		
-		// remove objetos
-		for (Entidade ent : listaEntidades)
-			if (ent.isRemovido())
-				listaEntidades.remove(ent);
-
+		 
 	}
 
 	@Override
