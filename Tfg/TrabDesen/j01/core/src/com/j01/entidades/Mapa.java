@@ -98,6 +98,11 @@ public class Mapa extends Entidade implements InputProcessor {
 	public void renderShape(ShapeRenderer shapeRenderer) {
 	}
 
+	@Override
+	public void render(SpriteBatch spriteBatch) {
+		MapaHelper.renderizaBarraVidaBase(this,spriteBatch);
+	}
+	
 	public IsometricTiledMapRenderer getRenderer() {
 		return renderer;
 	}
@@ -137,10 +142,5 @@ public class Mapa extends Entidade implements InputProcessor {
 	public void setEntidades(ArrayList<Entidade> entidades) {
 		this.entidades = entidades;
 	}
-
 	
-	@Override
-	public void render(SpriteBatch spriteBatch) {
-		MapaHelper.renderizaBarraVidaBase(this,spriteBatch);
-	}
 }
