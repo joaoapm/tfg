@@ -38,6 +38,7 @@ public class PersonagemHelper {
 	public void atacaPersonagem(Personagem personagem) {
 		 personagem.getPartida().ataquePersonagem();
 		 personagem.getAnimacao().setTipoAnimacao(TipoAnimacao.ATAQUEFR);
+		 personagem.getPosicaoAtual().add(-14, -14, 0);
 	}
 	
 	public void renderizaAnimacaoPersonagem(Personagem personagem, SpriteBatch spriteBatch) {
@@ -49,10 +50,14 @@ public class PersonagemHelper {
 				personagem.getPosicaoAtual().sub(personagem.getPosicaoInicial());
 				personagem.getPosicaoAtual().scl(Interpolation.linear.apply(personagem.getTempoDecorridoAnimacaoMov() / PropriedadeHelper.TEMPO_MOVIMENTO_PERSO));
 				personagem.getPosicaoAtual().add(personagem.getPosicaoInicial());
+				if (personagem.getTipoPersonagem().equals(TipoPersonagem.MONSTRO))
+					personagem.getPosicaoAtual().add(-14, -14, 0);
 			} else {
 				personagem.setAnimacao(new Animacao(personagem, TipoAnimacao.PARADOFR));
 				personagem.setPosicaoInicial(personagem.getPosicaoFinal());
 				personagem.getPartida().trocaTurno();
+				if (personagem.getTipoPersonagem().equals(TipoPersonagem.MONSTRO))
+					personagem.getPosicaoAtual().add(14, 14, 0);
 			}
 		}
 		
@@ -60,6 +65,7 @@ public class PersonagemHelper {
 		if (personagem.getAnimacao().getTipoAnimacao().equals(TipoAnimacao.ATAQUEFR) && personagem.getAnimacao().getNroExecucoes() >= 1) {
 			personagem.setAnimacao(new Animacao(personagem, TipoAnimacao.PARADOFR));
 			personagem.getPartida().trocaTurno();
+			personagem.getPosicaoAtual().add(14, 14, 0);
 		}
 		
 		if (personagem.getAnimacao().getTipoAnimacao().equals(TipoAnimacao.MORRENDOFR) && personagem.getAnimacao().getNroExecucoes() >= 1) {
