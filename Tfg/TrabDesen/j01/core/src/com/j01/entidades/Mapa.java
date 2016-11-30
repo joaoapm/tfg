@@ -51,9 +51,8 @@ public class Mapa extends Entidade implements InputProcessor {
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		TipoAcao acaoCasa = MapaHelper.getAcaoCasa(MapaHelper.getPosicaoCasa(new Casa(null, new Vector3(screenX, screenY, 0))),getPartida().getPersonagemSelecionado());
 
-		if (getPartida().getPersonagemSelecionado() != null	&& (!getPartida().getPersonagemSelecionado().isAtacando()
-						&&  getPartida().getPersonagemSelecionado().getAnimacao().isPodeClicar()) 
-				            && acaoCasa != null && getPartida().getPersonagemSelecionado().getTime() == getPartida().getTimeTurno())
+		if (getPartida().getPersonagemSelecionado() != null	&& (getPartida().getPersonagemSelecionado().getAnimacao().isPodeClicar()) && acaoCasa != null
+			  && getPartida().getPersonagemSelecionado().getTime() == getPartida().getTimeTurno())
 			getPartida().getPersonagemSelecionado().realizaAcaoCasa(acaoCasa,MapaHelper.getPosicaoCasa(new Casa(null, new Vector3(screenX, screenY, 0))));
 
 		return false;

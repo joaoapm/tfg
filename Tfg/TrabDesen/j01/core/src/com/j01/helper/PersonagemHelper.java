@@ -77,7 +77,7 @@ public class PersonagemHelper {
 	
 	public void renderizaBarraVida(Personagem personagem, SpriteBatch spriteBatch) {
 		int vlrDesl = 0;
-		if ((personagem.getTipoPersonagem().equals(TipoPersonagem.MONSTRO) && personagem.getPosicaoFinal() != null) || personagem.isAtacando())
+		if ((personagem.getTipoPersonagem().equals(TipoPersonagem.MONSTRO) && personagem.getAnimacao().isAnimacaoMovimento()))
 			vlrDesl = 14;
 		spriteBatch.draw(personagem.getAnimacao().getBarraVida(personagem.getVida()),personagem.getPosicaoAtual().x - 5 + vlrDesl, personagem.getPosicaoAtual().y + 80 + vlrDesl);
 	}
