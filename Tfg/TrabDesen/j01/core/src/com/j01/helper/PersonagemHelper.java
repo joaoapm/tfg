@@ -21,10 +21,8 @@ public class PersonagemHelper {
 		int altura = personagem.getAnimacao().getFrameAnimacao(personagem.getTempoDecorrido()).getRegionHeight();
 		int comprimento = personagem.getAnimacao().getFrameAnimacao(personagem.getTempoDecorrido()).getRegionWidth();
 
-		if (pointerY >= personagem.getCasaAtual().getPosicaoTela().y
-				&& pointerY <= personagem.getCasaAtual().getPosicaoTela().y + (altura)) {
-			if (pointerX >= personagem.getCasaAtual().getPosicaoTela().x
-					&& pointerX <= personagem.getCasaAtual().getPosicaoTela().x + (comprimento)) {
+		if (pointerY >= personagem.getCasaAtual().getPosicaoTela().y && pointerY <= personagem.getCasaAtual().getPosicaoTela().y + (altura)) {
+			if (pointerX >= personagem.getCasaAtual().getPosicaoTela().x && pointerX <= personagem.getCasaAtual().getPosicaoTela().x + (comprimento)) {
 				return true;
 			}
 		}
@@ -44,7 +42,7 @@ public class PersonagemHelper {
 	
 	public void renderizaAnimacaoPersonagem(Personagem personagem, SpriteBatch spriteBatch) {
 		personagem.setTempoDecorrido(personagem.getTempoDecorrido() + Gdx.graphics.getDeltaTime());
-		if (personagem.getAnimacao().isPodeClicar()) {
+		if (personagem.getAnimacao().isAnimacaoMovimento()) {
 			personagem.setTempoDecorridoAnimacaoMov(personagem.getTempoDecorridoAnimacaoMov() + Gdx.graphics.getDeltaTime());
 			if (personagem.getTempoDecorridoAnimacaoMov() < PropriedadeHelper.TEMPO_MOVIMENTO_PERSO) {
 				personagem.getPosicaoAtual().set(personagem.getPosicaoFinal());
@@ -73,8 +71,7 @@ public class PersonagemHelper {
 	
 	public void renderizaBarraVida(Personagem personagem, SpriteBatch spriteBatch) {
 		int vlrDesl = 0;
-		if ((personagem.getTipoPersonagem().equals(TipoPersonagem.MONSTRO) && personagem.getPosicaoFinal() != null)
-				|| personagem.isAtacando())
+		if ((personagem.getTipoPersonagem().equals(TipoPersonagem.MONSTRO) && personagem.getPosicaoFinal() != null) || personagem.isAtacando())
 			vlrDesl = 14;
 		spriteBatch.draw(personagem.getAnimacao().getBarraVida(personagem.getVida()),personagem.getPosicaoAtual().x - 5 + vlrDesl, personagem.getPosicaoAtual().y + 80 + vlrDesl);
 	}
@@ -96,7 +93,6 @@ public class PersonagemHelper {
 			return TipoAnimacao.MOVIMENTOTR;
 		if (personagem.getCasaAtual().getPosicaoMapa().y == casa.getPosicaoMapa().y && personagem.getCasaAtual().getPosicaoMapa().x < casa.getPosicaoMapa().x)
 			return TipoAnimacao.MOVIMENTOFR;
-
 		return null;
 	}
 

@@ -212,6 +212,12 @@ public class Animacao {
 	}
 
 	public boolean isPodeClicar() {
+		if (tipoAnimacao == null || tipoAnimacao.equals(TipoAnimacao.PARADOFR))
+			return true;
+		return false;
+	}
+	
+	public boolean isAnimacaoMovimento() {
 		if (tipoAnimacao == null || tipoAnimacao.equals(TipoAnimacao.MOVIMENTOFR)
 				|| tipoAnimacao.equals(TipoAnimacao.MOVIMENTOTR) || tipoAnimacao.equals(TipoAnimacao.MOVIMENTOD1)
 				|| tipoAnimacao.equals(TipoAnimacao.MOVIMENTOD2) || tipoAnimacao.equals(TipoAnimacao.MOVIMENTOD3)
