@@ -85,7 +85,7 @@ public class Personagem extends Entidade implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int x, int y, int arg2, int arg3) {
-		if (PersonagemHelper.tocouPersonagem(this, x, y) && !getAnimacao().isMovendo()	&& getPartida().getTimeTurno() == this.getTime()) {
+		if (PersonagemHelper.tocouPersonagem(this, x, y) && !getAnimacao().isPodeClicar()	&& getPartida().getTimeTurno() == this.getTime()) {
 			getPartida().setPersonagemSelecionado(this);
 			MapaHelper.escondeRange();
 			MapaHelper.mostraRange(getCasaAtual());

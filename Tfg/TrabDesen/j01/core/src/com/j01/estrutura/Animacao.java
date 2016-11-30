@@ -211,13 +211,14 @@ public class Animacao {
 		this.tipoAnimacao = tipoAnimacao;
 	}
 
-	public boolean isMovendo() {
+	public boolean isPodeClicar() {
 		if (tipoAnimacao == null || tipoAnimacao.equals(TipoAnimacao.MOVIMENTOFR)
 				|| tipoAnimacao.equals(TipoAnimacao.MOVIMENTOTR) || tipoAnimacao.equals(TipoAnimacao.MOVIMENTOD1)
 				|| tipoAnimacao.equals(TipoAnimacao.MOVIMENTOD2) || tipoAnimacao.equals(TipoAnimacao.MOVIMENTOD3)
 				|| tipoAnimacao.equals(TipoAnimacao.MOVIMENTOD4) || tipoAnimacao.equals(TipoAnimacao.MOVIMENTOLD)
 				|| tipoAnimacao.equals(TipoAnimacao.MOVIMENTOLE))
 			return true;
+		
 		return false;
 	}
 

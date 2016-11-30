@@ -44,7 +44,7 @@ public class PersonagemHelper {
 	
 	public void renderizaAnimacaoPersonagem(Personagem personagem, SpriteBatch spriteBatch) {
 		personagem.setTempoDecorrido(personagem.getTempoDecorrido() + Gdx.graphics.getDeltaTime());
-		if (personagem.getAnimacao().isMovendo()) {
+		if (personagem.getAnimacao().isPodeClicar()) {
 			personagem.setTempoDecorridoAnimacaoMov(personagem.getTempoDecorridoAnimacaoMov() + Gdx.graphics.getDeltaTime());
 			if (personagem.getTempoDecorridoAnimacaoMov() < PropriedadeHelper.TEMPO_MOVIMENTO_PERSO) {
 				personagem.getPosicaoAtual().set(personagem.getPosicaoFinal());
