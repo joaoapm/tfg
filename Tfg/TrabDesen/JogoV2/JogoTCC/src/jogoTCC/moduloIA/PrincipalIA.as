@@ -40,8 +40,8 @@ package jogoTCC.moduloIA {
 			
 			// fase de defuzzificacao e realizadao da decisao retornada
 			exprRetorno = defuzzificar(listaExpressoesJogadores);
-			exprRetornoTime = defuzzificar(listaExpressoesTime);			
-		     var afs:Number = 0;
+			//exprRetornoTime = defuzzificar(listaExpressoesTime);			
+ 
 		}
 		
 		private function fuzzificar(gp:GrupoFuzzy, vlEntrada:Number):void {
@@ -74,7 +74,7 @@ package jogoTCC.moduloIA {
 				expr.grau1 = avaliaExpressao(listaExp[1], listaExp[3]);
 				expr.grau2 = avaliaExpressao(listaExp[5], listaExp[7]);
 				
-				expr.grau = Math.min(expr.grau1, expr.grau2);
+				expr.grau = Math.max(expr.grau1, expr.grau2);
 				expr.metodoExecuta = listaExp[9];
 			}
 		
@@ -114,6 +114,7 @@ package jogoTCC.moduloIA {
 		private function defuzzificar(lista:Array):ExpressaoFuzzy {
 			var maiorGrau:ExpressaoFuzzy;
 			for each (var exp:ExpressaoFuzzy in lista) {
+				//trace(exp.expressao + ": " + exp.grau);
 				if (maiorGrau == null) {
 					maiorGrau = exp;
 				} else {
@@ -122,6 +123,8 @@ package jogoTCC.moduloIA {
 					}
 				}
 			}
+			
+			trace(maiorGrau.expressao + ": " + maiorGrau.grau);
 			
 			return maiorGrau;
 		}
