@@ -24,7 +24,7 @@ package jogoTCC.moduloIA {
 			var expressoesTime:ExpressoesIA = new ExpressoesIA(listaExpressoesTime,1);
 		}
 		
-		public function processar(persoAoRedor:Number, distT1Torre1:Number, vidaTorre:Number, vidaTorreIni:Number, vidaPerso:Number, iniVida:Number):void {
+		public function processarPesonagem(persoAoRedor:Number, distT1Torre1:Number, vidaTorre:Number, vidaTorreIni:Number, vidaPerso:Number, iniVida:Number):void {
 			
 			// fase de fuzzificacao dos valores de entrada			
 			fuzzificar(grupos.PERSON_AOREDOR, persoAoRedor);
@@ -36,13 +36,25 @@ package jogoTCC.moduloIA {
 			
 			// fase de inferencia das regras
 			realizaInferencia(listaExpressoesJogadores);
-			realizaInferencia(listaExpressoesTime);
 			
 			// fase de defuzzificacao e realizadao da decisao retornada
 			exprRetorno = defuzzificar(listaExpressoesJogadores);
-			//exprRetornoTime = defuzzificar(listaExpressoesTime);			
  
 		}
+		
+		public function processarTime(vidaTorre:Number, vidaTorreIni:Number):void {
+			
+			// fase de fuzzificacao dos valores de entrada			
+			fuzzificar(grupos.VIDA_TORRE, vidaTorre);
+			fuzzificar(grupos.VIDA_TORRE_INI, vidaTorreIni);
+			
+			// fase de inferencia das regras
+			realizaInferencia(listaExpressoesTime);
+			
+			// fase de defuzzificacao e realizadao da decisao retornada
+			exprRetornoTime = defuzzificar(listaExpressoesTime);			
+ 
+		}		
 		
 		private function fuzzificar(gp:GrupoFuzzy, vlEntrada:Number):void {
 			gp.baixo.vlAtual = calculaGrauPertinencia(gp.baixo, vlEntrada);

@@ -48,17 +48,15 @@ package jogoTCC.moduloIA {
 		}
 		
 		public function processaJogada():void {
-			
-						
+								
 			// personagem a ser processado
-			//principalIA.processar(0, 0, mapa.vidaC1, mapa.vidaC0, 0, 0);
+			 principalIA.processarTime(mapa.vidaC1, mapa.vidaC0);
 			
-/*			if(principalIA.exprRetornoTime.metodoExecuta == "TIME_ATAQUE")
+ 		    if(principalIA.exprRetornoTime.metodoExecuta == "TIME_ATAQUE")
 			 perso = persoTime1Ataque[randomRange(0, 2)];
 			else if (principalIA.exprRetornoTime.metodoExecuta == "TIME_DEFESA")
-			 perso = persoTime1Defesa[randomRange(0, 1)];*/
-			 
-			 perso = persoTime1Ataque[randomRange(0, 2)];
+			 perso = persoTime1Defesa[randomRange(0, 1)]; 
+
 			 
 			// personagem ao redor
 			listaIniAoRedor = pesqIniAoRedor(perso.casaAtual);
@@ -80,9 +78,8 @@ package jogoTCC.moduloIA {
 			caminho = pathFind.caminho;
 			dist = caminho.length;
 			
-			principalIA.processar(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
-			
- 
+			principalIA.processarPesonagem(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
+			 
 			//trace(principalIA.exprRetorno.expressao + ": " + principalIA.exprRetorno.grau);
 			
 			this[principalIA.exprRetorno.metodoExecuta]();
