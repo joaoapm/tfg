@@ -125,8 +125,10 @@ package jogoTCC.moduloIA {
 		
 		private function defuzzificar(lista:Array):ExpressaoFuzzy {
 			var maiorGrau:ExpressaoFuzzy;
+			var listaMaiores:Array = new Array();
+			
 			for each (var exp:ExpressaoFuzzy in lista) {
-				//trace(exp.expressao + ": " + exp.grau);
+				// trace(exp.expressao + ": " + exp.grau);
 				if (maiorGrau == null) {
 					maiorGrau = exp;
 				} else {
@@ -136,9 +138,21 @@ package jogoTCC.moduloIA {
 				}
 			}
 			
-			trace(maiorGrau.expressao + ": " + maiorGrau.grau);
+			listaMaiores.push(maiorGrau);
 			
-			return maiorGrau;
+			for each (var exp2:ExpressaoFuzzy in lista) { 
+					if (exp2.grau == maiorGrau.grau) 
+						listaMaiores.push(exp2);
+								 
+			}
+			
+			//trace(maiorGrau.expressao + ": " + maiorGrau.grau);
+			
+			return listaMaiores[randomRange(0,listaMaiores.length-1)];
+		}
+		
+		private function randomRange(minNum:Number, maxNum:Number):Number {
+			return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
 		}
 	
 	}

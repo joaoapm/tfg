@@ -56,13 +56,13 @@ package jogoTCC.estrutura {
 			addChild(p3);
 			p3.setLocalInicialPersonagem(mapa.casas[10][3] as Casa);
 			
-			var p4:Personagem = new Personagem("guerreiro", 0);
+			/*var p4:Personagem = new Personagem("guerreiro", 0);
 			addChild(p4);
 			p4.setLocalInicialPersonagem(mapa.casas[12][3] as Casa);
 			
 			var p5:Personagem = new Personagem("guerreiro", 0);
 			addChild(p5);
-			p5.setLocalInicialPersonagem(mapa.casas[15][3] as Casa);
+			p5.setLocalInicialPersonagem(mapa.casas[15][3] as Casa);*/
 			
 			// personagens do time do computador
 			
@@ -78,24 +78,24 @@ package jogoTCC.estrutura {
 			addChild(pc3);
 			pc3.setLocalInicialPersonagem(mapa.casas[10][20] as Casa);
 			
-			var pc4:Personagem = new Personagem("monstro", 1);
+			/*var pc4:Personagem = new Personagem("monstro", 1);
 			addChild(pc4);
 			pc4.setLocalInicialPersonagem(mapa.casas[12][20] as Casa);
 			
 			var pc5:Personagem = new Personagem("monstro", 1);
 			addChild(pc5);
-			pc5.setLocalInicialPersonagem(mapa.casas[15][20] as Casa);
+			pc5.setLocalInicialPersonagem(mapa.casas[15][20] as Casa);*/
 			
 			listaPersonagens.push(p1);
 			listaPersonagens.push(p2);
 			listaPersonagens.push(p3);
-			listaPersonagens.push(p4);
-			listaPersonagens.push(p5);
+			//listaPersonagens.push(p4);
+			//listaPersonagens.push(p5);
 			listaPersonagens.push(pc1);
 			listaPersonagens.push(pc2)
 			listaPersonagens.push(pc3);
-			listaPersonagens.push(pc4);
-			listaPersonagens.push(pc5);
+			//listaPersonagens.push(pc4);
+			//listaPersonagens.push(pc5);
 		
 		}
 		

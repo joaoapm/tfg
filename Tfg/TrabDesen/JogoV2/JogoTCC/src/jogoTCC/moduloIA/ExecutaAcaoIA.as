@@ -38,11 +38,11 @@ package jogoTCC.moduloIA {
 			}
 			
 			persoTime1Ataque.push(persoTime1[0]);
-			persoTime1Ataque.push(persoTime1[2]);
-			persoTime1Ataque.push(persoTime1[4]);
+			persoTime1Ataque.push(persoTime1[1]);
+			//persoTime1Ataque.push(persoTime1[4]);
 			
-			persoTime1Defesa.push(persoTime1[1]);
-			persoTime1Defesa.push(persoTime1[3]);
+			persoTime1Defesa.push(persoTime1[2]);
+			//persoTime1Defesa.push(persoTime1[3]);
 			
 		
 		}
@@ -53,9 +53,9 @@ package jogoTCC.moduloIA {
 			 principalIA.processarTime(mapa.vidaC1, mapa.vidaC0);
 			
  		    if(principalIA.exprRetornoTime.metodoExecuta == "TIME_ATAQUE")
-			 perso = persoTime1Ataque[randomRange(0, 2)];
+			 perso = persoTime1Ataque[randomRange(0, 1)];
 			else if (principalIA.exprRetornoTime.metodoExecuta == "TIME_DEFESA")
-			 perso = persoTime1Defesa[randomRange(0, 1)]; 
+			 perso = persoTime1Defesa[0]; 
 
 			 
 			// personagem ao redor
@@ -81,7 +81,7 @@ package jogoTCC.moduloIA {
 			principalIA.processarPesonagem(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
 			 
 			//trace(principalIA.exprRetorno.expressao + ": " + principalIA.exprRetorno.grau);
-			
+			trace(principalIA.exprRetorno.metodoExecuta);
 			this[principalIA.exprRetorno.metodoExecuta]();
 		}
 		
@@ -110,8 +110,10 @@ package jogoTCC.moduloIA {
 		}
 		
 		public function ATACA_TORRE():void {
-			if (dist >= 2) {
+			if (dist <= 2) {
 			 mapa.atacaTorre( mapa.torre0[2], perso);
+			} else {
+				MOVE_TORRE_INI();
 			}
 		}
 		
