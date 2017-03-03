@@ -1,7 +1,7 @@
 :user_configuration
 
 :: Path to Flex SDK
-set FLEX_SDK=C:\FlashDevelop-5.1.1\Apps\ascsdk\22.0.0
+set FLEX_SDK=E:\Fac\FlashDev\Apps\flexairsdk\4.6.0+24.0.0
 
 
 :validation

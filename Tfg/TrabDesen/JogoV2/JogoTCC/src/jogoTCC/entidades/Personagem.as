@@ -313,6 +313,7 @@ package jogoTCC.entidades {
 			
 			if (this.vida == 1) {
 				atualizaAnimacao("morrendoTR", "morrendo", 8, null, null, true);
+				this.casaAtual.ehPassavel = true;
 			} else {
 				addChild(vidaAtual);
 				vidaAtual.y -= 5;

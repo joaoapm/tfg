@@ -17,6 +17,9 @@ package jogoTCC.moduloIA {
 		public var VIDA_PERSO:GrupoFuzzy;
 		public var INI_ATQ_VIDA:GrupoFuzzy;
 		
+		public var VIDA_P_T1:GrupoFuzzy;
+		public var VIDA_P_T2:GrupoFuzzy;
+		
 		public function GruposIA(listaGrupos:Array) {
 			
 			PERSON_AOREDOR = iniciaGrupo("PERSON_AOREDOR", 0, 1, 2, 1, 2, 4, 3, 5, 6);
@@ -25,6 +28,8 @@ package jogoTCC.moduloIA {
 			VIDA_TORRE_INI = iniciaGrupo("VIDA_TORRE_INI", 0, 2, 4, 3, 5, 7, 6, 10, 11);			
 			VIDA_PERSO = iniciaGrupo("VIDA_PERSO", 0, 2, 4, 3, 5, 7, 6, 10, 11);
 			INI_ATQ_VIDA = iniciaGrupo("INI_ATQ_VIDA", 0, 2, 4, 3, 5, 7, 6, 10, 11);
+			VIDA_P_T1 = iniciaGrupo("VIDA_P_T1", 0, 1, 2, 1, 2, 4, 3, 5, 6);
+			VIDA_P_T2 = iniciaGrupo("VIDA_P_T2", 0, 1, 2, 1, 2, 4, 3, 5, 6);	
 		
 		}
 		

@@ -12,16 +12,19 @@ package jogoTCC.moduloIA {
 		private var listaGrupos:Array = new Array();
 		private var listaExpressoesJogadores:Array = new Array();
 		private var listaExpressoesTime:Array = new Array();
+		private var listaExpressoesLuta:Array = new Array();
 		
 		public var exprRetorno:ExpressaoFuzzy;
 		public var exprRetornoTime:ExpressaoFuzzy;
+		public var exprRetornoLuta:ExpressaoFuzzy;
 		
 		public var grupos:GruposIA;
 		
 		public function PrincipalIA() {
 			grupos = new GruposIA(listaGrupos);
 			var expressoes:ExpressoesIA = new ExpressoesIA(listaExpressoesJogadores,0); 
-			var expressoesTime:ExpressoesIA = new ExpressoesIA(listaExpressoesTime,1);
+			var expressoesTime:ExpressoesIA = new ExpressoesIA(listaExpressoesTime, 1);
+			var listaExpressoesLuta:ExpressoesIA = new ExpressoesIA(listaExpressoesLuta,2);
 		}
 		
 		public function processarPesonagem(persoAoRedor:Number, distT1Torre1:Number, vidaTorre:Number, vidaTorreIni:Number, vidaPerso:Number, iniVida:Number):void {
@@ -39,6 +42,8 @@ package jogoTCC.moduloIA {
 			
 			// fase de defuzzificacao e realizadao da decisao retornada
 			exprRetorno = defuzzificar(listaExpressoesJogadores);
+			
+			trace("Perso: " + exprRetorno.metodoExecuta);
  
 		}
 		
@@ -52,9 +57,27 @@ package jogoTCC.moduloIA {
 			realizaInferencia(listaExpressoesTime);
 			
 			// fase de defuzzificacao e realizadao da decisao retornada
-			exprRetornoTime = defuzzificar(listaExpressoesTime);			
+			exprRetornoTime = defuzzificar(listaExpressoesTime);	
+			trace("Time: " + exprRetornoTime.metodoExecuta);
  
-		}		
+		}	
+		
+		public function processarLuta(vidaT0:Number, vidaT1:Number):void {
+			
+			// fase de fuzzificacao dos valores de entrada			
+			fuzzificar(grupos.VIDA_P_T1, vidaT0);
+			fuzzificar(grupos.VIDA_P_T2, vidaT1);
+			
+			// fase de inferencia das regras
+			realizaInferencia(listaExpressoesLuta);
+			
+			// fase de defuzzificacao e realizadao da decisao retornada
+			exprRetornoLuta = defuzzificar(listaExpressoesLuta);	
+			
+			
+			trace("Luta: " + exprRetornoLuta.metodoExecuta);
+ 
+		}
 		
 		private function fuzzificar(gp:GrupoFuzzy, vlEntrada:Number):void {
 			gp.baixo.vlAtual = calculaGrauPertinencia(gp.baixo, vlEntrada);
