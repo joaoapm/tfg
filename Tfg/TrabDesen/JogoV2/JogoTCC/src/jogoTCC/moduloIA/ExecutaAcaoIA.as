@@ -70,35 +70,56 @@ package jogoTCC.moduloIA
 			
 			if (persoTime1.length > 0)
 				{
-					// personagem a ser processado
-					perso = persoTime1[randomRange(0, persoTime1.length - 1)];
+					// se possui algum personagem atacando, ataca ate matar/morrer
+					var persoAtacando:Personagem;
 					
-					// personagem ao redor
-					listaIniAoRedor = pesqIniAoRedor(perso.casaAtual);
-					qntAoRedor = listaIniAoRedor.length;
-					
-					// qntidade de vida de um personagem aleatorio ao redor
-					iniAtacar = listaIniAoRedor[randomRange(0, qntAoRedor)] as Personagem;
-					var nr:Number;
-					if (iniAtacar != null)
+					for each (var persoAtkando:Personagem in this.listaPersonagens)
 						{
-							nr = iniAtacar.vida;
+							if (persoAtkando.time == 1 && persoAtkando.personagemAtacando != null)
+								{
+									persoAtacando = persoAtkando;
+								}
+							
+						}
+					
+					if (persoAtacando != null)
+						{
+							perso = persoAtacando;
+							ATACA_INI();
 						}
 					else
 						{
-							nr = 0;
+							
+							// personagem a ser processado
+							perso = persoTime1[randomRange(0, persoTime1.length - 1)];
+							
+							// personagem ao redor
+							listaIniAoRedor = pesqIniAoRedor(perso.casaAtual);
+							qntAoRedor = listaIniAoRedor.length;
+							
+							// qntidade de vida de um personagem aleatorio ao redor
+							iniAtacar = listaIniAoRedor[randomRange(0, qntAoRedor)] as Personagem;
+							var nr:Number;
+							if (iniAtacar != null)
+								{
+									nr = iniAtacar.vida;
+								}
+							else
+								{
+									nr = 0;
+								}
+							
+							// distancia torre inimiga
+							pathFind = new Pathfinder();
+							caminho = pathFind.pesquisaCaminho(perso.casaAtual, mapa.torre0[2]);
+							pathFind.caminhoInv = new Array();
+							caminho = pathFind.caminho;
+							dist = caminho.length;
+							
+							principalIA.processarPesonagem(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
+							
+							this[principalIA.exprRetorno.metodoExecuta]();
 						}
-					
-					// distancia torre inimiga
-					pathFind = new Pathfinder();
-					caminho = pathFind.pesquisaCaminho(perso.casaAtual, mapa.torre0[2]);
-					pathFind.caminhoInv = new Array();
-					caminho = pathFind.caminho;
-					dist = caminho.length;
-					
-					principalIA.processarPesonagem(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
-					
-					this[principalIA.exprRetorno.metodoExecuta]();
 				}
 		}
 		
@@ -139,8 +160,10 @@ package jogoTCC.moduloIA
 		public function ATACA_INI():void
 		{
 			var persoAtk:Personagem = listaIniAoRedor[0];
+			perso.personagemAtacando = persoAtk;
 			persoAtk.sofreAtaque();
 			perso.ataca();
+		
 		}
 		
 		private function mostracc():void

@@ -37,7 +37,7 @@ package jogoTCC.estrutura
 			
 			bt1.y = 525;
 			bt1.x = 200;
-			addChild(bt1);
+			//addChild(bt1);
 			
 			// adiciona botao fuzzy
 			var imgBt2:Bitmap = new texturaBt2();

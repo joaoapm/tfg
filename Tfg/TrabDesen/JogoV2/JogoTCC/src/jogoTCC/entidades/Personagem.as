@@ -37,6 +37,8 @@ package jogoTCC.entidades {
 		private var vidaAtual:Image;
 		public var animacaoFinalizada:Boolean = true;
 		
+		public var personagemAtacando:Personagem;
+		
 		public function Personagem(tipoJogador:String, nrTime:Number) {
 			
 			// colisor
@@ -77,7 +79,10 @@ package jogoTCC.entidades {
 			if (this.time == 0)
 				atualizaAnimacao("ataqueFR", "atacando", 13, -18, -18, true);
 			else
-				atualizaAnimacao("ataqueTR", "atacando", 13, 0,0, true);
+				atualizaAnimacao("ataqueTR", "atacando", 13, 0, 0, true);
+				
+			if (personagemAtacando != null && personagemAtacando.vida <= 1)
+			personagemAtacando = null;
 		}
 		
 		public function sofreAtaque():void {
