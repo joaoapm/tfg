@@ -45,7 +45,7 @@ package jogoTCC.estrutura
 			var bt2:Button = new Button(textureBt2, "");
 			
 			bt2.y = 525;
-			bt2.x = 460;
+			bt2.x = 560;
 			
 			bt2.addEventListener(Event.TRIGGERED, bt1Pressionado);
 			
