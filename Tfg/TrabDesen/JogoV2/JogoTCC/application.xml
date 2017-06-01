@@ -10,7 +10,7 @@
 	<copyright></copyright> 
 	
 	<initialWindow> 
-		<title>JogoTCC</title> 
+		<title>Caçando Monstros</title> 
 		<content>JogoTCC.swf</content> 
 		<systemChrome>standard</systemChrome> 
 		<transparent>false</transparent> 

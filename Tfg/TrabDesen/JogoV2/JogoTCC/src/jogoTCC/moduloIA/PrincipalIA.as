@@ -151,7 +151,7 @@ package jogoTCC.moduloIA {
 			var listaMaiores:Array = new Array();
 			
 			for each (var exp:ExpressaoFuzzy in lista) {
-				// trace(exp.expressao + ": " + exp.grau);
+				  trace(exp.expressao + ": " + exp.grau);
 				if (maiorGrau == null) {
 					maiorGrau = exp;
 				} else {

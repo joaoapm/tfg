@@ -27,7 +27,7 @@ package jogoTCC.estrutura
 			var bitmap:Bitmap = new telanicial();
 			var textura:Texture = Texture.fromBitmap(new telanicial());
 			var imagem:Image = new Image(textura);
-			
+	 
 			addChild(imagem);
 			
 			// adiciona botao aleatorio
@@ -45,7 +45,7 @@ package jogoTCC.estrutura
 			var bt2:Button = new Button(textureBt2, "");
 			
 			bt2.y = 525;
-			bt2.x = 560;
+			bt2.x = 580;
 			
 			bt2.addEventListener(Event.TRIGGERED, bt1Pressionado);
 			
