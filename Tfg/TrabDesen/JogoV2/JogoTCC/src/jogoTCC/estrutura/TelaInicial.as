@@ -2,11 +2,13 @@ package jogoTCC.estrutura
 {
 
 	import flash.display.Bitmap;
+	import flash.display.FrameLabel;
 	import starling.display.Sprite;
 	import starling.textures.Texture;
 	import starling.display.Image;
 	import starling.display.Button;
 	import starling.events.Event;
+ 	import starling.text.TextField;
 	
 	public class TelaInicial extends Sprite
 	{
@@ -43,13 +45,17 @@ package jogoTCC.estrutura
 			var imgBt2:Bitmap = new texturaBt2();
 			var textureBt2:Texture = Texture.fromBitmap(imgBt2);
 			var bt2:Button = new Button(textureBt2, "");
-			
+					
 			bt2.y = 525;
 			bt2.x = 580;
 			
 			bt2.addEventListener(Event.TRIGGERED, bt1Pressionado);
 			
 			addChild(bt2);
+			
+			var versao:TextField = new TextField(50,50,"v0.2"); 
+ 
+			addChild(versao); 
 		
 		}
 		

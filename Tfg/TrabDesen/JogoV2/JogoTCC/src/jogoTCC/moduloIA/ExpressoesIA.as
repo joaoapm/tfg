@@ -62,7 +62,7 @@ package jogoTCC.moduloIA
 				var expressao18:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = BAIXO E VIDA_P_T2 = BAIXO ENTAO ATACA_INI ");
 				var expressao19:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = BAIXO E VIDA_P_T2 = MEDIO ENTAO MOVE_TORRE_INI ");
 				
-				var expressao20:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = MEDIO E VIDA_P_T2 = ALTO ENTAO MOVE_TORRE_INI ");
+				var expressao20:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = MEDIO E VIDA_P_T2 = ALTO ENTAO ATACA_INI ");
 				var expressao21:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = MEDIO E VIDA_P_T2 = BAIXO ENTAO MOVE_TORRE_INI ");
 				var expressao22:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = MEDIO E VIDA_P_T2 = MEDIO ENTAO ATACA_INI ");
 				

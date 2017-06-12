@@ -82,7 +82,7 @@ package jogoTCC.moduloIA
 							
 						}
 					
-					if (persoAtacando != null)
+					if (persoAtacando != null && persoAtacando.personagemAtacando != null &&  persoAtacando.isCasaDestinoValida(persoAtacando.personagemAtacando.casaAtual))
 						{
 							perso = persoAtacando;
 							ATACA_INI();
@@ -146,6 +146,7 @@ package jogoTCC.moduloIA
 		
 		public function MOVE_TORRE_INI():void
 		{
+			perso.personagemAtacando = null;
 			if (dist < 4)
 				ATACA_TORRE();
 			else
@@ -154,6 +155,7 @@ package jogoTCC.moduloIA
 		
 		public function ATACA_TORRE():void
 		{
+			perso.personagemAtacando = null;
 			mapa.atacaTorre(mapa.torre0[2], perso);
 		}
 		
