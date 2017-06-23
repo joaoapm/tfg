@@ -24,7 +24,7 @@ package jogoTCC.moduloIA {
 			grupos = new GruposIA(listaGrupos);
 			var expressoes:ExpressoesIA = new ExpressoesIA(listaExpressoesJogadores,0); 
 			var expressoesTime:ExpressoesIA = new ExpressoesIA(listaExpressoesTime, 1);
-			var listaExpressoesLuta:ExpressoesIA = new ExpressoesIA(listaExpressoesLuta,2);
+			var expressoesLuta:ExpressoesIA = new ExpressoesIA(listaExpressoesLuta,2);
 		}
 		
 		public function processarPesonagem(persoAoRedor:Number, distT1Torre1:Number, vidaTorre:Number, vidaTorreIni:Number, vidaPerso:Number, iniVida:Number):void {
@@ -43,7 +43,7 @@ package jogoTCC.moduloIA {
 			// fase de defuzzificacao e realizadao da decisao retornada
 			exprRetorno = defuzzificar(listaExpressoesJogadores);
 			
-			trace("Perso: " + exprRetorno.metodoExecuta);
+			 trace("Perso: " + exprRetorno.expressao);
  
 		}
 		
@@ -58,7 +58,7 @@ package jogoTCC.moduloIA {
 			
 			// fase de defuzzificacao e realizadao da decisao retornada
 			exprRetornoTime = defuzzificar(listaExpressoesTime);	
-			trace("Time: " + exprRetornoTime.metodoExecuta);
+			//trace("Time: " + exprRetornoTime.metodoExecuta);
  
 		}	
 		
@@ -75,7 +75,7 @@ package jogoTCC.moduloIA {
 			exprRetornoLuta = defuzzificar(listaExpressoesLuta);	
 			
 			
-			trace("Luta: " + exprRetornoLuta.metodoExecuta);
+			//trace("Luta: " + exprRetornoLuta.metodoExecuta);
  
 		}
 		
@@ -151,7 +151,7 @@ package jogoTCC.moduloIA {
 			var listaMaiores:Array = new Array();
 			
 			for each (var exp:ExpressaoFuzzy in lista) {
-				  trace(exp.expressao + ": " + exp.grau);
+				//  trace(exp.expressao + ": " + exp.grau);
 				if (maiorGrau == null) {
 					maiorGrau = exp;
 				} else {

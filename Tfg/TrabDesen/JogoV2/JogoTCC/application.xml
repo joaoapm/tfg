@@ -17,7 +17,7 @@
 		<visible>true</visible> 
 		<minimizable>false</minimizable> 
 		<maximizable>false</maximizable> 
-		<resizable>false</resizable> 
+		<resizable>true</resizable> 
 		<renderMode>direct</renderMode>
 	</initialWindow> 
 	

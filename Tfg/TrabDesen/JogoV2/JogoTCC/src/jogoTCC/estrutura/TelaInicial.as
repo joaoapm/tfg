@@ -23,6 +23,9 @@ package jogoTCC.estrutura
 		[Embed(source="../../../assets/telaInicial/bt2.png")]
 		private static const texturaBt2:Class;
 		
+		[Embed(source="../../../assets/telaInicial/bt2.png")]
+		private static const texturaBt3:Class;
+		
 		public function TelaInicial()
 		{
 			// adiciona imagem do mapa
@@ -47,13 +50,30 @@ package jogoTCC.estrutura
 			var bt2:Button = new Button(textureBt2, "");
 					
 			bt2.y = 525;
-			bt2.x = 580;
+			bt2.x = 600;
 			
 			bt2.addEventListener(Event.TRIGGERED, bt1Pressionado);
 			
 			addChild(bt2);
 			
-			var versao:TextField = new TextField(50,50,"v0.4"); 
+			
+			
+			// adiciona botao ia vs ia
+			var imgBt3:Bitmap = new texturaBt3();
+			var textureBt3:Texture = Texture.fromBitmap(imgBt3);
+			var bt3:Button = new Button(textureBt3, "");
+					
+			bt3.y = 525;
+			bt3.x = 440;
+			
+			bt3.addEventListener(Event.TRIGGERED, bt3Pressionado);
+			
+			addChild(bt3);
+			
+			
+			
+			
+			var versao:TextField = new TextField(50,50,"v0.5"); 
  
 			addChild(versao); 
 		
@@ -66,6 +86,17 @@ package jogoTCC.estrutura
 			var partida:Partida = new Partida();
 			
 			addChild(partida);
+		}
+		
+		private function bt3Pressionado(event:Event):void
+		{
+			parent.dispose();
+			
+			var partida:Partida = new Partida();
+			partida.isIaVsIa = true;
+			
+			addChild(partida);
+			partida.iniciaIaVsIa();
 		}
 	
 	}

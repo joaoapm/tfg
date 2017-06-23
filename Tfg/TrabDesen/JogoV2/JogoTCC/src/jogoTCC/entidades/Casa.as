@@ -72,6 +72,7 @@ package jogoTCC.entidades {
 			super.x = inicioX + (posX * 45) + (45 * posY);
 			super.y = inicioY - (posX * 22) + (22 * posY);
 			super.alpha = alpha;
+			
 			addEventListener(TouchEvent.TOUCH, controlaEventos);
 		
 		}
@@ -87,6 +88,10 @@ package jogoTCC.entidades {
 		}
 		
 		private function controlaEventos(e:TouchEvent):void {
+			
+			var partida:Partida = this.parent.parent as Partida;
+			if (!partida.isIaVsIa){
+			
 			var touch:Touch = e.getTouch(stage);
 			if (touch != null) {
 				var position:Point = touch.getLocation(stage);
@@ -96,7 +101,7 @@ package jogoTCC.entidades {
 					if (target as Casa) {
 						
 						var c:Casa = target as Casa;
-						var partida:Partida = c.parent.parent as Partida;
+						partida = c.parent.parent as Partida;
 						var perso:Personagem = partida.personagemMarcado as Personagem;
 						if (this.ehPassavel) {
 							
@@ -108,7 +113,7 @@ package jogoTCC.entidades {
 						}
 					}
 				}
-				
+			}
 			}
 		}
 	

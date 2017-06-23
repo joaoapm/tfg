@@ -39,6 +39,7 @@ package jogoTCC.entidades {
 		
 		public var personagemAtacando:Personagem;
 		public var personagemPerseguindo:Personagem;
+		public var isAtqTorre:Boolean = false;
 		
 		public function Personagem(tipoJogador:String, nrTime:Number) {
 			
@@ -81,9 +82,9 @@ package jogoTCC.entidades {
 				atualizaAnimacao("ataqueFR", "atacando", 13, -18, -18, true);
 			else
 				atualizaAnimacao("ataqueTR", "atacando", 13, 0, 0, true);
-				
+			
 			if (personagemAtacando != null && personagemAtacando.vida <= 1)
-			personagemAtacando = null;
+				personagemAtacando = null;
 		}
 		
 		public function sofreAtaque():void {
@@ -158,23 +159,26 @@ package jogoTCC.entidades {
 		private function controlaEventos(e:TouchEvent):void {
 			
 			var partida:Partida = parent as Partida;
-			var touch:Touch = e.getTouch(stage);
 			
-			if (partida.turnoAtual == this.time || (partida.personagemMarcado != null)) {
-				if (touch != null) {
-					var colisor:Quad = e.currentTarget as Quad;
-					var clicado:Personagem = colisor.parent as Personagem;
-					
-					if (touch.phase == TouchPhase.ENDED) {
+			if (!partida.isIaVsIa) {
+				var touch:Touch = e.getTouch(stage);
+				
+				if (partida.turnoAtual == this.time || (partida.personagemMarcado != null)) {
+					if (touch != null) {
+						var colisor:Quad = e.currentTarget as Quad;
+						var clicado:Personagem = colisor.parent as Personagem;
 						
-						if (this.time == 0) {
-							partida.atualizaPersonagemMarcado(clicado);
-							mostraRange(true);
-						} else {
-							if (partida.personagemMarcado != null && partida.personagemMarcado.animacaoFinalizada)
-								partida.gerenciaAtaque(clicado);
+						if (touch.phase == TouchPhase.ENDED) {
+							
+							if (this.time == 0) {
+								partida.atualizaPersonagemMarcado(clicado);
+								mostraRange(true);
+							} else {
+								if (partida.personagemMarcado != null && partida.personagemMarcado.animacaoFinalizada)
+									partida.gerenciaAtaque(clicado);
+							}
+							
 						}
-						
 					}
 				}
 			}
@@ -349,8 +353,11 @@ package jogoTCC.entidades {
 			quad2.alpha = 0;
 			
 			// controle de eventos
+			var partida:Partida = parent as Partida;
+			
 			quad.addEventListener(TouchEvent.TOUCH, controlaEventos);
 			quad2.addEventListener(TouchEvent.TOUCH, controlaEventos);
+			
 			addChild(quad);
 			addChild(quad2);
 		

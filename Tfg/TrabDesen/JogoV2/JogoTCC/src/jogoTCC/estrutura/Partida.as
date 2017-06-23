@@ -1,5 +1,4 @@
-package jogoTCC.estrutura
-{
+package jogoTCC.estrutura {
 	
 	import jogoTCC.entidades.Casa;
 	import jogoTCC.moduloIA.ExecutaAcaoIA;
@@ -9,8 +8,7 @@ package jogoTCC.estrutura
 	import jogoTCC.entidades.Personagem;
 	import jogoTCC.util.Scroll;
 	
-	public class Partida extends Sprite
-	{
+	public class Partida extends Sprite {
 		
 		// variaveis para controle do jogo
 		private var listaPersonagens:Array;
@@ -19,15 +17,14 @@ package jogoTCC.estrutura
 		public var mapa:Mapa;
 		public var turnoAtual:Number = 0;
 		private var executaAcaoIA:ExecutaAcaoIA;
+		public var isIaVsIa:Boolean = false;
 		
-		public function Partida()
-		{
+		public function Partida() {
 			// rotina para iniciar a estrutura do jogo
 			iniciaPartida();
 		}
 		
-		public function iniciaPartida():void
-		{
+		public function iniciaPartida():void {
 			// adiciona mapa ao jogo
 			mapa = new Mapa();
 			addChild(mapa);
@@ -45,8 +42,7 @@ package jogoTCC.estrutura
 			executaAcaoIA = new ExecutaAcaoIA(mapa, listaPersonagens);
 		}
 		
-		private function adicionaJogadores():void
-		{
+		private function adicionaJogadores():void {
 			
 			// personagens do time do jogador
 			var p1:Personagem = new Personagem("guerreiro", 0);
@@ -104,79 +100,71 @@ package jogoTCC.estrutura
 		
 		}
 		
-		public function atualizaPersonagemMarcado(personagem:Personagem):void
-		{
+		public function atualizaPersonagemMarcado(personagem:Personagem):void {
 			if (personagemMarcado != null)
 				personagemMarcado.mostraRange(false);
 			personagemMarcado = personagem;
 		}
 		
-		public function gerenciaAtaque(personagem:Personagem):void
-		{
-			if ((personagem != null && personagemMarcado != null) && personagem != personagemMarcado && personagem.time != personagemMarcado.time)
-				{
-					if (personagem.isCasaDestinoValida(this.personagemMarcado.casaAtual))
-						{
-							personagem.sofreAtaque();
-							personagemMarcado.ataca();
-						}
+		public function gerenciaAtaque(personagem:Personagem):void {
+			if ((personagem != null && personagemMarcado != null) && personagem != personagemMarcado && personagem.time != personagemMarcado.time) {
+				if (personagem.isCasaDestinoValida(this.personagemMarcado.casaAtual)) {
+					personagem.sofreAtaque();
+					personagemMarcado.ataca();
 				}
+			}
 		}
 		
-		public function organizaLayers():void
-		{
+		public function organizaLayers():void {
 			mapa.organizaLayers(listaPersonagens);
 		}
 		
-		public function verificaEstadoPartida():void
-		{
+		public function verificaEstadoPartida():void {
 			var telaFim:TelaFinal;
 			
 			var vivosT0:Number = 0;
 			var vivosT1:Number = 0;
 			
-			for each (var p:Personagem in this.listaPersonagens)
+			for each (var p:Personagem in this.listaPersonagens) {
 				{
-					{
-						if (p.time == 0 && p.vida > 1)
-							vivosT0++;
-						else if (p.time == 1 && p.vida > 1)
-							vivosT1++;
-					}
+					if (p.time == 0 && p.vida > 1)
+						vivosT0++;
+					else if (p.time == 1 && p.vida > 1)
+						vivosT1++;
 				}
+			}
 			
-			if (this.mapa != null)
-				{
-					if (this.mapa.vidaC0 == 1 || vivosT0 == 0)
-						{
-							telaFim = new TelaFinal();
-							telaFim.criaTela("time2");
-							this.parent.addChild(telaFim);
-							
-						}
-					else if (this.mapa.vidaC1 == 1 || vivosT1 == 0)
-						{
-							telaFim = new TelaFinal();
-							telaFim.criaTela("time1");
-							this.parent.addChild(telaFim);
-							
-						}
+			if (this.mapa != null) {
+				if (this.mapa.vidaC0 == 1 || vivosT0 == 0) {
+					telaFim = new TelaFinal();
+					telaFim.criaTela("time2");
+					this.parent.addChild(telaFim);
+					
+				} else if (this.mapa.vidaC1 == 1 || vivosT1 == 0) {
+					telaFim = new TelaFinal();
+					telaFim.criaTela("time1");
+					this.parent.addChild(telaFim);
 					
 				}
+				
+			}
 		
 		}
 		
-		public function trocaTurno():void
-		{
-			if (this.turnoAtual == 0)
-				{
-					this.turnoAtual = 1;
-					executaAcaoIA.processaJogada();
-				}
-			else if (this.turnoAtual == 1)
-				{
-					this.turnoAtual = 0;
-				}
+		public function trocaTurno():void {
+			if (this.turnoAtual == 0) {
+				this.turnoAtual = 1;
+				executaAcaoIA.processaJogada();
+			} else if (this.turnoAtual == 1) {
+				this.turnoAtual = 0;
+				if (isIaVsIa)
+					executaAcaoIA.processaJogadaSimples();
+			}
+		}
+		
+		public function iniciaIaVsIa():void {
+			executaAcaoIA.processaJogadaSimples();
+			trocaTurno();
 		}
 	
 	}

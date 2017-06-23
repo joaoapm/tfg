@@ -41,13 +41,13 @@ package jogoTCC.moduloIA {
 			this.persoTime0 = new Array();
 			
 			for each (var p:Personagem in this.listaPersonagens) {
-					if (p.vida > 1) {
-							if (p.time == 0)
-								persoTime0.push(p)
-							else
-								persoTime1.push(p)
-						}
+				if (p.vida > 1) {
+					if (p.time == 0)
+						persoTime0.push(p)
+					else
+						persoTime1.push(p)
 				}
+			}
 			
 			if (persoTime1[0] != null)
 				persoTime1Ataque.push(persoTime1[0]);
@@ -59,71 +59,150 @@ package jogoTCC.moduloIA {
 				persoTime1Defesa.push(persoTime1[2]);
 		}
 		
+		public function processaJogadaSimples():void {
+			
+			atualizaTimes();
+			
+			if (persoTime0.length > 0) {
+				
+				// personagem a ser processado
+				var persoSort:Personagem = persoTime0[randomRange(0, persoTime0.length - 1)];
+				
+				// personagem ao redor
+				var listaIniAoRedorSort:Array = pesqIniAoRedor(persoSort.casaAtual, 1);
+				var qntAoRedorIniSort:Number = 0;
+				if (listaIniAoRedor != null)
+					qntAoRedorIniSort = listaIniAoRedorSort.length;
+				
+				// distancia torre inimiga
+				var pathFindSort:Pathfinder = new Pathfinder();
+				var caminhoSort:Array = pathFindSort.pesquisaCaminho(persoSort.casaAtual, mapa.torre1[2]);
+				pathFindSort.caminhoInv = new Array();
+				caminhoSort = pathFindSort.caminho;
+				var distTSort:Number = caminhoSort.length;
+				
+				var sort:Number = randomRange(0, 100);
+				
+				// move
+				if ((sort > 0 && sort <= 50) || (qntAoRedorIniSort == 0)) {
+					if (distTSort < 4) {
+						persoSort.personagemAtacando = null;
+						mapa.atacaTorre(mapa.torre1[2], persoSort);
+					} else {
+						persoSort.setLocalPersonagem(caminhoSort[1]);
+					}
+				} else {
+					// ataca
+					var persoAtkSort:Personagem = listaIniAoRedorSort[randomRange(0, listaIniAoRedorSort.length - 1)];
+					persoAtkSort.sofreAtaque();
+					persoSort.ataca();
+					
+				}
+				
+			}
+		}
+		
 		public function processaJogada():void {
 			
 			atualizaTimes();
 			
 			if (persoTime1.length > 0) {
-				// se possui algum personagem atacando, ataca ate matar/morrer
-					var persoAtacando:Personagem;
+				
+				// se perso mt perto base
+				var pathFind3:Pathfinder = new Pathfinder();
+				for each (var persoPerto:Personagem in this.listaPersonagens) {
+					var persoPerto:Personagem = null;
 					
-					for each (var persoAtkando:Personagem in this.listaPersonagens) {
-							if (persoAtkando.time == 1 && persoAtkando.personagemAtacando != null && persoAtkando.vida > 1) {
-									persoAtacando = persoAtkando;
+					if ((persoPerto.time == 0 && persoPerto.vida > 1)) {
+						
+						persoPerto.casaAtual.casaPersegue = true;
+						var caminhoPerto:Array = pathFind3.pesquisaCaminho(persoPerto.casaAtual, mapa.torre1[2]);
+						persoPerto.casaAtual.casaPersegue = false;
+						
+						if (caminhoPerto.length < 4) {
+							 
+							var maisProximo:Number = 9999999;
+							var caminhoPertoT:Array;
+							
+							for each (var persoAtacar:Personagem in this.listaPersonagens) {
+								if (persoAtacar.time == 1 && persoAtacar.personagemAtacando == null && persoAtkando.vida > 1) {
+									persoPerto.casaAtual.casaPersegue = true;
+									persoPerto.casaAtual.casaPersegue = true;
+									caminhoPerto = pathFind3.pesquisaCaminho(persoAtacar.casaAtual, persoPerto.casaAtual);
+									persoPerto.casaAtual.casaPersegue = false;
+									persoPerto.casaAtual.casaPersegue = false;
+									if (caminhoPerto.length < maisProximo) {
+										maisProximo = caminhoPerto.length;
+										persoAtacar.personagemPerseguindo = persoPerto;
+									}
 								}
+								
+							}
 							
 						}
-					
-					if (persoAtacando != null && persoAtacando.personagemAtacando != null && persoAtacando.isCasaDestinoValida(persoAtacando.personagemAtacando.casaAtual)) {
-							perso = persoAtacando;
-							ATACA_INI();
-					} else if (
-								(persoAtacando != null && persoAtacando.personagemAtacando != null && !persoAtacando.isCasaDestinoValida(persoAtacando.personagemAtacando.casaAtual))
-								&& (persoAtacando.personagemAtacando.vida > 0)
-					
-								) {
-									
-						pathFind2 = new Pathfinder();
-						persoAtacando.personagemAtacando.casaAtual.casaPersegue = true;
-						caminho2 = pathFind2.pesquisaCaminho(persoAtacando.casaAtual, persoAtacando.personagemAtacando.casaAtual);
-						persoAtacando.personagemAtacando.casaAtual.casaPersegue = !true;
 						
-						if(caminho2.length == 1)
-							persoAtacando.setLocalPersonagem(caminho2[1]);
-							
-						if(caminho2.length > 1)
-							persoAtacando.setLocalPersonagem(caminho2[2]);
-							
-					} else {
-							
-							// personagem a ser processado
-							perso = persoTime1[randomRange(0, persoTime1.length - 1)];
-							
-							// personagem ao redor
-							listaIniAoRedor = pesqIniAoRedor(perso.casaAtual);
-							qntAoRedor = listaIniAoRedor.length;
-							
-							// qntidade de vida de um personagem aleatorio ao redor
-							iniAtacar = listaIniAoRedor[randomRange(0, qntAoRedor)] as Personagem;
-							var nr:Number;
-							if (iniAtacar != null) {
-									nr = iniAtacar.vida;
-								} else {
-									nr = 0;
-								}
-							
-							// distancia torre inimiga
-							pathFind = new Pathfinder();
-							caminho = pathFind.pesquisaCaminho(perso.casaAtual, mapa.torre0[2]);
-							pathFind.caminhoInv = new Array();
-							caminho = pathFind.caminho;
-							dist = caminho.length;
-							
-							principalIA.processarPesonagem(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
-							
-							this[principalIA.exprRetorno.metodoExecuta]();
 					}
 				}
+				
+				// se possui algum personagem atacando, ataca ate matar/morrer
+				var persoAtacando:Personagem;
+				
+				for each (var persoAtkando:Personagem in this.listaPersonagens) {
+					if ((persoAtkando.time == 1 && persoAtkando.personagemAtacando != null && persoAtkando.vida > 1) || persoAtkando.isAtqTorre) {
+						persoAtacando = persoAtkando;
+					}
+					
+				}
+				
+				if (persoAtacando != null && persoAtacando.isAtqTorre) {
+					ATACA_TORRE();
+				} else if (persoAtacando != null && persoAtacando.personagemAtacando != null && persoAtacando.isCasaDestinoValida(persoAtacando.personagemAtacando.casaAtual)) {
+					perso = persoAtacando;
+					ATACA_INI();
+				} else if ((persoAtacando != null && persoAtacando.personagemAtacando != null && !persoAtacando.isCasaDestinoValida(persoAtacando.personagemAtacando.casaAtual)) && (persoAtacando.personagemAtacando.vida > 0)
+				
+				) {
+					
+					pathFind2 = new Pathfinder();
+					persoAtacando.personagemAtacando.casaAtual.casaPersegue = true;
+					caminho2 = pathFind2.pesquisaCaminho(persoAtacando.casaAtual, persoAtacando.personagemAtacando.casaAtual);
+					persoAtacando.personagemAtacando.casaAtual.casaPersegue = !true;
+					
+					if (caminho2.length == 1)
+						persoAtacando.setLocalPersonagem(caminho2[1]);
+					else if (caminho2.length > 1)
+						persoAtacando.setLocalPersonagem(caminho2[2]);
+					
+				} else {
+					
+					// personagem a ser processado
+					perso = persoTime1[randomRange(0, persoTime1.length - 1)];
+					
+					// personagem ao redor
+					listaIniAoRedor = pesqIniAoRedor(perso.casaAtual, 0);
+					qntAoRedor = listaIniAoRedor.length;
+					
+					// qntidade de vida de um personagem aleatorio ao redor
+					iniAtacar = listaIniAoRedor[randomRange(0, qntAoRedor)] as Personagem;
+					var nr:Number;
+					if (iniAtacar != null) {
+						nr = iniAtacar.vida;
+					} else {
+						nr = 0;
+					}
+					
+					// distancia torre inimiga
+					pathFind = new Pathfinder();
+					caminho = pathFind.pesquisaCaminho(perso.casaAtual, mapa.torre0[2]);
+					pathFind.caminhoInv = new Array();
+					caminho = pathFind.caminho;
+					dist = caminho.length;
+					
+					principalIA.processarPesonagem(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
+					
+					this[principalIA.exprRetorno.metodoExecuta]();
+				}
+			}
 		}
 		
 		public function MOVE_ATACA_TORRE_INI():void {
@@ -134,12 +213,12 @@ package jogoTCC.moduloIA {
 		public function MOVE_ATACA_INI():void {
 			
 			if (qntAoRedor > 0) {
-					var persoAtk:Personagem = listaIniAoRedor[0];
-					principalIA.processarLuta(perso.vida, persoAtk.vida);
-					this[principalIA.exprRetornoLuta.metodoExecuta]();
-				} else {
-					MOVE_TORRE_INI();
-				}
+				var persoAtk:Personagem = listaIniAoRedor[0];
+				principalIA.processarLuta(perso.vida, persoAtk.vida);
+				this[principalIA.exprRetornoLuta.metodoExecuta]();
+			} else {
+				MOVE_TORRE_INI();
+			}
 		}
 		
 		public function MOVE_TORRE_INI():void {
@@ -152,6 +231,7 @@ package jogoTCC.moduloIA {
 		
 		public function ATACA_TORRE():void {
 			perso.personagemAtacando = null;
+			perso.isAtqTorre = true;
 			mapa.atacaTorre(mapa.torre0[2], perso);
 		}
 		
@@ -165,39 +245,39 @@ package jogoTCC.moduloIA {
 		
 		private function mostracc():void {
 			for (var i:Number = 0; i < this.mapa.casas.length; i++) {
-					for (var j:Number = 0; j < this.mapa.casas[i].length; j++) {
-							var ca:Casa = this.mapa.casas[i][j];
-							if (ca.ehPassavel == true)
-								ca.alpha = 0.7;
-						}
+				for (var j:Number = 0; j < this.mapa.casas[i].length; j++) {
+					var ca:Casa = this.mapa.casas[i][j];
+					if (ca.ehPassavel == true)
+						ca.alpha = 0.7;
 				}
+			}
 		}
 		
-		public function pesqIniAoRedor(casa:Casa):Array {
+		public function pesqIniAoRedor(casa:Casa, time:Number):Array {
 			var listaIni:Array = new Array();
 			
-			if (casa.casaD1 != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == 0)
+			if (casa.casaD1 != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == time)
 				listaIni.push(casa.casaD1.personagemAtual);
 			
-			if (casa.casaD2 != null && casa.casaD2.personagemAtual != null && casa.casaD2.personagemAtual.time == 0)
+			if (casa.casaD2 != null && casa.casaD2.personagemAtual != null && casa.casaD2.personagemAtual.time == time)
 				listaIni.push(casa.casaD2.personagemAtual);
 			
-			if (casa.casaD3 != null && casa.casaD3.personagemAtual != null && casa.casaD3.personagemAtual.time == 0)
+			if (casa.casaD3 != null && casa.casaD3.personagemAtual != null && casa.casaD3.personagemAtual.time == time)
 				listaIni.push(casa.casaD3.personagemAtual);
 			
-			if (casa.casaD4 != null && casa.casaD4.personagemAtual != null && casa.casaD4.personagemAtual.time == 0)
+			if (casa.casaD4 != null && casa.casaD4.personagemAtual != null && casa.casaD4.personagemAtual.time == time)
 				listaIni.push(casa.casaD4.personagemAtual);
 			
-			if (casa.casaFR != null && casa.casaFR.personagemAtual != null && casa.casaFR.personagemAtual.time == 0)
+			if (casa.casaFR != null && casa.casaFR.personagemAtual != null && casa.casaFR.personagemAtual.time == time)
 				listaIni.push(casa.casaFR.personagemAtual);
 			
-			if (casa.casaTR != null && casa.casaTR.personagemAtual != null && casa.casaTR.personagemAtual.time == 0)
+			if (casa.casaTR != null && casa.casaTR.personagemAtual != null && casa.casaTR.personagemAtual.time == time)
 				listaIni.push(casa.casaTR.personagemAtual);
 			
-			if (casa.casaLD != null && casa.casaLD.personagemAtual != null && casa.casaLD.personagemAtual.time == 0)
+			if (casa.casaLD != null && casa.casaLD.personagemAtual != null && casa.casaLD.personagemAtual.time == time)
 				listaIni.push(casa.casaLD.personagemAtual);
 			
-			if (casa.casaLE != null && casa.casaLE.personagemAtual != null && casa.casaLE.personagemAtual.time == 0)
+			if (casa.casaLE != null && casa.casaLE.personagemAtual != null && casa.casaLE.personagemAtual.time == time)
 				listaIni.push(casa.casaLE.personagemAtual);
 			
 			return listaIni;
