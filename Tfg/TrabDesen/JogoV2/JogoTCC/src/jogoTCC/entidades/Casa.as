@@ -19,6 +19,7 @@ package jogoTCC.entidades {
 		// variaveis para controle do pathfinder
 		public var ehPassavel:Boolean = true;
 		public var ehTorre:Boolean = false;
+		public var casaPersegue:Boolean = false;
 		public var f:Number = 0;
 		public var g:Number = 0;
 		public var h:Number = 0;

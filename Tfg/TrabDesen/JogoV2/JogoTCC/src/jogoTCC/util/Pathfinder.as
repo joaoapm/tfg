@@ -111,7 +111,7 @@ package jogoTCC.util {
 				var col:Number = casa.c;
 				var lin:Number = casa.l;
 				
-				if ((casa.ehPassavel || casa.ehTorre) && casasFechadas.indexOf(casa) == -1 && casasAbertas.indexOf(casa) == -1) {
+				if ((casa.ehPassavel || casa.ehTorre || casa.casaPersegue) && casasFechadas.indexOf(casa) == -1 && casasAbertas.indexOf(casa) == -1) {
 					if (isDiagonal)
 						casa.g = 14;
 					else

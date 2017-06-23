@@ -38,6 +38,7 @@ package jogoTCC.entidades {
 		public var animacaoFinalizada:Boolean = true;
 		
 		public var personagemAtacando:Personagem;
+		public var personagemPerseguindo:Personagem;
 		
 		public function Personagem(tipoJogador:String, nrTime:Number) {
 			

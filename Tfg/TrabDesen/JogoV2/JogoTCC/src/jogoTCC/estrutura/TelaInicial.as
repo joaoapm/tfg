@@ -53,7 +53,7 @@ package jogoTCC.estrutura
 			
 			addChild(bt2);
 			
-			var versao:TextField = new TextField(50,50,"v0.2"); 
+			var versao:TextField = new TextField(50,50,"v0.3"); 
  
 			addChild(versao); 
 		

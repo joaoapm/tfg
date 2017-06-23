@@ -1,5 +1,4 @@
-package jogoTCC.moduloIA
-{
+package jogoTCC.moduloIA {
 	import jogoTCC.entidades.Casa;
 	import jogoTCC.entidades.Mapa;
 	import jogoTCC.entidades.Personagem;
@@ -8,8 +7,7 @@ package jogoTCC.moduloIA
 	import jogoTCC.estrutura.GrupoFuzzy;
 	import jogoTCC.util.Pathfinder;
 	
-	public class ExecutaAcaoIA
-	{
+	public class ExecutaAcaoIA {
 		
 		private var mapa:Mapa;
 		private var listaPersonagens:Array;
@@ -23,13 +21,14 @@ package jogoTCC.moduloIA
 		private var iniAtacar:Personagem;
 		private var perso:Personagem;
 		private var pathFind:Pathfinder;
+		private var pathFind2:Pathfinder;
 		private var listaIniAoRedor:Array;
 		private var caminho:Array;
+		private var caminho2:Array;
 		private var qntAoRedor:Number;
 		private var dist:Number;
 		
-		public function ExecutaAcaoIA(mapa:Mapa, listaPerso:Array):void
-		{
+		public function ExecutaAcaoIA(mapa:Mapa, listaPerso:Array):void {
 			this.mapa = mapa;
 			this.listaPersonagens = listaPerso;
 			
@@ -37,15 +36,12 @@ package jogoTCC.moduloIA
 		
 		}
 		
-		private function atualizaTimes():void
-		{
+		private function atualizaTimes():void {
 			this.persoTime1 = new Array();
 			this.persoTime0 = new Array();
 			
-			for each (var p:Personagem in this.listaPersonagens)
-				{
-					if (p.vida > 1)
-						{
+			for each (var p:Personagem in this.listaPersonagens) {
+					if (p.vida > 1) {
 							if (p.time == 0)
 								persoTime0.push(p)
 							else
@@ -63,32 +59,42 @@ package jogoTCC.moduloIA
 				persoTime1Defesa.push(persoTime1[2]);
 		}
 		
-		public function processaJogada():void
-		{
+		public function processaJogada():void {
 			
 			atualizaTimes();
 			
-			if (persoTime1.length > 0)
-				{
-					// se possui algum personagem atacando, ataca ate matar/morrer
+			if (persoTime1.length > 0) {
+				// se possui algum personagem atacando, ataca ate matar/morrer
 					var persoAtacando:Personagem;
 					
-					for each (var persoAtkando:Personagem in this.listaPersonagens)
-						{
-							if (persoAtkando.time == 1 && persoAtkando.personagemAtacando != null)
-								{
+					for each (var persoAtkando:Personagem in this.listaPersonagens) {
+							if (persoAtkando.time == 1 && persoAtkando.personagemAtacando != null) {
 									persoAtacando = persoAtkando;
 								}
 							
 						}
 					
-					if (persoAtacando != null && persoAtacando.personagemAtacando != null &&  persoAtacando.isCasaDestinoValida(persoAtacando.personagemAtacando.casaAtual))
-						{
+					if (persoAtacando != null && persoAtacando.personagemAtacando != null && persoAtacando.isCasaDestinoValida(persoAtacando.personagemAtacando.casaAtual)) {
 							perso = persoAtacando;
 							ATACA_INI();
-						}
-					else
-						{
+					} else if (
+								(persoAtacando != null && persoAtacando.personagemAtacando != null && !persoAtacando.isCasaDestinoValida(persoAtacando.personagemAtacando.casaAtual))
+								&& (persoAtacando.personagemAtacando.vida > 0)
+					
+								) {
+									
+						pathFind2 = new Pathfinder();
+						persoAtacando.personagemAtacando.casaAtual.casaPersegue = true;
+						caminho2 = pathFind2.pesquisaCaminho(persoAtacando.casaAtual, persoAtacando.personagemAtacando.casaAtual);
+						persoAtacando.personagemAtacando.casaAtual.casaPersegue = !true;
+						
+						if(caminho2.length == 1)
+							persoAtacando.setLocalPersonagem(caminho2[1]);
+							
+						if(caminho2.length > 1)
+							persoAtacando.setLocalPersonagem(caminho2[2]);
+							
+					} else {
 							
 							// personagem a ser processado
 							perso = persoTime1[randomRange(0, persoTime1.length - 1)];
@@ -100,12 +106,9 @@ package jogoTCC.moduloIA
 							// qntidade de vida de um personagem aleatorio ao redor
 							iniAtacar = listaIniAoRedor[randomRange(0, qntAoRedor)] as Personagem;
 							var nr:Number;
-							if (iniAtacar != null)
-								{
+							if (iniAtacar != null) {
 									nr = iniAtacar.vida;
-								}
-							else
-								{
+								} else {
 									nr = 0;
 								}
 							
@@ -119,33 +122,27 @@ package jogoTCC.moduloIA
 							principalIA.processarPesonagem(qntAoRedor, dist, mapa.vidaC1, mapa.vidaC0, perso.vida, nr);
 							
 							this[principalIA.exprRetorno.metodoExecuta]();
-						}
+					}
 				}
 		}
 		
-		public function MOVE_ATACA_TORRE_INI():void
-		{
+		public function MOVE_ATACA_TORRE_INI():void {
 			
 			MOVE_TORRE_INI();
 		}
 		
-		public function MOVE_ATACA_INI():void
-		{
+		public function MOVE_ATACA_INI():void {
 			
-			if (qntAoRedor > 0)
-				{
+			if (qntAoRedor > 0) {
 					var persoAtk:Personagem = listaIniAoRedor[0];
 					principalIA.processarLuta(perso.vida, persoAtk.vida);
 					this[principalIA.exprRetornoLuta.metodoExecuta]();
-				}
-			else
-				{
+				} else {
 					MOVE_TORRE_INI();
 				}
 		}
 		
-		public function MOVE_TORRE_INI():void
-		{
+		public function MOVE_TORRE_INI():void {
 			perso.personagemAtacando = null;
 			if (dist < 4)
 				ATACA_TORRE();
@@ -153,14 +150,12 @@ package jogoTCC.moduloIA
 				perso.setLocalPersonagem(caminho[1]);
 		}
 		
-		public function ATACA_TORRE():void
-		{
+		public function ATACA_TORRE():void {
 			perso.personagemAtacando = null;
 			mapa.atacaTorre(mapa.torre0[2], perso);
 		}
 		
-		public function ATACA_INI():void
-		{
+		public function ATACA_INI():void {
 			var persoAtk:Personagem = listaIniAoRedor[0];
 			perso.personagemAtacando = persoAtk;
 			persoAtk.sofreAtaque();
@@ -168,12 +163,9 @@ package jogoTCC.moduloIA
 		
 		}
 		
-		private function mostracc():void
-		{
-			for (var i:Number = 0; i < this.mapa.casas.length; i++)
-				{
-					for (var j:Number = 0; j < this.mapa.casas[i].length; j++)
-						{
+		private function mostracc():void {
+			for (var i:Number = 0; i < this.mapa.casas.length; i++) {
+					for (var j:Number = 0; j < this.mapa.casas[i].length; j++) {
 							var ca:Casa = this.mapa.casas[i][j];
 							if (ca.ehPassavel == true)
 								ca.alpha = 0.7;
@@ -181,8 +173,7 @@ package jogoTCC.moduloIA
 				}
 		}
 		
-		public function pesqIniAoRedor(casa:Casa):Array
-		{
+		public function pesqIniAoRedor(casa:Casa):Array {
 			var listaIni:Array = new Array();
 			
 			if (casa.casaD1 != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == 0)
@@ -212,8 +203,7 @@ package jogoTCC.moduloIA
 			return listaIni;
 		}
 		
-		private function randomRange(minNum:Number, maxNum:Number):Number
-		{
+		private function randomRange(minNum:Number, maxNum:Number):Number {
 			return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
 		}
 	
