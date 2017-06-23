@@ -68,7 +68,7 @@ package jogoTCC.moduloIA {
 					var persoAtacando:Personagem;
 					
 					for each (var persoAtkando:Personagem in this.listaPersonagens) {
-							if (persoAtkando.time == 1 && persoAtkando.personagemAtacando != null) {
+							if (persoAtkando.time == 1 && persoAtkando.personagemAtacando != null && persoAtkando.vida > 1) {
 									persoAtacando = persoAtkando;
 								}
 							
