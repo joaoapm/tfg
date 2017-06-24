@@ -43,7 +43,7 @@ package jogoTCC.moduloIA {
 			// fase de defuzzificacao e realizadao da decisao retornada
 			exprRetorno = defuzzificar(listaExpressoesJogadores);
 			
-			 trace("Perso: " + exprRetorno.expressao);
+			// trace("Perso: " + exprRetorno.expressao);
  
 		}
 		

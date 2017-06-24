@@ -74,6 +74,7 @@ package jogoTCC.moduloIA {
 					if (listaIniAoRedor != null)
 						qntAoRedorIniSort = listaIniAoRedorSort.length;
 					
+					trace(qntAoRedorIniSort);
 					// distancia torre inimiga
 					var pathFindSort:Pathfinder = new Pathfinder();
 					var caminhoSort:Array = pathFindSort.pesquisaCaminho(persoSort.casaAtual, mapa.torre1[2]);
@@ -84,7 +85,7 @@ package jogoTCC.moduloIA {
 					var sort:Number = randomRange(0, 100);
 					
 					// move
-					if ((sort > 0 && sort <= 30) || (qntAoRedorIniSort == 0)) {
+					if (sort > 0 && sort <= 50) {
 							if (distTSort < 4) {
 									persoSort.personagemAtacando = null;
 									mapa.atacaTorre(mapa.torre1[2], persoSort);
@@ -93,17 +94,34 @@ package jogoTCC.moduloIA {
 								}
 						} else {
 							// ataca
-							if (distTSort < 4) {
-									persoSort.personagemAtacando = null;
-									mapa.atacaTorre(mapa.torre1[2], persoSort);
+							
+							if (qntAoRedorIniSort == 0) {
+									if (distTSort < 4) {
+											persoSort.personagemAtacando = null;
+											mapa.atacaTorre(mapa.torre1[2], persoSort);
+										} else {
+											persoSort.setLocalPersonagem(caminhoSort[1]);
+										}
+									
 								} else {
-									var persoAtkSort:Personagem = listaIniAoRedorSort[randomRange(0, listaIniAoRedorSort.length - 1)];
-									persoAtkSort.sofreAtaque();
-									persoSort.ataca();
+									var sortArk:Number = randomRange(0, 100);
+									if (sortArk > 0 && sortArk < 70) {
+											var persoAtkSort:Personagem = listaIniAoRedorSort[randomRange(0, listaIniAoRedorSort.length - 1)];
+											persoAtkSort.sofreAtaque();
+											persoSort.ataca();
+										} else {
+											if (distTSort < 4) {
+													persoSort.personagemAtacando = null;
+													mapa.atacaTorre(mapa.torre1[2], persoSort);
+												} else {
+													persoSort.setLocalPersonagem(caminhoSort[1]);
+												}
+											
+										}
+									
 								}
 							
 						}
-					
 				}
 		}
 		
@@ -117,7 +135,7 @@ package jogoTCC.moduloIA {
 					var possuipers:Boolean = false;
 					for each (var persoPer:Personagem in this.listaPersonagens) {
 						
-							if ((persoPer.time == 1 && persoPer.vida > 1 && persoPer.personagemPerseguindo != null)) {
+							if ((persoPer.time == 1 && persoPer.vida > 1 && persoPer.personagemAtacando != null)) {
 									possuipers = true;
 								}
 						}
@@ -184,8 +202,7 @@ package jogoTCC.moduloIA {
 								persoAtacando.setLocalPersonagem(caminho2[2]);
 							
 						} else if (persoAtacando != null && persoAtacando.personagemAtacando != null && persoAtacando.isCasaDestinoValida(persoAtacando.personagemAtacando.casaAtual)) {
-						
-												 
+							
 							persoAtacando.personagemAtacando.sofreAtaque();
 							persoAtacando.ataca();
 							if (persoAtacando.personagemAtacando != null && persoAtacando.personagemAtacando.vida <= 1)
@@ -305,7 +322,60 @@ package jogoTCC.moduloIA {
 			if (casa.casaLE != null && casa.casaLE.personagemAtual != null && casa.casaLE.personagemAtual.time == time)
 				listaIni.push(casa.casaLE.personagemAtual);
 			
+			pesqIniAoRedorAux(casa.casaD1, listaIni, time);
+			pesqIniAoRedorAux(casa.casaD2, listaIni, time);
+			pesqIniAoRedorAux(casa.casaD3, listaIni, time);
+			pesqIniAoRedorAux(casa.casaD4, listaIni, time);
+			pesqIniAoRedorAux(casa.casaFR, listaIni, time);
+			pesqIniAoRedorAux(casa.casaTR, listaIni, time);
+			pesqIniAoRedorAux(casa.casaLD, listaIni, time);
+			pesqIniAoRedorAux(casa.casaLE, listaIni, time);
+			
 			return listaIni;
+		}
+		
+		public function pesqIniAoRedorAux(casa:Casa, listaIni:Array, time:Number):void {
+			
+			if (casa.casaD1 != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == time) {
+					if (listaIni.indexOf(casa.casaD1.personagemAtual) == -1)
+						listaIni.push(casa.casaD1.personagemAtual);
+				}
+			
+			if (casa.casaD2 != null && casa.casaD2.personagemAtual != null && casa.casaD2.personagemAtual.time == time) {
+					if (listaIni.indexOf(casa.casaD2.personagemAtual) == -1)
+						listaIni.push(casa.casaD2.personagemAtual);
+				}
+			
+			if (casa.casaD3 != null && casa.casaD3.personagemAtual != null && casa.casaD3.personagemAtual.time == time) {
+					if (listaIni.indexOf(casa.casaD3.personagemAtual) == -1)
+						listaIni.push(casa.casaD3.personagemAtual);
+				}
+			
+			if (casa.casaD4 != null && casa.casaD4.personagemAtual != null && casa.casaD4.personagemAtual.time == time) {
+					if (listaIni.indexOf(casa.casaD4.personagemAtual) == -1)
+						listaIni.push(casa.casaD4.personagemAtual);
+				}
+			
+			if (casa.casaFR != null && casa.casaFR.personagemAtual != null && casa.casaFR.personagemAtual.time == time) {
+					if (listaIni.indexOf(casa.casaFR.personagemAtual) == -1)
+						listaIni.push(casa.casaFR.personagemAtual);
+				}
+			
+			if (casa.casaTR != null && casa.casaTR.personagemAtual != null && casa.casaTR.personagemAtual.time == time) {
+					if (listaIni.indexOf(casa.casaTR.personagemAtual) == -1)
+						listaIni.push(casa.casaTR.personagemAtual);
+				}
+			
+			if (casa.casaLD != null && casa.casaLD.personagemAtual != null && casa.casaLD.personagemAtual.time == time) {
+					if (listaIni.indexOf(casa.casaLD.personagemAtual) == -1)
+						listaIni.push(casa.casaLD.personagemAtual);
+				}
+			
+			if (casa.casaLE != null && casa.casaLE.personagemAtual != null && casa.casaLE.personagemAtual.time == time) {
+					if (listaIni.indexOf(casa.casaLE.personagemAtual) == -1)
+						listaIni.push(casa.casaLE.personagemAtual);
+				}
+		
 		}
 		
 		private function randomRange(minNum:Number, maxNum:Number):Number {

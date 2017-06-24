@@ -7,6 +7,7 @@ package jogoTCC.estrutura {
 	import jogoTCC.entidades.Mapa;
 	import jogoTCC.entidades.Personagem;
 	import jogoTCC.util.Scroll;
+	import flash.utils.setTimeout;
 	
 	public class Partida extends Sprite {
 		
@@ -154,11 +155,13 @@ package jogoTCC.estrutura {
 		public function trocaTurno():void {
 			if (this.turnoAtual == 0) {
 				this.turnoAtual = 1;
-				executaAcaoIA.processaJogada();
+				setTimeout(executaAcaoIA.processaJogada,900);
 			} else if (this.turnoAtual == 1) {
 				this.turnoAtual = 0;
-				if (isIaVsIa)
-					executaAcaoIA.processaJogadaSimples();
+				
+				if (isIaVsIa){
+					setTimeout(executaAcaoIA.processaJogadaSimples,900); 
+				}
 			}
 		}
 		

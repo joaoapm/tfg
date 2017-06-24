@@ -31,7 +31,7 @@ package jogoTCC.entidades {
 		private static var carregaAnimacao:CarregaAnimacao = new CarregaAnimacao();
 		
 		// animacao atual
-		private var mvAtual:MovieClip;
+		public var mvAtual:MovieClip;
 		private var animAtual:String = "";
 		private var barraVida:BarraVida;
 		private var vidaAtual:Image;
