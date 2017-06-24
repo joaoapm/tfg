@@ -23,7 +23,7 @@ package jogoTCC.estrutura
 		[Embed(source="../../../assets/telaInicial/bt2.png")]
 		private static const texturaBt2:Class;
 		
-		[Embed(source="../../../assets/telaInicial/bt2.png")]
+		[Embed(source="../../../assets/telaInicial/bt3.png")]
 		private static const texturaBt3:Class;
 		
 		public function TelaInicial()
@@ -50,7 +50,7 @@ package jogoTCC.estrutura
 			var bt2:Button = new Button(textureBt2, "");
 					
 			bt2.y = 525;
-			bt2.x = 600;
+			bt2.x = 670;
 			
 			bt2.addEventListener(Event.TRIGGERED, bt1Pressionado);
 			
@@ -64,7 +64,7 @@ package jogoTCC.estrutura
 			var bt3:Button = new Button(textureBt3, "");
 					
 			bt3.y = 525;
-			bt3.x = 440;
+			bt3.x = 540;
 			
 			bt3.addEventListener(Event.TRIGGERED, bt3Pressionado);
 			
@@ -73,7 +73,7 @@ package jogoTCC.estrutura
 			
 			
 			
-			var versao:TextField = new TextField(50,50,"v0.5"); 
+			var versao:TextField = new TextField(50,50,"v0.6"); 
  
 			addChild(versao); 
 		

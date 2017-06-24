@@ -30,8 +30,8 @@ package jogoTCC.entidades
 		private var barraVida:BarraVida;
 		private var vidaAtualC0:Image;
 		private var vidaAtualC1:Image;
-		public var vidaC0:Number = 10;
-		public var vidaC1:Number = 10;
+		public var vidaC0:Number = 30;
+		public var vidaC1:Number = 30;
 		
 		public function Mapa()
 		{
@@ -226,25 +226,25 @@ package jogoTCC.entidades
 				vida.dispose();
 				vida.removeFromParent();
 			}
-			if (nrVida == 10)
+			if (nrVida == 30)
 				vida = barraVida.imgVidac1;
-			if (nrVida == 9)
+			if (nrVida == 27)
 				vida = barraVida.imgVidac2;
-			if (nrVida == 8)
+			if (nrVida == 24)
 				vida = barraVida.imgVidac3;
-			if (nrVida == 7)
+			if (nrVida == 21)
 				vida = barraVida.imgVidac4;
-			if (nrVida == 6)
+			if (nrVida == 18)
 				vida = barraVida.imgVidac5;
-			if (nrVida == 5)
+			if (nrVida == 15)
 				vida = barraVida.imgVidac6;
-			if (nrVida == 4)
+			if (nrVida == 12)
 				vida = barraVida.imgVidac7;
-			if (nrVida == 3)
+			if (nrVida == 9)
 				vida = barraVida.imgVidac8;
-			if (nrVida == 2)
+			if (nrVida == 6)
 				vida = barraVida.imgVidac9;
-			if (nrVida == 1)
+			if (nrVida == 3)
 				vida = barraVida.imgVidac10;
 			
 			addChild(vida);

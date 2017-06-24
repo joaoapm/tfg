@@ -12,7 +12,7 @@
     <movie minorVersion="0" />
     <movie platform="AIR" />
     <movie background="#FFFFFF" />
-    <movie preferredSDK="C:\Users\joao-matiuzzi\Documents\pes\fldevelop\airsdk" />
+    <movie preferredSDK="E:\Fac\FlashDev\Apps\flexairsdk\4.6.0+24.0.0" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
