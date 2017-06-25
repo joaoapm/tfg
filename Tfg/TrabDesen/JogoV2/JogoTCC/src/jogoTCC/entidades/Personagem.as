@@ -255,7 +255,7 @@ package jogoTCC.entidades {
 				this.removeFromParent();
 				
 				if (partida != null) {
-					partida.trocaTurno();
+					//partida.trocaTurno();
 					partida.verificaEstadoPartida();
 				}
 				
@@ -324,6 +324,7 @@ package jogoTCC.entidades {
 			if (this.vida == 1) {
 				atualizaAnimacao("morrendoTR", "morrendo", 8, null, null, true);
 				this.casaAtual.ehPassavel = true;
+				this.casaAtual.personagemAtual = null;
 			} else {
 				addChild(vidaAtual);
 				vidaAtual.y -= 5;

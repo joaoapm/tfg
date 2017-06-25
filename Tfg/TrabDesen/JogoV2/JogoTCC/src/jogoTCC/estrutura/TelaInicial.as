@@ -66,7 +66,7 @@ package jogoTCC.estrutura {
 			
 			addChild(bt3);
 			
-			var versao:TextField = new TextField(50, 50, "v0.9");
+			var versao:TextField = new TextField(50, 50, "v0.10");
 			
 			addChild(versao);
 		

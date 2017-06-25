@@ -201,7 +201,7 @@ package jogoTCC.moduloIA {
 							else if (caminho2.length > 1)
 								persoAtacando.setLocalPersonagem(caminho2[2]);
 							
-						} else if (persoAtacando != null && persoAtacando.personagemAtacando.vida > 1 && persoAtacando.personagemAtacando != null && persoAtacando.isCasaDestinoValida(persoAtacando.personagemAtacando.casaAtual)) {
+						} else if (persoAtacando != null && persoAtacando.personagemAtacando != null && persoAtacando.personagemAtacando.vida > 1 && persoAtacando.personagemAtacando != null && persoAtacando.isCasaDestinoValida(persoAtacando.personagemAtacando.casaAtual)) {
 							
 							persoAtacando.personagemAtacando.sofreAtaque();
 							persoAtacando.ataca();
@@ -298,29 +298,45 @@ package jogoTCC.moduloIA {
 		public function pesqIniAoRedor(casa:Casa, time:Number):Array {
 			var listaIni:Array = new Array();
 			
-			if (casa.casaD1 != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == time)
+			if (casa.casaD1 != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == time){
+				
 				listaIni.push(casa.casaD1.personagemAtual);
+			}
 			
-			if (casa.casaD2 != null && casa.casaD2.personagemAtual != null && casa.casaD2.personagemAtual.time == time)
+			if (casa.casaD2 != null && casa.casaD2.personagemAtual != null && casa.casaD2.personagemAtual.time == time){
+				
 				listaIni.push(casa.casaD2.personagemAtual);
+			}
 			
-			if (casa.casaD3 != null && casa.casaD3.personagemAtual != null && casa.casaD3.personagemAtual.time == time)
+			if (casa.casaD3 != null && casa.casaD3.personagemAtual != null && casa.casaD3.personagemAtual.time == time){
+				
 				listaIni.push(casa.casaD3.personagemAtual);
+			}
 			
-			if (casa.casaD4 != null && casa.casaD4.personagemAtual != null && casa.casaD4.personagemAtual.time == time)
+			if (casa.casaD4 != null && casa.casaD4.personagemAtual != null && casa.casaD4.personagemAtual.time == time){
+				
 				listaIni.push(casa.casaD4.personagemAtual);
+			}
 			
-			if (casa.casaFR != null && casa.casaFR.personagemAtual != null && casa.casaFR.personagemAtual.time == time)
+			if (casa.casaFR != null && casa.casaFR.personagemAtual != null && casa.casaFR.personagemAtual.time == time){
+				
 				listaIni.push(casa.casaFR.personagemAtual);
+			}
 			
-			if (casa.casaTR != null && casa.casaTR.personagemAtual != null && casa.casaTR.personagemAtual.time == time)
+			if (casa.casaTR != null && casa.casaTR.personagemAtual != null && casa.casaTR.personagemAtual.time == time){
+				
 				listaIni.push(casa.casaTR.personagemAtual);
+			}
 			
-			if (casa.casaLD != null && casa.casaLD.personagemAtual != null && casa.casaLD.personagemAtual.time == time)
+			if (casa.casaLD != null && casa.casaLD.personagemAtual != null && casa.casaLD.personagemAtual.time == time){
+				
 				listaIni.push(casa.casaLD.personagemAtual);
+			}
 			
-			if (casa.casaLE != null && casa.casaLE.personagemAtual != null && casa.casaLE.personagemAtual.time == time)
+			if (casa.casaLE != null && casa.casaLE.personagemAtual != null && casa.casaLE.personagemAtual.time == time){
+				
 				listaIni.push(casa.casaLE.personagemAtual);
+			}
 			
 			pesqIniAoRedorAux(casa.casaD1, listaIni, time);
 			pesqIniAoRedorAux(casa.casaD2, listaIni, time);

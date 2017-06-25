@@ -166,15 +166,16 @@ package jogoTCC.estrutura {
 		}
 		
 		public function trocaTurno():void {
+	 
 			if (!isParado) {
 					if (this.turnoAtual == 0) {
 							this.turnoAtual = 1;
-							setTimeout(executaAcaoIA.processaJogada, 1);
+							setTimeout(executaAcaoIA.processaJogada, 300);
 						} else if (this.turnoAtual == 1) {
 							this.turnoAtual = 0;
 							
 							if (isIaVsIa) {
-									setTimeout(executaAcaoIA.processaJogadaSimples, 1);
+									setTimeout(executaAcaoIA.processaJogadaSimples, 300);
 								}
 						}
 				}
