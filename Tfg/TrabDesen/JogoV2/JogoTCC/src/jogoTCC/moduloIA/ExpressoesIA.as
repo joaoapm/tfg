@@ -16,19 +16,19 @@ package jogoTCC.moduloIA
 			{
 				var expressao1:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = ALTO E DISTANCIA_T1_TORRE1 = ALTO ENTAO MOVE_ATACA_INI");
 				var expressao2:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = MEDIO E DISTANCIA_T1_TORRE1 = ALTO ENTAO MOVE_ATACA_INI");
-				var expressao3:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = ALTO ENTAO MOVE_ATACA_INI");
+				var expressao3:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = ALTO ENTAO MOVE_ATACA_TORRE_INI");
 				
 				var expressao24:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = ALTO ENTAO MOVE_ATACA_INI");
 				var expressao25:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = MEDIO ENTAO MOVE_ATACA_INI");
-				var expressao26:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = BAIXO ENTAO MOVE_ATACA_INI");
+				var expressao26:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = BAIXO ENTAO MOVE_ATACA_TORRE_INI");
 				
 				var expressao4:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = ALTO E DISTANCIA_T1_TORRE1 = MEDIO ENTAO MOVE_ATACA_INI");
-				var expressao5:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = MEDIO E DISTANCIA_T1_TORRE1 = MEDIO ENTAO MOVE_ATACA_INI");
+				var expressao5:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = MEDIO E DISTANCIA_T1_TORRE1 = MEDIO ENTAO MOVE_ATACA_TORRE_INI");
 				var expressao6:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = MEDIO ENTAO MOVE_ATACA_INI");
 				
 				var expressao7:ExpressaoFuzzy = new ExpressaoFuzzy("SE DISTANCIA_T1_TORRE1 = BAIXO E VIDA_TORRE_INI = BAIXO ENTAO MOVE_ATACA_INI");
 				var expressao8:ExpressaoFuzzy = new ExpressaoFuzzy("SE DISTANCIA_T1_TORRE1 = MEDIO E VIDA_TORRE_INI = BAIXO ENTAO MOVE_ATACA_INI");				
-				var expressao9:ExpressaoFuzzy = new ExpressaoFuzzy("SE DISTANCIA_T1_TORRE1 = BAIXO E VIDA_TORRE_INI = BAIXO ENTAO MOVE_ATACA_INI");
+				var expressao9:ExpressaoFuzzy = new ExpressaoFuzzy("SE DISTANCIA_T1_TORRE1 = BAIXO E VIDA_TORRE_INI = BAIXO ENTAO MOVE_ATACA_TORRE_INI");
 				
 				listaExpre.push(expressao1);
 				listaExpre.push(expressao2);

@@ -8,6 +8,10 @@ package jogoTCC.estrutura {
 	import jogoTCC.entidades.Personagem;
 	import jogoTCC.util.Scroll;
 	import flash.utils.setTimeout;
+	import flash.display.Bitmap;
+	import starling.display.Button;
+	import starling.textures.Texture;
+	import starling.events.Event;
 	
 	public class Partida extends Sprite {
 		
@@ -19,6 +23,14 @@ package jogoTCC.estrutura {
 		public var turnoAtual:Number = 0;
 		private var executaAcaoIA:ExecutaAcaoIA;
 		public var isIaVsIa:Boolean = false;
+		
+		[Embed(source = "../../../assets/mapa/joga.png")]
+		private static const texturaBtnJoga:Class;
+		
+		[Embed(source = "../../../assets/mapa/pause.png")]
+		private static const texturaBtnPause:Class;
+		
+		public var isParado:Boolean = false;
 		
 		public function Partida() {
 			// rotina para iniciar a estrutura do jogo
@@ -41,6 +53,7 @@ package jogoTCC.estrutura {
 			
 			// inicia modulo IA
 			executaAcaoIA = new ExecutaAcaoIA(mapa, listaPersonagens);
+		
 		}
 		
 		private function adicionaJogadores():void {
@@ -56,7 +69,7 @@ package jogoTCC.estrutura {
 			
 			var p3:Personagem = new Personagem("guerreiro", 0);
 			addChild(p3);
-			p3.setLocalInicialPersonagem(mapa.casas[10][3] as Casa);
+			p3.setLocalInicialPersonagem(mapa.casas[11][3] as Casa);
 			
 			/*var p4:Personagem = new Personagem("guerreiro", 0);
 			   addChild(p4);
@@ -109,11 +122,11 @@ package jogoTCC.estrutura {
 		
 		public function gerenciaAtaque(personagem:Personagem):void {
 			if ((personagem != null && personagemMarcado != null) && personagem != personagemMarcado && personagem.time != personagemMarcado.time) {
-				if (personagem.isCasaDestinoValida(this.personagemMarcado.casaAtual)) {
-					personagem.sofreAtaque();
-					personagemMarcado.ataca();
+					if (personagem.isCasaDestinoValida(this.personagemMarcado.casaAtual)) {
+							personagem.sofreAtaque();
+							personagemMarcado.ataca();
+						}
 				}
-			}
 		}
 		
 		public function organizaLayers():void {
@@ -127,42 +140,44 @@ package jogoTCC.estrutura {
 			var vivosT1:Number = 0;
 			
 			for each (var p:Personagem in this.listaPersonagens) {
-				{
-					if (p.time == 0 && p.vida > 1)
-						vivosT0++;
-					else if (p.time == 1 && p.vida > 1)
-						vivosT1++;
+					{
+						if (p.time == 0 && p.vida > 1)
+							vivosT0++;
+						else if (p.time == 1 && p.vida > 1)
+							vivosT1++;
+					}
 				}
-			}
 			
 			if (this.mapa != null) {
-				if (this.mapa.vidaC0 == 1 || vivosT0 == 0) {
-					telaFim = new TelaFinal();
-					telaFim.criaTela("time2");
-					this.parent.addChild(telaFim);
-					
-				} else if (this.mapa.vidaC1 == 1 || vivosT1 == 0) {
-					telaFim = new TelaFinal();
-					telaFim.criaTela("time1");
-					this.parent.addChild(telaFim);
+					if (this.mapa.vidaC0 == 1 || vivosT0 == 0) {
+							telaFim = new TelaFinal();
+							telaFim.criaTela("time2");
+							this.parent.addChild(telaFim);
+							
+						} else if (this.mapa.vidaC1 == 1 || vivosT1 == 0) {
+							telaFim = new TelaFinal();
+							telaFim.criaTela("time1");
+							this.parent.addChild(telaFim);
+							
+						}
 					
 				}
-				
-			}
 		
 		}
 		
 		public function trocaTurno():void {
-			if (this.turnoAtual == 0) {
-				this.turnoAtual = 1;
-				setTimeout(executaAcaoIA.processaJogada,900);
-			} else if (this.turnoAtual == 1) {
-				this.turnoAtual = 0;
-				
-				if (isIaVsIa){
-					setTimeout(executaAcaoIA.processaJogadaSimples,900); 
+			if (!isParado) {
+					if (this.turnoAtual == 0) {
+							this.turnoAtual = 1;
+							setTimeout(executaAcaoIA.processaJogada, 1);
+						} else if (this.turnoAtual == 1) {
+							this.turnoAtual = 0;
+							
+							if (isIaVsIa) {
+									setTimeout(executaAcaoIA.processaJogadaSimples, 1);
+								}
+						}
 				}
-			}
 		}
 		
 		public function iniciaIaVsIa():void {

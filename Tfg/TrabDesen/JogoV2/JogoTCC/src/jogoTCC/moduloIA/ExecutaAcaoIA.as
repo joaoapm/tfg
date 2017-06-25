@@ -74,7 +74,7 @@ package jogoTCC.moduloIA {
 					if (listaIniAoRedor != null)
 						qntAoRedorIniSort = listaIniAoRedorSort.length;
 					
-					trace(qntAoRedorIniSort);
+					 
 					// distancia torre inimiga
 					var pathFindSort:Pathfinder = new Pathfinder();
 					var caminhoSort:Array = pathFindSort.pesquisaCaminho(persoSort.casaAtual, mapa.torre1[2]);
@@ -133,7 +133,7 @@ package jogoTCC.moduloIA {
 				
 				// se perso mt perto base
 					var possuipers:Boolean = false;
-					for each (var persoPer:Personagem in this.listaPersonagens) {
+					for each (var persoPer:Personagem in this.persoTime1) {
 						
 							if ((persoPer.time == 1 && persoPer.vida > 1 && persoPer.personagemAtacando != null)) {
 									possuipers = true;
@@ -180,7 +180,7 @@ package jogoTCC.moduloIA {
 					// se possui algum personagem atacando, ataca ate matar/morrer
 					var persoAtacando:Personagem;
 					
-					for each (var persoAtkando:Personagem in this.listaPersonagens) {
+					for each (var persoAtkando:Personagem in this.persoTime1) {
 							if ((persoAtkando.time == 1 && persoAtkando.personagemAtacando != null && persoAtkando.personagemAtacando.vida > 1) || persoAtkando.isAtqTorre) {
 									persoAtacando = persoAtkando;
 								}
@@ -201,7 +201,7 @@ package jogoTCC.moduloIA {
 							else if (caminho2.length > 1)
 								persoAtacando.setLocalPersonagem(caminho2[2]);
 							
-						} else if (persoAtacando != null && persoAtacando.personagemAtacando != null && persoAtacando.isCasaDestinoValida(persoAtacando.personagemAtacando.casaAtual)) {
+						} else if (persoAtacando != null && persoAtacando.personagemAtacando.vida > 1 && persoAtacando.personagemAtacando != null && persoAtacando.isCasaDestinoValida(persoAtacando.personagemAtacando.casaAtual)) {
 							
 							persoAtacando.personagemAtacando.sofreAtaque();
 							persoAtacando.ataca();
