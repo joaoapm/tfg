@@ -19,7 +19,7 @@ package jogoTCC.moduloIA
 				var expressao3:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = ALTO ENTAO MOVE_ATACA_TORRE_INI");
 				
 				var expressao24:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = ALTO ENTAO MOVE_ATACA_INI");
-				var expressao25:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = MEDIO ENTAO MOVE_ATACA_INI");
+				var expressao25:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = MEDIO ENTAO MOVE_ATACA_TORRE_INI");
 				var expressao26:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = BAIXO ENTAO MOVE_ATACA_TORRE_INI");
 				
 				var expressao4:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = ALTO E DISTANCIA_T1_TORRE1 = MEDIO ENTAO MOVE_ATACA_INI");
@@ -27,7 +27,7 @@ package jogoTCC.moduloIA
 				var expressao6:ExpressaoFuzzy = new ExpressaoFuzzy("SE PERSON_AOREDOR = BAIXO E DISTANCIA_T1_TORRE1 = MEDIO ENTAO MOVE_ATACA_INI");
 				
 				var expressao7:ExpressaoFuzzy = new ExpressaoFuzzy("SE DISTANCIA_T1_TORRE1 = BAIXO E VIDA_TORRE_INI = BAIXO ENTAO MOVE_ATACA_INI");
-				var expressao8:ExpressaoFuzzy = new ExpressaoFuzzy("SE DISTANCIA_T1_TORRE1 = MEDIO E VIDA_TORRE_INI = BAIXO ENTAO MOVE_ATACA_INI");				
+				var expressao8:ExpressaoFuzzy = new ExpressaoFuzzy("SE DISTANCIA_T1_TORRE1 = MEDIO E VIDA_TORRE_INI = BAIXO ENTAO MOVE_ATACA_TORRE_INI");				
 				var expressao9:ExpressaoFuzzy = new ExpressaoFuzzy("SE DISTANCIA_T1_TORRE1 = BAIXO E VIDA_TORRE_INI = BAIXO ENTAO MOVE_ATACA_TORRE_INI");
 				
 				listaExpre.push(expressao1);
@@ -61,14 +61,14 @@ package jogoTCC.moduloIA
 			{
 				
 				var expressao14:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = ALTO E VIDA_P_T2 = ALTO ENTAO ATACA_INI ");
-				var expressao15:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = ALTO E VIDA_P_T2 = BAIXO ENTAO ATACA_INI ");
-				var expressao16:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = ALTO E VIDA_P_T2 = MEDIO ENTAO ATACA_INI ");
+				var expressao15:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = ALTO E VIDA_P_T2 = BAIXO ENTAO MOVE_ATACA_TORRE_INI ");
+				var expressao16:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = ALTO E VIDA_P_T2 = MEDIO ENTAO MOVE_ATACA_TORRE_INI ");
 				
-				var expressao17:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = BAIXO E VIDA_P_T2 = ALTO ENTAO ATACA_INI ");
+				var expressao17:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = BAIXO E VIDA_P_T2 = ALTO ENTAO MOVE_ATACA_TORRE_INI ");
 				var expressao18:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = BAIXO E VIDA_P_T2 = BAIXO ENTAO ATACA_INI ");
 				var expressao19:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = BAIXO E VIDA_P_T2 = MEDIO ENTAO ATACA_INI ");
 				
-				var expressao20:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = MEDIO E VIDA_P_T2 = ALTO ENTAO ATACA_INI ");
+				var expressao20:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = MEDIO E VIDA_P_T2 = ALTO ENTAO MOVE_ATACA_TORRE_INI ");
 				var expressao21:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = MEDIO E VIDA_P_T2 = BAIXO ENTAO ATACA_INI ");
 				var expressao22:ExpressaoFuzzy = new ExpressaoFuzzy("SE VIDA_P_T1 = MEDIO E VIDA_P_T2 = MEDIO ENTAO ATACA_INI ");
 				

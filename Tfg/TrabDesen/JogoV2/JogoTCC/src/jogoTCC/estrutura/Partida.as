@@ -170,12 +170,12 @@ package jogoTCC.estrutura {
 			if (!isParado) {
 					if (this.turnoAtual == 0) {
 							this.turnoAtual = 1;
-							setTimeout(executaAcaoIA.processaJogada, 300);
+							setTimeout(executaAcaoIA.processaJogada, 100);
 						} else if (this.turnoAtual == 1) {
 							this.turnoAtual = 0;
 							
 							if (isIaVsIa) {
-									setTimeout(executaAcaoIA.processaJogadaSimples, 300);
+									setTimeout(executaAcaoIA.processaJogadaSimples, 100);
 								}
 						}
 				}
