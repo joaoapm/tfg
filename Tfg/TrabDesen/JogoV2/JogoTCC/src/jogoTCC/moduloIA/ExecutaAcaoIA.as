@@ -149,24 +149,32 @@ package jogoTCC.moduloIA {
 											var caminhoPerto:Array = pathFind3.pesquisaCaminho(persoPerto.casaAtual, mapa.torre1[2]);
 											persoPerto.casaAtual.casaPersegue = false;
 											
-											if (caminhoPerto.length < 4) {
+											if (caminhoPerto.length < 5) {
 												
+													var booleanJaPossui:Boolean = false;
+													for each (var pertoVal:Personagem in this.listaPersonagens) {
+															if (pertoVal.personagemAtacando == persoPerto || pertoVal.personagemPerseguindo == persoPerto)
+																booleanJaPossui = true;
+														}
+													
 													var maisProximo:Number = 9999999;
 													var caminhoPertoT:Array;
 													
-													for each (var persoAtacar:Personagem in this.listaPersonagens) {
-															if (persoAtacar.time == 1 && persoAtacar.personagemAtacando == null && persoAtacar.vida > 1) {
-																	persoPerto.casaAtual.casaPersegue = true;
-																	persoPerto.casaAtual.casaPersegue = true;
-																	caminhoPerto = pathFind3.pesquisaCaminho(persoAtacar.casaAtual, persoPerto.casaAtual);
-																	persoPerto.casaAtual.casaPersegue = false;
-																	persoPerto.casaAtual.casaPersegue = false;
-																	if (caminhoPerto.length < maisProximo) {
-																			maisProximo = caminhoPerto.length;
-																			persoAtacar.personagemAtacando = persoPerto;
+													if (!booleanJaPossui) {
+															for each (var persoAtacar:Personagem in this.listaPersonagens) {
+																	if (persoAtacar.time == 1 && persoAtacar.personagemAtacando == null && persoAtacar.vida > 1) {
+																			persoPerto.casaAtual.casaPersegue = true;
+																			persoPerto.casaAtual.casaPersegue = true;
+																			caminhoPerto = pathFind3.pesquisaCaminho(persoAtacar.casaAtual, persoPerto.casaAtual);
+																			persoPerto.casaAtual.casaPersegue = false;
+																			persoPerto.casaAtual.casaPersegue = false;
+																			if (caminhoPerto.length < maisProximo) {
+																					maisProximo = caminhoPerto.length;
+																					persoAtacar.personagemAtacando = persoPerto;
+																				}
 																		}
+																	
 																}
-															
 														}
 													break;
 													
@@ -180,7 +188,7 @@ package jogoTCC.moduloIA {
 					var persoAtacando:Personagem;
 					
 					for each (var persoAtkando:Personagem in this.persoTime1) {
-							if ((persoAtkando.time == 1 && persoAtkando.personagemAtacando != null && persoAtkando.personagemAtacando.vida > 1) || persoAtkando.isAtqTorre) {
+							if ((persoAtkando.time == 1 && persoAtkando.personagemAtacando != null && persoAtkando.personagemAtacando.vida > 1)) {
 									persoAtacando = persoAtkando;
 								}
 							
@@ -206,9 +214,7 @@ package jogoTCC.moduloIA {
 							persoAtacando.ataca();
 							if (persoAtacando.personagemAtacando != null && persoAtacando.personagemAtacando.vida <= 1)
 								perso.personagemAtacando = null;
-						} else if (persoAtacando != null && persoAtacando.isAtqTorre) {
-							ATACA_TORRE();
-						} else {
+						}  else {
 							
 							// personagem a ser processado
 							perso = persoTime1[randomRange(0, persoTime1.length - 1)];
@@ -354,45 +360,47 @@ package jogoTCC.moduloIA {
 		}
 		
 		public function pesqIniAoRedorAux(casa:Casa, listaIni:Array, time:Number):void {
-			
-			if (casa.casaD1 != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == time) {
-					if (listaIni.indexOf(casa.casaD1.personagemAtual) == -1)
-						listaIni.push(casa.casaD1.personagemAtual);
-				}
-			
-			if (casa.casaD2 != null && casa.casaD2.personagemAtual != null && casa.casaD2.personagemAtual.time == time) {
-					if (listaIni.indexOf(casa.casaD2.personagemAtual) == -1)
-						listaIni.push(casa.casaD2.personagemAtual);
-				}
-			
-			if (casa.casaD3 != null && casa.casaD3.personagemAtual != null && casa.casaD3.personagemAtual.time == time) {
-					if (listaIni.indexOf(casa.casaD3.personagemAtual) == -1)
-						listaIni.push(casa.casaD3.personagemAtual);
-				}
-			
-			if (casa.casaD4 != null && casa.casaD4.personagemAtual != null && casa.casaD4.personagemAtual.time == time) {
-					if (listaIni.indexOf(casa.casaD4.personagemAtual) == -1)
-						listaIni.push(casa.casaD4.personagemAtual);
-				}
-			
-			if (casa.casaFR != null && casa.casaFR.personagemAtual != null && casa.casaFR.personagemAtual.time == time) {
-					if (listaIni.indexOf(casa.casaFR.personagemAtual) == -1)
-						listaIni.push(casa.casaFR.personagemAtual);
-				}
-			
-			if (casa.casaTR != null && casa.casaTR.personagemAtual != null && casa.casaTR.personagemAtual.time == time) {
-					if (listaIni.indexOf(casa.casaTR.personagemAtual) == -1)
-						listaIni.push(casa.casaTR.personagemAtual);
-				}
-			
-			if (casa.casaLD != null && casa.casaLD.personagemAtual != null && casa.casaLD.personagemAtual.time == time) {
-					if (listaIni.indexOf(casa.casaLD.personagemAtual) == -1)
-						listaIni.push(casa.casaLD.personagemAtual);
-				}
-			
-			if (casa.casaLE != null && casa.casaLE.personagemAtual != null && casa.casaLE.personagemAtual.time == time) {
-					if (listaIni.indexOf(casa.casaLE.personagemAtual) == -1)
-						listaIni.push(casa.casaLE.personagemAtual);
+			if (casa != null) {
+				
+					if (casa.casaD1 != null && casa.casaD1.personagemAtual != null && casa.casaD1.personagemAtual.time == time) {
+							if (listaIni.indexOf(casa.casaD1.personagemAtual) == -1)
+								listaIni.push(casa.casaD1.personagemAtual);
+						}
+					
+					if (casa.casaD2 != null && casa.casaD2.personagemAtual != null && casa.casaD2.personagemAtual.time == time) {
+							if (listaIni.indexOf(casa.casaD2.personagemAtual) == -1)
+								listaIni.push(casa.casaD2.personagemAtual);
+						}
+					
+					if (casa.casaD3 != null && casa.casaD3.personagemAtual != null && casa.casaD3.personagemAtual.time == time) {
+							if (listaIni.indexOf(casa.casaD3.personagemAtual) == -1)
+								listaIni.push(casa.casaD3.personagemAtual);
+						}
+					
+					if (casa.casaD4 != null && casa.casaD4.personagemAtual != null && casa.casaD4.personagemAtual.time == time) {
+							if (listaIni.indexOf(casa.casaD4.personagemAtual) == -1)
+								listaIni.push(casa.casaD4.personagemAtual);
+						}
+					
+					if (casa.casaFR != null && casa.casaFR.personagemAtual != null && casa.casaFR.personagemAtual.time == time) {
+							if (listaIni.indexOf(casa.casaFR.personagemAtual) == -1)
+								listaIni.push(casa.casaFR.personagemAtual);
+						}
+					
+					if (casa.casaTR != null && casa.casaTR.personagemAtual != null && casa.casaTR.personagemAtual.time == time) {
+							if (listaIni.indexOf(casa.casaTR.personagemAtual) == -1)
+								listaIni.push(casa.casaTR.personagemAtual);
+						}
+					
+					if (casa.casaLD != null && casa.casaLD.personagemAtual != null && casa.casaLD.personagemAtual.time == time) {
+							if (listaIni.indexOf(casa.casaLD.personagemAtual) == -1)
+								listaIni.push(casa.casaLD.personagemAtual);
+						}
+					
+					if (casa.casaLE != null && casa.casaLE.personagemAtual != null && casa.casaLE.personagemAtual.time == time) {
+							if (listaIni.indexOf(casa.casaLE.personagemAtual) == -1)
+								listaIni.push(casa.casaLE.personagemAtual);
+						}
 				}
 		
 		}
