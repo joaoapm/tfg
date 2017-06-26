@@ -152,7 +152,7 @@ package jogoTCC.moduloIA {
 											if (caminhoPerto.length < 5) {
 												
 													var booleanJaPossui:Boolean = false;
-													for each (var pertoVal:Personagem in this.listaPersonagens) {
+													for each (var pertoVal:Personagem in this.persoTime1) {
 															if (pertoVal.personagemAtacando == persoPerto || pertoVal.personagemPerseguindo == persoPerto)
 																booleanJaPossui = true;
 														}
