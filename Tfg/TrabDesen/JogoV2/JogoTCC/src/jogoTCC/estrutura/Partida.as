@@ -139,6 +139,16 @@ package jogoTCC.estrutura {
 			var vivosT0:Number = 0;
 			var vivosT1:Number = 0;
 			
+			
+			for each (var pRem:Personagem in this.listaPersonagens) {							
+				for each (var pRemTest:Personagem in this.listaPersonagens) {
+					if (pRem.vida <= 1 && (pRemTest.personagemAtacando == pRem || pRemTest.personagemPerseguindo == pRem)){
+						pRemTest.personagemAtacando = null;
+						pRemTest.personagemPerseguindo = null;
+					}					
+				}							
+			}
+			
 			for each (var p:Personagem in this.listaPersonagens) {
 					{
 						if (p.time == 0 && p.vida > 1)
@@ -170,12 +180,12 @@ package jogoTCC.estrutura {
 			if (!isParado) {
 					if (this.turnoAtual == 0) {
 							this.turnoAtual = 1;
-							setTimeout(executaAcaoIA.processaJogada, 100);
+							setTimeout(executaAcaoIA.processaJogada, 0);
 						} else if (this.turnoAtual == 1) {
 							this.turnoAtual = 0;
 							
 							if (isIaVsIa) {
-									setTimeout(executaAcaoIA.processaJogadaSimples, 100);
+									setTimeout(executaAcaoIA.processaJogadaSimples, 0);
 								}
 						}
 				}
